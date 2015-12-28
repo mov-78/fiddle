@@ -5,5 +5,5 @@ $ bower install
 $ npm install
 $ grunt
 # 打开 console
-$ # grunt clean:all
+$ # grunt clean
 ```
