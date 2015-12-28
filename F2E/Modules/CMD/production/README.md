@@ -1,4 +1,4 @@
-该 fiddle 用于演示如何在生产环境中使用 [CMD](https://github.com/seajs/seajs/issues/242) 模块系统
+该 fiddle 用于演示如何在生产环境中部署基于 [Sea.js](http://seajs.org/docs/#docs) 的 [CMD](https://github.com/seajs/seajs/issues/242) 模块系统
 
 ```sh
 $ bower install
