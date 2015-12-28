@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" content="viewport">
+    <title>CMD fiddle</title>
+  </head>
+  <body>
+    <script id="seajsnode" src="bower_components/seajs/dist/sea.js"></script>
+
+    <script>
+
+      seajs.config({ base: '/scripts' })
+
+      // seajs.config() 可以调用多次，后面的配置会覆盖之前的配置
+      seajs.config({
+
+        debug: true,  // 不会删除动态插入的 <script/> 标签
+        charset: 'utf-8',
+
+        preload: [
+          // 预加载模块
+          'vendor/preload'
+        ],
+        alias: {
+          // 标识别名
+          'foo': '{env}/lib/utils/foo'
+        },
+        paths: {
+          // 路径别名
+          'utils': '{env}/lib/utils'
+        },
+        vars: {
+          // 插值变量集
+          env: 'dev'
+        },
+        map: [
+          // [ '.js', '-debug.js' ],
+          // [ 'http://localhost/', 'http://xcdn.com/' ]
+        ]
+
+      })
+
+      seajs.use('foo')        // seajs.use('dev/lib/utils/foo')
+      seajs.use('utils/bar')  // seajs.use('dev/lib/utils/bar')
+
+    </script>
+
+  </body>
+</html>
