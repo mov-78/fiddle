@@ -5,17 +5,12 @@ module.exports = function factory(grunt) {
 
   grunt.initConfig({
     connect: {
-      all: {
+      dev: {
         port: '?'
-      }
-    },
-    wiredep: {
-      all: {
-        src: 'index.html'
       }
     }
   })
 
-  grunt.registerTask('default', [ 'wiredep', 'connect:all:keepalive' ])
+  grunt.registerTask('default', [ 'connect:dev:keepalive' ])
 
 }
