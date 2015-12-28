@@ -1,0 +1,10 @@
+{
+  "name": "CMD-fiddle",
+  "authors": [
+    "Pwn <hi@pwn.buzz>"
+  ],
+  "homepage": "https://github.com/pwnn/fiddle",
+  "dependencies": {
+    "seajs": "~3.0.0"
+  }
+}
