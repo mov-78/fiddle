@@ -2,6 +2,6 @@
 
 ```sh
 $ npm install
+$ npm start
 $ ./node_modules/.bin/babel-node # REPL
-$ ./node_modules/.bin/babel-node index.js
 ```

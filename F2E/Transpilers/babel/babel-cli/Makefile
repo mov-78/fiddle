@@ -1,5 +1,5 @@
 clean:
 	@echo cleaning...
-	@rm -f *.transpiled.js *.map  # 单一文件转换生成的文件
-	@rm -rf dist/ dist.js         # 目录映射转换生成的文件
+	@rm -rf *.map src/*.map dist/*.map
+	@rm -rf dist/ dist.js src/*-compiled.js
 	@echo done
