@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/osx,node,bower,sublimetext,vim,grunt,yeoman
+# Created by https://www.gitignore.io/api/osx,linux,bower,node
 
 ### OSX ###
 .DS_Store
@@ -27,6 +27,23 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+### Linux ###
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
 
 
 ### Node ###
@@ -65,56 +82,5 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-
-### Bower ###
-bower_components
-.bower-cache
-.bower-registry
-.bower-tmp
-
-
-### SublimeText ###
-# cache files for sublime text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-
-# workspace files are user-specific
-*.sublime-workspace
-
-# project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
-
-# sftp configuration file
-sftp-config.json
-
-
-### Vim ###
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-*.un~
-Session.vim
-.netrwhist
-*~
-
-
-### grunt ###
-# Grunt usually compiles files inside this directory
-dist/
-
-# Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
-.tmp/
-
-
-### Yeoman ###
-node_modules/
-bower_components/
-*.log
-
-build/
-dist/
-
-
 ### fiddle ###
-!grunt.log/
+!grunt.log
