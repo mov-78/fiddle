@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>AMD fiddle</title>
+  </head>
+  <body>
+
+    <script>
+    // 在 require.js 尚未加载前，可通过定义 require 全局变量来对 require.js 进行配置
+    var require = {
+
+      enforceDefine: true,  // 在加载非 AMD 且无对应 shim 的模块时报错
+
+      deps: [ '/scripts/hi.js' ],       // 设置配置时预加载模块
+      callback: function callback(hi) { // 配置时预加载模块加载完毕回调
+        console.log(hi)
+      }
+
+    }
+    </script>
+
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <!--
+    加载 require.js 外部配置文件
+    多个配置会合并在一起，新的配置会覆盖旧的同名配置
+    更多配置与业务逻辑分离的模式：https://goo.gl/HyJk2b
+    -->
+    <script src="scripts/require.config.js"></script>
+
+    <script>
+    // 异步加载执行指定模块
+    require(['app/main'])
+    </script>
+
+    <script>
+    // 基于上下文的 require
+
+    var reqV1 = require.config({
+      context: 'v1',  // 上下文名称；必须唯一
+      baseUrl: 'scripts/context/v1'
+    })
+    var reqV2 = require.config({
+      context: 'v2',  // 上下文名称；必须唯一
+      baseUrl: 'scripts/context/v2'
+    })
+
+    reqV1([ 'require', 'alpha' ], function succeed(require, alpha) {
+      console.log('alpha@reqV1:', alpha.version)
+      require(['beta'], function (beta) {
+        console.log('beta@reqV1:', beta.version)
+      })
+    })
+    reqV2([ 'require', 'alpha' ], function succeed(require, alpha) {
+      console.log('alpha@reqV2:', alpha.version)
+      require(['beta'], function (beta) {
+        console.log('beta@reqV2:', beta.version)
+      })
+    })
+
+    </script>
+
+  </body>
+</html>
