@@ -2,6 +2,5 @@
 
 ```sh
 $ npm install
-$ npm start
-$ ./node_modules/.bin/babel-node # REPL
+$ npm run babel-node
 ```
