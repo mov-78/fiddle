@@ -1,6 +1,5 @@
 {
-  "name": "grunt-fiddle",
-  "author": "Pwn <hi@pwn.buzz>",
+  "name": "fiddle",
   "dependencies": {
     "grunt": "^0.4.5"
   }

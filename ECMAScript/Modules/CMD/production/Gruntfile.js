@@ -29,11 +29,6 @@ module.exports = function factory(grunt) {
         dest: 'dist/all.min.js'
       }
     },
-    connect: {
-      production: {
-        port: '?'
-      }
-    },
     clean: {
       tmp: {
         src: 'tmp'
@@ -45,9 +40,6 @@ module.exports = function factory(grunt) {
   })
 
   grunt.registerTask('build', [ 'transport', 'concat', 'uglify' ])
-  grunt.registerTask(
-    'default',
-    [ 'clean', 'build', 'connect:production:keepalive' ]
-  )
+  grunt.registerTask('default', [ 'clean', 'build' ])
 
 }

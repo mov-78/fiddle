@@ -1,6 +1,5 @@
 {
-  "name": "babel-fiddle",
-  "author": "Pwn <hi@pwn.buzz>",
+  "name": "fiddle",
   "dependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.3.17",

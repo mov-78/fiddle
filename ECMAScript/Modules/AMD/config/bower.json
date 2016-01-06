@@ -1,8 +1,5 @@
 {
-  "name": "AMD-fiddle",
-  "authors": [
-    "Pwn <hi@pwn.buzz>"
-  ],
+  "name": "fiddle",
   "homepage": "https://github.com/pwnn/fiddle",
   "dependencies": {
     "requirejs": "~2.1.22"

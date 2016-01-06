@@ -1,6 +1,5 @@
 {
-  "name": "babel-fiddle",
-  "author": "Pwn <hi@pwn.buzz>",
+  "name": "fiddle",
   "babel": {
     "presets": [ "es2015" ]
   },
