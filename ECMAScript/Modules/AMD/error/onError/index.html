@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>fiddle</title>
+  </head>
+  <body>
+
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <script>
+
+    require(['http://example.com/phony.js'])
+
+    require.config({ enforceDefine: true })
+    require(['/index.js'])
+
+    require.onError = function onError(error) {
+
+      console.group('requireType')
+      console.log(error.requireType)
+      console.groupEnd()
+
+      console.group('requireModules')
+      error.requireModules.forEach(function (moduleID) {
+        console.log(moduleID)
+      })
+      console.groupEnd()
+
+    }
+
+    </script>
+
+  </body>
+</html>
