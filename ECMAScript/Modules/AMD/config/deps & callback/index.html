@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>fiddle</title>
+  </head>
+  <body>
+
+    <script>
+    var require = {
+
+      // config.deps 用于设置配置时依赖
+      deps: [ 'scripts/foo', 'scripts/bar' ],
+
+      // config.callback 用于设置配置时依赖加载执行成功回调
+      callback: function callback(foo, bar) {
+        console.group('config.callback')
+        console.log('foo:', foo)
+        console.log('bar:', bar)
+        console.groupEnd()
+      }
+
+    }
+    </script>
+
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <script>
+    // 声明 config.deps 配置时依赖不会 block 其他 require
+    // 可以通过 DevTools 里的瀑布流观察加载顺序
+    require([ 'scripts/baz' ], function (baz) {
+      console.group('require')
+      console.log('baz:', baz)
+      console.groupEnd()
+    })
+    </script>
+
+  </body>
+</html>
