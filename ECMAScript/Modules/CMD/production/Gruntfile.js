@@ -12,14 +12,14 @@ module.exports = function factory(grunt) {
         expand: true,
         cwd: 'scripts',
         src: '**/*.js',
-        dest: 'tmp/cmd',
-        ext: '.cmd.js',
+        dest: 'tmp',
+        ext: '.cmd-transport.js',
         extDot: 'last'
       }
     },
     concat: {
       production: {
-        src: 'tmp/cmd/**/*.js',
+        src: 'tmp/**/*.js',
         dest: 'dist/all.js'
       }
     },
