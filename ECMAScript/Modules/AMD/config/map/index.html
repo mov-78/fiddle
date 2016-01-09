@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>fiddle</title>
+  </head>
+  <body>
+
+    <script>
+    var require = {
+
+      // config.map 用于设置模块级依赖映射
+
+      map: {
+
+        // 在 lib/foo 的模块定义中，vendor/util 被映射为 vendor/util.v1
+        'lib/foo': {
+          'vendor/util': 'vendor/util.v1'
+        },
+
+        // 在 lib/bar 的模块定义中，vendor/util 被映射为 vendor/util.v2
+        'lib/bar': {
+          'vendor/util': 'vendor/util.v2'
+        },
+
+        // 在其余模块定义中（除了 lib/foo & lib/bar），vendor/util 被映射为 vendor/util.v3
+        '*': {
+          'vendor/util': 'vendor/util.v3'
+        }
+
+      }
+
+    }
+    </script>
+
+    <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+
+  </body>
+</html>
