@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>fiddle</title>
+  </head>
+  <body>
+
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <script>
+
+    /*
+    - config.context 用于配置基于上下文的 require
+    - 可以用来实现多个版本之间的无缝切换
+    - 不支持 Simplified CJS Wrapping（因为它只是用来定义模块）
+    */
+
+    var reqV1 = require.config({
+      context: 'v1',  // 上下文名称；必须全局唯一
+      baseUrl: 'scripts/v1'
+    })
+    var reqV2 = require.config({
+      context: 'v2',  // 上下文名称；必须全局唯一
+      baseUrl: 'scripts/v2'
+    })
+
+    reqV1([ 'require', 'alpha' ], function (require, alpha) {
+      console.log('alpha@reqV1:', alpha.version)
+      require([ 'beta' ], function (beta) {
+        console.log('beta@reqV1:', beta.version)
+      })
+    })
+    reqV2([ 'require', 'alpha' ], function (require, alpha) {
+      console.log('alpha@reqV2:', alpha.version)
+      require([ 'beta' ], function (beta) {
+        console.log('beta@reqV2:', beta.version)
+      })
+    })
+
+    </script>
+
+  </body>
+</html>
