@@ -33,6 +33,13 @@ function webpackContextResolve(req) {
   return map[req] || (function() { throw new Error() }())
 }
 
+// export.id & export.keys() & export.resolve()
+webpackContext.id = 1
+webpackContext.resolve = webpackContextResolve
+webpackContext.keys = function webpackContextKeys() {
+  return Object.keys(map)
+}
+
 // __webpack_require__(id)
 // __webpack_require__(contextModuleID)(req)
 module.exports = webpackContext
