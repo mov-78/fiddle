@@ -1,4 +1,4 @@
-该 fiddle 用于分析 webpack 在遇到动态 require 请求时自动生成的上下文模块
+该 fiddle 用于分析 webpack 在遇到动态模块请求时自动生成的上下文模块
 
 ```js
 // dist/bundle.js
