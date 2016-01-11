@@ -1,4 +1,10 @@
+// require('./loader?k1=foo&k2=bar!./fixture?foo=bar')
 module.exports = function factory(content) {
+
+  var path = require('path')
+
+  // 开启加载器缓存
+  this.cacheable()
 
   // 资源所在目录
   console.log('context:', this.context)
@@ -25,7 +31,7 @@ module.exports = function factory(content) {
   console.log('data:', this.data)
 
   // 编译器配置
-  console.log('options:', this.options)
+  console.log('options:', Object.keys(this.options))
 
   // config.debug
   console.log('debug:', this.debug)
@@ -51,13 +57,33 @@ module.exports = function factory(content) {
   )
 
   // resolveSync(context:String, request:String)
-  console.log(
-    'this.resolveSync():',
-    this.resolveSync(
-      this.context,
-      './fixture?from=resolveSync'
+  try {
+    console.log(
+      'this.resolveSync() succeed:',
+      this.resolveSync(
+        this.context,
+        './fixture?from=resolveSync'
+      )
     )
-  )
+  } catch (err) {
+    console.log('this.resolveSync() failed:', err)
+  }
+
+
+  //
+  // addDependency & addContextDependency
+  //
+
+  this.addDependency(path.resolve('dep.json'))      // 添加额外的文件依赖
+  this.addContextDependency(path.resolve('deps/'))  // 添加额外的目录依赖
+
+
+  //
+  // emitWarning & emitError
+  //
+
+  this.emitWarning('emitWarning()')
+  this.emitError('emitError()')
 
   return content
 
