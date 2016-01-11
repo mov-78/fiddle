@@ -1,19 +1,18 @@
-// normal loader 倒序执行
-// 如 x!y!z! 的执行顺序为：z -> y -> x
+// exports 用于定义加载器在 normal 阶段的行为
 module.exports = function factory(content) {
 
   console.log('---------------- normal:foo -----------------')
   console.log('content:', content)
-  console.log('this.data:', this.data)
+  console.log('this.data:', this.data) // 获取该加载器在 pitching 阶段设置的数据
 
   return content
 
 }
 
-// pitching loader 顺序执行，且先于所有 normal loader 执行
+// exports.pitch 用于定义加载器在 pitching 阶段的行为
 module.exports.pitch = function pitch(remainingRequest, precedingRequest, data) {
 
-  console.log('----------------- pitch:foo -----------------')
+  console.log('--------------- pitching:foo ----------------')
   console.log('remainingRequest:', remainingRequest)
   console.log('precedingRequest:', precedingRequest)
 
