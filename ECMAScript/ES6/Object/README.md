@@ -27,8 +27,8 @@ let user = {
 
 属性的遍历：
 
-| | String | Symbol | Non-Enumerable | Inherited |
-| - | - | - | - | - |
+| 方法或遍历结构 | String | Symbol | 非枚举属性 | 继承属性 |
+| --- | --- | --- | --- | --- |
 | for...in  | ☑ | ☒ | ☒ | ☑ |
 | Object.keys | ☑ | ☒ | ☒ | ☒ |
 | Object.getOwnPropertyNames | ☑ | ☒ | ☑ | ☒ |
