@@ -18,5 +18,5 @@ $ npm run babel-node
   - 允许跨行（保留缩进及换行符）
   - 支持变量插值（任意合法的 JavaScript 表达式）
 - 标签模板字符串：
-  - `tag\`templateString\``
-  - `function tag(literalStrings, ...cookedSubstitutions) { return 'taggedTemplateString' }`
+  - tag\`templateString\`
+  - function tag(literalStrings, ...cookedSubstitutions) { return 'taggedTemplateString' }
