@@ -27,11 +27,11 @@ let user = {
 
 属性的遍历：
 
-|语法结构/方法名｜String|Symbol|非枚举属性|继承属性|
-|-|-|-|-|-|
-|for...in|☑|☒|☒|☑|
-|Object.keys|☑|☒|☒|☒|
-|Object.getOwnPropertyNames|☑|☒|☑|☒|
-|Object.getOwnPropertySymbols|☒|☑|☑|☒|
-|Reflect.ownKeys|☑|☑|☑|☒|
-|Reflect.enumerate|☑|☒|☒|☑|
+| 语法结构/方法名 | String | Symbol | 非枚举属性 | 继承属性 |
+| - | - | - | - | - |
+| for...in  | ☑ | ☒ | ☒ | ☑ |
+| Object.keys | ☑ | ☒ | ☒ | ☒ |
+| Object.getOwnPropertyNames | ☑ | ☒ | ☑ | ☒ |
+| Object.getOwnPropertySymbols | ☒ | ☑ | ☑ | ☒ |
+| Reflect.ownKeys | ☑ | ☑ | ☑ | ☒ |
+| Reflect.enumerate | ☑ | ☒ | ☒ | ☑ |
