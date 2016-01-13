@@ -1,4 +1,4 @@
-该 fiddle 用于演示对象类型（[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object）的扩展
+该 fiddle 用于演示对象类型（[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Objecta)）的扩展
 
 ```sh
 $ npm install
