@@ -6,13 +6,13 @@
 
   let arr1 = new Array(7)
   let arr2 = Array.of(7)
-  console.log('arr1:', arr1)
-  console.log('arr2:', arr2)
+  console.assert(7 === arr1.length)
+  console.assert(1 === arr2.length)
 
   let arr3 = new Array(1, 2, 3)
   let arr4 = Array.of(1, 2, 3)
-  console.log('arr3:', arr3)
-  console.log('arr4:', arr4)
+  console.assert(3 === arr3.length)
+  console.assert(3 === arr4.length)
 
 }
 
@@ -57,8 +57,8 @@
   let m = arr.find((element, index, array) => 0 === element % 2)
   let n = arr.findIndex((element, index, array) => 0 === element % 2)
 
-  console.log('m:', m)
-  console.log('n:', n)
+  console.assert(6 === m)
+  console.assert(3 === n)
 
 }
 
@@ -69,9 +69,9 @@
 // - Array.prototype.entries()
 //
 
-console.assert('next' in [].keys())
-console.assert('next' in [].values())
-console.assert('next' in [].entries())
+console.assert(Symbol.iterator in [].keys())
+console.assert(Symbol.iterator in [].values())
+console.assert(Symbol.iterator in [].entries())
 
 
 //

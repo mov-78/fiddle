@@ -8,7 +8,7 @@
   function f1(x, y = 0) {
     console.log(`[f1] x:${x}, y:${y}`)
   }
-  console.log('f1.length:', f1.length) // 形参默认值不计入 fn.length 内
+  console.assert(1 === f1.length) // 形参默认值不计入 fn.length 内
 
   f1(1, 2)
   f1(1)
@@ -18,7 +18,7 @@
   function f2({ x, y = 0 }) {
     console.log(`[f2] x:${x}, y:${y}`)
   }
-  console.log('f2.length:', f2.length) // 形参默认值不计入 fn.length 内
+  console.assert(1 === f2.length) // 形参默认值不计入 fn.length 内
 
   f2({ x: 1, y: 2 })
   f2({ x: 1 })
@@ -31,7 +31,7 @@
   function f3({ x, y = 0 } = { x: 0, y: 0 }) {
     console.log(`[f3] x:${x}, y:${y}`)
   }
-  console.log('f3.length:', f3.length) // 形参默认值不计入 fn.length 内
+  console.assert(0 === f3.length) // 形参默认值不计入 fn.length 内
 
   f3({ x: 1, y: 2 })
   f3({ x: 1 })
@@ -50,13 +50,14 @@
   function fn(head, ...tail) {
     console.log('head:', head)
     console.log('tail:', tail)
+    console.assert(Array.isArray(tail))
   }
-  console.log('fn.length:', fn.length) // REST 形参不计入 fn.length 内
+  console.assert(1 === fn.length) // REST 形参不计入 fn.length 内
 
   fn('foo', 'bar', 'baz')
-  fn('foo', 'bar')  // REST 形参永远是一个数组，即使只有一个多余的实参
-  fn('foo')         // REST 形参永远是一个数组，即使没有多余的实参
-  fn()              // REST 形参永远是一个数组，即使没有多余的实参
+  fn('foo', 'bar')
+  fn('foo')
+  fn()
 
   // REST「形参」亦可应用于解构赋值解构中
   let [ m, ...n ] = [ 1, 2, 3 ]

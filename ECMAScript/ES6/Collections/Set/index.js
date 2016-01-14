@@ -2,23 +2,23 @@
 let set = new Set([ 1, 2, 2 ])
 
 // getter Set.prototype.size
-console.log('set.size:', set.size)
+console.assert(2 === set.size)
 
 // Set.prototype.add(value)
 set.add(1)
-console.log('set.size:', set.size)
+console.assert(2 === set.size)
 set.add(2).add(3) // chainable
-console.log('set.size:', set.size)
+console.assert(3 === set.size)
 
 // Set.prototype.delete(value)
-console.log('set.delete(1):', set.delete(1))
-console.log('set.size:', set.size)
-console.log('set.delete(1):', set.delete(1))
-console.log('set.size:', set.size)
+console.assert(set.delete(1))
+console.assert(2 === set.size)
+console.assert(!set.delete(1))
+console.assert(2 === set.size)
 
 // Set.prototype.has(value)
-console.log('set.has(2):', set.has(2))
-console.log('set.has(7):', set.has(7))
+console.assert(set.has(2))
+console.assert(!set.has(7))
 
 
 //
@@ -41,6 +41,7 @@ for (let entry of set.entries()) {
 
 // Set 本身亦是 Iterable
 console.assert(Symbol.iterator in set)
+console.assert(set[Symbol.iterator] === Set.prototype.values)
 for (let member of set) {
   console.log('set:', member)
 }
@@ -52,4 +53,4 @@ set.forEach(function each(member) {
 
 // Set.prototype.clear()
 set.clear()
-console.log('set.size:', set.size)
+console.assert(0 === set.size)

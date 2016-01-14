@@ -23,14 +23,14 @@ console.log('String.fromCodePoint(0x1030F):', String.fromCodePoint(0x1030F))
 // String.prototype 扩展
 //
 
-console.log('h'.repeat(7))
+console.assert('hhh' === 'h'.repeat(3))
 
-console.log('foobar'.startsWith('foo'))
-console.log('foobar'.startsWith('ob', 3))
-console.log('foobar'.endsWith('bar'))
-console.log('foobar'.endsWith('b', 3))
-console.log('foobar'.includes('oba'))
-console.log('foobar'.includes('oba', 3))
+console.assert('foobar'.startsWith('foo'))
+console.assert(!('foobar'.startsWith('ob', 3)))
+console.assert('foobar'.endsWith('bar'))
+console.assert(!('foobar'.endsWith('b', 3)))
+console.assert('foobar'.includes('oba'))
+console.assert(!('foobar'.includes('oba', 3)))
 
 
 //

@@ -19,7 +19,7 @@
     }
   }
 
-  console.log(author.toString())
+  console.assert('User Pwn <hi@pwn.buzz>' === author.toString())
 
 }
 
@@ -34,10 +34,10 @@
 //  - Object.is(+0, -0)   # false
 //  - Object.is(NaN, NaN) # true
 
-console.log('+0 === -0:', +0 === -0)
-console.log('NaN === NaN:', NaN === NaN)
-console.log('Object.is(+0, -0):', Object.is(+0, -0))
-console.log('Object.is(NaN, NaN):', Object.is(NaN, NaN))
+console.assert(+0 === -0)
+console.assert(NaN !== NaN)
+console.assert(!Object.is(+0, -0))
+console.assert(Object.is(NaN, NaN))
 
 // Object.getPrototypeOf(obj)
 // Object.setPrototypeOf(obj, prototype)
@@ -89,7 +89,7 @@ console.log('Object.is(NaN, NaN):', Object.is(NaN, NaN))
 
   Object.assign(target, source1, source2, source3)
   console.log('Reflect.ownKeys(target):', Reflect.ownKeys(target))
-  console.log('target.a:', target.a)
+  console.assert('overriden' === target.a)
 
 }
 
