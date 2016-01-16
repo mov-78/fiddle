@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1,user-scalable=no,width=640" name="viewport">
+    <title>fiddle</title>
+  </head>
+  <body>
+
+    <script>
+    var Proxy = Proxy || false
+    if (!Proxy) {
+      document.write('当前浏览器不支持 Proxy')
+    } else if ('function' !== typeof Proxy) {
+      document.write('当前浏览器仅支持旧版 Proxy')
+    } else {
+      document.write('当前浏览支持 ES6 Proxy')
+    }
+    </script>
+
+    <!-- run `npm run compile` first -->
+    <script src="compiled.js"></script>
+
+  </body>
+</html>
