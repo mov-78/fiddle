@@ -1,4 +1,4 @@
-该 fiddle 用于演示[类语法糖](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+该 fiddle 用于演示[类语法糖](http://mzl.la/1Pid221)
 
 ```sh
 $ npm install

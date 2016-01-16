@@ -1,4 +1,4 @@
-该 fiddle 用于演示（[Set](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set)）数据结构
+该 fiddle 用于演示（[Set](http://mzl.la/1licKjS)）数据结构
 
 ```sh
 $ npm install
@@ -9,19 +9,19 @@ $ npm run babel-node
 
 构造函数：
 
-- [new Set([iterable])](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set)
+- [new Set([iterable])](http://mzl.la/1licKjS)
 
 基础方法：
 
-- [Set.prototype.size](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/size) // getter
-- [Set.prototype.has(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has)
-- [Set.prototype.add(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/add) // chainable
-- [Set.prototype.delete(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/delete)
-- [Set.prototype.clear()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/clear)
+- [Set.prototype.size](http://mzl.la/1P6iRWC) // getter
+- [Set.prototype.has(value)](http://mzl.la/1U2vboO)
+- [Set.prototype.add(value)](http://mzl.la/1KjqbGW) // chainable
+- [Set.prototype.delete(value)](http://mzl.la/1RWhaKi)
+- [Set.prototype.clear()](http://mzl.la/1KjqdOU)
 
 迭代方法：
 
-- [Set.prototype.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/keys)
-- [Set.prototype.values()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/values)
-- [Set.prototype.entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/entries)
-- [Set.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach)
+- [Set.prototype.keys()](http://mzl.la/1PxLPJ3)
+- [Set.prototype.values()](http://mzl.la/1JR3DlU)
+- [Set.prototype.entries()](http://mzl.la/1UXhacg)
+- [Set.prototype.forEach()](http://mzl.la/236DYvW)

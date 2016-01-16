@@ -1,4 +1,4 @@
-该 fiddle 用于演示（[Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map)）数据结构
+该 fiddle 用于演示（[Map](http://mzl.la/1OVzyBV)）数据结构
 
 ```sh
 $ npm install
@@ -9,20 +9,20 @@ $ npm run babel-node
 
 构造函数：
 
-- [new Map([iterable])](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map)
+- [new Map([iterable])](http://mzl.la/1OVzyBV)
 
 基础方法：
 
-- [Map.prototype.size](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/size) // getter
-- [Map.prototype.has(key)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has)
-- [Map.prototype.set(key, value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set) // chainable
-- [Map.prototype.get(key)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get)
-- [Map.prototype.delete(key)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/delete)
-- [Map.prototype.clear()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/clear)
+- [Map.prototype.size](http://mzl.la/1OVzBh3) // getter
+- [Map.prototype.has(key)](http://mzl.la/1JR3FdA)
+- [Map.prototype.set(key, value)](http://mzl.la/1Q5pIwh) // chainable
+- [Map.prototype.get(key)](http://mzl.la/1JR3FKC)
+- [Map.prototype.delete(key)](http://mzl.la/1WhFDu4)
+- [Map.prototype.clear()](http://mzl.la/1J8XB03)
 
 迭代方法：
 
-- [Map.prototype.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/keys)
-- [Map.prototype.values()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/values)
-- [Map.prototype.entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/entries)
-- [Map.prototype.forEach(callback, context?)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach)
+- [Map.prototype.keys()](http://mzl.la/1RWhtod)
+- [Map.prototype.values()](http://mzl.la/1RscDQR)
+- [Map.prototype.entries()](http://mzl.la/1Nd8nwU)
+- [Map.prototype.forEach(callback, context?)](http://mzl.la/1Nd8okw)

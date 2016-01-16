@@ -1,4 +1,4 @@
-该 fiddle 用于演示数值类型（[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)）的扩展
+该 fiddle 用于演示数值类型（[Number](http://mzl.la/19kgqcw)）的扩展
 
 ```sh
 $ npm install

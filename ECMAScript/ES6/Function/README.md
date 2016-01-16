@@ -1,4 +1,4 @@
-该 fiddle 用于演示函数类型（[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function）的扩展
+该 fiddle 用于演示函数类型（[Function](http://mzl.la/1SceDhn）的扩展
 
 ```sh
 $ npm install

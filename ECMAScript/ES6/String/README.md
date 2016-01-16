@@ -1,4 +1,4 @@
-该 fiddle 用于演示字符串类型（[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)）的扩展
+该 fiddle 用于演示字符串类型（[String](http://mzl.la/ORU8rA)）的扩展
 
 ```sh
 $ npm install

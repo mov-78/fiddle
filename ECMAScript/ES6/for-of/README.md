@@ -1,4 +1,4 @@
-该 fiddle 用于演示（[foo...of](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of)）循环结构
+该 fiddle 用于演示（[foo...of](http://mzl.la/1WhCQkw)）循环结构
 
 ```sh
 $ npm install

@@ -1,4 +1,4 @@
-该 fiddle 用于演示新增的 [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) 数据类型
+该 fiddle 用于演示新增的 [Symbol](http://mzl.la/1qQFuyR) 数据类型
 
 ```sh
 $ npm install

@@ -1,4 +1,4 @@
-该 fiddle 用于演示变量的解构赋值
+该 fiddle 用于演示变量的[解构赋值](http://mzl.la/1WPTDtN)
 
 ```sh
 $ npm install

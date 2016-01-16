@@ -1,4 +1,4 @@
-该 fiddle 用于演示对象类型（[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Objecta)）的扩展
+该 fiddle 用于演示对象类型（[Object](http://mzl.la/1SopBPR)）的扩展
 
 ```sh
 $ npm install
@@ -18,7 +18,7 @@ let user = {
 }
 ```
 
-[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor) 对象的扩展：
+[Object](http://mzl.la/1ZDxvJO) 对象的扩展：
 
 - Object.assign(target, ...sources)
 - Object.is(m, n)

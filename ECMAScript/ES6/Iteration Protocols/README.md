@@ -1,4 +1,4 @@
-该 fiddle 用于演示[迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
+该 fiddle 用于演示[迭代协议](http://mzl.la/1SopN1G)
 
 ```sh
 $ npm install

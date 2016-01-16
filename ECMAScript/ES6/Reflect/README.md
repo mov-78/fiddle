@@ -9,28 +9,28 @@ $ npm run babel-node
 
 操作函数化：
 
-- [Reflect.has(target, key)](https://goo.gl/62nZBw)
+- [Reflect.has(target, key)](http://mzl.la/1Piclpz)
 
-- [Reflect.deleteProperty(target, key)](https://goo.gl/F3DRf5)
+- [Reflect.deleteProperty(target, key)](http://mzl.la/1J8VUjd)
 
-- [Reflect.get(target, key, receiver?)](https://goo.gl/gUQwZp)
-- [Reflect.set(target, key, value, receiver?)](https://goo.gl/cmcNEy)
+- [Reflect.get(target, key, receiver?)](http://mzl.la/1li8AbP)
+- [Reflect.set(target, key, value, receiver?)](http://mzl.la/1Ox6Nb5)
 
-- [Reflect.apply(target, context, arguments)](https://goo.gl/y9ecR0)
-- [Reflect.construct(target, arguments)](https://goo.gl/EOz0pf)
+- [Reflect.apply(target, context, args)](http://mzl.la/1U2sMdG)
+- [Reflect.construct(target, args)](http://mzl.la/1UXegEp)
 
 将 `Object` 中与反射机制相关的方法逐步移植到 `Reflect` 上（在自动类型转换及返回值处理上有些许区别）：
 
-- [Reflect.defineProperty(target, key, descriptor)](https://goo.gl/LSo1aO)
-- [Reflect.getOwnPropertyDescriptor(target, key)](https://goo.gl/HhfhRl)
+- [Reflect.defineProperty(target, key, descriptor)](http://mzl.la/1UXenQf)
+- [Reflect.getOwnPropertyDescriptor(target, key)](http://mzl.la/1li8TU7)
 
-- [Reflect.isExtensible(target)](https://goo.gl/f74lpa)
-- [Reflect.preventExtensions(target)](https://goo.gl/PDZq0p)
+- [Reflect.isExtensible(target)](http://mzl.la/1ZDx7Lg)
+- [Reflect.preventExtensions(target)](http://mzl.la/1npMRQK)
 
-- [Reflect.getPrototypeOf(target)](https://goo.gl/7WXYJO)
-- [Reflect.setPrototypeOf(target, prototype)](https://goo.gl/B1A6H3)
+- [Reflect.getPrototypeOf(target)](http://mzl.la/1Qdqdq1)
+- [Reflect.setPrototypeOf(target, prototype)](http://mzl.la/1ZrzviM)
 
 枚举方法：
 
-- [Reflect.ownKeys(target)](https://goo.gl/djlaCV)
-- [Reflect.enumerate(target)](https://goo.gl/nLTSLR)
+- [Reflect.ownKeys(target)](http://mzl.la/1U2t44j)
+- [Reflect.enumerate(target)](http://mzl.la/1n8WraX)
