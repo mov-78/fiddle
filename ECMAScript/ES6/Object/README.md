@@ -29,9 +29,9 @@ let user = {
 
 | 方法或遍历结构 | String | Symbol | 非枚举属性 | 继承属性 |
 | --- | --- | --- | --- | --- |
-| for...in  | ☑ | ☒ | ☒ | ☑ |
-| Object.keys | ☑ | ☒ | ☒ | ☒ |
-| Object.getOwnPropertyNames | ☑ | ☒ | ☑ | ☒ |
-| Object.getOwnPropertySymbols | ☒ | ☑ | ☑ | ☒ |
-| Reflect.ownKeys | ☑ | ☑ | ☑ | ☒ |
-| Reflect.enumerate | ☑ | ☒ | ☒ | ☑ |
+| for...in  | Y | - | - | Y |
+| Object.keys | Y | - | - | - |
+| Object.getOwnPropertyNames | Y | - | Y | - |
+| Object.getOwnPropertySymbols | - | Y | Y | - |
+| Reflect.ownKeys | Y | Y | Y | - |
+| Reflect.enumerate | Y | - | - | Y |
