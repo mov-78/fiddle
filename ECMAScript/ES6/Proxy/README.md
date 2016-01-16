@@ -1,4 +1,4 @@
-该 fiddle 用于演示[Proxy](http://mzl.la/1ZCMa84) 反射机制
+该 fiddle 用于演示 [Proxy](http://mzl.la/1ZCMa84) 反射机制
 
 ```sh
 $ npm install

@@ -1,4 +1,4 @@
-该 fiddle 用于演示[Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect) 反射机制
+该 fiddle 用于演示 [Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect) 反射机制
 
 ```sh
 $ npm install

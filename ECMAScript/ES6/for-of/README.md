@@ -1,4 +1,4 @@
-该 fiddle 用于演示（[foo...of](http://mzl.la/1WhCQkw)）循环结构
+该 fiddle 用于演示（[for...of](http://mzl.la/1WhCQkw)）循环结构
 
 ```sh
 $ npm install

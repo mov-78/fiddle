@@ -1,4 +1,4 @@
-该 fiddle 用于演示对象类型（[Object](http://mzl.la/1SopBPR)）的扩展
+该 fiddle 用于演示对象类型（[Object](http://mzl.la/IG0YNC)）的扩展
 
 ```sh
 $ npm install
