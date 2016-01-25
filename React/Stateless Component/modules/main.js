@@ -4,6 +4,6 @@
 const React = require(`react`)
 const ReactDOM = require(`react-dom`)
 
-const Hello = require(`./components/Hello`)
+const TickTock = require(`./components/TickTock`)
 
-setInterval(() => ReactDOM.render(<Hello date={ new Date() } />, document.querySelector(`main`)), 500)
+setInterval(() => ReactDOM.render(<TickTock date={ new Date() } />, document.querySelector(`main`)), 500)

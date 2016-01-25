@@ -3,7 +3,7 @@
 
 const React = require(`react`)
 
-class Hello extends React.Component {
+class TickTock extends React.Component {
   render() {
     return (
       <p>
@@ -13,4 +13,4 @@ class Hello extends React.Component {
   }
 }
 
-module.exports = Hello
+module.exports = TickTock

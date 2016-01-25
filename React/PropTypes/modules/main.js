@@ -4,6 +4,6 @@
 const React = require(`react`)
 const ReactDOM = require(`react-dom`)
 
-const Component = require(`./components/Component`)
+const Demo = require(`./components/Demo`)
 
-ReactDOM.render(<Component />, document.querySelector(`main`))
+ReactDOM.render(<Demo />, document.querySelector(`main`))

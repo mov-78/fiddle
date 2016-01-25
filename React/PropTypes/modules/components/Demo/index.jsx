@@ -4,14 +4,14 @@ const React = require(`react`)
 
 class Foo {}
 
-class Component extends React.Component {
+class Demo extends React.Component {
   render() {
     return <code>React.PropTypes</code>
   }
 }
 
 // PropTypes 用于校验 props 类型（该类型校验仅在开发环境中生效）
-Component.propTypes = {
+Demo.propTypes = {
 
   // primitives
   'optionalNumber' : React.PropTypes.number,
@@ -53,6 +53,7 @@ Component.propTypes = {
   }),
 
   // React.PropTypes.any
+  // 所有校验规则均可追加 isRequired，用于声明该属性为必须项
   'requiredAny' : React.PropTypes.any.isRequired,
 
   // 自定义规则
@@ -60,14 +61,16 @@ Component.propTypes = {
     if (!/^customProp$/.test(props[propName])) {
       // 1. 如果校验失败，必须返回 Error 对象
       // 2. 不可以抛出异常，否则会与 React.PropTypes.oneOfType 冲突
+      // 3. 默认为必须项
       return new Error(`[${propName}] validation failed!`)
     }
   }
 
 }
 
-Component.defaultProps = {
+Demo.defaultProps = {
 
+  // primitives
   'optionalNumber' : Number.NaN,
   'optionalString' : ``,
   'optionalBoolean' : true,
@@ -75,29 +78,39 @@ Component.defaultProps = {
   'optionalArray' : [],
   'optionalFunction' : () => null,
 
-  'optionalNode' : [ 1, `2`, <div>ReactElement</div> ],
+  // React.PropTypes.node
+  'optionalNode' : [ Number.NaN, ``, <div>ReactElement</div> ],
 
+  // React.PropTypes.element
   'optionalElement' : <div>ReactElement</div>,
 
+  // React.PropTypes.instanceOf
   'optionalInstanceOf' : new Foo(),
 
+  // React.PropTypes.oneOf
   'optionalEnum' : `foo`,
 
+  // React.PropTypes.oneOfType
   'optionalUnion' : Number.NaN,
 
+  // React.PropTypes.arrayOf
   'optionalArrayOf' : [ Number.NaN, Number.Infinity ],
 
+  // React.PropTypes.objectOf
   'optionalObjectOf' : { 'foo' : ``, 'bar' : `` },
 
+  // React.PropTypes.shape
   'optionalObjectWithShape' : {
     'foo' : Number.NaN,
     'bar' : `bar`
   },
 
+  // React.PropTypes.any.isRequired
   'requiredAny' : Number.NaN,
 
+  // 自定义规则
   'customProp' : `customProp`
 
 }
 
-module.exports = Component
+module.exports = Demo

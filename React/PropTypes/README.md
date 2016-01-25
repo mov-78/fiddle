@@ -1,4 +1,4 @@
-该 fiddle 用于演示[React.PropTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation)
+该 fiddle 用于演示 [React.PropTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation)
 
 ---
 
