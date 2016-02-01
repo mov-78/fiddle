@@ -168,7 +168,7 @@ module.exports = function factory(grunt) {
   grunt.registerTask(
     'default',
     'an alias task',
-    [ 'stub1', 'extern', 'foo:m:n', 'bar', 'stub2', 'stub4' ]
+    [ 'stub1', 'extern', 'foo-async', 'foo:m:n', 'bar', 'stub2', 'stub4' ]
   )
 
 
