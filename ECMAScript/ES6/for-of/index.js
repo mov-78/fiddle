@@ -18,17 +18,78 @@ for (let ch of 'foobar') {
   console.log('[String]', ch)
 }
 
+
 // Array
-for (let element of [ 1, 2, 3 ]) {
-  console.log('[Array]', element)
+{
+
+  let array = [ 1, 2, 3 ]
+
+  for (let key of array.keys()) {
+    console.log(`[Array#key]: ${key}`)
+  }
+
+  for (let value of array.values()) {
+    console.log(`[Array#value]: ${value}`)
+  }
+
+  for (let entry of array.entries()) {
+    console.log(`[Array#entry]: ${entry}`)
+  }
+
+  console.assert(Array.prototype[Symbol.iterator] === Array.prototype.values)
+  for (let item of array) {
+    console.log('[Array#for-of]:', item)
+  }
+
 }
+
 
 // Set
-for (let member of new Set([ 1, 2, 3 ])) {
-  console.log('[Set]', member)
+{
+
+  let set = new Set([ 1, 2, 3 ])
+
+  for (let key of set.keys()) {
+    console.log(`[Set#key]: ${key}`)
+  }
+
+  for (let value of set.values()) {
+    console.log(`[Set#value]: ${value}`)
+  }
+
+  for (let entry of set.entries()) {
+    console.log(`[Set#entry]: ${entry}`)
+  }
+
+  console.assert(Set.prototype.keys === Set.prototype.values)
+  console.assert(Set.prototype[Symbol.iterator] === Set.prototype.values)
+  for (let item of set) {
+    console.log('[Set#for-of]:', item)
+  }
+
 }
 
+
 // Map
-for (let [ key, value ] of new Map([ [ 'foo', 1 ], [ 'bar', 2 ] ])) {
-  console.log(`[Map] ${key}:${value}`)
+{
+
+  let map = new Map([ [ 'foo', 1 ], [ 'bar', 2 ] ])
+
+  for (let key of map.keys()) {
+    console.log(`[Map#key]: ${key}`)
+  }
+
+  for (let value of map.values()) {
+    console.log(`[Map#value]: ${value}`)
+  }
+
+  for (let entry of map.entries()) {
+    console.log(`[Map#entry]: ${entry}`)
+  }
+
+  console.assert(Map.prototype[Symbol.iterator] === Map.prototype.entries)
+  for (let item of map) {
+    console.log('[Map#for-of]:', item)
+  }
+
 }
