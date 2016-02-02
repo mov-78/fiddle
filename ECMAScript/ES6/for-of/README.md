@@ -8,4 +8,4 @@ $ npm run babel-node
 ---
 
 - `for...in`：用于迭代对象属性
-- `for...of`：用于迭代 `iterable`（!(Symbol.iterator in Object.prototype)）
+- `for...of`：用于迭代 `iterable`（`!(Symbol.iterator in Object.prototype)`）

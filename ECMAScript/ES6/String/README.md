@@ -8,11 +8,11 @@ $ npm run babel-node
 ---
 
 - 对原有 Unicode 转义语法进行了扩展：`\u{XXXXXXXX}`
-- 对 `String.prototype` 进行了扩展：
-  - `String.prototype.repeat(count)`
-  - `String.prototype.startsWith(searchString[, position])`
-  - `String.prototype.endssWith(searchString[, position])`
-  - `String.prototype.includes(searchString[, position])`
+- 对 [String.prototype](http://mzl.la/1CzS1vX) 进行了扩展：
+  - [String.prototype.repeat(count)](http://mzl.la/1o18Vl3)
+  - [String.prototype.startsWith(searchString, position?)](http://mzl.la/1SMJlfc)
+  - [String.prototype.endsWith(searchString, position?)](http://mzl.la/1m9LeWm)
+  - [String.prototype.includes(searchString, position?)](http://mzl.la/1SAuELT)
 - 模板字符串：
   - 使用反引号作为字符串分隔符
   - 允许跨行（保留缩进及换行符）

@@ -20,10 +20,10 @@ let user = {
 
 [Object](http://mzl.la/1ZDxvJO) 对象的扩展：
 
-- Object.assign(target, ...sources)
-- Object.is(m, n)
-- Object.getPrototypeOf(obj)
-- Object.setPrototypeOf(obj, prototype)
+- [Object.assign(target, ...sources)](http://mzl.la/1Mo3l21)
+- [Object.is(m, n)](http://mzl.la/1TyV3KR)
+- [Object.getPrototypeOf(obj)](http://mzl.la/1vsvEYf)
+- [Object.setPrototypeOf(obj, prototype)](http://mzl.la/1JUKAHF)
 
 属性的遍历：
 
