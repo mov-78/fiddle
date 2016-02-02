@@ -18,7 +18,7 @@
   function f2({ x, y = 0 }) {
     console.log(`[f2] x:${x}, y:${y}`)
   }
-  console.assert(1 === f2.length) // 形参默认值不计入 fn.length 内
+  console.assert(1 === f2.length)
 
   f2({ x: 1, y: 2 })
   f2({ x: 1 })
@@ -78,10 +78,7 @@
 
   // SPREAD 操作符用于「展开」iterable（可以理解为移除两边的方括号）
 
-  // #1：应用于函数调用
   fn(...[ 1, 2, 3 ])
-
-  // #2：应用于数组字面量
   fn(...[ ...[ 1, 2], 3 ])
 
 }

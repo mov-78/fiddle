@@ -8,7 +8,7 @@ let iterator = {
   next() {
     return {
       // 当 true === done 时，value 为 iterator 的返回值
-      // 当 false === done 时，可以忽略 done 属性
+      // 当 false === done 时，可以忽略 value 属性
       done  : true,
       value : 'ANY'
     }

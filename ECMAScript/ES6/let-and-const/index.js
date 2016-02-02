@@ -19,7 +19,7 @@ console.assert('baz' === d[1])
 {
   let e = 3
   const f = 4
-  console.assert(3 === 3)
+  console.assert(3 === e)
   console.assert(4 === f)
 }
 // e, f 在此均未定义
