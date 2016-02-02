@@ -76,6 +76,7 @@ console.assert(Symbol.iterator in [].entries())
 
 //
 // - Array.prototype.fill(value, start?, end?)
+// 填充区间: [start=0, end=array.length)
 //
 
 console.log([ 1, 2, 3 ].fill(4))
@@ -86,7 +87,8 @@ console.log([ 1, 2, 3 ].fill(4, -3, -2))
 
 
 //
-// Array.prototype.copyWithin(target, start?, end?)
+// Array.prototype.copyWithin(target, start, end?)
+// 复制源区间：[start, end=array.length)
 //
 
 console.log([ 1, 2, 3, 4, 5 ].copyWithin(0, 3))
