@@ -24,7 +24,5 @@ $ ./node_modules/.bin/babel src --out-file dist.js
 # 从 stdin 中读取源文件
 $ ./node_modules/.bin/babel --out-file dist.js < src/index.js
 
-$ make clean
-
-#
+$ # make clean
 ```
