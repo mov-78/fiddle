@@ -65,8 +65,7 @@ define(function factory(require, exports, module) {
   console.dir(Object.assign({}, module))
   console.groupEnd()
 
-  // 等同于 module.exports = function noop() {}
-  // 因此会覆盖之前通过 exports 或 module.exports 暴露的接口
+  // 覆盖之前通过 exports 或 module.exports 暴露的接口
   return function noop() {}
 
 })
