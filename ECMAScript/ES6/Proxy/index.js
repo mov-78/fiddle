@@ -481,13 +481,13 @@
   console.assert('intercepted' === Reflect.getOwnPropertyDescriptor(proxy, 'foo').value)
 
   // 恒等式[1]
-  // let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  // undefined === returnValue || ((null !== returnValue) && ('object' === typeof returnValue))
+  // let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  // undefined === descriptor || ((null !== descriptor) && ('object' === typeof descriptor))
 
   // 恒等式[2]
   // !Reflect.getOwnPropertyDescriptor(target, key).configurable
-  // let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  // (null !== returnValue) && ('object' === typeof returnValue)
+  // let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  // (null !== descriptor) && ('object' === typeof descriptor)
   {
 
     let target = {}
@@ -511,8 +511,8 @@
 
   // 恒等式[3]
   // Reflect.has(target, key) && !Reflect.isExtensible(target)
-  // let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  // (null !== returnValue) && ('object' === typeof returnValue)
+  // let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  // (null !== descriptor) && ('object' === typeof descriptor)
   {
 
     let target = { foo: 'ANY' }
@@ -536,8 +536,8 @@
 
   // 恒等式[4]
   // !Reflect.has(target, key) && !Reflect.isExtensible(target)
-  // let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  // undefined === returnValue
+  // let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  // undefined === descriptor
   {
 
     let target = {}
@@ -562,12 +562,12 @@
   // 恒等式[5]
   //  [5.1]
   //    Reflect.has(target, key) && Reflect.getOwnPropertyDescriptor(target, key).configurable
-  //    let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  //    (null !== returnValue) && ('object' typeof returnValue) && returnValue.configurable
+  //    let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  //    (null !== descriptor) && ('object' typeof descriptor) && descriptor.configurable
   //  [5.2]
   //    !Reflect.has(target, key)
-  //    let returnValue = Reflect.getOwnPropertyDescriptor(proxy, key)
-  //    (null !== returnValue) && ('object' typeof returnValue) && returnValue.configurable
+  //    let descriptor = Reflect.getOwnPropertyDescriptor(proxy, key)
+  //    (null !== descriptor) && ('object' typeof descriptor) && descriptor.configurable
   {
 
     let target = {}

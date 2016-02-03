@@ -296,6 +296,7 @@ Reflect.construct(
 
   let iterable = Reflect.enumerate(target)
   console.assert(Symbol.iterator in iterable)
+  console.assert(iterable[Symbol.iterator]() === iterable)
   console.assert('next' in iterable)
 
   for(let key of iterable) {
