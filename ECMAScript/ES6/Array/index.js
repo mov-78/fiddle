@@ -70,8 +70,11 @@
 //
 
 console.assert(Symbol.iterator in [].keys())
+console.assert('next' in [].keys())
 console.assert(Symbol.iterator in [].values())
+console.assert('next' in [].values())
 console.assert(Symbol.iterator in [].entries())
+console.assert('next' in [].entries())
 
 
 //

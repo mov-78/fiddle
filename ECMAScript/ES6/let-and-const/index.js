@@ -8,7 +8,7 @@ console.assert(b === undefined)
 const c = 2
 console.assert(c === 2)
 
-// 对于对象数据仅确保引用为常量
+// 对于引用数据类型仅确保引用为常量
 const d = [ 'foo', 'bar' ]
 console.assert(d[1] === 'bar')
 d[1] = 'baz'
@@ -31,8 +31,8 @@ console.assert(g === 5)
 console.assert(h === 6)
 {
   // TDZ 开始
-  console.assert(undefined === g)
-  console.assert(undefined === h)
+  // console.log(g) -> ReferenceError
+  // console.log(h) -> ReferenceError
   // TDZ 结束
   let g = 7
   const h = 8

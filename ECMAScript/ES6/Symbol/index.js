@@ -10,6 +10,10 @@
   let s3 = Symbol('foo')    // desc 不是 Symbol 的名字，所有本地 Symbol 都是匿名的
   console.assert(s2 !== s3) // 所有本地 Symbol 都是唯一的，不可变的
 
+  console.assert(typeof s1 === 'symbol')
+  console.assert(typeof s2 === 'symbol')
+  console.assert(typeof s3 === 'symbol')
+
   try {
     let s4 = new Symbol()
   } catch(err){
@@ -38,6 +42,9 @@
   // 通过 Symbol.for(key) 来生成（注册）或获取一个指定名字的 Symbol
   let s1 = Symbol.for('foo') // 生成 Symbol
   let s2 = Symbol.for('foo') // 获取 Symbol
+
+  console.assert(typeof s1 === 'symbol')
+  console.assert(typeof s2 === 'symbol')
 
   console.assert(s1 === s2) // 全局 Symbol 是具名的
 

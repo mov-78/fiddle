@@ -25,7 +25,9 @@
   f2({})
   try {
     f2()
-  } catch(err) { console.log(err) }
+  } catch(err) {
+    console.assert(err instanceof TypeError)
+  }
 
   // 形参默认值 + 结构赋值默认值
   function f3({ x, y = 0 } = { x: 0, y: 0 }) {
@@ -61,7 +63,10 @@
 
   // REST「形参」亦可应用于解构赋值解构中
   let [ m, ...n ] = [ 1, 2, 3 ]
-  console.log('n:', n)
+  console.assert(Array.isArray(n))
+  console.assert(n.length === 2)
+  console.assert(n[0] === 2)
+  console.assert(n[1] === 3)
 
 }
 
@@ -73,7 +78,9 @@
 {
 
   function fn(x, y, z) {
-    console.log(`x: ${x}, y: ${y}, z: ${z}`)
+    console.assert(x === 1)
+    console.assert(y === 2)
+    console.assert(z === 3)
   }
 
   // SPREAD 操作符用于「展开」iterable（可以理解为移除两边的方括号）
