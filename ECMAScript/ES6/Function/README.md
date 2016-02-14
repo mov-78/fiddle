@@ -29,12 +29,11 @@ fn(...[ ...[ 1, 2], 3 ])
 
 箭头函数：
 
-- (args) => { statements }
-- (args) => expression
+- (...args) => { statements }
+- (...args) => expression
   - 等同于 (args) => { return expression }
 - arg => { statements }   // 只有一个形参时可省略圆括号
 - () => { statements }    // 没有形参时不可省略圆括号
 - () => ({ foo: 'bar' })  // 特例：函数体为对象字面量表达式
 - 支持 REST 形参、解构赋值及形参默认值
-- 词法 this 关键字
 - `this` 关键字不再自动绑定而是从外围作用域中继承（`lexical this`）

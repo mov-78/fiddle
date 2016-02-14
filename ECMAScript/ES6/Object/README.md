@@ -27,7 +27,7 @@ let user = {
 
 属性的遍历：
 
-| 方法或遍历结构 | String | Symbol | 非枚举属性 | 继承属性 |
+| 遍历方法或遍历结构 | String | Symbol | 非枚举属性 | 继承属性 |
 | --- | --- | --- | --- | --- |
 | for...in  | Y | - | - | Y |
 | Object.keys | Y | - | - | - |
