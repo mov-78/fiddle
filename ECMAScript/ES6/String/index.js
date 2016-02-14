@@ -23,7 +23,7 @@ console.log('String.fromCodePoint(0x1030F):', String.fromCodePoint(0x1030F))
 // String.prototype 扩展
 //
 
-console.assert('hhh' === 'h'.repeat(3))
+console.assert('h'.repeat(3) === 'hhh')
 
 console.assert('foobar'.startsWith('foo'))
 console.assert(!('foobar'.startsWith('ob', 3)))

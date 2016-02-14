@@ -6,13 +6,13 @@
 
   let arr1 = new Array(7)
   let arr2 = Array.of(7)
-  console.assert(7 === arr1.length)
-  console.assert(1 === arr2.length)
+  console.assert(arr1.length === 7)
+  console.assert(arr2.length === 1)
 
   let arr3 = new Array(1, 2, 3)
   let arr4 = Array.of(1, 2, 3)
-  console.assert(3 === arr3.length)
-  console.assert(3 === arr4.length)
+  console.assert(arr3.length === 3)
+  console.assert(arr4.length === 3)
 
 }
 
@@ -57,8 +57,8 @@
   let m = arr.find((element, index, array) => 0 === element % 2)
   let n = arr.findIndex((element, index, array) => 0 === element % 2)
 
-  console.assert(6 === m)
-  console.assert(3 === n)
+  console.assert(m === 6)
+  console.assert(n === 3)
 
 }
 

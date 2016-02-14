@@ -1,9 +1,9 @@
 // 新增了指数操作符
-console.assert(1024 === 2 ** 10)
+console.assert(2 ** 10 === 1024)
 
 // 新增了数值的二进制及八进制表示法
-console.assert(13 === 0b1101)
-console.assert(448 === 0o700)
+console.assert(0b1101 === 13)
+console.assert(0o700 === 448)
 
 // 更可靠的 isNaN()
 console.assert(isNaN('s'))
@@ -18,7 +18,7 @@ console.assert(isFinite('0'))
 console.assert(!Number.isFinite('0'))
 
 Number.isFinite = Number.isFinite || function isFinite(value) {
-  return 'number' === typeof value && isFinite(value)
+  return typeof value === 'number' && isFinite(value)
 }
 
 // 新增了 Number.isInteger 方法，用于判断一个值是否是整数值
@@ -33,8 +33,8 @@ Number.isInteger = Number.isInteger || function isInteger(value) {
 }
 
 // 安全整数 [ -(2^53-1), 2^53-1 ]
-console.assert(-(2**53 - 1) === Number.MIN_SAFE_INTEGER)  // -(2^53-1)
-console.assert((2**53 - 1) === Number.MAX_SAFE_INTEGER)   // 2^53-1
+console.assert(Number.MIN_SAFE_INTEGER === -(2**53 - 1))  // -(2^53-1)
+console.assert(Number.MAX_SAFE_INTEGER === (2**53 - 1))   // 2^53-1
 console.assert(!Number.isSafeInteger(2**53)) // 用于判断数值是否落在安全整数区间
 console.assert(Number.isSafeInteger(2**53 - 1))
 

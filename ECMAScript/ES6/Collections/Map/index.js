@@ -2,20 +2,20 @@
 let map = new Map([ [ 'foo', 1 ], [ 'bar', 2 ] ])
 
 // getter Map.prototype.size
-console.assert(2 === map.size)
+console.assert(map.size === 2)
 
 // Map.prototype.has(key)
 console.assert(map.has('foo'))
 console.assert(!map.has('baz'))
 
 // Map.prototype.get(key)
-console.assert(1 === map.get('foo'))
-console.assert(undefined === map.get('baz'))
+console.assert(map.get('foo') === 1)
+console.assert(map.get('baz') === undefined)
 
 // Map.prototype.set(key)
 map.set('baz', 3).set('qux', 4) // chainable
-console.assert(3 === map.get('baz'))
-console.assert(4 === map.get('qux'))
+console.assert(map.get('baz') === 3)
+console.assert(map.get('qux') === 4)
 
 // Map.prototype.delete(key)
 console.assert(map.delete('qux'))
@@ -60,4 +60,4 @@ map.forEach(function each(value, key) {
 
 // Map.prototype.clear()
 map.clear()
-console.assert(0 === map.size)
+console.assert(map.size === 0)

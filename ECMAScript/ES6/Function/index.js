@@ -8,7 +8,7 @@
   function f1(x, y = 0) {
     console.log(`[f1] x:${x}, y:${y}`)
   }
-  console.assert(1 === f1.length) // 形参默认值不计入 fn.length 内
+  console.assert(f1.length === 1) // 形参默认值不计入 fn.length 内
 
   f1(1, 2)
   f1(1)
@@ -18,7 +18,7 @@
   function f2({ x, y = 0 }) {
     console.log(`[f2] x:${x}, y:${y}`)
   }
-  console.assert(1 === f2.length)
+  console.assert(f2.length === 1)
 
   f2({ x: 1, y: 2 })
   f2({ x: 1 })
@@ -31,7 +31,7 @@
   function f3({ x, y = 0 } = { x: 0, y: 0 }) {
     console.log(`[f3] x:${x}, y:${y}`)
   }
-  console.assert(0 === f3.length) // 形参默认值不计入 fn.length 内
+  console.assert(f3.length === 0) // 形参默认值不计入 fn.length 内
 
   f3({ x: 1, y: 2 })
   f3({ x: 1 })
@@ -52,7 +52,7 @@
     console.log('tail:', tail)
     console.assert(Array.isArray(tail))
   }
-  console.assert(1 === fn.length) // REST 形参不计入 fn.length 内
+  console.assert(fn.length === 1) // REST 形参不计入 fn.length 内
 
   fn('foo', 'bar', 'baz')
   fn('foo', 'bar')

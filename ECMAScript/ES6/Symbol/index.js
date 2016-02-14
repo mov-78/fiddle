@@ -25,7 +25,7 @@
   let obj = {
     [s1] : 'foobar' // Symbol 可用做对象属性名；这时必须要放在 [...] 内
   }
-  console.assert('foobar' === obj[s1])
+  console.assert(obj[s1] === 'foobar')
 
 }
 
@@ -45,6 +45,6 @@
   console.log(s2.toString())
 
   // 通过 Symbol.keyFor(sym) 来获取某个 Symbol 的名字
-  console.assert('foo' === Symbol.keyFor(s1))
+  console.assert(Symbol.keyFor(s1) === 'foo')
 
 }

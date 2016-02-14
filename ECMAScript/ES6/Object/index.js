@@ -19,7 +19,7 @@
     }
   }
 
-  console.assert('User Pwn <hi@pwn.buzz>' === author.toString())
+  console.assert(author.toString() === 'User Pwn <hi@pwn.buzz>')
 
 }
 
@@ -55,7 +55,7 @@ console.assert(Object.is(NaN, NaN))
 
   let obj3 = Object.setPrototypeOf({}, null)
   console.assert(!('toString' in obj3))
-  console.assert(null === Object.getPrototypeOf(obj3))
+  console.assert(Object.getPrototypeOf(obj3) === null)
 
 }
 
@@ -89,7 +89,7 @@ console.assert(Object.is(NaN, NaN))
 
   Object.assign(target, source1, source2, source3)
   console.log('Reflect.ownKeys(target):', Reflect.ownKeys(target))
-  console.assert('overriden' === target.a)
+  console.assert(target.a === 'overriden')
 
 }
 

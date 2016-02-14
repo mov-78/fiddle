@@ -2,19 +2,19 @@
 let set = new Set([ 1, 2, 2 ])
 
 // getter Set.prototype.size
-console.assert(2 === set.size)
+console.assert(set.size === 2)
 
 // Set.prototype.add(value)
 set.add(1)
-console.assert(2 === set.size)
+console.assert(set.size === 2)
 set.add(2).add(3) // chainable
-console.assert(3 === set.size)
+console.assert(set.size === 3)
 
 // Set.prototype.delete(value)
 console.assert(set.delete(1))
-console.assert(2 === set.size)
+console.assert(set.size === 2)
 console.assert(!set.delete(1))
-console.assert(2 === set.size)
+console.assert(set.size === 2)
 
 // Set.prototype.has(value)
 console.assert(set.has(2))
@@ -53,4 +53,4 @@ set.forEach(function each(member) {
 
 // Set.prototype.clear()
 set.clear()
-console.assert(0 === set.size)
+console.assert(set.size === 0)
