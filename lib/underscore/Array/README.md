@@ -1,4 +1,4 @@
-该 fiddle 用于演示 [Arrays](http://underscorejs.org/#arrays) 相关辅助函数
+该 fiddle 用于演示 [Array](http://underscorejs.org/#arrays) 相关辅助函数
 
 ```sh
 $ npm install
