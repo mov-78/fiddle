@@ -1,4 +1,3 @@
-var assert = console.assert
 var _ = require('underscore')
 var Events = require('backbone').Events
 
@@ -17,13 +16,13 @@ var listener
 
 // Backbone.Events 模块可以被任意模块 mixin 进来
 obj = _.extend({}, Events)
-assert(obj.on === Events.on)
-assert(obj.off === Events.off)
-assert(obj.trigger === Events.trigger)
-assert(obj.listenTo === Events.listenTo)
-assert(obj.stopListening === Events.stopListening)
-assert(obj.once === Events.once)
-assert(obj.listenToOnce === Events.listenToOnce)
+console.assert(obj.on === Events.on)
+console.assert(obj.off === Events.off)
+console.assert(obj.trigger === Events.trigger)
+console.assert(obj.listenTo === Events.listenTo)
+console.assert(obj.stopListening === Events.stopListening)
+console.assert(obj.once === Events.once)
+console.assert(obj.listenToOnce === Events.listenToOnce)
 
 // [1] Backbone.Events.on(event, callback, [context])
 obj.on(
@@ -62,7 +61,7 @@ listener.listenTo(
   obj,
   'all',
   function (event) {
-    assert(this === listener)
+    console.assert(this === listener)
     console.log('listener.onAll[' + event + ']:', _.toArray(arguments).slice(1))
   }
 )

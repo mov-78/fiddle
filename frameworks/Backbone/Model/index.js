@@ -1,11 +1,12 @@
+var _ = require('underscore')
+var Backbone = require('backbone')
+
 //
 // Backbone.Model.extend([protoProps], [staticProps])
 // [[model.attributes]]
 //
 
 ;(function () {
-
-  console.group('Backbone.Model.extend([protoProps], [staticProps])')
 
   var Model = Backbone.Model.extend(
 
@@ -16,7 +17,7 @@
 
       // 原型上的 initialize 方法会在实例化 Model 时（attrs 设置后）调用
       'initialize' : function initialize(attrs) {
-        console.log('initialize(attrs):', attrs)
+        console.log('initialize:', attrs)
       }
 
     },
@@ -81,8 +82,6 @@
   model = new Model({ 'foo' : 'bar' })
   console.assert(model.has('foo'))
   console.assert(model.get('foo') === 'bar')
-
-  console.groupEnd()
 
 })()
 
@@ -158,9 +157,7 @@
   // 因而不会忽略不可序列化属性（如 Date、Function 等）
   console.assert(model.toJSON === Backbone.Model.prototype.toJSON)
 
-  console.group('Backbone.Model.prototype.toJSON()')
   console.log('model.toJSON():', model.toJSON())
-  console.groupEnd()
 
 })()
 

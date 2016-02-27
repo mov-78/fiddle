@@ -1,8 +1,8 @@
-该 fiddle 用于演示 [Backbone.Model](http://backbonejs.org/#Model)
+该 fiddle 用于演示 [Backbone.Model](http://backbonejs.org/#Model) 模块
 
 ```sh
-$ bower install
-$ open index.html
+$ npm install
+$ node index.js
 ```
 
 ---
