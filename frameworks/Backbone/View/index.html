@@ -10,11 +10,12 @@
     <main></main>
 
     <script type="text/template" id="tpl">
-      <b><%= count %></b>
+      <p><%= count %></p>
+      <hr>
       <button class="inc">+</button>
       <button class="dec">-</button>
-      <button class="reset">=0</button>
-      <button class="remove">x</button>
+      <button class="reset" <% if (count === 0) { print('disabled') } %>>reset</button>
+      <button class="remove">destroy</button>
     </script>
 
     <script src="node_modules/jquery/dist/jquery.js"></script>

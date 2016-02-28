@@ -87,7 +87,7 @@ console.assert(counter.delegateEvents === Backbone.View.prototype.delegateEvents
 // 移除事件代理集
 console.assert(counter.undelegateEvents === Backbone.View.prototype.undelegateEvents)
 
-// Backbone.View.prototype.setElement(el)
+// Backbone.View.prototype.setElement(element)
 // 重置 DOM 节点及事件代理集
 // 等同于：
 //    this.undelegateEvents()
