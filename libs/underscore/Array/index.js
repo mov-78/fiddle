@@ -74,7 +74,6 @@ var _ = require('underscore')
 ;(function _rest() {
 
   var tail
-  var fromIndex = 1
   var array = [ 'foo', 'bar', 'baz' ]
 
   // alias

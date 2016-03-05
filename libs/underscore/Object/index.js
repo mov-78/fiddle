@@ -83,6 +83,7 @@ var _ = require('underscore')
     return value + key.length
   })
 
+  // 注意与 _.map 的区别
   assert(_.isEqual(transformedObj, { 'foo' : 4, 'bar' : 5 }))
 
 })()
@@ -134,11 +135,8 @@ var _ = require('underscore')
   var proto = {}
   var obj = _.create(proto, props)
 
-  var objKeys = _.keys(props)
-  var propsKeys = _.keys(props)
-
   assert(proto.isPrototypeOf(obj))
-  assert(_.isEqual(objKeys, propsKeys))
+  assert(_.isEqual(obj, props))
 
 })()
 
@@ -287,14 +285,9 @@ var _ = require('underscore')
 ;(function _defaults() {
 
   var obj = { 'foo' : 1, 'bar' : 2 }
-  var defaults = { 'foo' : 4, 'baz' : 3 }
+  _.defaults(obj, { 'foo' : 4, 'baz' : 3 })
 
-  assert(
-    _.isEqual(
-      _.defaults(obj, defaults),
-      { 'foo' : 1, 'bar' : 2, 'baz' : 3 }
-    )
-  )
+  assert(_.isEqual(obj, { 'foo' : 1, 'bar' : 2, 'baz' : 3 }))
 
 })()
 
@@ -368,7 +361,7 @@ var _ = require('underscore')
 
 
 //
-// _.matcher(object, properties)
+// _.matcher(properties)
 // alias: matches
 //
 
@@ -497,13 +490,13 @@ var _ = require('underscore')
   var normalObject = { 'foo' : 'bar' }
 
   var mockedElementNode = { 'nodeType' : 1 }  // Node.ELEMENT_NODE
-  var mockedTextNode = { 'nodeType' : 1 }     // Node.TEXT_NODE
+  var mockedTextNode = { 'nodeType' : 3 }     // Node.TEXT_NODE
 
   assert(!_.isElement(normalObject))
   assert(_.isElement(mockedElementNode))
   assert(!_.isElement(mockedTextNode))
 
-})
+})()
 
 
 //
@@ -726,7 +719,7 @@ var _ = require('underscore')
   assert(!_.isNaN(1))
   assert(!_.isNaN(+Number.POSITIVE_INFINITY))
   assert(!_.isNaN(-Number.NEGATIVE_INFINITY))
-  assert(_.isNaN(-Number.NaN))
+  assert(_.isNaN(Number.NaN))
 
 })()
 

@@ -75,6 +75,7 @@ var isEven = function isEven(num) {
       return key
     }
   )
+  // 注意与 _.mapObject 的区别
   assert(_.isEqual(returnValue, [ 'foo', 'bar' ]))
 
 })()
@@ -139,7 +140,6 @@ var isEven = function isEven(num) {
       return accum.concat(curr)
     }
   )
-  assert(returnValue.length === _.flatten(collection).length)
   assert(_.isEqual(returnValue, [ 4, 5, 2, 3, 0, 1 ]))
 
   // [2] generic object
@@ -205,27 +205,27 @@ var isEven = function isEven(num) {
   collection = _.range(1, 7)
   odds = _.filter(collection, isOdd)
   evens = _.filter(collection, isEven)
-  assert(odds.length + evens.length === collection.length)
-  assert(_.isEmpty(_.intersection(odds, evens)))
+  assert(_.isEqual(odds, [ 1, 3, 5 ]))
+  assert(_.isEqual(evens, [ 2, 4, 6 ]))
 
   collection = { 'foo' : 1, 'bar' : 2, 'baz' : 3, 'qux' : 4 }
   odds = _.filter(collection, isOdd)
   evens = _.filter(collection, isEven)
-  assert(odds.length + evens.length === _.keys(collection).length)
-  assert(_.isEmpty(_.intersection(odds, evens)))
+  assert(_.isEqual(odds, [ 1, 3 ]))   // 仅过滤 values
+  assert(_.isEqual(evens, [ 2, 4 ]))  // 仅过滤 values
 
   // _.reject(collection, predicate, [context])
   collection = _.range(1, 7)
   odds = _.reject(collection, isEven)
   evens = _.reject(collection, isOdd)
-  assert(odds.length + evens.length === collection.length)
-  assert(_.isEmpty(_.intersection(odds, evens)))
+  assert(_.isEqual(odds, [ 1, 3, 5 ]))
+  assert(_.isEqual(evens, [ 2, 4, 6 ]))
 
   collection = { 'foo' : 1, 'bar' : 2, 'baz' : 3, 'qux' : 4 }
   odds = _.reject(collection, isEven)
   evens = _.reject(collection, isOdd)
-  assert(odds.length + evens.length === _.keys(collection).length)
-  assert(_.isEmpty(_.intersection(odds, evens)))
+  assert(_.isEqual(odds, [ 1, 3 ]))   // 仅过滤 values
+  assert(_.isEqual(evens, [ 2, 4 ]))  // 仅过滤 values
 
 })()
 
@@ -244,6 +244,7 @@ var isEven = function isEven(num) {
 
   var query = { 'isAdmin' : true }
 
+  // 等价于 _.filter(members, _.matcher(query))
   var admins = _.where(members, query)
 
   assert(admins.length === 1)
@@ -266,7 +267,9 @@ var isEven = function isEven(num) {
 
   var query = { 'isAdmin' : true }
 
+  //  等价于 _.find(members, _.matcher(query))
   var admin = _.findWhere(members, query)
+
   assert(admin && admin.name === 'Pwn')
 
 })()
@@ -346,6 +349,7 @@ var isEven = function isEven(num) {
 
 ;(function _invoke() {
 
+  var arg = {}
   var collection
   var returnValue
 
@@ -353,10 +357,22 @@ var isEven = function isEven(num) {
   collection = [ 1, 2, 3 ]
   returnValue = _.invoke(collection, 'valueOf')
   assert(_.isEqual(collection, returnValue))
+  returnValue = _.invoke(collection, function (param) {
+    assert(param === arg)
+    // `this` refers to current element
+    return this.valueOf()
+  }, arg)
+  assert(_.isEqual(collection, returnValue))
 
   // [2] generic object
   collection = { 'foo' : 1, 'bar' : 2, 'baz' : 3 }
   returnValue = _.invoke(collection, 'valueOf')
+  assert(_.isEqual(_.values(collection), returnValue))
+  returnValue = _.invoke(collection, function (param) {
+    assert(param === arg)
+    // `this` refers to current value
+    return this.valueOf()
+  }, arg)
   assert(_.isEqual(_.values(collection), returnValue))
 
 })()
@@ -377,7 +393,7 @@ var isEven = function isEven(num) {
     { 'name' : 'Bob' },
     { 'name' : 'Pwn' }
   ]
-  returnValue = _.pluck(collection, 'name')
+  returnValue = _.pluck(collection, 'name') // _.map(collection, _.property(key))
   assert(_.isEqual(returnValue, [ 'Alice', 'Bob', 'Pwn' ]))
 
   // [2] generic object
@@ -392,50 +408,42 @@ var isEven = function isEven(num) {
       "name": "Pwn"
     }
   }
-  returnValue = _.pluck(collection, 'name')
+  returnValue = _.pluck(collection, 'name') // _.map(collection, _.property(key))
   assert(_.isEqual(returnValue, [ 'Alice', 'Bob', 'Pwn' ]))
 
 })()
 
 
 //
+// _.min(collection, [iteratee], [context])
 // _.max(collection, [iteratee], [context])
 //
 
-;(function _max() {
+;(function _minAndMax() {
 
+  var array = [ 3, 1, 5 ]
+  var object = { 'foo' : 3, 'bar' : 1, 'baz' : 5 }
+
+  // _.min([])
   // _.max([])
+  assert(_.min([]) === Number.POSITIVE_INFINITY)
+  assert(_.min({}) === Number.POSITIVE_INFINITY)
   assert(_.max([]) === Number.NEGATIVE_INFINITY)
   assert(_.max({}) === Number.NEGATIVE_INFINITY)
 
-  // _.max(collection)
-  assert(_.max([ 3, 1, 5 ]) === 5)
-  assert(_.max({ 'foo' : 3, 'bar' : 1, 'baz' : 5 }) === 5)
-
-  // _.max(collection, iteratee)
-  assert(_.max([ 3, 1, 5 ], _.identity) === 5)
-  assert(_.max({ 'foo' : 3, 'bar' : 1, 'baz' : 5 }, _.identity) === 5)
-
-})()
-
-
-//
-// _.min(collection, [iteratee], [context])
-//
-
-;(function _min() {
-
-  // _.min([])
-  assert(_.min([]) === Number.POSITIVE_INFINITY)
-  assert(_.min({}) === Number.POSITIVE_INFINITY)
-
   // _.min(collection)
-  assert(_.min([ 3, 1, 5 ]) === 1)
-  assert(_.min({ 'foo' : 3, 'bar' : 1, 'baz' : 5 }) === 1)
+  // _.max(collection)
+  assert(_.min(array) === 1)
+  assert(_.min(object) === 1)
+  assert(_.max(array) === 5)
+  assert(_.max(object) === 5)
 
-  // _.min(collection, iteratee)
-  assert(_.min([ 3, 1, 5 ], _.identity) === 1)
-  assert(_.min({ 'foo' : 3, 'bar' : 1, 'baz' : 5 }, _.identity) === 1)
+  // _.min(collection, iteratee, [context])
+  // _.max(collection, iteratee, [context])
+  assert(_.min(array, _.identity) === 1)
+  assert(_.min(object, _.identity) === 1)
+  assert(_.max(array, _.identity) === 5)
+  assert(_.max(object, _.identity) === 5)
 
 })()
 

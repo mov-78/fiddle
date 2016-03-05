@@ -81,7 +81,7 @@ var _ = require('underscore')
     1024,
     function iteratee() {
       var rand = _.random(1, 100)
-      assert(rand >= 1 && rand <= 100)
+      assert(rand >= 1 && rand <= 100) // inclusive
     }
   )
 
@@ -150,6 +150,7 @@ var _ = require('underscore')
   assert(_.result(object, 'foo') === 1)
   assert(_.result(object, 'bar') === 2)
   assert(_.result(object, 'baz', 3) === 3)
+  assert(_.result(object, 'qux', function () { return 4 }) === 4)
 
 })()
 

@@ -20,7 +20,7 @@ $ node index.js
 - [_.uniq(array)](http://underscorejs.org/#uniq)
 - [_.zip(*arrays)](http://underscorejs.org/#zip)
 - [_.unzip(array)](http://underscorejs.org/#unzip)
-- [_.object(list, values?)](http://underscorejs.org/#object)
+- [_.object(keys, values | keyValuePairs)](http://underscorejs.org/#object)
 - [_.indexOf(array, value, fromIndex?)](http://underscorejs.org/#indexOf)
 - [_.lastIndexOf(array, value, fromIndex?)](http://underscorejs.org/#lastIndexOf)
 - [_.findIndex(array, predicate, context?)](http://underscorejs.org/#findIndex)

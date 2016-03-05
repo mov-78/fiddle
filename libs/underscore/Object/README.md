@@ -29,7 +29,7 @@ $ node index.js
 - [_.propertyOf(object)](http://underscorejs.org/#propertyOf)
 - [_.isEqual(object, other)](http://underscorejs.org/#isEqual)
 - [_.isMatch(object, properties)](http://underscorejs.org/#isMatch)
-- [_.isEmpty(object)](http://underscorejs.org/#isEmpty)
+- [_.isEmpty(object | array | string)](http://underscorejs.org/#isEmpty)
 - [_.isElement(object)](http://underscorejs.org/#isElement)
 - [_.isArray(object)](http://underscorejs.org/#isArray)
 - [_.isObject(object)](http://underscorejs.org/#isObject)
