@@ -212,7 +212,7 @@ assert.deepPropertyNotVal({ 'foo' : { 'bar' : 'baz' }}, 'foo.bar', 'qux')
 
 
 //
-// lengthOf(object, length, [message])
+// assert.lengthOf(object, length, [message])
 //
 
 assert.lengthOf([ null ], 1)          // [1] Array

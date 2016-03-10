@@ -83,7 +83,7 @@ $ node index.js
 
 ---
 
-- [lengthOf(object, length, [message])](http://chaijs.com/api/assert/#method_lengthof)
+- [assert.lengthOf(object, length, [message])](http://chaijs.com/api/assert/#method_lengthof)
 
 ---
 
