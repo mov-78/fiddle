@@ -1,0 +1,6 @@
+{
+  "name": "fiddle",
+  "dependencies": {
+    "chai": "~3.5.0"
+  }
+}
