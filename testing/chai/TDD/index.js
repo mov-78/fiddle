@@ -9,7 +9,8 @@ const AssertionError = require('assertion-error')
 //
 
 assert(true) // assert.isOk(expression, [message])
-assert.throws(() => { assert.fail(1, 0, undefined, '!=') }, AssertionError)
+assert.throws(() => { assert.fail(0, 1, undefined, '!=') }, AssertionError)
+assert.throws(() => { assert.fail(1, 1, undefined, '!=') }, AssertionError)
 
 
 //
@@ -22,7 +23,7 @@ assert.throws(() => { assert.fail(1, 0, undefined, '!=') }, AssertionError)
 //
 
 assert.isOk(1)        // assert.equal(!!expression, true, [message])
-assert.isNotOk(0)     // assert.equal(!!expression, false,  [message])
+assert.isNotOk(0)     // assert.equal(!!expression, false, [message])
 
 assert.isTrue(true)   // assert.strictEqual(expression, true, [message])
 assert.isNotTrue(1)   // assert.notStrictEqual(expression, true, [message])
@@ -46,7 +47,7 @@ assert.notStrictEqual(1, '1')
 
 {
 
-  const proto = { 'alice' : 'bob' }
+  const proto = { 'foo' : 'bar' }
 
   const foo = { 'prop' : '*' }
   const bar = { 'prop' : '*' } // [1] 对于 primitives 使用 === 判断相等性
@@ -121,8 +122,8 @@ assert.isNotObject(new Date)
 assert.isNotObject(/^/)
 
 assert.isArray([])
-assert.isNotArray({ 'length' : 1 })     // [1] array-like object
-;(() => assert.isNotArray(arguments))() // [2] arguments
+assert.isNotArray({ 'length' : 1 })     // [1] Array-like Object
+;(() => assert.isNotArray(arguments))() // [2] Arguments
 
 assert.isFunction(() => null)
 assert.isFunction(function noop() {})
@@ -131,7 +132,7 @@ assert.isFunction(function noop() {})
 //
 // assert.typeOf(expression, typeName, [message])
 // assert.notTypeOf(expression, typeName, [message])
-// 判断依据：Object.prototype.toString
+// 判断依据：Object.prototype.toString（具体值与 BDD 风格不一致）
 //
 
 assert.typeOf(null, 'Null')
@@ -171,9 +172,9 @@ assert.typeOf(new Date(), 'Date')
 // assert.notInclude(haystack, needle, [message])
 //
 
-assert.include([ 1, 3, 5 ], 3)  // works for [1]Array
-assert.include('foobar', 'oob') // and [2]String
-assert.notInclude([ 1 ], '1')
+assert.include([ 1, 3, 5 ], 3)  // [1] Array
+assert.include('foobar', 'oob') // [2] String
+assert.notInclude([ 1 ], '1')   // strict equal
 
 
 //
@@ -303,6 +304,7 @@ assert.includeDeepMembers([ 1, { 'foo' : '*' }, 2 ], [ { 'foo' : '*' }, 2 ])
   assert.oneOf(1, [ 0, 1 ])         // [1] primitives
   assert.oneOf(ref, [ null, ref ])  // [2] references
 
+  // top-level only
   assert.throws(() => { assert.oneOf(ref, [[ ref ]] )}, AssertionError)
 
 }

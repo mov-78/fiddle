@@ -1,11 +1,12 @@
 'use strict'
 
 const expect = require('chai').expect
-const should = require('chai').should()
+const should = require('chai').should() // invoke
 
 //
 // a(type)
 // alias: an(type)
+// 判断依据：Object.prototype.toString（具体值与 TDD 风格不一致）
 //
 
 expect(null).to.be.a('null')
@@ -17,6 +18,8 @@ expect({}).to.be.an('object')
 expect([]).to.be.an('array')
 expect(() => null).to.be.a('function')
 expect(Symbol()).to.be.a('symbol')
+expect(/^/).to.be.a('regexp')
+expect(new Date).to.be.a('date')
 
 // ;(null).should.be.a('null')
 // ;(undefined).should.be.a('undefined')
@@ -27,6 +30,8 @@ expect(Symbol()).to.be.a('symbol')
 ;([]).should.be.an('array')
 ;(() => null).should.be.a('function')
 ;(Symbol()).should.be.a('symbol')
+;(/^/).should.be.a('regexp')
+;(new Date).should.be.a('date')
 
 
 //
@@ -89,21 +94,22 @@ Number.NaN.should.be.NaN
 // empty
 //
 
-expect('').to.be.empty
-expect([]).to.be.empty
-expect({}).to.be.empty
+expect('').to.be.empty // [1] String
+expect([]).to.be.empty // [2] Array
+expect({}).to.be.empty // [3] Object
 expect(Object.create({ 'foo' : 'bar' })).to.be.empty
 expect({ 'length' : 0 }).to.not.be.empty
 
-''.should.be.empty
-;([]).should.be.empty
-;({}).should.be.empty
+''.should.be.empty    // [1] String
+;([]).should.be.empty // [2] Array
+;({}).should.be.empty // [3] Object
 Object.create({ 'foo' : 'bar' }).should.be.empty
 ;({ 'length' : 0 }).should.not.be.empty
 
 
 //
 // arguments
+// 判断依据：Object.prototype.toString
 //
 
 ;(function () {
@@ -156,16 +162,18 @@ expect('string').to.have.length.above(1)        // String & Array
 expect('string').to.have.length.below(7)        // String & Array
 expect('string').to.have.length.of.at.least(1)  // String & Array
 expect('string').to.have.length.of.at.most(7)   // String & Array
+expect('string').to.have.length.within(1, 10)   // String & Array
 
 ;(2).should.be.above(1)
 ;(1).should.be.below(2)
 ;(2).should.be.at.least(1)
 ;(1).should.be.at.most(2)
 ;(7).should.be.within(1, 10)
-'string'.should.have.length.above(1)        // String & Array
-'string'.should.have.length.below(7)        // String & Array
-'string'.should.have.length.of.at.least(1)  // String & Array
-'string'.should.have.length.of.at.most(7)   // String & Array
+;[ 1, 2 ].should.have.length.above(1)         // String & Array
+;[ 1, 2 ].should.have.length.below(5)         // String & Array
+;[ 1, 2 ].should.have.length.of.at.least(1)   // String & Array
+;[ 1, 2 ].should.have.length.of.at.most(5)    // String & Array
+;[ 1, 2 ].should.have.length.within(1, 10)    // String & Array
 
 
 //
