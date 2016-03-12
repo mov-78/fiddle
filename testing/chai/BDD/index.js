@@ -3,10 +3,16 @@
 const expect = require('chai').expect
 const should = require('chai').should() // invoke
 
+// not: 开启 negate flag（全局通用）
+// deep: 开启 deep flag
+// any: 开启 any flag；关闭 all flag
+// all: 开启 all flag；关闭 any flag
+
 //
-// a(type)
-// alias: an(type)
+// a(type, [message])
+// alias: an(type, [message])
 // 判断依据：Object.prototype.toString（具体值与 TDD 风格不一致）
+// 类型：chainableMethod（chainingBehavior 为 noop）
 //
 
 expect(null).to.be.a('null')
@@ -35,8 +41,9 @@ expect(new Date).to.be.a('date')
 
 
 //
-// include(value)
-// alias: contain(value)
+// include(value, [message])
+// alias: contain(value, [message])
+// 类型：chainableMethod（chainingBehavior 设置 contains flag）
 //
 
 expect('string').to.include('str')        // [1] String
@@ -50,6 +57,7 @@ expect([ [ 1 ], 2, 3 ]).to.not.include(1) // top-level only
 
 //
 // ok|true|false
+// 类型：property
 //
 
 expect(1).to.be.ok
@@ -69,6 +77,7 @@ expect(0).to.not.be.false
 
 //
 // null|undefined|exist
+// 类型：property
 //
 
 expect(null).to.be.null
@@ -81,6 +90,7 @@ expect(undefined).to.not.be.exist
 
 //
 // NaN
+// 类型：property
 //
 
 expect(Number.NaN).to.be.NaN
@@ -92,6 +102,7 @@ Number.NaN.should.be.NaN
 
 //
 // empty
+// 类型：property
 //
 
 expect('').to.be.empty // [1] String
@@ -110,6 +121,7 @@ Object.create({ 'foo' : 'bar' }).should.be.empty
 //
 // arguments
 // 判断依据：Object.prototype.toString
+// 类型：property
 //
 
 ;(function () {
@@ -126,9 +138,12 @@ Object.create({ 'foo' : 'bar' }).should.be.empty
 
 
 //
-// equal(value)
-// eql(value)
-// 相关修饰符：deep
+// equal(value, [message])
+// 类型：method
+// 相关 flag：deep
+//
+// eql(value, [message])
+// 类型：method
 //
 
 expect(1).to.equal(1)
@@ -145,12 +160,13 @@ expect([ 1, 2 ]).to.deep.equal([ 1, 2 ]) // deep-flag
 
 
 //
-// above(value)
-// below(value)
-// least(value)
-// most(value)
-// within(min, max)
-// 相关修饰符：length
+// gt|greaterThan|above(value, [message])
+// lt|lessThan|below(value, [message])
+// gte|least(value, [message])
+// lte|most(value, [message])
+// within(min, max, [message])
+// 相关 flag：doLength
+// 类型：method
 //
 
 expect(2).to.be.above(1)
@@ -177,7 +193,9 @@ expect('string').to.have.length.within(1, 10)   // String & Array
 
 
 //
-// instanceof(constructor)
+// instanceof(constructor, [message])
+// alias: instanceOf(constructor, [message])
+// 类型：method
 //
 
 {
@@ -198,13 +216,16 @@ expect('string').to.have.length.within(1, 10)   // String & Array
 
 
 //
-// property(key, [value])
-// ownProperty(key)
+// property(key, [value], [message])
+// 相关 flag：deep
+// 类型：method
+//
+// ownProperty(key, [message])
 // ownPropertyDescriptor(key, [descriptor], [message])
-// 相关修饰符：deep
+// 类型：method
 //
 
-// property(key, [value])
+// property(key, [value], [message])
 expect(Object.create({ 'foo' : 'bar' })).to.have.property('foo')
 expect({ 'foo' : 'bar' }).to.have.property('foo')
 expect({ 'foo' : 'bar' }).to.have.property('foo', 'bar')
@@ -218,7 +239,7 @@ expect({ 'foo' : { 'bar' : 'baz' } }).to.have.deep.property('foo.bar')
 expect({ 'foo' : 'bar' }).to.have.property('foo').that.is.a('string')
 ;({ 'foo' : 'bar' }).should.have.property('foo').that.is.a('string')
 
-// ownProperty(key)
+// ownProperty(key, [message])
 expect({ 'foo' : 'bar' }).to.have.ownProperty('foo')
 expect(Object.create({ 'foo' : 'bar' })).to.not.have.ownProperty('foo')
 ;({ 'foo' : 'bar' }).should.have.ownProperty('foo')
@@ -236,9 +257,16 @@ expect('string').to.have.ownPropertyDescriptor(
   { 'value' : 6, 'writable' : false, 'enumerable' : false, 'configurable' : false }
 )
 
+// ownPropertyDescriptor() 调用后更改当前断言主体为指定属性的描述符
+expect('string').to.have.ownPropertyDescriptor('length').that.is.an('object')
+'string'.should.have.ownPropertyDescriptor('length').that.is.an('object')
 
 //
+// length
+// 类型：chainableMethod（chainingBehavior 设置 doLength flag）
+//
 // lengthOf(value, [message])
+// 类型：method
 //
 
 expect([ null ]).to.have.lengthOf(1)          // [1] Array
@@ -251,8 +279,9 @@ expect({ 'length' : 1 }).to.have.lengthOf(1)  // [3] Array-Like Object
 
 
 //
-// match(regex)
-// string(substring)
+// match|matches(regex, [message])
+// string(substring, [message])
+// 类型：method
 //
 
 expect('').to.match(/^\s*$/)
@@ -263,12 +292,12 @@ expect('foobar').to.have.string('foo')
 
 
 //
-// keys([key], [key]...)
-// 相关修饰符：any|all|contain|have
-// any 及 all 互斥；同时如果两者均未应用，则默认应用 all 修饰符
+// key|keys([key], [key]...)
+// 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
+// 类型：method
 //
 
-// [1] any（此时 contain 及 have 修饰符等价）
+// [1] any（此时 contain 及 have 等价）
 expect({ 'foo' : 1, 'bar' : 2 }).to.have.any.keys('foo', 'baz')
 expect({ 'foo' : 1, 'bar' : 2 }).to.contain.any.keys('foo', 'baz')
 ;({ 'foo' : 1, 'bar' : 2 }).should.have.any.keys('foo', 'baz')
@@ -284,7 +313,8 @@ expect({ 'foo' : 1, 'bar' : 2 }).to.have.all.keys('foo', 'bar')
 
 
 //
-// throw
+// throw|throws|Throw(...)
+// 类型：method
 //
 
 {
@@ -325,8 +355,9 @@ expect({ 'foo' : 1, 'bar' : 2 }).to.have.all.keys('foo', 'bar')
 
 
 //
-// respondTo(method)
-// 相关修饰符：itself
+// respondTo(method, [message])
+// 相关 flag：itself
+// 类型：method
 //
 
 {
@@ -350,7 +381,8 @@ expect({ 'foo' : 1, 'bar' : 2 }).to.have.all.keys('foo', 'bar')
 
 
 //
-// satisfy(func)
+// satisfy|satisfies(func, [message])
+// 类型：method
 //
 
 {
@@ -366,7 +398,9 @@ expect({ 'foo' : 1, 'bar' : 2 }).to.have.all.keys('foo', 'bar')
 
 
 //
-// closeTo(expected, delta)
+// closeTo(expected, delta, [message])
+// alias: approximately(expected, delta, [message])
+// 类型：method
 //
 
 expect(0.3 - 0.2).to.be.closeTo(0.1, Number.EPSILON)
@@ -374,8 +408,9 @@ expect(0.3 - 0.2).to.be.closeTo(0.1, Number.EPSILON)
 
 
 //
-// members(set)
-// 相关修饰符：have|include, deep
+// members(subset, [message])
+// 相关 flag：include, deep
+// 类型：method
 //
 
 expect([ 1, 3, 2 ]).to.include.members([ 2, 3 ])
@@ -394,7 +429,8 @@ expect([ { 'foo' : 'bar' } ]).to.deep.have.members([ { 'foo' : 'bar' } ])
 
 
 //
-// oneOf(list)
+// oneOf(list, [message])
+// 类型：method
 //
 
 expect(1).to.be.oneOf([ 1, 2 ])
@@ -404,9 +440,10 @@ expect(1).to.not.be.oneOf([ [ 1 ], 2 ]) // top-level only
 
 
 //
-// change(object, key)
-// increase(object, key)
-// decrease(object, key)
+// change|changes(object, key, [message])
+// increase|increases(object, key, [message])
+// decrease|decreases(object, key, [message])
+// 类型：chainableMethod（chainingBehavior 为 noop）
 //
 
 {
@@ -443,6 +480,7 @@ expect(1).to.not.be.oneOf([ [ 1 ], 2 ]) // top-level only
 
 //
 // extensible|sealed|frozen
+// 类型：property
 //
 
 {

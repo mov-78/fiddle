@@ -7,19 +7,28 @@ $ npm test
 
 ---
 
-链式调用语法糖：
+链式调用语法糖（noop），通过 `chai.Assertion.addProperty` 添加：
 
 > to, be, been, is, that, which, and, has, have, with, at, of, same
 
 ---
 
-- [a(type)](http://chaijs.com/api/bdd/#method_a)
-- [an(type)](http://chaijs.com/api/bdd/#method_a)
+内置 flags：
+
+- [not](http://chaijs.com/api/bdd/#method_not): 开启 `negate` flag（全局通用）
+- [deep](http://chaijs.com/api/bdd/#method_deep): 开启 `deep` flag
+- [any](http://chaijs.com/api/bdd/#method_any): 开启 `any` flag；关闭 `all` flag
+- [all](http://chaijs.com/api/bdd/#method_all): 开启 `all` flag；关闭 `any` flag
 
 ---
 
-- [include(value)](http://chaijs.com/api/bdd/#method_include)
-- [contain(value)](http://chaijs.com/api/bdd/#method_include)
+- [a(type, [message])](http://chaijs.com/api/bdd/#method_a)
+- [an(type, [message])](http://chaijs.com/api/bdd/#method_a)
+
+---
+
+- [include(value, [message])](http://chaijs.com/api/bdd/#method_include)
+- [contain(value, [message])](http://chaijs.com/api/bdd/#method_include)
 
 ---
 
@@ -44,27 +53,25 @@ $ npm test
 
 ---
 
-- [equal(value)](http://chaijs.com/api/bdd/#method_equal)
-- [eql(value)](http://chaijs.com/api/bdd/#method_eql)
-- [deep 修饰符](http://chaijs.com/api/bdd/#method_deep)
+- [equal(value, [message])](http://chaijs.com/api/bdd/#method_equal)
+- [eql(value, [message])](http://chaijs.com/api/bdd/#method_eql)
 
 ---
 
-- [above(value)](http://chaijs.com/api/bdd/#method_above)
-- [below(value)](http://chaijs.com/api/bdd/#method_below)
-- [least(value)](http://chaijs.com/api/bdd/#method_least)
-- [most(value)](http://chaijs.com/api/bdd/#method_most)
-- [within(min, max)](http://chaijs.com/api/bdd/#method_within)
-- [length 修饰符](http://chaijs.com/api/bdd/#method_length)
+- [gt|greaterThan|above(value, [message])](http://chaijs.com/api/bdd/#method_above)
+- [lt|lessThan|below(value, [message])](http://chaijs.com/api/bdd/#method_below)
+- [gte|least(value, [message])](http://chaijs.com/api/bdd/#method_least)
+- [lte|most(value, [message])](http://chaijs.com/api/bdd/#method_most)
+- [within(min, max, [message])](http://chaijs.com/api/bdd/#method_within)
 
 ---
 
-- [instanceof(constructor)](http://chaijs.com/api/bdd/#method_instanceof)
+- [instanceof|instanceOf(constructor, [message])](http://chaijs.com/api/bdd/#method_instanceof)
 
 ---
 
-- [property(key, [value])](http://chaijs.com/api/bdd/#method_property)
-- [ownProperty(key)](http://chaijs.com/api/bdd/#method_ownproperty)
+- [property(key, [value], [message])](http://chaijs.com/api/bdd/#method_property)
+- [ownProperty(key, [message])](http://chaijs.com/api/bdd/#method_ownproperty)
 - [ownPropertyDescriptor(key, [descriptor], [message])](http://chaijs.com/api/bdd/#method_ownpropertydescriptor)
 
 ---
@@ -73,48 +80,42 @@ $ npm test
 
 ---
 
-- [match(regex)](http://chaijs.com/api/bdd/#method_match)
-- [string(substring)](http://chaijs.com/api/bdd/#method_string)
+- [match|matches(regex, [message])](http://chaijs.com/api/bdd/#method_match)
+- [string(substring, [message])](http://chaijs.com/api/bdd/#method_string)
 
 ---
 
-- [keys([key], [key]...)](http://chaijs.com/api/bdd/#method_keys)
-- [any 修饰符](http://chaijs.com/api/bdd/#method_any)
-- [all 修饰符](http://chaijs.com/api/bdd/#method_all)
-- [have 修饰符](http://chaijs.com/api/bdd/#method_language-chains)
-- [contain 修饰符](http://chaijs.com/api/bdd/#method_include)
+- [key|keys([key], [key]...)](http://chaijs.com/api/bdd/#method_keys)
 
 ---
 
-- [throw](http://chaijs.com/api/bdd/#method_throw)
+- [throw|throws|Throw(...)](http://chaijs.com/api/bdd/#method_throw)
 
 ---
 
-- [respondTo(method)](http://chaijs.com/api/bdd/#method_respondto)
+- [respondTo(method, [message])](http://chaijs.com/api/bdd/#method_respondto)
 
 ---
 
-- [satisfy(func)](http://chaijs.com/api/bdd/#method_satisfy)
+- [satisfy|satisfies(func, [message])](http://chaijs.com/api/bdd/#method_satisfy)
 
 ---
 
-- [closeTo(expected, delta)](http://chaijs.com/api/bdd/#method_closeto)
+- [closeTo|approximately(expected, delta, [message])](http://chaijs.com/api/bdd/#method_closeto)
 
 ---
 
-- [members(set)](http://chaijs.com/api/bdd/#method_members)
-- [have 修饰符](http://chaijs.com/api/bdd/#method_language-chains)
-- [include 修饰符](http://chaijs.com/api/bdd/#method_include)
+- [members(subset, [message])](http://chaijs.com/api/bdd/#method_members)
 
 ---
 
-- [oneOf(list)](http://chaijs.com/api/bdd/#method_oneof)
+- [oneOf(list, [message])](http://chaijs.com/api/bdd/#method_oneof)
 
 ---
 
-- [change(object, key)](http://chaijs.com/api/bdd/#method_change)
-- [increase(object, key)](http://chaijs.com/api/bdd/#method_increase)
-- [decrease(object, key)](http://chaijs.com/api/bdd/#method_decrease)
+- [change(object, key, [message])](http://chaijs.com/api/bdd/#method_change)
+- [increase(object, key, [message])](http://chaijs.com/api/bdd/#method_increase)
+- [decrease(object, key, [message])](http://chaijs.com/api/bdd/#method_decrease)
 
 ---
 
