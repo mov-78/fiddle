@@ -1,0 +1,9 @@
+{
+  "name": "fiddle",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "chai": "~3.5.0"
+  }
+}
