@@ -1,7 +1,8 @@
 'use strict'
 
-const assert = require('chai').assert
-const AssertionError = require('assertion-error')
+const chai = require('chai')
+const assert = chai.assert
+const AssertionError = chai.AssertionError
 
 //
 // assert(expression, [message])
