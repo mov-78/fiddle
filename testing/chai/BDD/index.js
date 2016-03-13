@@ -11,7 +11,7 @@ const should = require('chai').should() // invoke
 //
 // a(type, [message])
 // alias: an(type, [message])
-// 判断依据：Object.prototype.toString（具体值与 TDD 风格不一致）
+// 判断依据：Object.prototype.toString
 // 类型：chainableMethod（chainingBehavior 为 noop）
 //
 
@@ -124,7 +124,7 @@ Object.create({ 'foo' : 'bar' }).should.be.empty
 // 类型：property
 //
 
-;(function () {
+{
 
   const argumentsLikeObject = { caller() {}, callee() {}, 'length' : 1 }
 
@@ -134,7 +134,7 @@ Object.create({ 'foo' : 'bar' }).should.be.empty
   arguments.should.be.arguments
   ;(argumentsLikeObject).should.not.be.arguments
 
-})()
+}
 
 
 //

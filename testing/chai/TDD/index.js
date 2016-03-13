@@ -133,19 +133,19 @@ assert.isFunction(function noop() {})
 //
 // assert.typeOf(expression, typeName, [message])
 // assert.notTypeOf(expression, typeName, [message])
-// 判断依据：Object.prototype.toString（具体值与 BDD 风格不一致）
+// 判断依据：Object.prototype.toString
 //
 
-assert.typeOf(null, 'Null')
-assert.typeOf(undefined, 'Undefined')
-assert.typeOf(0, 'Number')
-assert.typeOf('', 'String')
-assert.typeOf(true, 'Boolean')
-assert.typeOf({}, 'Object')
-assert.typeOf([], 'Array')
-assert.typeOf(() => null, 'Function')
-assert.typeOf(/^/, 'RegExp')
-assert.typeOf(new Date(), 'Date')
+assert.typeOf(null, 'null')
+assert.typeOf(undefined, 'undefined')
+assert.typeOf(0, 'number')
+assert.typeOf('', 'string')
+assert.typeOf(true, 'boolean')
+assert.typeOf({}, 'object')
+assert.typeOf([], 'array')
+assert.typeOf(() => null, 'function')
+assert.typeOf(/^/, 'regExp')
+assert.typeOf(new Date(), 'date')
 
 
 //
@@ -173,9 +173,10 @@ assert.typeOf(new Date(), 'Date')
 // assert.notInclude(haystack, needle, [message])
 //
 
-assert.include([ 1, 3, 5 ], 3)  // [1] Array
-assert.include('foobar', 'oob') // [2] String
-assert.notInclude([ 1 ], '1')   // strict equal
+assert.include([ 1, 3, 5 ], 3)      // [1] Array
+assert.include('foobar', 'oob')     // [2] String
+assert.notInclude([ 1 ], '1')       // strict equal
+assert.notInclude([ [ 1 ], 2 ], 1)  // top-level only
 
 
 //
