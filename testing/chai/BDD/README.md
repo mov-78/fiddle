@@ -22,13 +22,13 @@ $ npm test
 
 ---
 
-- [a(type, [message])](http://chaijs.com/api/bdd/#method_a)
-- [an(type, [message])](http://chaijs.com/api/bdd/#method_a)
+- [a( type, [message] )](http://chaijs.com/api/bdd/#method_a)
+- [an( type, [message] )](http://chaijs.com/api/bdd/#method_a)
 
 ---
 
-- [include(value, [message])](http://chaijs.com/api/bdd/#method_include)
-- [contain(value, [message])](http://chaijs.com/api/bdd/#method_include)
+- [include( value, [message] )](http://chaijs.com/api/bdd/#method_include)
+- [contain( value, [message] )](http://chaijs.com/api/bdd/#method_include)
 
 ---
 
@@ -53,69 +53,69 @@ $ npm test
 
 ---
 
-- [equal(value, [message])](http://chaijs.com/api/bdd/#method_equal)
-- [eql(value, [message])](http://chaijs.com/api/bdd/#method_eql)
+- [equal( value, [message] )](http://chaijs.com/api/bdd/#method_equal)
+- [eql( value, [message] )](http://chaijs.com/api/bdd/#method_eql)
 
 ---
 
-- [gt|greaterThan|above(value, [message])](http://chaijs.com/api/bdd/#method_above)
-- [lt|lessThan|below(value, [message])](http://chaijs.com/api/bdd/#method_below)
-- [gte|least(value, [message])](http://chaijs.com/api/bdd/#method_least)
-- [lte|most(value, [message])](http://chaijs.com/api/bdd/#method_most)
-- [within(min, max, [message])](http://chaijs.com/api/bdd/#method_within)
+- [gt|greaterThan|above( value, [message] )](http://chaijs.com/api/bdd/#method_above)
+- [lt|lessThan|below( value, [message] )](http://chaijs.com/api/bdd/#method_below)
+- [gte|least( value, [message] )](http://chaijs.com/api/bdd/#method_least)
+- [lte|most( value, [message] )](http://chaijs.com/api/bdd/#method_most)
+- [within( min, max, [message] )](http://chaijs.com/api/bdd/#method_within)
 
 ---
 
-- [instanceof|instanceOf(constructor, [message])](http://chaijs.com/api/bdd/#method_instanceof)
+- [instanceof|instanceOf( constructor, [message] )](http://chaijs.com/api/bdd/#method_instanceof)
 
 ---
 
-- [property(key, [value], [message])](http://chaijs.com/api/bdd/#method_property)
-- [ownProperty(key, [message])](http://chaijs.com/api/bdd/#method_ownproperty)
-- [ownPropertyDescriptor(key, [descriptor], [message])](http://chaijs.com/api/bdd/#method_ownpropertydescriptor)
+- [property( key, [value], [message] )](http://chaijs.com/api/bdd/#method_property)
+- [ownProperty( key, [message] )](http://chaijs.com/api/bdd/#method_ownproperty)
+- [ownPropertyDescriptor( key, [descriptor], [message] )](http://chaijs.com/api/bdd/#method_ownpropertydescriptor)
 
 ---
 
-- [lengthOf(value, [message])](http://chaijs.com/api/bdd/#method_lengthof)
+- [lengthOf( value, [message] )](http://chaijs.com/api/bdd/#method_lengthof)
 
 ---
 
-- [match|matches(regex, [message])](http://chaijs.com/api/bdd/#method_match)
-- [string(substring, [message])](http://chaijs.com/api/bdd/#method_string)
+- [match|matches( regex, [message] )](http://chaijs.com/api/bdd/#method_match)
+- [string( substring, [message] )](http://chaijs.com/api/bdd/#method_string)
 
 ---
 
-- [key|keys([key], [key]...)](http://chaijs.com/api/bdd/#method_keys)
+- [key|keys( [key], [key]... )](http://chaijs.com/api/bdd/#method_keys)
 
 ---
 
-- [throw|throws|Throw(...)](http://chaijs.com/api/bdd/#method_throw)
+- [throw|throws|Throw( ... )](http://chaijs.com/api/bdd/#method_throw)
 
 ---
 
-- [respondTo(method, [message])](http://chaijs.com/api/bdd/#method_respondto)
+- [respondTo( method, [message] )](http://chaijs.com/api/bdd/#method_respondto)
 
 ---
 
-- [satisfy|satisfies(func, [message])](http://chaijs.com/api/bdd/#method_satisfy)
+- [satisfy|satisfies( func, [message] )](http://chaijs.com/api/bdd/#method_satisfy)
 
 ---
 
-- [closeTo|approximately(expected, delta, [message])](http://chaijs.com/api/bdd/#method_closeto)
+- [closeTo|approximately( expected, delta, [message] )](http://chaijs.com/api/bdd/#method_closeto)
 
 ---
 
-- [members(subset, [message])](http://chaijs.com/api/bdd/#method_members)
+- [members( subset, [message] )](http://chaijs.com/api/bdd/#method_members)
 
 ---
 
-- [oneOf(list, [message])](http://chaijs.com/api/bdd/#method_oneof)
+- [oneOf( list, [message] )](http://chaijs.com/api/bdd/#method_oneof)
 
 ---
 
-- [change(object, key, [message])](http://chaijs.com/api/bdd/#method_change)
-- [increase(object, key, [message])](http://chaijs.com/api/bdd/#method_increase)
-- [decrease(object, key, [message])](http://chaijs.com/api/bdd/#method_decrease)
+- [change( object, key, [message] )](http://chaijs.com/api/bdd/#method_change)
+- [increase( object, key, [message] )](http://chaijs.com/api/bdd/#method_increase)
+- [decrease( object, key, [message] )](http://chaijs.com/api/bdd/#method_decrease)
 
 ---
 
