@@ -7,6 +7,10 @@ $ npm test
 
 ---
 
+![BDD 断言类型](https://raw.githubusercontent.com/pwnn/img/master/chai-BDD-assertion-types.png)
+
+---
+
 链式调用语法糖（noop），通过 `chai.Assertion.addProperty` 添加：
 
 > to, be, been, is, that, which, and, has, have, with, at, of, same
