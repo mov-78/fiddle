@@ -6,7 +6,8 @@ describe( 'Base assertion'
 
             beforeEach( function () {
                           // 加载自定义对称判等逻辑
-                          jasmine.addCustomEqualityTester( require( '../helpers/equality' ) )
+                          jasmine
+                            .addCustomEqualityTester( require( '../helpers/customSymmetricEqualityTester' ) )
                         }
                       )
 
