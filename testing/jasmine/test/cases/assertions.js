@@ -1,13 +1,19 @@
 'use strict'
 
-// 基础断言
+// 基础断言、自定义断言及自定义对称/非对称判等逻辑
 describe( 'Base assertion'
         , function () {
 
             beforeEach( function () {
+
+                          // 加载自定义断言
+                          jasmine
+                            .addMatchers( require( '../helpers/customMatchers' ) )
+
                           // 加载自定义对称判等逻辑
                           jasmine
                             .addCustomEqualityTester( require( '../helpers/customSymmetricEqualityTester' ) )
+
                         }
                       )
 
@@ -157,6 +163,22 @@ describe( 'Base assertion'
                   expect( func ).toThrowError( Exception, /^foo/ )
                   expect( func ).toThrowError( 'foobar' )
                   expect( func ).toThrowError( /^foo/ )
+
+                }
+              )
+
+            // 自定义断言
+            it( 'toBeEmpty()'
+              , function () {
+
+                  expect( '' ).toBeEmpty()
+                  expect( 'foobar' ).not.toBeEmpty()
+
+                  expect( [] ).toBeEmpty()
+                  expect( [ 1 ] ).not.toBeEmpty()
+
+                  expect( {} ).toBeEmpty()
+                  expect( { foo : 'bar' } ).not.toBeEmpty()
 
                 }
               )
