@@ -1,5 +1,5 @@
-// Setup & Teardown
-describe( 'Setup & Teardown'
+// Hooks
+describe( 'Hooks'
         , function () {
 
             // 在进入该「测试套件」时，执行该「测试套件」里第一个「测试用例」之前调用

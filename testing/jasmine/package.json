@@ -1,4 +1,4 @@
 { "name" : "fiddle-jasmine"
-, "scripts" : { "test" : "jasmine JASMINE_CONFIG_PATH=tests/config/jasmine.json" }
+, "scripts" : { "test" : "jasmine JASMINE_CONFIG_PATH=test/config.json" }
 , "dependencies" : { "jasmine" : "~2.4.1" }
 }

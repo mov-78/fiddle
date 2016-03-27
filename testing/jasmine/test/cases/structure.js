@@ -7,7 +7,7 @@ describe( 'A test suite'
             // 一个「测试用例」可以包含多个「断言」
             //    - 如果「测试用例」内所有「断言」均成立，则该测试通过
             //    - 如果「测试用例」内任意「断言」不成立，则该测试不通过
-            it( 'is composed of zero or more test specs'
+            it( 'is composed of zero or more test cases'
               , function () {
 
                   //「正断言」
@@ -25,7 +25,7 @@ describe( 'A test suite'
             describe( 'can be nested'
                     , function () {
 
-                        it( 'to build a tree of test specs'
+                        it( 'to build a tree of test cases'
                           , function () {
                               // 可以使用 fail( [reason] ) 来强制不通过「测试用例」
                               if ( false ) {

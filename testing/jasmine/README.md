@@ -7,8 +7,6 @@ $ npm test
 
 ---
 
-结构组织：
-
 ![结构组织](https://raw.githubusercontent.com/pwnn/img/master/jasmine.png)
 
 ---
@@ -32,11 +30,11 @@ $ npm test
 
 ---
 
-Setup & Teardown:
+Hooks:
 
 ```js
-// Setup & Teardown
-describe( 'Setup & Teardown'
+// Hooks
+describe( 'Hooks'
         , function () {
 
             // 在进入该「测试套件」时，执行该「测试套件」里第一个「测试用例」之前调用
@@ -56,7 +54,6 @@ describe( 'Setup & Teardown'
 
           }
         )
-
 ```
 
 ---
@@ -66,7 +63,7 @@ describe( 'Setup & Teardown'
 ```js
 // 临时挂起「测试用例」
 // 挂起后，「测试用例」内所有「断言」均暂时不做校验
-describe( 'Pending test spec'
+describe( 'Pending test case'
         , function () {
 
             // [1] 使用 xit( title, [implementation] ) 来挂起「测试用例」
@@ -128,11 +125,12 @@ xdescribe( 'Pending test suite', () => null )
 异步支持：
 
 ```js
-describe( 'Asynchronous specs'
+describe( 'Testing async code'
         , function () {
 
             const asyncTask = ( done ) => { setTimeout( done, 0 ) }
 
+            // Hooks 亦拥有异步支持
             beforeAll( asyncTask )
             beforeEach( asyncTask )
             afterEach( asyncTask )
@@ -143,14 +141,13 @@ describe( 'Asynchronous specs'
 
             // 在超时间隔内如若未调用 done 方法，则该异步「测试用例」不通过
             // 同时，可以调用 done.fail( [reason] ) 方法来手动不通过该异步「测试用例」
-            it( 'should support async execution of test preparation and expectations'
+            it( 'by utilizing the done callback'
               , asyncTask
               , 2000 // 配置「测试用例」级超时间隔（覆盖全局超时间隔）
               )
 
           }
         )
-
 ```
 
 ---
@@ -177,13 +174,15 @@ describe( 'Manually ticking the Jasmine Clock'
         , function () {
 
             beforeEach( function () {
-              this.callback = jasmine.createSpy( 'callback' )
-              jasmine.clock().install()
-            } )
+                          this.callback = jasmine.createSpy( 'callback' )
+                          jasmine.clock().install()
+                        }
+                      )
 
             afterEach( function () {
-              jasmine.clock().uninstall()
-            } )
+                         jasmine.clock().uninstall()
+                       }
+                     )
 
             it( 'causes a timeout to be called synchronously'
               , function () {
@@ -223,12 +222,14 @@ describe( 'Mocking a Date object'
         , function () {
 
             beforeEach( function () {
-              jasmine.clock().install()
-            } )
+                          jasmine.clock().install()
+                        }
+                      )
 
             afterEach( function () {
-              jasmine.clock().uninstall()
-            } )
+                         jasmine.clock().uninstall()
+                       }
+                     )
 
             it( 'mocks the current date'
               , function () {

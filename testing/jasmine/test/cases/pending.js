@@ -1,6 +1,6 @@
 // 临时挂起「测试用例」
 // 挂起后，「测试用例」内所有「断言」均暂时不做校验
-describe( 'Pending test spec'
+describe( 'Pending test case'
         , function () {
 
             // [1] 使用 xit( title, [implementation] ) 来挂起「测试用例」

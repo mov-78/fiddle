@@ -15,21 +15,23 @@ describe( 'A spy'
 
             beforeEach( function () {
 
-              foo =
-              { setBar( value ) {
-                  bar = value
-                  setBarCalled = true
-                }
-              }
+                          foo =
+                          { setBar( value ) {
+                              bar = value
+                              setBarCalled = true
+                            }
+                          }
 
-              // spyOn( obj, methodName )
-              spyOn( foo, 'setBar' )
+                          // spyOn( obj, methodName )
+                          spyOn( foo, 'setBar' )
 
-              args.forEach( function ( arg ) {
-                foo.setBar( arg )
-              } )
+                          args.forEach( function ( arg ) {
+                                          foo.setBar( arg )
+                                        }
+                                      )
 
-            } )
+                        }
+                      )
 
             // Spy 专属断言：
             //    - toHaveBeenCalled()
@@ -42,8 +44,9 @@ describe( 'A spy'
                   expect( foo.setBar ).toHaveBeenCalledTimes( args.length )
 
                   args.forEach( function ( arg ) {
-                    expect( foo.setBar ).toHaveBeenCalledWith( arg )
-                  } )
+                                  expect( foo.setBar ).toHaveBeenCalledWith( arg )
+                                }
+                              )
 
                 }
               )
@@ -73,23 +76,24 @@ describe( 'A spy, when configured to call through'
 
             beforeEach( function () {
 
-              foo =
-              { setBar( value ) {
-                  bar = value
-                  setBarCalled = true
-                }
-              , getBar() {
-                  return bar
-                }
-              }
+                          foo =
+                          { setBar( value ) {
+                              bar = value
+                              setBarCalled = true
+                            }
+                          , getBar() {
+                              return bar
+                            }
+                          }
 
-              // and.callThrough()
-              spyOn( foo, 'setBar' ).and.callThrough()
+                          // and.callThrough()
+                          spyOn( foo, 'setBar' ).and.callThrough()
 
-              foo.setBar( 'baz' )
-              fetchedBar = foo.getBar()
+                          foo.setBar( 'baz' )
+                          fetchedBar = foo.getBar()
 
-            } )
+                        }
+                      )
 
             it( 'will delegate to the actual implementation'
               , function () {
@@ -124,22 +128,23 @@ describe( 'A spy,'
 
                         beforeEach( function () {
 
-                          foo =
-                          { setBar( value ) {
-                              bar = value
-                            }
-                          , getBar() {
-                              getBarCalled = true
-                              return bar
-                            }
-                          }
+                                      foo =
+                                      { setBar( value ) {
+                                          bar = value
+                                        }
+                                      , getBar() {
+                                          getBarCalled = true
+                                          return bar
+                                        }
+                                      }
 
-                          spyOn( foo, 'getBar' ).and.returnValue( 'qux' )
+                                      spyOn( foo, 'getBar' ).and.returnValue( 'qux' )
 
-                          foo.setBar( 'baz' )
-                          fetchedBar = foo.getBar()
+                                      foo.setBar( 'baz' )
+                                      fetchedBar = foo.getBar()
 
-                        } )
+                                    }
+                                  )
 
                         it( 'will skip the actual implementation'
                           , function () {
@@ -149,6 +154,7 @@ describe( 'A spy,'
 
                         it( 'will return the fake value'
                           , function () {
+                              expect( bar ).toEqual( 'baz' )
                               expect( fetchedBar ).toEqual( 'qux' )
                             }
                           )
@@ -165,21 +171,22 @@ describe( 'A spy,'
 
                         beforeEach( function () {
 
-                          foo =
-                          { setBar( value ) {
-                              bar = value
-                            }
-                          , getBar() {
-                              getBarCalled = true
-                              return bar
-                            }
-                          }
+                                      foo =
+                                      { setBar( value ) {
+                                          bar = value
+                                        }
+                                      , getBar() {
+                                          getBarCalled = true
+                                          return bar
+                                        }
+                                      }
 
-                          spyOn( foo, 'getBar' ).and.returnValues( 1, 2 )
+                                      spyOn( foo, 'getBar' ).and.returnValues( 1, 2 )
 
-                          foo.setBar( 'baz' )
+                                      foo.setBar( 'baz' )
 
-                        } )
+                                    }
+                                  )
 
                         it( 'will skip the actual implementation'
                           , function () {
@@ -192,9 +199,13 @@ describe( 'A spy,'
                             the end, at which point it will return undefined for
                             all subsequent calls`
                           , function () {
+
+                              expect( bar ).toEqual( 'baz' )
+
                               expect( foo.getBar() ).toEqual( 1 )
                               expect( foo.getBar() ).toEqual( 2 )
                               expect( foo.getBar() ).toBeUndefined()
+
                             }
                           )
 
@@ -219,22 +230,23 @@ describe( 'A spy, when configured with an alternate implementation'
 
             beforeEach( function () {
 
-              foo =
-              { setBar( value ) {
-                  bar = value
-                }
-              , getBar() {
-                  getBarCalled = true
-                  return bar
-                }
-              }
+                          foo =
+                          { setBar( value ) {
+                              bar = value
+                            }
+                          , getBar() {
+                              getBarCalled = true
+                              return bar
+                            }
+                          }
 
-              spyOn( foo, 'getBar' ).and.callFake( () => 'tinted' )
+                          spyOn( foo, 'getBar' ).and.callFake( () => 'tinted' )
 
-              foo.setBar( 'baz' )
-              fetchedBar = foo.getBar()
+                          foo.setBar( 'baz' )
+                          fetchedBar = foo.getBar()
 
-            } )
+                        }
+                      )
 
             it( 'will skip the actual implementation'
               , function () {
@@ -244,6 +256,7 @@ describe( 'A spy, when configured with an alternate implementation'
 
             it( 'will delegate to the alternate implementation'
               , function () {
+                  expect( bar ).toEqual( 'baz' )
                   expect( fetchedBar ).toEqual( 'tinted' )
                 }
               )
@@ -260,9 +273,10 @@ describe( 'A spy, when configured to throw an error'
         , function () {
 
             beforeEach( function () {
-              this.fn = () => { this.fnCalled = true }
-              spyOn( this, 'fn' ).and.throwError( 'error' )
-            } )
+                          this.fn = () => { this.fnCalled = true }
+                          spyOn( this, 'fn' ).and.throwError( 'error' )
+                        }
+                      )
 
             it( 'will skip the actual implementation'
               , function () {
@@ -298,16 +312,17 @@ describe( 'A spy'
 
             beforeEach( function () {
 
-              foo =
-              { setBar( value ) {
-                  bar = value
-                  setBarCalled = true
-                }
-              }
+                          foo =
+                          { setBar( value ) {
+                              bar = value
+                              setBarCalled = true
+                            }
+                          }
 
-              spyOn( foo, 'setBar' ).and.callThrough()
+                          spyOn( foo, 'setBar' ).and.callThrough()
 
-            } )
+                        }
+                      )
 
             it( 'can restore the original stubbing behavior'
               , function () {
@@ -342,15 +357,16 @@ describe( 'A spy'
 
             beforeEach( function () {
 
-              foo =
-              { setBar( value ) {
-                  bar = value
-                }
-              }
+                          foo =
+                          { setBar( value ) {
+                              bar = value
+                            }
+                          }
 
-              spyOn( foo, 'setBar' )
+                          spyOn( foo, 'setBar' )
 
-            } )
+                        }
+                      )
 
             // calls.any()
             it( 'tracks if it was called at all'
@@ -433,7 +449,7 @@ describe( 'A spy'
                     .toEqual( foo.setBar.calls.all()[ 0 ] )
 
                   expect( foo.setBar.calls.mostRecent() )
-                    .toEqual( foo.setBar.calls.all()[ 1 ] )
+                    .toEqual( foo.setBar.calls.all()[ foo.setBar.calls.count() - 1 ] )
 
                 }
               )
@@ -465,8 +481,9 @@ describe( 'A spy, when created manually'
         , function () {
 
             beforeEach( function () {
-              this.bareSpy = jasmine.createSpy( 'bareSpy' )
-            } )
+                          this.bareSpy = jasmine.createSpy( 'bareSpy' )
+                        }
+                      )
 
             it( 'acts as any other spy'
               , function () {
@@ -494,20 +511,21 @@ describe( 'Multiple spies, when created manually'
 
             beforeEach( function () {
 
-              this.tape =
-                jasmine.createSpyObj( 'tape'
-                                    , [ 'play'
-                                      , 'pause'
-                                      , 'stop'
-                                      , 'rewind'
-                                      ]
-                                    )
+                          this.tape =
+                            jasmine.createSpyObj( 'tape'
+                                                , [ 'play'
+                                                  , 'pause'
+                                                  , 'stop'
+                                                  , 'rewind'
+                                                  ]
+                                                )
 
-              this.tape.play()
-              this.tape.pause()
-              this.tape.rewind( 0 )
+                          this.tape.play()
+                          this.tape.pause()
+                          this.tape.rewind( 0 )
 
-            } )
+                        }
+                      )
 
             it( 'acts as any other spy'
               , function () {

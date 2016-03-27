@@ -1,14 +1,19 @@
 'use strict'
 
 // 基础断言
-describe( 'Builtin assertion'
+describe( 'Base assertion'
         , function () {
 
             // toBe( value )
             it( 'toBe( value )'
               , function () {
+
                   expect( 1 ).toBe( 1 )
                   expect( 1 ).not.toBe( '1' )
+
+                  expect( [ 1, 2 ] ).not.toBe( [ 1, 2 ] )
+                  expect( { foo : 'bar' } ).not.toBe( { foo : 'bar' } )
+
                 }
               )
 
@@ -16,13 +21,11 @@ describe( 'Builtin assertion'
             it( 'toEqual( value )'
               , function () {
 
-                  expect( null ).toEqual( null )
-                  expect( undefined ).toEqual( undefined )
-                  expect( 0 ).toEqual( 0 )
-                  expect( '' ).toEqual( '' )
-                  expect( true ).toEqual( true )
-                  expect( { foo : 'bar' } ).toEqual( { foo : 'bar' } )
+                  expect( 1 ).toEqual( 1 )
+                  expect( 1 ).not.toEqual( '1' )
+
                   expect( [ 1, 2 ] ).toEqual( [ 1, 2 ] )
+                  expect( { foo : 'bar' } ).toEqual( { foo : 'bar' } )
 
                   // custom asymmetric equality tester
                   expect( 'foo|bar|baz|qux' )
@@ -84,8 +87,12 @@ describe( 'Builtin assertion'
             // toContain( value )
             it( 'toContain( value )'
               , function () {
+
                   expect( [ 1, 2 ] ).toContain( 1 )
+
                   expect( [ [ 1 ], 2 ] ).not.toContain( 1 )
+                  expect( [ [ { foo: 1 } ] ] ).toContain( [ { foo : 1 } ] )
+
                 }
               )
 
@@ -106,7 +113,7 @@ describe( 'Builtin assertion'
             // toBeCloseTo( value, [precesion = 2] )
             it( 'toBeCloseTo( value, [precesion = 2] )'
               , function () {
-                  // 校验标准：|actual - expected| < 10^(-precesion)/2
+                  // 校验标准：| actual - expected | < ( 10^( -precesion ) ) / 2
                   expect( 0.3 - 0.2 )
                     .toBeCloseTo( 0.1
                                 , -( Math.log( 2 * Number.EPSILON ) / Math.log( 10 ) )

@@ -2,13 +2,15 @@ describe( 'Manually ticking the Jasmine Clock'
         , function () {
 
             beforeEach( function () {
-              this.callback = jasmine.createSpy( 'callback' )
-              jasmine.clock().install()
-            } )
+                          this.callback = jasmine.createSpy( 'callback' )
+                          jasmine.clock().install()
+                        }
+                      )
 
             afterEach( function () {
-              jasmine.clock().uninstall()
-            } )
+                         jasmine.clock().uninstall()
+                       }
+                     )
 
             it( 'causes a timeout to be called synchronously'
               , function () {
@@ -48,12 +50,14 @@ describe( 'Mocking a Date object'
         , function () {
 
             beforeEach( function () {
-              jasmine.clock().install()
-            } )
+                          jasmine.clock().install()
+                        }
+                      )
 
             afterEach( function () {
-              jasmine.clock().uninstall()
-            } )
+                         jasmine.clock().uninstall()
+                       }
+                     )
 
             it( 'mocks the current date'
               , function () {

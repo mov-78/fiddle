@@ -55,11 +55,12 @@ describe( 'jasmine.objectContaining'
         , function () {
 
             beforeEach( function () {
-              this.foobar =
-                { foo : 1
-                , bar : 2
-                }
-            } )
+                          this.foobar =
+                            { foo : 1
+                            , bar : 2
+                            }
+                        }
+                      )
 
             it( 'matches objects with the expected key/value pairs'
               , function () {
@@ -101,8 +102,9 @@ describe( 'jasmine.stringMatching'
         , function () {
 
             beforeEach( function () {
-              this.foobar = { foo : 'bar' }
-            } )
+                          this.foobar = { foo : 'bar' }
+                        }
+                      )
 
             it( 'matches as a regexp'
               , function () {
