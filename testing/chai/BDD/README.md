@@ -76,6 +76,7 @@ $ npm test
 
 ---
 
+- [length( value, [message] )](http://chaijs.com/api/bdd/#method_length)
 - [lengthOf( value, [message] )](http://chaijs.com/api/bdd/#method_lengthof)
 
 ---

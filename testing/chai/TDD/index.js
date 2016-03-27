@@ -56,13 +56,11 @@ assert.notStrictEqual( 1, '1' )
 {
 
   const proto = { foo : 'bar' }
-
-  const foo = { baz : 'qux' }
-  const bar = { baz : 'qux' } // [1] 对于 primitives 使用 === 判断相等性
+      , foo = { baz : 'qux' }
+      , bar = { baz : 'qux' } // [1] 对于 primitives 使用 === 判断相等性
 
   // [2] 非枚举属性不在考虑范围之内
   Object.defineProperty( bar, 'hidden', { enumerable : false } )
-
   assert.deepEqual( foo, bar )
 
   Object.setPrototypeOf( foo, proto ) // [3] 但是原型属性在考虑范围之内
@@ -123,7 +121,7 @@ assert.isString( '' )
 assert.isBoolean( true )
 assert.isBoolean( false )
 
-assert.isObject( {} ) // assert.typeOf( expression, 'Object' )
+assert.isObject( {} ) // assert.typeOf( expression, 'object' )
 assert.isNotObject( [] )
 assert.isNotObject( () => null )
 assert.isNotObject( new Date )
@@ -163,9 +161,8 @@ assert.typeOf( new Date, 'date' )
 {
 
   const proto = {}
-  class Stub {}
-
-  const obj = new Stub
+      , Stub = class {}
+      , obj = new Stub
 
   assert.instanceOf( obj, Stub )
 
@@ -181,14 +178,15 @@ assert.typeOf( new Date, 'date' )
 // assert.oneOf( needle, haystack, [message] )
 //
 
-assert.include( [ 1, 3, 5 ], 3 )      // [1] Array
-assert.include( 'foobar', 'oob' )     // [2] String
-assert.notInclude( [ 1 ], '1' )       // strict equal
-assert.notInclude( [ [ 1 ], 2 ], 1 )  // top-level only
+assert.include( 'foobar', 'foo' )                             // [1] String
+assert.include( [ { foo : 'bar' }, 'baz' ], { foo : 'bar' } ) // [2] Array
+assert.notInclude( [ 1 ], '1' )                               // strict equal
+assert.notInclude( [ [ 1 ], 2 ], 1 )                          // top-level only
 
 assert.oneOf( 3, [ 1, 3, 5 ] )
 assert.throws( () => { assert.oneOf( '1', [ 1 ] ) } )     // strict equal
 assert.throws( () => { assert.oneOf( 1, [ [ 1 ], 2 ]) } ) // top-level only
+assert.throws( () => { assert.oneOf( { foo : 1 }, [ { foo : 1 } ] ) } )
 
 
 //
@@ -308,11 +306,11 @@ assert.includeDeepMembers( [ 1, { foo : 'bar' }, 2 ], [ { foo : 'bar' }, 2 ] )
 
 
 //
-// assert.changes( func, object, property )
-// assert.increases( func, object, property )
-// assert.doesNotIncrease( func, object, property )
-// assert.decreases( func, object, property )
-// assert.doesNotDecrease( func, object, property )
+// assert.changes( func, object, key )
+// assert.increases( func, object, key )
+// assert.doesNotIncrease( func, object, key )
+// assert.decreases( func, object, key )
+// assert.doesNotDecrease( func, object, key )
 //
 
 {

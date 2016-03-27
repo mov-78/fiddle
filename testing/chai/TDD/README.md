@@ -112,11 +112,11 @@ $ npm test
 
 ---
 
-- [assert.changes( func, object, property )](http://chaijs.com/api/assert/#method_changes)
-- [assert.increases( func, object, property )](http://chaijs.com/api/assert/#method_increases)
-- [assert.doesNotIncrease( func, object, property )](http://chaijs.com/api/assert/#method_doesnotincrease)
-- [assert.decreases( func, object, property )](http://chaijs.com/api/assert/#method_decreases)
-- [assert.doesNotDecrease( func, object, property )](http://chaijs.com/api/assert/#method_doesnotdecrease)
+- [assert.changes( func, object, key )](http://chaijs.com/api/assert/#method_changes)
+- [assert.increases( func, object, key )](http://chaijs.com/api/assert/#method_increases)
+- [assert.doesNotIncrease( func, object, key )](http://chaijs.com/api/assert/#method_doesnotincrease)
+- [assert.decreases( func, object, key )](http://chaijs.com/api/assert/#method_decreases)
+- [assert.doesNotDecrease( func, object, key )](http://chaijs.com/api/assert/#method_doesnotdecrease)
 
 ---
 

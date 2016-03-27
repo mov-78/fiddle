@@ -1,9 +1,4 @@
-{
-  "name": "fiddle",
-  "scripts": {
-    "test": "node index.js"
-  },
-  "dependencies": {
-    "chai": "~3.5.0"
-  }
+{ "name" : "fiddle-chai-TDD"
+, "scripts" : { "test" : "node index.js" }
+, "dependencies" : { "chai" : "~3.5.0" }
 }

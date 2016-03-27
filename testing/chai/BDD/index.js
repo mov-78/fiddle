@@ -16,7 +16,7 @@ const expect = require( 'chai' ).expect
 //
 
 expect( null ).to.be.a( 'null' )
-expect( undefined ).to.be.a( 'undefined' )
+expect( undefined ).to.be.an( 'undefined' )
 expect( 0 ).to.be.a( 'number' )
 expect( '' ).to.be.a( 'string' )
 expect( true ).to.be.a( 'boolean' )
@@ -28,7 +28,7 @@ expect( /^/ ).to.be.a( 'regexp' )
 expect( new Date ).to.be.a( 'date' )
 
 // ;( null ).should.be.a( 'null' )
-// ;( undefined ).should.be.a( 'undefined' )
+// ;( undefined ).should.be.an( 'undefined' )
 ;( 0 ).should.be.a( 'number' )
 ;( '' ).should.be.a( 'string' )
 ;( true ).should.be.a( 'boolean' )
@@ -46,13 +46,13 @@ expect( new Date ).to.be.a( 'date' )
 // 类型：chainableMethod（chainingBehavior 设置 contains flag）
 //
 
-expect( 'string' ).to.include( 'str' )        // [1] String
-expect( [ 1, 2, 3 ] ).to.include( 1 )         // [2] Array
-expect( [ [ 1 ], 2, 3 ] ).to.not.include( 1 ) // top-level only
+expect( 'string' ).to.include( 'str' )                              // [1] String
+expect( [ { foo : 'bar' }, 'baz' ] ).to.include( { foo : 'bar' } )  // [2] Array
+expect( [ [ 1 ], 2, 3 ] ).to.not.include( 1 )                       // top-level only
 
-'string'.should.include( 'str' )            // [1] String
-;[ 1, 2, 3 ].should.include( 1 )            // [2] Array
-;[ [ 1 ], 2, 3 ].should.not.include( 1 )    // top-level only
+'string'.should.include( 'str' )                              // [1] String
+;[ { foo : 'bar' }, 'baz' ].should.include( { foo : 'bar' } ) // [2] Array
+;[ [ 1 ], 2, 3 ].should.not.include( 1 )                      // top-level only
 
 
 //
@@ -84,8 +84,8 @@ expect( null ).to.be.null
 expect( undefined ).to.not.be.null
 expect( undefined ).to.be.undefined
 expect( null ).to.not.be.undefined
-expect( null ).to.not.be.exist
-expect( undefined ).to.not.be.exist
+expect( null ).to.not.exist
+expect( undefined ).to.not.exist
 
 
 //
@@ -201,16 +201,15 @@ expect( 'string' ).to.have.length.within( 1, 10 )   // String & Array
 {
 
   const proto = {}
-  class Stub {}
+      , Stub = class {}
+      , obj = new Stub
 
-  const obj = new Stub
-
-  expect( obj ).to.be.instanceof( Stub )
-  obj.should.be.instanceof( Stub )
+  expect( obj ).to.be.instanceOf( Stub )
+  obj.should.be.instanceOf( Stub )
 
   Object.setPrototypeOf( obj, proto )
-  expect( obj ).to.not.be.instanceof( Stub )
-  obj.should.not.be.instanceof( Stub )
+  expect( obj ).to.not.be.instanceOf( Stub )
+  obj.should.not.be.instanceOf( Stub )
 
 }
 
@@ -230,20 +229,22 @@ expect( Object.create( { foo : 'bar' } ) ).to.have.property( 'foo' )
 expect( { foo : 'bar' } ).to.have.property( 'foo' )
 expect( { foo : 'bar' } ).to.have.property( 'foo', 'bar' )
 expect( { foo : { bar : 'baz' } } ).to.have.deep.property( 'foo.bar' )
+expect( { foo : { bar : 'baz' } } ).to.have.deep.property( 'foo.bar', 'baz' )
 ;( Object.create( { foo : 'bar' } ) ).should.have.property( 'foo' )
 ;( { foo : 'bar' } ).should.have.property( 'foo' )
 ;( { foo : 'bar' } ).should.have.property( 'foo', 'bar' )
 ;( { foo : { bar : 'baz' } } ).should.have.deep.property( 'foo.bar' )
+;( { foo : { bar : 'baz' } } ).should.have.deep.property( 'foo.bar', 'baz' )
 
 // property() 调用后更改当前断言主体为指定属性的值
 expect( { foo : 'bar' } ).to.have.property( 'foo' ).that.is.a( 'string' )
 ;( { foo : 'bar' } ).should.have.property( 'foo' ).that.is.a( 'string' )
 
 // ownProperty( key, [message] )
-expect( { foo : 'bar' } ).to.have.ownProperty( 'foo' )
 expect( Object.create( { foo : 'bar' } ) ).to.not.have.ownProperty( 'foo' )
-;( { foo : 'bar' } ).should.have.ownProperty( 'foo' )
+expect( { foo : 'bar' } ).to.have.ownProperty( 'foo' )
 ;( Object.create( { foo : 'bar' } ) ).should.not.have.ownProperty( 'foo' )
+;( { foo : 'bar' } ).should.have.ownProperty( 'foo' )
 
 // ownPropertyDescriptor( key, [descriptor], [message] )
 expect( 'string' ).to.have.ownPropertyDescriptor( 'length' )
@@ -277,13 +278,19 @@ expect( 'string' ).to.have.ownPropertyDescriptor( 'length' ).that.is.an( 'object
 // 类型：method
 //
 
+expect( [ null ] ).to.have.length.of( 1 )       // [1] Array
+expect( 'null' ).to.have.length.of( 4 )         // [2] String
+expect( { length : 1 } ).to.have.length.of( 1 ) // [3] Array-Like Object
 expect( [ null ] ).to.have.lengthOf( 1 )        // [1] Array
 expect( 'null' ).to.have.lengthOf( 4 )          // [2] String
 expect( { length : 1 } ).to.have.lengthOf( 1 )  // [3] Array-Like Object
 
-;[ null ].should.have.lengthOf( 1 )           // [1] Array
-'null'.should.have.lengthOf( 4 )              // [2] String
-;( { length : 1 } ).should.have.lengthOf( 1 ) // [3] Array-Like Object
+;[ null ].should.have.length.of( 1 )            // [1] Array
+'null'.should.have.length.of( 4 )               // [2] String
+;( { length : 1 } ).should.have.length.of( 1 )  // [3] Array-Like Object
+;[ null ].should.have.lengthOf( 1 )             // [1] Array
+'null'.should.have.lengthOf( 4 )                // [2] String
+;( { length : 1 } ).should.have.lengthOf( 1 )   // [3] Array-Like Object
 
 
 //
@@ -426,17 +433,17 @@ expect( 0.3 - 0.2 ).to.be.closeTo( 0.1, Number.EPSILON )
 
   expect( [ 1, 3, 2 ] ).to.include.members( [ 2, 3 ] )
   expect( [ obj1 ] ).to.not.include.members( [ obj2 ] )
-  expect( [ obj1 ] ).to.deep.include.members( [ obj2 ] )
+  expect( [ obj1 ] ).to.include.deep.members( [ obj2 ] )
   expect( [ 1, 3, 2 ] ).to.have.members( [ 2, 1, 3 ] )
   expect( [ obj1 ] ).to.not.have.members( [ obj2 ] )
-  expect( [ obj1 ] ).to.deep.have.members( [ obj2 ] )
+  expect( [ obj1 ] ).to.have.deep.members( [ obj2 ] )
 
   ;[ 1, 3, 2 ].should.include.members( [ 2, 3 ] )
   ;[ obj1 ].should.not.include.members( [ obj2 ] )
-  ;[ obj1 ].should.deep.include.members( [ obj2 ] )
+  ;[ obj1 ].should.include.deep.members( [ obj2 ] )
   ;[ 1, 3, 2 ].should.have.members( [ 2, 1, 3 ] )
   ;[ obj1 ].should.not.have.members( [ obj2 ] )
-  ;[ obj1 ].should.deep.have.members( [ obj2 ] )
+  ;[ obj1 ].should.have.deep.members( [ obj2 ] )
 
 }
 
@@ -448,8 +455,10 @@ expect( 0.3 - 0.2 ).to.be.closeTo( 0.1, Number.EPSILON )
 
 expect( 1 ).to.be.oneOf( [ 1, 2 ] )
 expect( 1 ).to.not.be.oneOf( [ [ 1 ], 2 ] ) // top-level only
+expect( { foo : 1 } ).to.not.be.oneOf( [ { foo : 1 } ] )
 ;( 1 ).should.be.oneOf( [ 1, 2 ] )
 ;( 1 ).should.not.be.oneOf( [ [ 1 ], 2 ] )  // top-level only
+;( { foo : 1 } ).should.not.be.oneOf( [ { foo : 1 } ] )
 
 
 //
