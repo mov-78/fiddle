@@ -4,6 +4,12 @@
 describe( 'Base assertion'
         , function () {
 
+            beforeEach( function () {
+                          // 加载自定义对称判等逻辑
+                          jasmine.addCustomEqualityTester( require( '../helpers/equality' ) )
+                        }
+                      )
+
             // toBe( value )
             it( 'toBe( value )'
               , function () {
@@ -27,7 +33,11 @@ describe( 'Base assertion'
                   expect( [ 1, 2 ] ).toEqual( [ 1, 2 ] )
                   expect( { foo : 'bar' } ).toEqual( { foo : 'bar' } )
 
-                  // custom asymmetric equality tester
+                  // 自定义对称判等逻辑
+                  expect( { id : 1, message : 'foo' } )
+                    .toEqual( { id : 1, message : 'bar' })
+
+                  // 自定义非对称判等逻辑
                   expect( 'foo|bar|baz|qux' )
                     .toEqual( { asymmetricMatch( actual ) {
                                   return actual.split( '|' )[ 1 ] === 'bar'
