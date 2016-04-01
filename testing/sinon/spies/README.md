@@ -19,14 +19,14 @@ $ npm test
 
 ## Spy 相关属性、接口：
 
-### 核心属性：
+#### 核心属性：
 
 - `spy.args`
 - `spy.returnValues`
 - `spy.thisValues`
 - `spy.exceptions`
 
-### 调用次数相关：
+#### 调用次数相关：
 
 - `spy.called`
 - `spy.callCount`
@@ -34,7 +34,7 @@ $ npm test
 - `spy.calledTwice`
 - `spy.calledThrice`
 
-### 实参相关：
+#### 实参相关：
 
 - `spy.calledWith( ...args|matchers )`
 - `spy.alwaysCalledWith( ...args|matchers )`
@@ -46,26 +46,26 @@ $ npm test
 - `spy.neverCalledWithMatch( ...args )`
 - `spy.calledWithNew()`
 
-### 返回值相关：
+#### 返回值相关：
 
 - `spy.returned( value|matcher )`
 - `spy.alwaysReturned( value|matcher )`
 
-### 上下文相关：
+#### 上下文相关：
 
 - `spy.calledOn( ctxt )`
 - `spy.alwaysCalledOn( ctxt )`
 
-### 异常相关：
+#### 异常相关：
 
 - `spy.threw( [value] )`
 - `spy.alwaysThrew( [value] )`
 
-### 过滤器：
+#### 过滤器：
 
 - `spy.withArgs( ...args| matchers )`
 
-### SpyCall 相关：
+#### SpyCall 相关：
 
 - `spy.getCall( n )`
 - `spy.firstCall`
@@ -73,25 +73,25 @@ $ npm test
 - `spy.thirdCall`
 - `spy.lastCall`
 
-### 调用次序相关：
+#### 调用次序相关：
 
 - `spy.calledAfter( anotherSpy )`
 - `spy.calledBefore( anotherSpy )`
 
-### 重置记录：
+#### 重置记录：
 
 - `spy.reset()`
 
 ## SpyCall 相关属性、接口：
 
-### 核心属性：
+#### 核心属性：
 
 - `spyCall.args`
 - `spyCall.returnValue`
 - `spyCall.thisValue`
 - `spyCall.exception`
 
-### 实参相关：
+#### 实参相关：
 
 - `spyCall.calledWith( ...args|matchers )`
 - `spyCall.notCalledWith( ...args|matchers )`
@@ -99,10 +99,10 @@ $ npm test
 - `spyCall.calledWithMatch( ...args )`
 - `spyCall.notCalledWithMatch( ...args )`
 
-### 上下文相关：
+#### 上下文相关：
 
 - `spyCall.calledOn( ctxt )`
 
-### 异常相关：
+#### 异常相关：
 
 - `spyCall.threw( [value] )`
