@@ -28,7 +28,6 @@ $ npm test
 - `stub.callsArgOn( index, ctxt )`
 - `stub.callsArgWith( index, ...args )`
 - `stub.callsArgOnWith( index, ctxt, ...args )`
-
 - `stub.yields( ...args )`
 - `stub.yieldsOn( ctxt, ...args )`
 - `stub.yieldsTo( key, ...args )`
