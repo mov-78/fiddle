@@ -1,0 +1,7 @@
+{ "name" : "fiddle-sinon-stubs"
+, "scripts" : { "test" : "mocha" }
+, "dependencies" : { "chai" : "~3.5.0"
+                   , "mocha" : "~2.4.5"
+                   , "sinon" : "~1.17.3"
+                   }
+}
