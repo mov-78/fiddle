@@ -4,38 +4,7 @@ const chai = require( 'chai' )
     , sinon = require( 'sinon' )
     , expect = chai.expect
 
-before( function () {
-
-          chai.should()
-
-          chai
-            .use( function ( _chai, _util ) {
-                    _chai.Assertion
-                      .addProperty( 'spyCall'
-                                  , function () {
-
-                                      const subject = this._obj
-
-                                      subject.should.have.ownProperty( 'args' )
-                                      subject.should.have.ownProperty( 'returnValue' )
-                                      subject.should.have.ownProperty( 'thisValue' )
-                                      subject.should.have.ownProperty( 'exception' )
-
-                                      subject.should.have.property( 'calledOn' )
-                                      subject.should.have.property( 'calledWith' )
-                                      subject.should.have.property( 'notCalledWith' )
-                                      subject.should.have.property( 'calledWithExactly' )
-                                      subject.should.have.property( 'calledWithMatch' )
-                                      subject.should.have.property( 'notCalledWithMatch' )
-                                      subject.should.have.property( 'threw' )
-
-                                    }
-                                  )
-                  }
-                )
-
-        }
-      )
+before( chai.should )
 
 
 //
@@ -52,7 +21,6 @@ describe( 'Creating spies'
             it( 'with sinon.spy()'
               , function () {
 
-                  // bare spy
                   const bareSpy = sinon.spy()
 
                   bareSpy.should.exist
@@ -65,17 +33,15 @@ describe( 'Creating spies'
             it( 'with sinon.spy( func )'
               , function () {
 
-                  let called = false
-                  const func = () => { called = true }
-                      , spy = sinon.spy( func )
+                  const bareSpy = sinon.spy()
+                      , spy = sinon.spy( bareSpy )
 
                   spy.should.exist
                   spy.should.be.a( 'function' )
 
                   // delegates to the original function
-                  spy.should.not.equal( func )
                   spy()
-                  called.should.be.true
+                  bareSpy.called.should.be.true
 
                 }
               )
@@ -120,7 +86,6 @@ describe( 'Spy'
         , function () {
 
             let spy
-
             beforeEach( function () {
                           spy = sinon.spy()
                         }
@@ -222,9 +187,7 @@ describe( 'Spy'
             //
             // spy.called
             // spy.callCount
-            // spy.calledOnce
-            // spy.calledTwice
-            // spy.calledThrice
+            // spy.calledOnce|Twice|Thrice
             //
 
             it( '#called'
@@ -261,11 +224,11 @@ describe( 'Spy'
             // spy.alwaysCalledWith( ...args|matchers )
             // spy.neverCalledWith( ...args|matchers )
             //    - 支持局部匹配
-            //    - 支持 matcher 实参
+            //    - 支持通配符（matcher 实参）
             //    - 使用 deep equal 判等
             //
 
-            it( '#calledWith( ...args|matchers ), #alwaysCalledWith( ...args|matchers ), #neverCalledWith( ...args|matchers )'
+            it( '#calledWith|alwaysCalledWith|neverCalledWith( ...args|matchers )'
               , function() {
 
                   spy( { foo : 'bar' }, 'baz' )
@@ -281,11 +244,11 @@ describe( 'Spy'
             // spy.calledWithExactly( ...args|matchers )
             // spy.alwaysCalledWithExactly( ...args|matchers )
             // 与 calledWith 系列类似，但不支持局部匹配
-            //    - 支持 matcher 实参
+            //    - 支持通配符（matcher 实参）
             //    - 使用 deep equal 判等
             //
 
-            it( '#calledWithExactly( ...args|matchers ), #alwaysCalledWithExactly( ...args|matchers )'
+            it( '#calledWithExactly|alwaysCalledWithExactly( ...args|matchers )'
               , function () {
 
                   spy( { foo : 'bar' }, 'baz' )
@@ -308,7 +271,7 @@ describe( 'Spy'
             //    spy.neverCalledWith( sinon.match( arg1 )... )
             //
 
-            it( '#calledWithMatch( ...args ), #alwaysCalledWithMatch( ...args ), #neverCalledWithMatch( ...args )'
+            it( '#calledWithMatch|alwaysCalledWithMatch|neverCalledWithMatch( ...args )'
               , function () {
 
                   spy( 'foo' ); spy( 'foobar' )
@@ -434,36 +397,6 @@ describe( 'Spy'
 
 
             //
-            // spy.getCall( n )
-            // spy.firstCall
-            // spy.secondCall
-            // spy.thirdCall
-            // spy.lastCall
-            //
-
-            it( '#getCall( n ), #firstCall, #secondCall, #thirdCall, #lastCall'
-              , function () {
-
-                  spy()
-
-                  spy.firstCall.should.be.an( 'object' )
-                  spy.firstCall.should.deep.equal( spy.getCall( 0 ) )
-                  spy.firstCall.should.be.a.spyCall
-
-                  expect( spy.secondCall ).to.deep.equal( spy.getCall( 1 ) )
-                  expect( spy.secondCall ).to.be.null
-
-                  expect( spy.thirdCall ).to.deep.equal( spy.getCall( 2 ) )
-                  expect( spy.thirdCall ).to.be.null
-
-                  spy.lastCall.should.deep.equal( spy.getCall( spy.callCount - 1 ) )
-                  spy.lastCall.should.be.a.spyCall
-
-                }
-              )
-
-
-            //
             // spy.calledAfter( anotherSpy )
             // spy.calledBefore( anotherSpy )
             //
@@ -512,7 +445,6 @@ describe( 'SpyCall'
         , function () {
 
             let spy
-
             beforeEach( function () {
                           spy = sinon.spy()
                         }
@@ -541,12 +473,11 @@ describe( 'SpyCall'
             it( '#returnValue'
               , function () {
 
-                  const func = () => 'tinted'
-                      , spy = sinon.spy( func )
+                  const spy = sinon.spy( () => 'foobar' )
 
                   spy()
 
-                  spy.getCall( 0 ).returnValue.should.equal( 'tinted' )
+                  spy.getCall( 0 ).returnValue.should.equal( 'foobar' )
 
                 }
               )
@@ -564,9 +495,8 @@ describe( 'SpyCall'
             it( '#exception'
               , function () {
 
-                  const func = ( error ) => { throw error }
-                      , spy = sinon.spy( func )
-                      , ERR = 'error'
+                  const ERR = 'error'
+                      , spy = sinon.spy( ( error ) => { throw error } )
 
                   try {
                     spy( ERR )
@@ -584,7 +514,7 @@ describe( 'SpyCall'
             // spyCall.calledWith( ...args|matchers )
             // spyCall.notCalledWith( ...args|matchers )
             //    - 支持局部匹配
-            //    - 支持 matcher 实参
+            //    - 支持通配符（matcher 实参）
             //    - 使用 deep equal 判等
             //
 
@@ -605,7 +535,7 @@ describe( 'SpyCall'
             //
             // spyCall.calledWithExactly( ...args|matchers )
             // 与 calledWith 系列类似，但不支持局部匹配
-            //    - 支持 matcher 实参
+            //    - 支持通配符（matcher 实参）
             //    - 使用 deep equal 判等
             //
 
@@ -675,8 +605,7 @@ describe( 'SpyCall'
               , function () {
 
                   const ERR = 'error'
-                      , func = ( pass ) => { if ( !pass ) { throw ERR } }
-                      , spy = sinon.spy( func )
+                      , spy = sinon.spy( ( pass ) => { if ( !pass ) { throw ERR } } )
 
                   try {
                     spy( true )

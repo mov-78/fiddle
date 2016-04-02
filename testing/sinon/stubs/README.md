@@ -7,6 +7,8 @@ $ npm test
 
 ---
 
+> Stub = Spy + 预设行为
+
 ![sinon-stub.png](https://raw.githubusercontent.com/pwnn/img/master/sinon-stub.png)
 
 ---

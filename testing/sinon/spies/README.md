@@ -30,9 +30,7 @@ $ npm test
 
 - `spy.called`
 - `spy.callCount`
-- `spy.calledOnce`
-- `spy.calledTwice`
-- `spy.calledThrice`
+- `spy.calledOnce|Twice|Thrice`
 
 #### 实参相关：
 
@@ -68,10 +66,7 @@ $ npm test
 #### SpyCall 相关：
 
 - `spy.getCall( n )`
-- `spy.firstCall`
-- `spy.secondCall`
-- `spy.thirdCall`
-- `spy.lastCall`
+- `spy.firstCall|secondCall|thirdCall|lastCall`
 
 #### 调用次序相关：
 

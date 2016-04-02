@@ -7,6 +7,8 @@ $ npm test
 
 ---
 
+> Mock = Stub + 预设断言
+
 ![sinon-mock.png](https://raw.githubusercontent.com/pwnn/img/master/sinon-mock.png)
 
 ---

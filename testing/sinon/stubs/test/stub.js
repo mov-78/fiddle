@@ -12,11 +12,11 @@ before( function () {
                       _chai.Assertion
                         .addProperty( 'spy'
                                     , function () {
-                                        const subject = this._obj
-                                            , ownKeys = Object.keys( subject )
+                                        const ownKeys = Object.keys( this._obj )
                                             , spyKeys = Object.keys( sinon.spy() )
-                                        subject.should.be.a( 'function' )
-                                        ownKeys.should.include.members( spyKeys )
+                                            , assert = new _chai.Assertion( ownKeys )
+                                        _util.transferFlags( this, assert, false )
+                                        assert.include.members( spyKeys )
                                       }
                                     )
                     }
@@ -36,6 +36,13 @@ before( function () {
 describe( 'Creating stubs'
         , function () {
 
+            let bareSpy
+            beforeEach( function () {
+                          bareSpy = sinon.spy()
+                        }
+                      )
+
+
             // [1] sinon.stub()
             it( 'with sinon.stub()'
               , function () {
@@ -47,8 +54,7 @@ describe( 'Creating stubs'
             it( 'with sinon.stub( obj, method )'
               , function () {
 
-                  let called = false
-                  const obj = { method() { called = true } }
+                  const obj = { method() { bareSpy() } }
                       , _method = obj.method
                       , stub = sinon.stub( obj, 'method' )
 
@@ -59,7 +65,7 @@ describe( 'Creating stubs'
                   obj.method.should.not.equal( _method )
 
                   obj.method()
-                  called.should.be.false
+                  bareSpy.called.should.be.false
 
                   // and can be restored
                   stub.should.have.property( 'restore' )
@@ -69,7 +75,7 @@ describe( 'Creating stubs'
                   obj.method.should.equal( _method )
 
                   obj.method()
-                  called.should.be.true
+                  bareSpy.called.should.be.true
 
                 }
               )
@@ -78,8 +84,7 @@ describe( 'Creating stubs'
             it( 'with sinon.stub( obj, method, func )'
               , function () {
 
-                  let called = false
-                  const obj = { method() { called = true } }
+                  const obj = { method() { bareSpy() } }
                       , _method = obj.method
                       , func = sinon.spy()
                       , stub = sinon.stub( obj, 'method', func )
@@ -91,9 +96,9 @@ describe( 'Creating stubs'
                   obj.method.should.not.equal( _method )
 
                   obj.method()
-                  called.should.be.false
                   stub.called.should.be.true
                   func.called.should.be.true
+                  bareSpy.called.should.be.false
 
                   // and can be restored
                   stub.should.have.property( 'restore' )
@@ -103,7 +108,7 @@ describe( 'Creating stubs'
                   obj.method.should.equal( _method )
 
                   obj.method()
-                  called.should.be.true
+                  bareSpy.called.should.be.true
 
                 }
               )
@@ -364,12 +369,10 @@ describe( 'Stub'
 
             //
             // stub.onCall( index )
-            // stub.onFirstCall()
-            // stub.onSecondCall()
-            // stub.onThirdCall()
+            // stub.onFirstCall|onSecondCall|onThirdCall()
             //
 
-            it( '#onCall( index ), #onFirstCall(), #onSecondCall(), #onThirdCall()'
+            it( '#onCall( index ), #onFirstCall|onSecondCall|onThirdCall()'
               , function () {
                   bareStub.onCall( 0 ).returns( 'tinted' )
                   bareStub().should.equal( 'tinted' )
