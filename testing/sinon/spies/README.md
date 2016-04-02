@@ -63,7 +63,7 @@ $ npm test
 
 #### 过滤器：
 
-- `spy.withArgs( ...args| matchers )`
+- `spy.withArgs( ...args|matchers )`
 
 #### SpyCall 相关：
 

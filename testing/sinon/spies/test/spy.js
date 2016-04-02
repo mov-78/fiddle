@@ -4,37 +4,42 @@ const chai = require( 'chai' )
     , sinon = require( 'sinon' )
     , expect = chai.expect
 
-chai.should()
+before( function () {
 
-chai
-  .use( function ( _chai, _util ) {
-          _chai.Assertion
-            .addProperty( 'spyCall'
-                        , function () {
+          chai.should()
 
-                            const subject = this._obj
+          chai
+            .use( function ( _chai, _util ) {
+                    _chai.Assertion
+                      .addProperty( 'spyCall'
+                                  , function () {
 
-                            subject.should.have.ownProperty( 'args' )
-                            subject.should.have.ownProperty( 'returnValue' )
-                            subject.should.have.ownProperty( 'thisValue' )
-                            subject.should.have.ownProperty( 'exception' )
+                                      const subject = this._obj
 
-                            subject.should.have.property( 'calledOn' )
-                            subject.should.have.property( 'calledWith' )
-                            subject.should.have.property( 'notCalledWith' )
-                            subject.should.have.property( 'calledWithExactly' )
-                            subject.should.have.property( 'calledWithMatch' )
-                            subject.should.have.property( 'notCalledWithMatch' )
-                            subject.should.have.property( 'threw' )
+                                      subject.should.have.ownProperty( 'args' )
+                                      subject.should.have.ownProperty( 'returnValue' )
+                                      subject.should.have.ownProperty( 'thisValue' )
+                                      subject.should.have.ownProperty( 'exception' )
 
-                          }
-                        )
+                                      subject.should.have.property( 'calledOn' )
+                                      subject.should.have.property( 'calledWith' )
+                                      subject.should.have.property( 'notCalledWith' )
+                                      subject.should.have.property( 'calledWithExactly' )
+                                      subject.should.have.property( 'calledWithMatch' )
+                                      subject.should.have.property( 'notCalledWithMatch' )
+                                      subject.should.have.property( 'threw' )
+
+                                    }
+                                  )
+                  }
+                )
+
         }
       )
 
 
 //
-// 创建 Spy
+// 创建 Spy：
 //    - sinon.spy( [func] )
 //    - sinon.spy( obj, method )
 //    - spy.restore()
