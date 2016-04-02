@@ -1,0 +1,6 @@
+{ "name" : "fiddle-sinon-mocks"
+, "scripts" : { "test" : "mocha" }
+, "dependencies" : { "mocha" : "~2.4.5"
+                   , "sinon" : "~1.17.3"
+                   }
+}
