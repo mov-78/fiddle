@@ -1,6 +1,7 @@
 'use strict'
 
 const chai = require( 'chai' )
+    , nop = require( '@pwn/nop' )
     , assert = chai.assert
     , AssertionError = chai.AssertionError
 
@@ -132,7 +133,7 @@ assert.isNotArray( { length : 1 } )         // [1] Array-like Object
 ;( () => assert.isNotArray( arguments ) )() // [2] Arguments
 
 assert.isFunction( () => null )
-assert.isFunction( function noop() {} )
+assert.isFunction( nop )
 
 
 //

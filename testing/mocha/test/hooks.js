@@ -1,4 +1,4 @@
-const noop = function noop() {}
+const nop = require( '@pwn/nop' )
 
 describe( 'Hooks'
         , function () {
@@ -17,12 +17,12 @@ describe( 'Hooks'
             // beforeEach( [description], [hook] )
             // 在每个「测试用例」调用之前调用
             // 若存在父级「测试套件」，则先调用父级「测试套件」里的 beforeEach 方法（递归调用）
-            beforeEach( noop )
+            beforeEach( nop )
 
             // afterEach( [description], [hook] )
             // 在每个「测试用例」调用之后调用
             // 若存在父级「测试套件」，则在调用该「测试套件」的 afterEach 方法后调用父级「测试套件」里的 afterEach 方法（递归调用）
-            afterEach( noop )
+            afterEach( nop )
 
           }
         )
@@ -33,7 +33,7 @@ describe( 'Hooks'
 // hidden 'root-suite'
 //
 
-before( noop )
-after( noop )
-beforeEach( noop )
-afterEach( noop )
+before( nop )
+after( nop )
+beforeEach( nop )
+afterEach( nop )

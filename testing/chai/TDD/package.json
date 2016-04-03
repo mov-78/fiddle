@@ -1,4 +1,6 @@
 { "name" : "fiddle-chai-TDD"
 , "scripts" : { "test" : "node index.js" }
-, "dependencies" : { "chai" : "~3.5.0" }
+, "dependencies" : { "@pwn/nop" : "~1.0.2"
+                   , "chai" : "~3.5.0"
+                   }
 }

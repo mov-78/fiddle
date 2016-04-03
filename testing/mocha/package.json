@@ -1,6 +1,6 @@
 { "name" : "fiddle-mocha"
 , "scripts" : { "test" : "mocha" }
-, "dependencies" : { "chai" : "~3.5.0"
+, "dependencies" : { "@pwn/nop" : "~1.0.2"
                    , "mocha" : "~2.4.5"
                    }
 }

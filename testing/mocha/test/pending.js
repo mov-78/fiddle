@@ -1,5 +1,4 @@
-const chai = require( 'chai' )
-    , expect = chai.expect
+const nop = require( '@pwn/nop' )
 
 describe( 'Pending test cases'
         , function () {
@@ -10,10 +9,6 @@ describe( 'Pending test cases'
 
 xdescribe( 'Pending a test suite'
          , function () {
-             it( 'with xdescribe( title, implementation )'
-               , function() {
-                   expect( [] ).to.not.be.empty
-                 }
-               )
+             it( 'with xdescribe( title, implementation )', nop )
            }
          )

@@ -2,6 +2,7 @@
 
 const expect = require( 'chai' ).expect
     , should = require( 'chai' ).should() // invoke
+    , nop = require( '@pwn/nop' )
 
 // not: 开启 negate flag（全局通用）
 // deep: 开启 deep flag
@@ -22,7 +23,7 @@ expect( '' ).to.be.a( 'string' )
 expect( true ).to.be.a( 'boolean' )
 expect( {} ).to.be.an( 'object' )
 expect( [] ).to.be.an( 'array' )
-expect( () => null ).to.be.a( 'function' )
+expect( nop ).to.be.a( 'function' )
 expect( Symbol() ).to.be.a( 'symbol' )
 expect( /^/ ).to.be.a( 'regexp' )
 expect( new Date ).to.be.a( 'date' )
@@ -34,7 +35,7 @@ expect( new Date ).to.be.a( 'date' )
 ;( true ).should.be.a( 'boolean' )
 ;( {} ).should.be.an( 'object' )
 ;( [] ).should.be.an( 'array' )
-;( () => null ).should.be.a( 'function' )
+;( nop ).should.be.a( 'function' )
 ;( Symbol() ).should.be.a( 'symbol' )
 ;( /^/ ).should.be.a( 'regexp' )
 ;( new Date ).should.be.a( 'date' )
@@ -378,7 +379,7 @@ expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
 {
 
   class Stub { instanceMethod() {} }
-  Stub.staticMethod = () => null
+  Stub.staticMethod = nop
 
   expect( new Stub ).to.respondTo( 'instanceMethod' )
   expect( Stub ).to.respondTo( 'instanceMethod' )
