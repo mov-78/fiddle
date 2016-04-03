@@ -4,18 +4,18 @@
 describe( 'Base assertion'
         , function () {
 
-            beforeEach( function () {
+            beforeAll( function () {
 
-                          // 加载自定义断言
-                          jasmine
-                            .addMatchers( require( '../helpers/customMatchers' ) )
+                         // 加载自定义断言
+                         jasmine
+                           .addMatchers( require( '../helpers/customMatchers' ) )
 
-                          // 加载自定义对称判等逻辑
-                          jasmine
-                            .addCustomEqualityTester( require( '../helpers/customSymmetricEqualityTester' ) )
+                         // 加载自定义对称判等逻辑
+                         jasmine
+                           .addCustomEqualityTester( require( '../helpers/customSymmetricEqualityTester' ) )
 
-                        }
-                      )
+                       }
+                     )
 
             // toBe( value )
             it( 'toBe( value )'
