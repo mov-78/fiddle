@@ -1,4 +1,4 @@
-该 fiddle 用于演示 [Array](https://lodash.com/docs#chunk) 相关辅助函数
+该 fiddle 用于演示 `lodash/array` 模块
 
 ```sh
 $ npm install
