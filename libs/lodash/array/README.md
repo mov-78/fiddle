@@ -4,9 +4,12 @@
 $ npm install
 $ npm test
 ```
+
+> 带有 ✪ 标记的为 in-place 操作
+
 ---
 
-- [first( array )](ttps://lodash.com/docs#head)
+- [first( array )](https://lodash.com/docs#head)
 - [last( array )](https://lodash.com/docs#last)
 - [initial( array )](https://lodash.com/docs#initial)
 - [tail( array )](https://lodash.com/docs#tail)
