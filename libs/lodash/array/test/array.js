@@ -150,9 +150,10 @@ describe( 'lodash/array'
             // pullAll( array , other )
             // pullAllBy( array , other , [iteratee=_.identity] )
             // pullAllWith( array , other , comparator )
+            // pullAt( array , indexes )
             //
 
-            it( 'pull , pullAll , pullAllBy , pullAllWith'
+            it( 'pull , pullAll , pullAllBy , pullAllWith , pullAt'
               , function () {
 
                   let array
@@ -178,6 +179,11 @@ describe( 'lodash/array'
                                , ( arrVal , othVal ) => arrVal === othVal
                                )
                   array.should.eql( [ 1 , 3 , 5 ] )
+
+                  array = [ 1 , 2 , 3 , 4 , 5 ]
+                  _.pullAt( array , 1 , 3 )
+                    .should.deep.equal( [ 2 , 4 ] )
+                  array.should.deep.equal( [ 1 , 3 , 5 ] )
 
                 }
               )

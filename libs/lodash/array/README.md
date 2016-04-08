@@ -42,6 +42,7 @@ $ npm test
 - [pullAll( array , other )](https://lodash.com/docs#pullAll) ✪
 - [pullAllBy( array , other , [iteratee=_.identity] )](https://lodash.com/docs#pullAllBy) ✪
 - [pullAllWith( array , other , comparator )](https://lodash.com/docs#pullAllWith) ✪
+- [pullAt( array , indexes )](https://lodash.com/docs#pullAt)
 
 ---
 
