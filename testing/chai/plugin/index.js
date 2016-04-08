@@ -11,7 +11,7 @@ expect( Object.prototype ).to.have.ownProperty( 'should' )
 
 // 调用 chai.use( factory ) 方法来引入插件相关接口
 chai
-  .use( function ( _chai, utils ) {
+  .use( function ( _chai , utils ) {
 
           //
           // _chai: chai exports
@@ -25,8 +25,8 @@ chai
           //
           // 添加断言属性（于 chai.Assertion.prototype 之上）
           //
-          //    - chai.Assertion.addProperty( name, getter )
-          //    - chai.util.addProperty( context, name, getter )
+          //    - chai.Assertion.addProperty( name , getter )
+          //    - chai.util.addProperty( context , name , getter )
           //
           // 基本等同于：
           //
@@ -49,7 +49,7 @@ chai
                             // 每个 chai.Assertion 实例各自维护一组 flags
                             // 该 flags 保存在 __flags 属性上，并且可以通过
                             //
-                            //    chai.util.flag( assertion, key, [value] )
+                            //    chai.util.flag( assertion , key , [value] )
                             //
                             // 方法来直接获取或设置 flags；断言方法可以依据不同的 flags 组合来调整其评判策略
                             // 其中 object flag 保存了断言主体的引用，并且可以通过 this._obj 来直接访问：
@@ -57,10 +57,10 @@ chai
                             //    Object.defineProperty( chai.Assertion.prototype
                             //                         , '_obj'
                             //                         , { get() {
-                            //                               return chai.util.flag( this, 'object' )
+                            //                               return chai.util.flag( this , 'object' )
                             //                             }
                             //                           , set( object ) {
-                            //                               chai.util.flag( this, 'object', object )
+                            //                               chai.util.flag( this , 'object' , object )
                             //                             }
                             //                           }
                             //                         )
@@ -71,7 +71,7 @@ chai
                               .that.is.an( 'object' )
 
                             expect( this._obj ).to.equal( this.__flags.object )
-                            expect( this._obj ).to.equal( utils.flag( this, 'object' ) )
+                            expect( this._obj ).to.equal( utils.flag( this , 'object' ) )
 
 
                             //
@@ -86,7 +86,7 @@ chai
                             //
                             // 如果在该断言中调用了其他断言，则可能需要将当前断言的 flags 传递给它：
                             //
-                            //    chai.util.transferFlags( sourceAssertion, targetAssertion, includeAll = true )
+                            //    chai.util.transferFlags( sourceAssertion , targetAssertion , includeAll = true )
                             //
                             // 基本等同于：
                             //
@@ -102,11 +102,11 @@ chai
                             //    }
                             //
 
-                            const negate = chai.util.flag( this, 'negate' )
+                            const negate = chai.util.flag( this , 'negate' )
                                 , assertion = new chai.Assertion
 
-                            utils.transferFlags( this, assertion, true )
-                            expect( utils.flag( assertion, 'negate' ) ).to.equal( negate )
+                            utils.transferFlags( this , assertion , true )
+                            expect( utils.flag( assertion , 'negate' ) ).to.equal( negate )
 
 
                             //
@@ -141,19 +141,19 @@ chai
           //
           // 添加断言方法（于 chai.Assertion.prototype 之上）
           //
-          //    - chai.Assertion.addMethod( name, method )
-          //    - chai.util.addMethod( context, name, method )
+          //    - chai.Assertion.addMethod( name , method )
+          //    - chai.util.addMethod( context , name , method )
           //
           // 基本等同于：
           //
           //    context[ name ] = function () {
-          //      let result = method.apply( this, arguments )
+          //      let result = method.apply( this , arguments )
           //      return result === undefined ? this : result
           //    }
           //
 
           chai.Assertion
-            .addMethod( 'method', function method(/* params */) {} )
+            .addMethod( 'method' , function method(/* params */) {} )
 
           expect( chai.Assertion.prototype )
             .to.have.ownProperty( 'method' )
@@ -162,8 +162,8 @@ chai
           //
           // 添加链式断言方法 - Chainable Method（于 chai.Assertion.prototype 之上）
           //
-          //    - chai.Assertion.addChainableMethod( name, method, chainingBehavior )
-          //    - chai.util.addChainableMethod( context, name, method, chainingBehavior )
+          //    - chai.Assertion.addChainableMethod( name , method , chainingBehavior )
+          //    - chai.util.addChainableMethod( context , name , method , chainingBehavior )
           //
           //    - method 仅在「方法调用」时调用
           //    - chainingBehavior 在「链式调用」及「方法调用」时均被调用
@@ -174,7 +174,7 @@ chai
           //    if ( typeof chainingBehavior !== 'function' ) {
           //      chainingBehavior = function noop() {}
           //    }
-          //    let chainableBehavior = { method, chainingBehavior }
+          //    let chainableBehavior = { method , chainingBehavior }
           //
           //    context.__methods = context.__methods || {}
           //    context.__methods[ name ] = chainableBehavior
@@ -185,14 +185,14 @@ chai
           //                           , get() {
           //                               chainableBehavior.chainingBehavior.call( this )
           //                               let assert = function () {
-          //                                 let result = chainableBehavior.method.apply( this, arguments )
+          //                                 let result = chainableBehavior.method.apply( this , arguments )
           //                                 return result === undefined ? this : result
           //                               }
-          //                               Reflect.setPrototypeOf( assert, this )
+          //                               Reflect.setPrototypeOf( assert , this )
           //                               assert.apply = Function.prototype.apply
           //                               assert.bind = Function.prototype.bind
           //                               assert.call = Function.prototype.call
-          //                               chai.util.transferFlags( this, assert )
+          //                               chai.util.transferFlags( this , assert )
           //                               return assert
           //                             }
           //                           }
@@ -212,13 +212,13 @@ chai
           //
           // 覆盖或扩展（继承）已有断言属性
           //
-          //    - chai.Assertion.overwriteProperty( name, getter )
-          //    - chai.util.overwriteProperty( context, name, getter )
+          //    - chai.Assertion.overwriteProperty( name , getter )
+          //    - chai.util.overwriteProperty( context , name , getter )
           //
           // 基本等同于：
           //
           //    let _super = function noop() {}
-          //    const descriptor = Object.getOwnPropertyDescriptor( context, name )
+          //    const descriptor = Object.getOwnPropertyDescriptor( context , name )
           //    if ( descriptor && typeof descriptor.get === 'function' ) {
           //      _super = descriptor.get
           //    }
@@ -246,8 +246,8 @@ chai
           //
           // 覆盖或扩展（继承）已有断言方法
           //
-          //    - chai.Assertion.overwriteMethod( name, method )
-          //    - chai.util.overwriteMethod( context, name, method )
+          //    - chai.Assertion.overwriteMethod( name , method )
+          //    - chai.util.overwriteMethod( context , name , method )
           //
           // 基本等同于：
           //
@@ -257,7 +257,7 @@ chai
           //      _super = _method
           //    }
           //    context[ name ] = function () {
-          //      let result = method( _super ).apply( this, arguments )
+          //      let result = method( _super ).apply( this , arguments )
           //      return result === undefined ? this : result
           //    }
           //
@@ -266,7 +266,7 @@ chai
             .overwriteMethod( 'method'
                             , function ( _super ) {
                                 return function () {
-                                  return _super.apply( this, arguments )
+                                  return _super.apply( this , arguments )
                                 }
                               }
                             )
@@ -275,8 +275,8 @@ chai
           //
           // 覆盖或扩展（继承）已有链式断言方法
           //
-          //    - chai.Assertion.overwriteChainableMethod( name, method, chainingBehavior )
-          //    - chai.util.overwriteChainableMethod( context, name, method, chainingBehavior )
+          //    - chai.Assertion.overwriteChainableMethod( name , method , chainingBehavior )
+          //    - chai.util.overwriteChainableMethod( context , name , method , chainingBehavior )
           //
           // 基本等同于：
           //
@@ -284,7 +284,7 @@ chai
           //
           //    const _method = chainableBehavior.method
           //    chainableBehavior.method = function () {
-          //      let result = method( _method ).apply( this, arguments )
+          //      let result = method( _method ).apply( this , arguments )
           //      return result === undefined ? this : result
           //    }
           //
@@ -299,7 +299,7 @@ chai
             .overwriteChainableMethod( 'chainableMethod'
                                      , function method( _super ) {
                                          return function () {
-                                           return _super.apply( this, arguments )
+                                           return _super.apply( this , arguments )
                                          }
                                        }
                                      , function chainingBehavior( _super ) {

@@ -8,14 +8,14 @@ before( function () {
           chai.should()
 
           // custom assertion that checks whether an object is a spy using duck-typing
-          chai.use( function ( _chai, _util ) {
+          chai.use( function ( _chai , _util ) {
                       _chai.Assertion
                         .addProperty( 'spy'
                                     , function () {
                                         const ownKeys = Object.keys( this._obj )
                                             , spyKeys = Object.keys( sinon.spy() )
                                             , assert = new _chai.Assertion( ownKeys )
-                                        _util.transferFlags( this, assert, false )
+                                        _util.transferFlags( this , assert , false )
                                         assert.include.members( spyKeys )
                                       }
                                     )
@@ -29,7 +29,7 @@ before( function () {
 //
 // 创建 Stub：
 //    - sinon.stub()
-//    - sinon.stub( obj, method, [func] )
+//    - sinon.stub( obj , method , [func] )
 //    - stub.restore()
 //
 
@@ -50,13 +50,13 @@ describe( 'Creating stubs'
                 }
               )
 
-            // [2] sinon.stub( obj, method )
-            it( 'with sinon.stub( obj, method )'
+            // [2] sinon.stub( obj , method )
+            it( 'with sinon.stub( obj , method )'
               , function () {
 
                   const obj = { method() { bareSpy() } }
                       , _method = obj.method
-                      , stub = sinon.stub( obj, 'method' )
+                      , stub = sinon.stub( obj , 'method' )
 
                   stub.should.be.a.spy
 
@@ -80,14 +80,14 @@ describe( 'Creating stubs'
                 }
               )
 
-            // [3] sinon.stub( obj, method, func )
-            it( 'with sinon.stub( obj, method, func )'
+            // [3] sinon.stub( obj , method , func )
+            it( 'with sinon.stub( obj , method , func )'
               , function () {
 
                   const obj = { method() { bareSpy() } }
                       , _method = obj.method
                       , func = sinon.spy()
-                      , stub = sinon.stub( obj, 'method', func )
+                      , stub = sinon.stub( obj , 'method' , func )
 
                   stub.should.be.a.spy
 
@@ -137,9 +137,9 @@ describe( 'Stub'
 
             //
             // stub.callsArg( index )
-            // stub.callsArgOn( index, ctxt )
-            // stub.callsArgWith( index, ...args )
-            // stub.callsArgOnWith( index, ctxt, ...args )
+            // stub.callsArgOn( index , ctxt )
+            // stub.callsArgWith( index , ...args )
+            // stub.callsArgOnWith( index , ctxt , ...args )
             //
 
             it( '#callsArg( index )'
@@ -152,10 +152,10 @@ describe( 'Stub'
 
                 }
               )
-            it( '#callsArgOn( index, ctxt )'
+            it( '#callsArgOn( index , ctxt )'
               , function () {
 
-                  bareStub.callsArgOn( 0, ctxt )
+                  bareStub.callsArgOn( 0 , ctxt )
 
                   bareStub( bareSpy )
 
@@ -164,10 +164,10 @@ describe( 'Stub'
 
                 }
               )
-            it( '#callsArgWith( index, ...args )'
+            it( '#callsArgWith( index , ...args )'
               , function () {
 
-                  bareStub.callsArgWith( 0, 'foobar' )
+                  bareStub.callsArgWith( 0 , 'foobar' )
 
                   bareStub( bareSpy )
 
@@ -176,10 +176,10 @@ describe( 'Stub'
 
                 }
               )
-            it( '#callsArgOnWith( index, ctxt, ...args )'
+            it( '#callsArgOnWith( index , ctxt , ...args )'
               , function () {
 
-                  bareStub.callsArgOnWith( 0, ctxt, 'foobar' )
+                  bareStub.callsArgOnWith( 0 , ctxt , 'foobar' )
 
                   bareStub( bareSpy )
 
@@ -193,28 +193,28 @@ describe( 'Stub'
 
             //
             // stub.yields( ...args )
-            // stub.yieldsOn( ctxt, ...args )
-            // stub.yieldsTo( key, ...args )
-            // stub.yieldsToOn( key, ctxt, ...args )
+            // stub.yieldsOn( ctxt , ...args )
+            // stub.yieldsTo( key , ...args )
+            // stub.yieldsToOn( key , ctxt , ...args )
             //
             //
 
             it( '#yields( ...args )'
               , function () {
 
-                  bareStub.yields( 'foo', 'bar' )
+                  bareStub.yields( 'foo' , 'bar' )
 
-                  bareStub( 0, bareSpy, bareSpy )
+                  bareStub( 0 , bareSpy , bareSpy )
 
                   // invokes (only) the first matching function as callback
                   bareSpy.called.should.be.true
                   bareSpy.calledOnce.should.be.true
 
-                  bareSpy.calledWith( 'foo', 'bar' ).should.be.true
+                  bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
 
                 }
               )
-            it( '#yieldsOn( ctxt, ...args )'
+            it( '#yieldsOn( ctxt , ...args )'
               , function () {
 
                   bareStub.yieldsOn( ctxt )
@@ -226,7 +226,7 @@ describe( 'Stub'
 
                 }
               )
-            it( '#yieldsTo( key, ...args )'
+            it( '#yieldsTo( key , ...args )'
               , function () {
 
                   const obj = { method : bareSpy }
@@ -238,12 +238,12 @@ describe( 'Stub'
 
                 }
               )
-            it( '#yieldsToOn( key, ctxt, ...args )'
+            it( '#yieldsToOn( key , ctxt , ...args )'
               , function () {
 
                   const obj = { method : bareSpy }
 
-                  bareStub.yieldsToOn( 'method', ctxt )
+                  bareStub.yieldsToOn( 'method' , ctxt )
 
                   bareStub( obj )
 
@@ -256,7 +256,7 @@ describe( 'Stub'
 
             //
             // stub.callArg( index )
-            // stub.callArgWith( index, ...args )
+            // stub.callArgWith( index , ...args )
             //
 
             it( '#callArg( index )'
@@ -270,16 +270,16 @@ describe( 'Stub'
 
                 }
               )
-            it( '#callArgWith( index, ...args )'
+            it( '#callArgWith( index , ...args )'
               , function () {
 
                   bareStub( bareSpy )
                   bareSpy.called.should.be.false
 
-                  bareStub.callArgWith( 0, 'foo', 'bar' )
+                  bareStub.callArgWith( 0 , 'foo' , 'bar' )
 
                   bareSpy.called.should.be.true
-                  bareSpy.calledWith( 'foo', 'bar' ).should.be.true
+                  bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
 
                 }
               )
@@ -287,7 +287,7 @@ describe( 'Stub'
 
             //
             // stub.yield( ...args )
-            // stub.yieldTo( key, ...args )
+            // stub.yieldTo( key , ...args )
             //
 
             it( 'yield( ...args )'
@@ -296,7 +296,7 @@ describe( 'Stub'
                   const spy1 = sinon.spy()
                       , spy2 = sinon.spy()
 
-                  bareStub( spy1, spy2 )
+                  bareStub( spy1 , spy2 )
 
                   spy1.called.should.be.false
                   spy2.called.should.be.false
@@ -313,7 +313,7 @@ describe( 'Stub'
 
                 }
               )
-            it( 'yieldTo( key, ...args )'
+            it( 'yieldTo( key , ...args )'
               , function () {
 
                   const obj = { method : bareSpy }
@@ -344,7 +344,7 @@ describe( 'Stub'
             it( '#returnsArg( index )'
               , function () {
                   bareStub.returnsArg( 1 )
-                  bareStub( 1, 2, 3 ).should.equal( 2 )
+                  bareStub( 1 , 2 , 3 ).should.equal( 2 )
                 }
               )
             it( '#returnsThis()'
@@ -372,7 +372,7 @@ describe( 'Stub'
             // stub.onFirstCall|onSecondCall|onThirdCall()
             //
 
-            it( '#onCall( index ), #onFirstCall|onSecondCall|onThirdCall()'
+            it( '#onCall( index ) , #onFirstCall|onSecondCall|onThirdCall()'
               , function () {
                   bareStub.onCall( 0 ).returns( 'tinted' )
                   bareStub().should.equal( 'tinted' )

@@ -3,7 +3,7 @@ describe( 'Testing async code'
 
             it( 'by utilizing the done callback'
               , function ( done ) {
-                  setTimeout( done, 0 )
+                  setTimeout( done , 0 )
                 }
               )
 

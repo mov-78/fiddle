@@ -1,5 +1,5 @@
 // 自定义对称判等逻辑
-module.exports = function customEqualityTester( actual, expected ) {
+module.exports = function customEqualityTester( actual , expected ) {
 
                    if ( ( typeof actual === 'object' && actual !== null ) &&
                         ( typeof expected === 'object' && expected !== null ) &&

@@ -1,12 +1,12 @@
 'use strict'
 
 module.exports =
-  { toBeEmpty( util, customSymmetricEqualityTesters ) {
+  { toBeEmpty( util , customSymmetricEqualityTesters ) {
 
       // http://bit.ly/1ZFlxLT
-      //  - util.equals( actual, expected, [customSymmetricEqualityTesters] )
-      //  - util.contains( haystack, needle, [customSymmetricEqualityTesters] )
-      //  - util.buildFailureMessage( matcherName, isNot, actual, expected )
+      //  - util.equals( actual , expected , [customSymmetricEqualityTesters] )
+      //  - util.contains( haystack , needle , [customSymmetricEqualityTesters] )
+      //  - util.buildFailureMessage( matcherName , isNot , actual , expected )
       //      `Expected ${actual} ${matcherName} ${expected}.`
       //      `Expected ${actual} not ${matcherName} ${expected}.`
 
@@ -15,7 +15,7 @@ module.exports =
 
           // compare: 在「正断言」及「负断言」形式中均调用
           // negativeCompare: 仅在「负断言」形式中调用；可选，覆盖 compare
-          compare( actual, expected ) {
+          compare( actual , expected ) {
 
             const type = typeof actual
 
@@ -38,7 +38,7 @@ module.exports =
               message = `Expected ${actual} to be empty`
             }
 
-            return { pass, message }
+            return { pass , message }
 
           }
 

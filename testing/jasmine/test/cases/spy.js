@@ -11,7 +11,7 @@ describe( 'A spy'
               , bar = null
               , setBarCalled
 
-            const args = [ 1, 2, 3 ]
+            const args = [ 1 , 2 , 3 ]
 
             beforeEach( function () {
 
@@ -22,8 +22,8 @@ describe( 'A spy'
                             }
                           }
 
-                          // spyOn( obj, methodName )
-                          spyOn( foo, 'setBar' )
+                          // spyOn( obj , methodName )
+                          spyOn( foo , 'setBar' )
 
                           args.forEach( function ( arg ) {
                                           foo.setBar( arg )
@@ -87,7 +87,7 @@ describe( 'A spy, when configured to call through'
                           }
 
                           // and.callThrough()
-                          spyOn( foo, 'setBar' ).and.callThrough()
+                          spyOn( foo , 'setBar' ).and.callThrough()
 
                           foo.setBar( 'baz' )
                           fetchedBar = foo.getBar()
@@ -138,7 +138,7 @@ describe( 'A spy,'
                                         }
                                       }
 
-                                      spyOn( foo, 'getBar' ).and.returnValue( 'qux' )
+                                      spyOn( foo , 'getBar' ).and.returnValue( 'qux' )
 
                                       foo.setBar( 'baz' )
                                       fetchedBar = foo.getBar()
@@ -181,7 +181,7 @@ describe( 'A spy,'
                                         }
                                       }
 
-                                      spyOn( foo, 'getBar' ).and.returnValues( 1, 2 )
+                                      spyOn( foo , 'getBar' ).and.returnValues( 1 , 2 )
 
                                       foo.setBar( 'baz' )
 
@@ -240,7 +240,7 @@ describe( 'A spy, when configured with an alternate implementation'
                             }
                           }
 
-                          spyOn( foo, 'getBar' ).and.callFake( () => 'tinted' )
+                          spyOn( foo , 'getBar' ).and.callFake( () => 'tinted' )
 
                           foo.setBar( 'baz' )
                           fetchedBar = foo.getBar()
@@ -274,7 +274,7 @@ describe( 'A spy, when configured to throw an error'
 
             beforeEach( function () {
                           this.fn = () => { this.fnCalled = true }
-                          spyOn( this, 'fn' ).and.throwError( 'error' )
+                          spyOn( this , 'fn' ).and.throwError( 'error' )
                         }
                       )
 
@@ -319,7 +319,7 @@ describe( 'A spy'
                             }
                           }
 
-                          spyOn( foo, 'setBar' ).and.callThrough()
+                          spyOn( foo , 'setBar' ).and.callThrough()
 
                         }
                       )
@@ -363,7 +363,7 @@ describe( 'A spy'
                             }
                           }
 
-                          spyOn( foo, 'setBar' )
+                          spyOn( foo , 'setBar' )
 
                         }
                       )
@@ -398,10 +398,10 @@ describe( 'A spy'
               , function () {
 
                   foo.setBar( 'foo' )
-                  foo.setBar( 'bar', 'baz' )
+                  foo.setBar( 'bar' , 'baz' )
 
                   expect( foo.setBar.calls.argsFor( 0 ) ).toEqual( [ 'foo' ] )
-                  expect( foo.setBar.calls.argsFor( 1 ) ).toEqual( [ 'bar', 'baz' ] )
+                  expect( foo.setBar.calls.argsFor( 1 ) ).toEqual( [ 'bar' , 'baz' ] )
 
                 }
               )
@@ -411,11 +411,11 @@ describe( 'A spy'
               , function () {
 
                   foo.setBar( 'foo' )
-                  foo.setBar( 'bar', 'baz' )
+                  foo.setBar( 'bar' , 'baz' )
 
                   expect( foo.setBar.calls.allArgs() )
                     .toEqual( [ [ 'foo' ]
-                              , [ 'bar', 'baz' ]
+                              , [ 'bar' , 'baz' ]
                               ]
                             )
 
@@ -431,7 +431,7 @@ describe( 'A spy'
                   const ctxt = {}
 
                   foo.setBar( 'foo' )
-                  foo.setBar.call( ctxt, 'bar', 'baz' )
+                  foo.setBar.call( ctxt , 'bar' , 'baz' )
 
                   expect( foo.setBar.calls.all() )
                     .toEqual( [ { object : foo
@@ -439,7 +439,7 @@ describe( 'A spy'
                                 , returnValue : undefined
                                 }
                               , { object : ctxt
-                                , args : [ 'bar', 'baz' ]
+                                , args : [ 'bar' , 'baz' ]
                                 , returnValue : undefined
                                 }
                               ]
@@ -503,7 +503,7 @@ describe( 'A spy, when created manually'
 
 
 //
-// jasmine.createSpyObj( [identity], methodNames )
+// jasmine.createSpyObj( [identity] , methodNames )
 //
 
 describe( 'Multiple spies, when created manually'

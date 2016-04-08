@@ -14,7 +14,7 @@ $ npm test
 ## 创建 Spy：
 
 - `sinon.spy( [func] )`
-- `sinon.spy( obj, method )`
+- `sinon.spy( obj , method )`
 - `spy.restore()`
 
 ## Spy 相关属性、接口：

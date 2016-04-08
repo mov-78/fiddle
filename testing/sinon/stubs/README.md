@@ -16,7 +16,7 @@ $ npm test
 ## 创建 Stub：
 
 - `sinon.stub()`
-- `sinon.stub( obj, method, [func] )`
+- `sinon.stub( obj , method , [func] )`
 
 ## 核心接口：
 
@@ -27,20 +27,20 @@ $ npm test
 ##### 预配置：
 
 - `stub.callsArg( index )`
-- `stub.callsArgOn( index, ctxt )`
-- `stub.callsArgWith( index, ...args )`
-- `stub.callsArgOnWith( index, ctxt, ...args )`
+- `stub.callsArgOn( index , ctxt )`
+- `stub.callsArgWith( index , ...args )`
+- `stub.callsArgOnWith( index , ctxt , ...args )`
 - `stub.yields( ...args )`
-- `stub.yieldsOn( ctxt, ...args )`
-- `stub.yieldsTo( key, ...args )`
-- `stub.yieldsToOn( key, ctxt, ...args )`
+- `stub.yieldsOn( ctxt , ...args )`
+- `stub.yieldsTo( key , ...args )`
+- `stub.yieldsToOn( key , ctxt , ...args )`
 
 ##### 手动调用：
 
 - `stub.callArg( index )`
-- `stub.callArgWith( index, ...args )`
+- `stub.callArgWith( index , ...args )`
 - `stub.yield( ...args )`
-- `stub.yieldTo( key, ...args )`
+- `stub.yieldTo( key , ...args )`
 
 #### 返回值相关：
 

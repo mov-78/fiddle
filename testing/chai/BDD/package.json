@@ -1,6 +1,6 @@
 { "name" : "fiddle-chai-BDD"
 , "scripts" : { "test" : "node index.js" }
-, "dependencies" : { "@pwn/nop" : "~1.0.2"
-                   , "chai" : "~3.5.0"
+, "dependencies" : { "chai" : "~3.5.0"
+                   , "lodash.noop" : "~3.0.1"
                    }
 }

@@ -75,14 +75,14 @@ describe( 'Expectation'
             it( '#withArgs( ...args )'
               , function () {
                   mock.expects( 'nop' ).withArgs( 'foo' )
-                  obj.nop( 'foo', 'bar' )
+                  obj.nop( 'foo' , 'bar' )
                   mock.verify()
                 }
               )
             it( '#withExactArgs( ...args )'
               , function () {
-                  mock.expects( 'nop' ).withExactArgs( 'foo', 'bar' )
-                  obj.nop( 'foo', 'bar' )
+                  mock.expects( 'nop' ).withExactArgs( 'foo' , 'bar' )
+                  obj.nop( 'foo' , 'bar' )
                   mock.verify()
                 }
               )

@@ -1,2 +1,3 @@
---recursive
 --inline-diffs
+--recursive
+--use_strict

@@ -11,7 +11,7 @@ describe( 'Setup'
 
             it( 'suite-level timeout with this.timeout( millisecond )'
               , function ( done ) {
-                  setTimeout( done, 10 )
+                  setTimeout( done , 10 )
                 }
               )
 
@@ -26,7 +26,7 @@ describe( 'Setup'
                   // 当用时超过该间隔时，该「测试用例」将被视为不通过
                   this.timeout( 40 )
 
-                  setTimeout( done, 30 )
+                  setTimeout( done , 30 )
 
                 }
               )

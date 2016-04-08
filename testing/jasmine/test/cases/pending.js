@@ -3,8 +3,8 @@
 describe( 'Pending test case'
         , function () {
 
-            // [1] 使用 xit( title, [implementation] ) 来挂起「测试用例」
-            xit( 'can be specified using xit( title, [implementation] )' )
+            // [1] 使用 xit( title , [implementation] ) 来挂起「测试用例」
+            xit( 'can be specified using xit( title , [implementation] )' )
 
             // [2] 使用 pending( [reason] ) 来挂起「测试用例」
             it( 'can be specified using pending( [reason] )'
@@ -20,4 +20,4 @@ describe( 'Pending test case'
         )
 // 临时挂起「测试套件」
 // 挂起后，「测试套件」内所有「测试用例」均自动挂起
-xdescribe( 'Pending test suite', () => null )
+xdescribe( 'Pending test suite' , () => null )

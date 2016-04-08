@@ -15,7 +15,7 @@ describe( 'Manually ticking the Jasmine Clock'
             it( 'causes a timeout to be called synchronously'
               , function () {
 
-                  setTimeout( this.callback, 10000 )
+                  setTimeout( this.callback , 10000 )
 
                   expect( this.callback ).not.toHaveBeenCalled()
 
@@ -28,7 +28,7 @@ describe( 'Manually ticking the Jasmine Clock'
             it( 'causes an interval to be called synchronously'
               , function () {
 
-                  setInterval( this.callback, 100 )
+                  setInterval( this.callback , 100 )
 
                   jasmine.clock().tick( 99 )
                   expect( this.callback ).not.toHaveBeenCalled()
@@ -62,7 +62,7 @@ describe( 'Mocking a Date object'
             it( 'mocks the current date'
               , function () {
 
-                  const baseTime = new Date( 2015, 3, 18 )
+                  const baseTime = new Date( 2015 , 3 , 18 )
 
                   // jasmine.clock().mockDate( [date] )
                   jasmine.clock().mockDate( baseTime )

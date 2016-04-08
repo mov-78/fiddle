@@ -2,7 +2,7 @@
 
 const expect = require( 'chai' ).expect
     , should = require( 'chai' ).should() // invoke
-    , nop = require( '@pwn/nop' )
+    , noop = require( 'lodash.noop' )
 
 // not: 开启 negate flag（全局通用）
 // deep: 开启 deep flag
@@ -10,8 +10,8 @@ const expect = require( 'chai' ).expect
 // all: 开启 all flag；关闭 any flag
 
 //
-// a( type, [message] )
-// alias: an( type, [message] )
+// a( type , [message] )
+// alias: an( type , [message] )
 // 判断依据：Object.prototype.toString
 // 类型：chainableMethod（chainingBehavior 为 noop）
 //
@@ -23,7 +23,7 @@ expect( '' ).to.be.a( 'string' )
 expect( true ).to.be.a( 'boolean' )
 expect( {} ).to.be.an( 'object' )
 expect( [] ).to.be.an( 'array' )
-expect( nop ).to.be.a( 'function' )
+expect( noop ).to.be.a( 'function' )
 expect( Symbol() ).to.be.a( 'symbol' )
 expect( /^/ ).to.be.a( 'regexp' )
 expect( new Date ).to.be.a( 'date' )
@@ -35,25 +35,25 @@ expect( new Date ).to.be.a( 'date' )
 ;( true ).should.be.a( 'boolean' )
 ;( {} ).should.be.an( 'object' )
 ;( [] ).should.be.an( 'array' )
-;( nop ).should.be.a( 'function' )
+;( noop ).should.be.a( 'function' )
 ;( Symbol() ).should.be.a( 'symbol' )
 ;( /^/ ).should.be.a( 'regexp' )
 ;( new Date ).should.be.a( 'date' )
 
 
 //
-// include( value, [message] )
-// alias: contain( value, [message] )
+// include( value , [message] )
+// alias: contain( value , [message] )
 // 类型：chainableMethod（chainingBehavior 设置 contains flag）
 //
 
 expect( 'string' ).to.include( 'str' )                              // [1] String
-expect( [ { foo : 'bar' }, 'baz' ] ).to.include( { foo : 'bar' } )  // [2] Array
-expect( [ [ 1 ], 2, 3 ] ).to.not.include( 1 )                       // top-level only
+expect( [ { foo : 'bar' } , 'baz' ] ).to.include( { foo : 'bar' } ) // [2] Array
+expect( [ [ 1 ] , 2 , 3 ] ).to.not.include( 1 )                     // top-level only
 
-'string'.should.include( 'str' )                              // [1] String
-;[ { foo : 'bar' }, 'baz' ].should.include( { foo : 'bar' } ) // [2] Array
-;[ [ 1 ], 2, 3 ].should.not.include( 1 )                      // top-level only
+'string'.should.include( 'str' )                                // [1] String
+;[ { foo : 'bar' } , 'baz' ].should.include( { foo : 'bar' } )  // [2] Array
+;[ [ 1 ] , 2 , 3 ].should.not.include( 1 )                      // top-level only
 
 
 //
@@ -127,7 +127,7 @@ Object.create( { foo : 'bar' } ).should.be.empty
 
 {
 
-  const argumentsLikeObject = { caller() {}, callee() {}, length : 1 }
+  const argumentsLikeObject = { caller() {} , callee() {} , length : 1 }
 
   expect( arguments ).to.be.arguments
   expect( argumentsLikeObject ).to.not.be.arguments
@@ -139,33 +139,33 @@ Object.create( { foo : 'bar' } ).should.be.empty
 
 
 //
-// equal( value, [message] )
+// equal( value , [message] )
 // 类型：method
 // 相关 flag：deep
 //
-// eql( value, [message] )
+// eql( value , [message] )
 // 类型：method
 //
 
 expect( 1 ).to.equal( 1 )
 expect( 1 ).to.not.equal( '1' ) // strict-equal
-expect( [ 1, 2 ] ).to.not.equal( [ 1, 2 ] )
-expect( [ 1, 2 ] ).to.eql( [ 1, 2 ] )
-expect( [ 1, 2 ] ).to.deep.equal( [ 1, 2 ] ) // deep-flag
+expect( [ 1 , 2 ] ).to.not.equal( [ 1 , 2 ] )
+expect( [ 1 , 2 ] ).to.eql( [ 1 , 2 ] )
+expect( [ 1 , 2 ] ).to.deep.equal( [ 1 , 2 ] ) // deep-flag
 
 ;( 1 ).should.equal( 1 )
 ;( 1 ).should.not.equal( '1' ) // strict-equal
-;[ 1, 2 ].should.not.equal( [ 1, 2 ] )
-;[ 1, 2 ].should.eql( [ 1, 2 ] )
-;[ 1, 2 ].should.deep.equal( [ 1, 2 ] ) // deep-flag
+;[ 1 , 2 ].should.not.equal( [ 1 , 2 ] )
+;[ 1 , 2 ].should.eql( [ 1 , 2 ] )
+;[ 1 , 2 ].should.deep.equal( [ 1 , 2 ] ) // deep-flag
 
 
 //
-// gt|greaterThan|above( value, [message] )
-// lt|lessThan|below( value, [message] )
-// gte|least( value, [message] )
-// lte|most( value, [message] )
-// within( min, max, [message] )
+// gt|greaterThan|above( value , [message] )
+// lt|lessThan|below( value , [message] )
+// gte|least( value , [message] )
+// lte|most( value , [message] )
+// within( min , max , [message] )
 // 相关 flag：doLength
 // 类型：method
 //
@@ -174,28 +174,28 @@ expect( 2 ).to.be.above( 1 )
 expect( 1 ).to.be.below( 2 )
 expect( 2 ).to.be.at.least( 1 )
 expect( 1 ).to.be.at.most( 2 )
-expect( 7 ).to.be.within( 1, 10 )
+expect( 7 ).to.be.within( 1 , 10 )
 expect( 'string' ).to.have.length.above( 1 )        // String & Array
 expect( 'string' ).to.have.length.below( 7 )        // String & Array
 expect( 'string' ).to.have.length.of.at.least( 1 )  // String & Array
 expect( 'string' ).to.have.length.of.at.most( 7 )   // String & Array
-expect( 'string' ).to.have.length.within( 1, 10 )   // String & Array
+expect( 'string' ).to.have.length.within( 1 , 10 )  // String & Array
 
 ;( 2 ).should.be.above( 1 )
 ;( 1 ).should.be.below( 2 )
 ;( 2 ).should.be.at.least( 1 )
 ;( 1 ).should.be.at.most( 2 )
-;( 7 ).should.be.within( 1, 10 )
-;[ 1, 2 ].should.have.length.above( 1 )         // String & Array
-;[ 1, 2 ].should.have.length.below( 5 )         // String & Array
-;[ 1, 2 ].should.have.length.of.at.least( 1 )   // String & Array
-;[ 1, 2 ].should.have.length.of.at.most( 5 )    // String & Array
-;[ 1, 2 ].should.have.length.within( 1, 10 )    // String & Array
+;( 7 ).should.be.within( 1 , 10 )
+;[ 1 , 2 ].should.have.length.above( 1 )          // String & Array
+;[ 1 , 2 ].should.have.length.below( 5 )          // String & Array
+;[ 1 , 2 ].should.have.length.of.at.least( 1 )    // String & Array
+;[ 1 , 2 ].should.have.length.of.at.most( 5 )     // String & Array
+;[ 1 , 2 ].should.have.length.within( 1 , 10 )    // String & Array
 
 
 //
-// instanceof( constructor, [message] )
-// alias: instanceOf( constructor, [message] )
+// instanceof( constructor , [message] )
+// alias: instanceOf( constructor , [message] )
 // 类型：method
 //
 
@@ -208,7 +208,7 @@ expect( 'string' ).to.have.length.within( 1, 10 )   // String & Array
   expect( obj ).to.be.instanceOf( Stub )
   obj.should.be.instanceOf( Stub )
 
-  Object.setPrototypeOf( obj, proto )
+  Object.setPrototypeOf( obj , proto )
   expect( obj ).to.not.be.instanceOf( Stub )
   obj.should.not.be.instanceOf( Stub )
 
@@ -216,38 +216,38 @@ expect( 'string' ).to.have.length.within( 1, 10 )   // String & Array
 
 
 //
-// property( key, [value], [message] )
+// property( key , [value] , [message] )
 // 相关 flag：deep
 // 类型：method
 //
-// ownProperty( key, [message] )
-// ownPropertyDescriptor( key, [descriptor], [message] )
+// ownProperty( key , [message] )
+// ownPropertyDescriptor( key , [descriptor] , [message] )
 // 类型：method
 //
 
-// property( key, [value], [message] )
+// property( key , [value] , [message] )
 expect( Object.create( { foo : 'bar' } ) ).to.have.property( 'foo' )
 expect( { foo : 'bar' } ).to.have.property( 'foo' )
-expect( { foo : 'bar' } ).to.have.property( 'foo', 'bar' )
+expect( { foo : 'bar' } ).to.have.property( 'foo' , 'bar' )
 expect( { foo : { bar : 'baz' } } ).to.have.deep.property( 'foo.bar' )
-expect( { foo : { bar : 'baz' } } ).to.have.deep.property( 'foo.bar', 'baz' )
+expect( { foo : { bar : 'baz' } } ).to.have.deep.property( 'foo.bar' , 'baz' )
 ;( Object.create( { foo : 'bar' } ) ).should.have.property( 'foo' )
 ;( { foo : 'bar' } ).should.have.property( 'foo' )
-;( { foo : 'bar' } ).should.have.property( 'foo', 'bar' )
+;( { foo : 'bar' } ).should.have.property( 'foo' , 'bar' )
 ;( { foo : { bar : 'baz' } } ).should.have.deep.property( 'foo.bar' )
-;( { foo : { bar : 'baz' } } ).should.have.deep.property( 'foo.bar', 'baz' )
+;( { foo : { bar : 'baz' } } ).should.have.deep.property( 'foo.bar' , 'baz' )
 
 // property() 调用后更改当前断言主体为指定属性的值
 expect( { foo : 'bar' } ).to.have.property( 'foo' ).that.is.a( 'string' )
 ;( { foo : 'bar' } ).should.have.property( 'foo' ).that.is.a( 'string' )
 
-// ownProperty( key, [message] )
+// ownProperty( key , [message] )
 expect( Object.create( { foo : 'bar' } ) ).to.not.have.ownProperty( 'foo' )
 expect( { foo : 'bar' } ).to.have.ownProperty( 'foo' )
 ;( Object.create( { foo : 'bar' } ) ).should.not.have.ownProperty( 'foo' )
 ;( { foo : 'bar' } ).should.have.ownProperty( 'foo' )
 
-// ownPropertyDescriptor( key, [descriptor], [message] )
+// ownPropertyDescriptor( key , [descriptor] , [message] )
 expect( 'string' ).to.have.ownPropertyDescriptor( 'length' )
 expect( 'string' ).to.have
   .ownPropertyDescriptor( 'length'
@@ -275,7 +275,7 @@ expect( 'string' ).to.have.ownPropertyDescriptor( 'length' ).that.is.an( 'object
 // length
 // 类型：chainableMethod（chainingBehavior 设置 doLength flag）
 //
-// lengthOf( value, [message] )
+// lengthOf( value , [message] )
 // 类型：method
 //
 
@@ -295,8 +295,8 @@ expect( { length : 1 } ).to.have.lengthOf( 1 )  // [3] Array-Like Object
 
 
 //
-// match|matches( regex, [message] )
-// string( substring, [message] )
+// match|matches( regex , [message] )
+// string( substring , [message] )
 // 类型：method
 //
 
@@ -308,24 +308,24 @@ expect( 'foobar' ).to.have.string( 'foo' )
 
 
 //
-// key|keys( [key], [key]... )
+// key|keys( [key] , [key]... )
 // 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
 // 类型：method
 //
 
 // [1] any（此时 contain 及 have 等价）
-expect( { foo : 1, bar : 2 } ).to.have.any.keys( 'foo', 'baz' )
-expect( { foo : 1, bar : 2 } ).to.contain.any.keys( 'foo', 'baz' )
-;( { foo : 1, bar : 2 } ).should.have.any.keys( 'foo', 'baz' )
-;( { foo : 1, bar : 2 } ).should.contain.any.keys( 'foo', 'baz' )
+expect( { foo : 1 , bar : 2 } ).to.have.any.keys( 'foo' , 'baz' )
+expect( { foo : 1 , bar : 2 } ).to.contain.any.keys( 'foo' , 'baz' )
+;( { foo : 1 , bar : 2 } ).should.have.any.keys( 'foo' , 'baz' )
+;( { foo : 1 , bar : 2 } ).should.contain.any.keys( 'foo' , 'baz' )
 
 // [2] contain+all
-expect( { foo : 1, bar : 2 } ).to.contain.all.keys( 'foo' )
-;( { foo : 1, bar : 2 } ).should.contain.all.keys( 'foo' )
+expect( { foo : 1 , bar : 2 } ).to.contain.all.keys( 'foo' )
+;( { foo : 1 , bar : 2 } ).should.contain.all.keys( 'foo' )
 
 // [3] have+all
-expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
-;( { foo : 1, bar : 2 } ).should.have.all.keys( 'foo', 'bar' )
+expect( { foo : 1 , bar : 2 } ).to.have.all.keys( 'foo' , 'bar' )
+;( { foo : 1 , bar : 2 } ).should.have.all.keys( 'foo' , 'bar' )
 
 
 //
@@ -348,30 +348,30 @@ expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
   expect( func ).to.throw()
   func.should.throw
 
-  // [2] throw( constructor, [message] )
+  // [2] throw( constructor , [message] )
   func = () => { throw new Exception }
   expect( func ).to.throw( Exception )
   func.should.throw( Exception )
 
-  // [3] throw( string|regex, [message] )
+  // [3] throw( string|regex , [message] )
   func = () => { throw 'description' }
   expect( func ).to.throw( 'description' )
   expect( func ).to.throw( /^description$/ )
   func.should.throw( 'description' )
   func.should.throw( /^description$/ )
 
-  // [4] throw( constructor, string|regex, [message] )
+  // [4] throw( constructor , string|regex , [message] )
   func = () => { throw new Exception( 'description' ) }
-  expect( func ).to.throw( Exception, 'description' )
-  expect( func ).to.throw( Exception, /^description$/ )
-  func.should.throw( Exception, 'description' )
-  func.should.throw( Exception, /^description$/ )
+  expect( func ).to.throw( Exception , 'description' )
+  expect( func ).to.throw( Exception , /^description$/ )
+  func.should.throw( Exception , 'description' )
+  func.should.throw( Exception , /^description$/ )
 
 }
 
 
 //
-// respondTo( method, [message] )
+// respondTo( method , [message] )
 // 相关 flag：itself
 // 类型：method
 //
@@ -379,7 +379,7 @@ expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
 {
 
   class Stub { instanceMethod() {} }
-  Stub.staticMethod = nop
+  Stub.staticMethod = noop
 
   expect( new Stub ).to.respondTo( 'instanceMethod' )
   expect( Stub ).to.respondTo( 'instanceMethod' )
@@ -395,7 +395,7 @@ expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
 
 
 //
-// satisfy|satisfies( func, [message] )
+// satisfy|satisfies( func , [message] )
 // 类型：method
 //
 
@@ -412,18 +412,18 @@ expect( { foo : 1, bar : 2 } ).to.have.all.keys( 'foo', 'bar' )
 
 
 //
-// closeTo( expected, delta, [message] )
-// alias: approximately( expected, delta, [message] )
+// closeTo( expected , delta , [message] )
+// alias: approximately( expected , delta , [message] )
 // 类型：method
 //
 
-expect( 0.3 - 0.2 ).to.be.closeTo( 0.1, Number.EPSILON )
-;( 0.3 - 0.2 ).should.be.closeTo( 0.1, Number.EPSILON )
+expect( 0.3 - 0.2 ).to.be.closeTo( 0.1 , Number.EPSILON )
+;( 0.3 - 0.2 ).should.be.closeTo( 0.1 , Number.EPSILON )
 
 
 //
-// members( subset, [message] )
-// 相关 flag：include, deep
+// members( subset , [message] )
+// 相关 flag：include , deep
 // 类型：method
 //
 
@@ -432,17 +432,17 @@ expect( 0.3 - 0.2 ).to.be.closeTo( 0.1, Number.EPSILON )
   const obj1 = { foo : 'bar' }
       , obj2 = { foo : 'bar' }
 
-  expect( [ 1, 3, 2 ] ).to.include.members( [ 2, 3 ] )
+  expect( [ 1 , 3 , 2 ] ).to.include.members( [ 2 , 3 ] )
   expect( [ obj1 ] ).to.not.include.members( [ obj2 ] )
   expect( [ obj1 ] ).to.include.deep.members( [ obj2 ] )
-  expect( [ 1, 3, 2 ] ).to.have.members( [ 2, 1, 3 ] )
+  expect( [ 1 , 3 , 2 ] ).to.have.members( [ 2 , 1 , 3 ] )
   expect( [ obj1 ] ).to.not.have.members( [ obj2 ] )
   expect( [ obj1 ] ).to.have.deep.members( [ obj2 ] )
 
-  ;[ 1, 3, 2 ].should.include.members( [ 2, 3 ] )
+  ;[ 1 , 3 , 2 ].should.include.members( [ 2 , 3 ] )
   ;[ obj1 ].should.not.include.members( [ obj2 ] )
   ;[ obj1 ].should.include.deep.members( [ obj2 ] )
-  ;[ 1, 3, 2 ].should.have.members( [ 2, 1, 3 ] )
+  ;[ 1 , 3 , 2 ].should.have.members( [ 2 , 1 , 3 ] )
   ;[ obj1 ].should.not.have.members( [ obj2 ] )
   ;[ obj1 ].should.have.deep.members( [ obj2 ] )
 
@@ -450,22 +450,22 @@ expect( 0.3 - 0.2 ).to.be.closeTo( 0.1, Number.EPSILON )
 
 
 //
-// oneOf( list, [message] )
+// oneOf( list , [message] )
 // 类型：method
 //
 
-expect( 1 ).to.be.oneOf( [ 1, 2 ] )
-expect( 1 ).to.not.be.oneOf( [ [ 1 ], 2 ] ) // top-level only
+expect( 1 ).to.be.oneOf( [ 1 , 2 ] )
+expect( 1 ).to.not.be.oneOf( [ [ 1 ] , 2 ] ) // top-level only
 expect( { foo : 1 } ).to.not.be.oneOf( [ { foo : 1 } ] )
-;( 1 ).should.be.oneOf( [ 1, 2 ] )
-;( 1 ).should.not.be.oneOf( [ [ 1 ], 2 ] )  // top-level only
+;( 1 ).should.be.oneOf( [ 1 , 2 ] )
+;( 1 ).should.not.be.oneOf( [ [ 1 ] , 2 ] )  // top-level only
 ;( { foo : 1 } ).should.not.be.oneOf( [ { foo : 1 } ] )
 
 
 //
-// change|changes( object, key, [message] )
-// increase|increases( object, key, [message] )
-// decrease|decreases( object, key, [message] )
+// change|changes( object , key , [message] )
+// increase|increases( object , key , [message] )
+// decrease|decreases( object , key , [message] )
 // 类型：chainableMethod（chainingBehavior 为 noop）
 //
 
@@ -476,27 +476,27 @@ expect( { foo : 1 } ).to.not.be.oneOf( [ { foo : 1 } ] )
       , func = () => { obj[ KEY ] = 1 }
 
   obj[ KEY ] = 0
-  expect( func ).to.change( obj, KEY )
+  expect( func ).to.change( obj , KEY )
   obj[ KEY ] = 0
-  func.should.change( obj, KEY )
+  func.should.change( obj , KEY )
 
   obj[ KEY ] = 0
-  expect( func ).to.increase( obj, KEY )
+  expect( func ).to.increase( obj , KEY )
   obj[ KEY ] = 0
-  func.should.increase( obj, KEY )
+  func.should.increase( obj , KEY )
   obj[ KEY ] = 1
-  expect( func ).to.not.increase( obj, KEY )
+  expect( func ).to.not.increase( obj , KEY )
   obj[ KEY ] = 1
-  func.should.not.increase( obj, KEY )
+  func.should.not.increase( obj , KEY )
 
   obj[ KEY ] = 2
-  expect( func ).to.decrease( obj, KEY )
+  expect( func ).to.decrease( obj , KEY )
   obj[ KEY ] = 2
-  func.should.decrease( obj, KEY )
+  func.should.decrease( obj , KEY )
   obj[ KEY ] = 1
-  expect( func ).to.not.decrease( obj, KEY )
+  expect( func ).to.not.decrease( obj , KEY )
   obj[ KEY ] = 1
-  func.should.not.decrease( obj, KEY )
+  func.should.not.decrease( obj , KEY )
 
 }
 

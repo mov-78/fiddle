@@ -1,4 +1,4 @@
-const nop = require( '@pwn/nop' )
+const noop = require( 'lodash.noop' )
 
 describe( 'Pending test cases'
         , function () {
@@ -9,6 +9,6 @@ describe( 'Pending test cases'
 
 xdescribe( 'Pending a test suite'
          , function () {
-             it( 'with xdescribe( title, implementation )', nop )
+             it( 'with xdescribe( title, implementation )' , noop )
            }
          )

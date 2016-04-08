@@ -24,9 +24,9 @@ $ npm test
 - `toContain( value )`
 - `toBeLessThan( value )`
 - `toBeGreaterThan( value )`
-- `toBeCloseTo( value, [precesion = 2] )`
+- `toBeCloseTo( value , [precesion = 2] )`
 - `toThrow()`
-- `toThrowError( [constructor], [string|regex] )`
+- `toThrowError( [constructor] , [string|regex] )`
 
 ---
 
@@ -66,8 +66,8 @@ describe( 'Hooks'
 describe( 'Pending test case'
         , function () {
 
-            // [1] 使用 xit( title, [implementation] ) 来挂起「测试用例」
-            xit( 'can be specified using xit( title, [implementation] )' )
+            // [1] 使用 xit( title , [implementation] ) 来挂起「测试用例」
+            xit( 'can be specified using xit( title , [implementation] )' )
 
             // [2] 使用 pending( [reason] ) 来挂起「测试用例」
             it( 'can be specified using pending( [reason] )'
@@ -83,25 +83,25 @@ describe( 'Pending test case'
         )
 // 临时挂起「测试套件」
 // 挂起后，「测试套件」内所有「测试用例」均自动挂起
-xdescribe( 'Pending test suite', () => null )
+xdescribe( 'Pending test suite' , () => null )
 ```
 
 ---
 
 创建 `Spy`：
 
-- `spyOn( obj, methodName )`
+- `spyOn( obj , methodName )`
 - `jasmine.createSpy( [identity] )`
-- `jasmine.createSpyObj( [identity], methodNames )`
+- `jasmine.createSpyObj( [identity] , methodNames )`
 
 `call` 策略：
 
-- `spyOn( obj, methodName ).and.callThrough()`
-- `spyOn( obj, methodName ).and.stub()`
-- `spyOn( obj, methodName ).and.returnValue( value )`
-- `spyOn( obj, methodName ).and.returnValues( ...values )`
-- `spyOn( obj, methodName ).and.callFake( func )`
-- `spyOn( obj, methodName ).and.throwError( value )`
+- `spyOn( obj , methodName ).and.callThrough()`
+- `spyOn( obj , methodName ).and.stub()`
+- `spyOn( obj , methodName ).and.returnValue( value )`
+- `spyOn( obj , methodName ).and.returnValues( ...values )`
+- `spyOn( obj , methodName ).and.callFake( func )`
+- `spyOn( obj , methodName ).and.throwError( value )`
 
 `Spy` 专属断言：
 
@@ -128,7 +128,7 @@ xdescribe( 'Pending test suite', () => null )
 describe( 'Testing async code'
         , function () {
 
-            const asyncTask = ( done ) => { setTimeout( done, 0 ) }
+            const asyncTask = ( done ) => { setTimeout( done , 0 ) }
 
             // Hooks 亦拥有异步支持
             beforeAll( asyncTask )
@@ -187,7 +187,7 @@ describe( 'Manually ticking the Jasmine Clock'
             it( 'causes a timeout to be called synchronously'
               , function () {
 
-                  setTimeout( this.callback, 10000 )
+                  setTimeout( this.callback , 10000 )
 
                   expect( this.callback ).not.toHaveBeenCalled()
 
@@ -200,7 +200,7 @@ describe( 'Manually ticking the Jasmine Clock'
             it( 'causes an interval to be called synchronously'
               , function () {
 
-                  setInterval( this.callback, 100 )
+                  setInterval( this.callback , 100 )
 
                   jasmine.clock().tick( 99 )
                   expect( this.callback ).not.toHaveBeenCalled()
@@ -234,7 +234,7 @@ describe( 'Mocking a Date object'
             it( 'mocks the current date'
               , function () {
 
-                  const baseTime = new Date( 2015, 3, 18 )
+                  const baseTime = new Date( 2015 , 3 , 18 )
 
                   // jasmine.clock().mockDate( [date] )
                   jasmine.clock().mockDate( baseTime )

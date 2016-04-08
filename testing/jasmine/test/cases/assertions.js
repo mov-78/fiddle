@@ -24,7 +24,7 @@ describe( 'Base assertion'
                   expect( 1 ).toBe( 1 )
                   expect( 1 ).not.toBe( '1' )
 
-                  expect( [ 1, 2 ] ).not.toBe( [ 1, 2 ] )
+                  expect( [ 1 , 2 ] ).not.toBe( [ 1 , 2 ] )
                   expect( { foo : 'bar' } ).not.toBe( { foo : 'bar' } )
 
                 }
@@ -37,12 +37,12 @@ describe( 'Base assertion'
                   expect( 1 ).toEqual( 1 )
                   expect( 1 ).not.toEqual( '1' )
 
-                  expect( [ 1, 2 ] ).toEqual( [ 1, 2 ] )
+                  expect( [ 1 , 2 ] ).toEqual( [ 1 , 2 ] )
                   expect( { foo : 'bar' } ).toEqual( { foo : 'bar' } )
 
                   // 自定义对称判等逻辑
-                  expect( { id : 1, message : 'foo' } )
-                    .toEqual( { id : 1, message : 'bar' })
+                  expect( { id : 1 , message : 'foo' } )
+                    .toEqual( { id : 1 , message : 'bar' })
 
                   // 自定义非对称判等逻辑
                   expect( 'foo|bar|baz|qux' )
@@ -105,9 +105,9 @@ describe( 'Base assertion'
             it( 'toContain( value )'
               , function () {
 
-                  expect( [ 1, 2 ] ).toContain( 1 )
+                  expect( [ 1 , 2 ] ).toContain( 1 )
 
-                  expect( [ [ 1 ], 2 ] ).not.toContain( 1 )
+                  expect( [ [ 1 ] , 2 ] ).not.toContain( 1 )
                   expect( [ [ { foo: 1 } ] ] ).toContain( [ { foo : 1 } ] )
 
                 }
@@ -127,8 +127,8 @@ describe( 'Base assertion'
                   expect( 2 ).not.toBeGreaterThan( 2 )
                 }
               )
-            // toBeCloseTo( value, [precesion = 2] )
-            it( 'toBeCloseTo( value, [precesion = 2] )'
+            // toBeCloseTo( value , [precesion = 2] )
+            it( 'toBeCloseTo( value , [precesion = 2] )'
               , function () {
                   // 校验标准：| actual - expected | < ( 10^( -precesion ) ) / 2
                   expect( 0.3 - 0.2 )
@@ -146,8 +146,8 @@ describe( 'Base assertion'
                 }
               )
 
-            // toThrowError( [constructor], [string|regex] )
-            it( 'toThrowError( [constructor], [string|regex] )'
+            // toThrowError( [constructor] , [string|regex] )
+            it( 'toThrowError( [constructor] , [string|regex] )'
               , function () {
 
                   class Exception extends Error {
@@ -159,8 +159,8 @@ describe( 'Base assertion'
                   const func = () => { throw new Exception( 'foobar' ) }
 
                   expect( func ).toThrowError( Exception )
-                  expect( func ).toThrowError( Exception, 'foobar' )
-                  expect( func ).toThrowError( Exception, /^foo/ )
+                  expect( func ).toThrowError( Exception , 'foobar' )
+                  expect( func ).toThrowError( Exception , /^foo/ )
                   expect( func ).toThrowError( 'foobar' )
                   expect( func ).toThrowError( /^foo/ )
 

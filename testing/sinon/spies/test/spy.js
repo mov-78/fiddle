@@ -10,7 +10,7 @@ before( chai.should )
 //
 // 创建 Spy：
 //    - sinon.spy( [func] )
-//    - sinon.spy( obj, method )
+//    - sinon.spy( obj , method )
 //    - spy.restore()
 //
 
@@ -46,14 +46,14 @@ describe( 'Creating spies'
                 }
               )
 
-            // [3] sinon.spy( obj, method )
-            it( 'with sinon.spy( obj, method )'
+            // [3] sinon.spy( obj , method )
+            it( 'with sinon.spy( obj , method )'
               , function () {
 
                   let called = false
                   const obj = { method() { called = true } }
                       , _method = obj.method
-                      , spy = sinon.spy( obj, 'method' )
+                      , spy = sinon.spy( obj , 'method' )
 
                   spy.should.exist
                   spy.should.be.a( 'function' )
@@ -102,7 +102,7 @@ describe( 'Spy'
             it( '#args'
               , function () {
 
-                  spy(); spy( 1 ); spy( 2, 3 )
+                  spy(); spy( 1 ); spy( 2 , 3 )
 
                   spy.args.should.be.an( 'array' )
 
@@ -116,7 +116,7 @@ describe( 'Spy'
 
                   spy.args[ 2 ].should.equal( spy.getCall( 2 ).args )
                   spy.args[ 2 ].should.be.an( 'array' )
-                  spy.args[ 2 ].should.deep.equal( [ 2, 3 ] )
+                  spy.args[ 2 ].should.deep.equal( [ 2 , 3 ] )
 
                 }
               )
@@ -200,7 +200,7 @@ describe( 'Spy'
 
                 }
               )
-            it( '#callCount, #calledOnce, #calledTwice, #calledThrice'
+            it( '#callCount , #calledOnce , #calledTwice , #calledThrice'
               , function () {
 
                   spy()
@@ -231,7 +231,7 @@ describe( 'Spy'
             it( '#calledWith|alwaysCalledWith|neverCalledWith( ...args|matchers )'
               , function() {
 
-                  spy( { foo : 'bar' }, 'baz' )
+                  spy( { foo : 'bar' } , 'baz' )
 
                   spy.calledWith( { foo : 'bar' } ).should.be.true
                   spy.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
@@ -251,10 +251,10 @@ describe( 'Spy'
             it( '#calledWithExactly|alwaysCalledWithExactly( ...args|matchers )'
               , function () {
 
-                  spy( { foo : 'bar' }, 'baz' )
+                  spy( { foo : 'bar' } , 'baz' )
 
-                  spy.calledWithExactly( { foo : 'bar' }, 'baz' ).should.be.true
-                  spy.calledWithExactly( sinon.match.same( { foo : 'bar' } ), 'baz' ).should.be.false
+                  spy.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
+                  spy.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
                 }
               )
@@ -305,7 +305,7 @@ describe( 'Spy'
             // spy.alwaysReturned( value|matcher )
             //
 
-            it( '#returned( value|matcher ), #alwaysReturned( value|matcher )'
+            it( '#returned( value|matcher ) , #alwaysReturned( value|matcher )'
               , function () {
 
                   const spy1 = sinon.spy( ( x ) => x )
@@ -336,7 +336,7 @@ describe( 'Spy'
             // spy.alwaysCalledOn( ctxt )
             //
 
-            it( '#calledOn( ctxt ), #alwaysCalledOn( ctxt )'
+            it( '#calledOn( ctxt ) , #alwaysCalledOn( ctxt )'
               , function () {
 
                   const ctxt = {}
@@ -356,7 +356,7 @@ describe( 'Spy'
             // spy.alwaysThrew( [value] )
             //
 
-            it( '#threw( [value] ), #alwaysThrew( [value] )'
+            it( '#threw( [value] ) , #alwaysThrew( [value] )'
               , function () {
 
                   const ERR = 'error'
@@ -386,11 +386,11 @@ describe( 'Spy'
             it( '#withArgs( ...args|matchers )'
               , function () {
 
-                  spy( 'foo' ); spy( 1, 'bar' )
+                  spy( 'foo' ); spy( 1 , 'bar' )
 
                   spy.withArgs( sinon.match.string ).calledOnce.should.be.true
                   spy.withArgs( sinon.match.number ).calledOnce.should.be.true // partial matching
-                  spy.withArgs( sinon.match.number, sinon.match.string ).calledOnce.should.be.true
+                  spy.withArgs( sinon.match.number , sinon.match.string ).calledOnce.should.be.true
 
                 }
               )
@@ -518,10 +518,10 @@ describe( 'SpyCall'
             //    - 使用 deep equal 判等
             //
 
-            it( '#calledWith( ...args|matchers ), #notCalledWith( ...args|matchers )'
+            it( '#calledWith( ...args|matchers ) , #notCalledWith( ...args|matchers )'
               , function () {
 
-                  spy( { foo : 'bar' }, 'baz' )
+                  spy( { foo : 'bar' } , 'baz' )
 
                   const spyCall = spy.getCall( 0 )
 
@@ -542,12 +542,12 @@ describe( 'SpyCall'
             it( '#calledWithExactly( ...args|matchers )'
               , function () {
 
-                  spy( { foo : 'bar' }, 'baz' )
+                  spy( { foo : 'bar' } , 'baz' )
 
                   const spyCall = spy.getCall( 0 )
 
-                  spyCall.calledWithExactly( { foo : 'bar' }, 'baz' ).should.be.true
-                  spyCall.calledWithExactly( sinon.match.same( { foo : 'bar' } ), 'baz' ).should.be.false
+                  spyCall.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
+                  spyCall.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
                 }
               )
@@ -562,7 +562,7 @@ describe( 'SpyCall'
             //    spyCall.notCalledWith( sinon.match( arg1 )... )
             //
 
-            it( '#calledWithMatch( ...args ), #notCalledWithMatch( ...args )'
+            it( '#calledWithMatch( ...args ) , #notCalledWithMatch( ...args )'
               , function () {
 
                   spy( 'foobar' )

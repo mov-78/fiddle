@@ -87,9 +87,9 @@ describe( 'jasmine.arrayContaining'
         , function () {
             it( 'matches arrays with some of the values'
               , function () {
-                  expect( [ 1, 2, 3 ] )
-                    .toEqual( jasmine.arrayContaining( [ 3, 1 ] ) )
-                  expect( [ 1, 2, 3 ] )
+                  expect( [ 1 , 2 , 3 ] )
+                    .toEqual( jasmine.arrayContaining( [ 3 , 1 ] ) )
+                  expect( [ 1 , 2 , 3 ] )
                     .not.toEqual( jasmine.arrayContaining( [ 4 ] ) )
                 }
               )
