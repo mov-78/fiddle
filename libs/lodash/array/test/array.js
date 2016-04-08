@@ -23,8 +23,8 @@ describe( 'lodash/array'
                   _.head( array ).should.equal( 1 )
                   _.last( array ).should.equal( 3 )
 
-                  _.initial( array ).should.eql( [ 1 , 2 ] )
-                  _.tail( array ).should.eql( [ 2 , 3 ] )
+                  _.initial( array ).should.deep.equal( [ 1 , 2 ] )
+                  _.tail( array ).should.deep.equal( [ 2 , 3 ] )
 
                 }
               )
@@ -83,13 +83,13 @@ describe( 'lodash/array'
                   const array = [ 1 , 2 , 3 ]
                       , predicate = ( value , index , array ) => value % 2 !== 0
 
-                  _.take( array ).should.eql( [ 1 ] )
-                  _.take( array , 2 ).should.eql( [ 1 , 2 ] )
-                  _.takeRight( array ).should.eql( [ 3 ] )
-                  _.takeRight( array , 2 ).should.eql( [ 2 , 3 ] )
+                  _.take( array ).should.deep.equal( [ 1 ] )
+                  _.take( array , 2 ).should.deep.equal( [ 1 , 2 ] )
+                  _.takeRight( array ).should.deep.equal( [ 3 ] )
+                  _.takeRight( array , 2 ).should.deep.equal( [ 2 , 3 ] )
 
-                  _.takeWhile( array , predicate ).should.eql( [ 1 ] )
-                  _.takeRightWhile( array , predicate ).should.eql( [ 3 ] )
+                  _.takeWhile( array , predicate ).should.deep.equal( [ 1 ] )
+                  _.takeRightWhile( array , predicate ).should.deep.equal( [ 3 ] )
 
                 }
               )
@@ -108,13 +108,13 @@ describe( 'lodash/array'
                   const array = [ 1 , 2 , 3 ]
                       , predicate = ( value , index , array ) => value % 2 !== 0
 
-                  _.drop( array ).should.eql( [ 2 , 3 ] )
-                  _.drop( array , 2 ).should.eql( [ 3 ] )
-                  _.dropRight( array ).should.eql( [ 1 , 2 ] )
-                  _.dropRight( array , 2 ).should.eql( [ 1 ] )
+                  _.drop( array ).should.deep.equal( [ 2 , 3 ] )
+                  _.drop( array , 2 ).should.deep.equal( [ 3 ] )
+                  _.dropRight( array ).should.deep.equal( [ 1 , 2 ] )
+                  _.dropRight( array , 2 ).should.deep.equal( [ 1 ] )
 
-                  _.dropWhile( array , predicate ).should.eql( [ 2 , 3 ] )
-                  _.dropRightWhile( array , predicate ).should.eql( [ 1 , 2 ] )
+                  _.dropWhile( array , predicate ).should.deep.equal( [ 2 , 3 ] )
+                  _.dropRightWhile( array , predicate ).should.deep.equal( [ 1 , 2 ] )
 
                 }
               )
@@ -138,8 +138,8 @@ describe( 'lodash/array'
                                         , ( value , index , array ) => value % 2 === 0
                                         )
 
-                  odds.should.eql( [ 1 , 3 , 5 ] )
-                  evens.should.eql( [ 2 , 4 ] )
+                  odds.should.deep.equal( [ 1 , 3 , 5 ] )
+                  evens.should.deep.equal( [ 2 , 4 ] )
 
                 }
               )
@@ -160,25 +160,25 @@ describe( 'lodash/array'
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pull( array , 2 , 4 )
-                    .should.eql( [ 1 , 3 , 5 ] )
+                    .should.deep.equal( [ 1 , 3 , 5 ] )
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pullAll( array , [ 2 , 4 ] )
-                    .should.eql( [ 1 , 3 , 5 ] )
+                    .should.deep.equal( [ 1 , 3 , 5 ] )
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pullAllBy( array
                              , [ 2 , 4 ]
                              , ( value ) => value
                              )
-                  array.should.eql( [ 1 , 3 , 5 ] )
+                  array.should.deep.equal( [ 1 , 3 , 5 ] )
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pullAllWith( array
                                , [ 2 , 4 ]
                                , ( arrVal , othVal ) => arrVal === othVal
                                )
-                  array.should.eql( [ 1 , 3 , 5 ] )
+                  array.should.deep.equal( [ 1 , 3 , 5 ] )
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pullAt( array , 1 , 3 )
@@ -201,17 +201,17 @@ describe( 'lodash/array'
                   const array = [ 1 , 2 , 1 ]
 
                   _.uniq( array )
-                    .should.eql( [ 1 , 2 ] )
+                    .should.deep.equal( [ 1 , 2 ] )
 
                   _.uniqBy( array
                           , ( value ) => value
                           )
-                    .should.eql( [ 1 , 2 ] )
+                    .should.deep.equal( [ 1 , 2 ] )
 
                   _.uniqWith( array
                             , ( arrVal , othVal ) => arrVal === othVal
                             )
-                    .should.eql( [ 1 , 2 ] )
+                    .should.deep.equal( [ 1 , 2 ] )
 
                 }
               )
@@ -238,10 +238,10 @@ describe( 'lodash/array'
                     .that.is.empty
 
                   _.chunk( array , 1 )
-                    .should.eql( [ [ 1 ] , [ 2 ] , [ 3 ] ] )
+                    .should.deep.equal( [ [ 1 ] , [ 2 ] , [ 3 ] ] )
 
                   _.chunk( array , 2 )
-                    .should.eql( [ [ 1 , 2 ] , [ 3 ] ] )
+                    .should.deep.equal( [ [ 1 , 2 ] , [ 3 ] ] )
 
                 }
               )
@@ -257,13 +257,13 @@ describe( 'lodash/array'
               , function () {
 
                   _.flatten( [ 1 , [ 2 ] , [ [ 3 ] ] ] )
-                    .should.eql( [ 1 , 2 , [ 3 ] ] )
+                    .should.deep.equal( [ 1 , 2 , [ 3 ] ] )
 
                   _.flattenDeep( [ 1 , [ 2 ] , [ [ [ 3 ] ] ] ] )
-                    .should.eql( [ 1 , 2 , 3 ] )
+                    .should.deep.equal( [ 1 , 2 , 3 ] )
 
                   _.flattenDepth( [ 1 , [ 2 ] , [ [ [ 3 ] ] ] ] , 2 )
-                    .should.eql( [ 1 , 2 , [ 3 ] ] )
+                    .should.deep.equal( [ 1 , 2 , [ 3 ] ] )
 
                 }
               )
@@ -288,19 +288,19 @@ describe( 'lodash/array'
               , function () {
 
                   _.union( [ 1 , 2 ] , [ 2 , 3 ] )
-                    .should.eql( [ 1 , 2 , 3 ] )
+                    .should.deep.equal( [ 1 , 2 , 3 ] )
 
                   _.unionBy( [ 1 , 2 ]
                            , [ 2 , 3 ]
                            , ( value ) => value
                            )
-                    .should.eql( [ 1 , 2 , 3 ] )
+                    .should.deep.equal( [ 1 , 2 , 3 ] )
 
                   _.unionWith( [ 1 , 2 ]
                              , [ 2 , 3 ]
                              , ( arrVal , othVal ) => arrVal === othVal
                              )
-                    .should.eql( [ 1 , 2 , 3 ] )
+                    .should.deep.equal( [ 1 , 2 , 3 ] )
 
                 }
               )
@@ -308,19 +308,19 @@ describe( 'lodash/array'
               , function () {
 
                   _.intersection( [ 1 , 2 ] , [ 2 , 3 ] )
-                    .should.eql( [ 2 ] )
+                    .should.deep.equal( [ 2 ] )
 
                   _.intersectionBy( [ 1 , 2 ]
                                   , [ 2 , 3 ]
                                   , ( value ) => value
                                   )
-                    .should.eql( [ 2 ] )
+                    .should.deep.equal( [ 2 ] )
 
                   _.intersectionWith( [ 1 , 2 ]
                                     , [ 2 , 3 ]
                                     , ( arrVal , othVal ) => arrVal === othVal
                                     )
-                    .should.eql( [ 2 ] )
+                    .should.deep.equal( [ 2 ] )
 
                 }
               )
@@ -328,19 +328,19 @@ describe( 'lodash/array'
               , function () {
 
                   _.difference( [ 1 , 2 ] , [ 2 , 3 ] )
-                    .should.eql( [ 1 ] )
+                    .should.deep.equal( [ 1 ] )
 
                   _.differenceBy( [ 1 , 2 ]
                                 , [ 2 , 3 ]
                                 , ( value ) => value
                                 )
-                    .should.eql( [ 1 ] )
+                    .should.deep.equal( [ 1 ] )
 
                   _.differenceWith( [ 1 , 2 ]
                                   , [ 2 , 3 ]
                                   , ( arrVal , othVal ) => arrVal === othVal
                                   )
-                    .should.eql( [ 1 ] )
+                    .should.deep.equal( [ 1 ] )
 
                 }
               )
@@ -348,19 +348,19 @@ describe( 'lodash/array'
               , function () {
 
                   _.xor( [ 1 , 2 ] , [ 2 , 3 ] )
-                    .should.eql( [ 1 , 3 ] )
+                    .should.deep.equal( [ 1 , 3 ] )
 
                   _.xorBy( [ 1 , 2 ]
                          , [ 2 , 3 ]
                          , ( value ) => value
                          )
-                    .should.eql( [ 1 , 3 ] )
+                    .should.deep.equal( [ 1 , 3 ] )
 
                   _.xorWith( [ 1 , 2 ]
                            , [ 2 , 3 ]
                            , ( arrVal , othVal ) => arrVal === othVal
                            )
-                    .should.eql( [ 1 , 3 ] )
+                    .should.deep.equal( [ 1 , 3 ] )
 
                 }
               )
@@ -377,21 +377,21 @@ describe( 'lodash/array'
               , function () {
 
                   _.zip( [ 1 , 2 ] , [ 3 , 4 ] )
-                    .should.eql( [ [ 1 , 3 ] , [ 2 , 4 ] ] )
+                    .should.deep.equal( [ [ 1 , 3 ] , [ 2 , 4 ] ] )
 
                   _.zipWith( [ 1 , 2 ]
                            , [ 3 , 4 ]
                            , ( ...group ) => group
                            )
-                    .should.eql( [ [ 1 , 3 ] , [ 2 , 4 ] ] )
+                    .should.deep.equal( [ [ 1 , 3 ] , [ 2 , 4 ] ] )
 
                   _.unzip( [ [ 1 , 3 ] , [ 2 , 4 ] ] )
-                    .should.eql( [ [ 1 , 2 ] , [ 3 , 4 ] ] )
+                    .should.deep.equal( [ [ 1 , 2 ] , [ 3 , 4 ] ] )
 
                   _.unzipWith( [ [ 1 , 3 ] , [ 2 , 4 ] ]
                              , ( ...group ) => group
                              )
-                    .should.eql( [ [ 1 , 2 ] , [ 3 , 4 ] ] )
+                    .should.deep.equal( [ [ 1 , 2 ] , [ 3 , 4 ] ] )
 
                 }
               )
@@ -401,7 +401,7 @@ describe( 'lodash/array'
             it( 'fromPairs'
               , function () {
                   _.fromPairs( [ [ 'foo' , 1 ] , [ 'bar' , 2 ] ] )
-                    .should.eql( { foo : 1 , bar : 2 } )
+                    .should.deep.equal( { foo : 1 , bar : 2 } )
                 }
               )
 
@@ -415,10 +415,10 @@ describe( 'lodash/array'
               , function () {
 
                   _.zipObject( [ 'foo' ] , [ 'bar' ] )
-                    .should.eql( { foo : 'bar' } )
+                    .should.deep.equal( { foo : 'bar' } )
 
                   _.zipObjectDeep( [ 'foo.bar' ] , [ 'baz' ] )
-                    .should.eql( { foo : { bar : 'baz' } } )
+                    .should.deep.equal( { foo : { bar : 'baz' } } )
 
                 }
               )
@@ -428,7 +428,7 @@ describe( 'lodash/array'
             it( 'concat'
               , function () {
                   _.concat( [ 1 ] , 2 , [ 3 ] , [ [ 4 ] ] )
-                    .should.eql( [ 1 , 2 , 3 , [ 4 ] ] )
+                    .should.deep.equal( [ 1 , 2 , 3 , [ 4 ] ] )
                 }
               )
 
@@ -437,7 +437,7 @@ describe( 'lodash/array'
             it( 'fill'
               , function () {
                   _.fill( [ 1 , 2 , 3 , 4 , 5 ] , 0 , 1 , 3 )
-                    .should.eql( [ 1 , 0 , 0 , 4 , 5 ] )
+                    .should.deep.equal( [ 1 , 0 , 0 , 4 , 5 ] )
                 }
               )
 
@@ -456,7 +456,7 @@ describe( 'lodash/array'
               , function () {
                   const array = [ 1 , 2 , 3 ]
                   _.reverse( array )
-                  array.should.eql( [ 3 , 2 , 1 ] )
+                  array.should.deep.equal( [ 3 , 2 , 1 ] )
                 }
               )
 
