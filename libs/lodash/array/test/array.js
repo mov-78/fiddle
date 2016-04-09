@@ -147,10 +147,10 @@ describe( 'lodash/array'
 
             //
             // pull( array , ...values )
+            // pullAt( array , indexes )
             // pullAll( array , other )
             // pullAllBy( array , other , iteratee )
             // pullAllWith( array , other , comparator )
-            // pullAt( array , indexes )
             //
 
             it( 'pull , pullAll , pullAllBy , pullAllWith , pullAt'
@@ -161,6 +161,11 @@ describe( 'lodash/array'
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pull( array , 2 , 4 )
                     .should.deep.equal( [ 1 , 3 , 5 ] )
+
+                  array = [ 1 , 2 , 3 , 4 , 5 ]
+                  _.pullAt( array , 1 , 3 )
+                    .should.deep.equal( [ 2 , 4 ] )
+                  array.should.deep.equal( [ 1 , 3 , 5 ] )
 
                   array = [ 1 , 2 , 3 , 4 , 5 ]
                   _.pullAll( array , [ 2 , 4 ] )
@@ -178,11 +183,6 @@ describe( 'lodash/array'
                                , [ 2 , 4 ]
                                , ( arrVal , othVal ) => arrVal === othVal
                                )
-                  array.should.deep.equal( [ 1 , 3 , 5 ] )
-
-                  array = [ 1 , 2 , 3 , 4 , 5 ]
-                  _.pullAt( array , 1 , 3 )
-                    .should.deep.equal( [ 2 , 4 ] )
                   array.should.deep.equal( [ 1 , 3 , 5 ] )
 
                 }

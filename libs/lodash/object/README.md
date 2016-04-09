@@ -48,6 +48,8 @@ $ npm test
 
 ---
 
+> 可以通过 `return false` 来提前终止迭代
+
 - [forIn( object , iteratee )](https://lodash.com/docs#forIn)
 - [forInRight( object , iteratee )](https://lodash.com/docs#forInRight)
 - [forOwn( object , iteratee )](https://lodash.com/docs#forOwn)
