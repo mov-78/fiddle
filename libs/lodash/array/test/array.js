@@ -1,6 +1,6 @@
 'use strict'
 
-const _ = require( 'lodash/array' )
+const _ = require( 'lodash' )
     , chai = require( 'chai' )
 
 before( chai.should )
@@ -20,7 +20,7 @@ describe( 'lodash/array'
 
                   const array = [ 1 , 2 , 3 ]
 
-                  _.head( array ).should.equal( 1 )
+                  _.first( array ).should.equal( 1 )
                   _.last( array ).should.equal( 3 )
 
                   _.initial( array ).should.deep.equal( [ 1 , 2 ] )
@@ -53,8 +53,8 @@ describe( 'lodash/array'
 
 
             //
-            // findIndex( array , [predicate=_.identity] )
-            // findLastIndex( array , [predicate=_.identity] )
+            // findIndex( array , predicate )
+            // findLastIndex( array , predicate )
             //
 
             it( 'findIndex , findLastIndex'
@@ -73,8 +73,8 @@ describe( 'lodash/array'
             //
             // take( array , [n=1] )
             // takeRight( array , [n=1] )
-            // takeWhile( array , [predicate=_.identity] )
-            // takeRightWhile( array , [predicate=_.identity] )
+            // takeWhile( array , predicate )
+            // takeRightWhile( array , predicate )
             //
 
             it( 'take , takeRight , takeWhile , takeRightWhile'
@@ -98,8 +98,8 @@ describe( 'lodash/array'
             //
             // drop( array , [n=1] )
             // dropRight( array , [n=1] )
-            // dropWhile( array , [predicate=_.identity] )
-            // dropRightWhile( array , [predicate=_.identity] )
+            // dropWhile( array , predicate )
+            // dropRightWhile( array , predicate )
             //
 
             it( 'drop , dropRight , dropWhile , dropRightWhile'
@@ -129,7 +129,7 @@ describe( 'lodash/array'
               )
 
 
-            // remove( array , [predicate=_.identity] )
+            // remove( array , predicate )
             it( 'remove'
               , function () {
 
@@ -148,7 +148,7 @@ describe( 'lodash/array'
             //
             // pull( array , ...values )
             // pullAll( array , other )
-            // pullAllBy( array , other , [iteratee=_.identity] )
+            // pullAllBy( array , other , iteratee )
             // pullAllWith( array , other , comparator )
             // pullAt( array , indexes )
             //
@@ -191,7 +191,7 @@ describe( 'lodash/array'
 
             //
             // uniq( array )
-            // uniqBy( array , [iteratee=_.identity] )
+            // uniqBy( array , iteratee )
             // uniqWith( array , comparator )
             //
 
@@ -271,16 +271,16 @@ describe( 'lodash/array'
 
             //
             // union( array , ...arrays )
-            // unionBy( array , ...arrays , [iteratee=_.identity] )
+            // unionBy( array , ...arrays , iteratee )
             // unionWith( array , ...arrays , comparator )
             // intersection( array , ...arrays )
-            // intersectionBy( array , ...arrays , [iteratee=_.identity] )
+            // intersectionBy( array , ...arrays , iteratee )
             // intersectionWith( array , ...arrays , comparator )
             // difference( array , ...arrays )
-            // differenceBy( array , ...arrays , [iteratee=_.identity] )
+            // differenceBy( array , ...arrays , iteratee )
             // differenceWith( array , ...arrays , comparator )
             // xor( array , ...arrays )
-            // xorBy( array , ...arrays , [iteratee=_.identity] )
+            // xorBy( array , ...arrays , iteratee )
             // xorWith( array , ...arrays , comparator )
             //
 
@@ -368,9 +368,9 @@ describe( 'lodash/array'
 
             //
             // zip( ...arrays )
-            // zipWith( ...arrays , [iteratee=(...group)=>group] )
+            // zipWith( ...arrays , iteratee )
             // unzip( array )
-            // unzipWith( array , [iteratee=(...group)=>group] )
+            // unzipWith( array , iteratee )
             //
 
             it( 'zip , zipWith , unzip , unzipWith'

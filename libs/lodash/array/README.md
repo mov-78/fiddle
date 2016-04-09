@@ -20,36 +20,36 @@ $ npm test
 - [lastIndexOf( array , value , [fromIndex=array.length-1] )](https://lodash.com/docs#lastIndexOf)
 - [sortedIndexOf( array , value )](https://lodash.com/docs#sortedIndexOf)
 - [sortedLastIndexOf( array , value )](https://lodash.com/docs#sortedLastIndexOf)
-- [findIndex( array , [predicate=_.identity] )](https://lodash.com/docs#findIndex)
-- [findLastIndex( array , [predicate=_.identity] )](https://lodash.com/docs#findLastIndex)
+- [findIndex( array , predicate )](https://lodash.com/docs#findIndex)
+- [findLastIndex( array , predicate )](https://lodash.com/docs#findLastIndex)
 
 ---
 
 - [take( array , [n=1] )](https://lodash.com/docs#take)
 - [takeRight( array , [n=1] )](https://lodash.com/docs#takeRight)
-- [takeWhile( array , [predicate=_.identity] )](https://lodash.com/docs#takeWhile)
-- [takeRightWhile( array , [predicate=_.identity] )](https://lodash.com/docs#takeRightWhile)
+- [takeWhile( array , predicate )](https://lodash.com/docs#takeWhile)
+- [takeRightWhile( array , predicate )](https://lodash.com/docs#takeRightWhile)
 - [drop( array , [n=1] )](https://lodash.com/docs#drop)
 - [dropRight( array , [n=1] )](https://lodash.com/docs#dropRight)
-- [dropWhile( array , [predicate=_.identity] )](https://lodash.com/docs#dropWhile)
-- [dropRightWhile( array , [predicate=_.identity] )](https://lodash.com/docs#dropRightWhile)
+- [dropWhile( array , predicate )](https://lodash.com/docs#dropWhile)
+- [dropRightWhile( array , predicate )](https://lodash.com/docs#dropRightWhile)
 
 ---
 
 - [without( array , ...values )](https://lodash.com/docs#without)
-- [remove( array , [predicate=_.identity] )](https://lodash.com/docs#remove) ✪
+- [remove( array , predicate )](https://lodash.com/docs#remove) ✪
 - [pull( array , ...values )](https://lodash.com/docs#pull) ✪
 - [pullAll( array , other )](https://lodash.com/docs#pullAll) ✪
-- [pullAllBy( array , other , [iteratee=_.identity] )](https://lodash.com/docs#pullAllBy) ✪
+- [pullAllBy( array , other , iteratee )](https://lodash.com/docs#pullAllBy) ✪
 - [pullAllWith( array , other , comparator )](https://lodash.com/docs#pullAllWith) ✪
 - [pullAt( array , indexes )](https://lodash.com/docs#pullAt)
 
 ---
 
 - [uniq( array )](https://lodash.com/docs#uniq)
-- [uniqBy( array , [iteratee=_.identity] )](https://lodash.com/docs#uniqBy)
+- [uniqBy( array , iteratee )](https://lodash.com/docs#uniqBy)
 - [sortedUniq( array )](https://lodash.com/docs#sortedUniq)
-- [sortedUniqBy( array , [iteratee=_.identity] )](https://lodash.com/docs#sortedUniqBy)
+- [sortedUniqBy( array , iteratee )](https://lodash.com/docs#sortedUniqBy)
 - [uniqWith( array , comparator )](https://lodash.com/docs#uniqWith)
 
 ---
@@ -69,24 +69,24 @@ $ npm test
 ---
 
 - [union( array , ...arrays )](https://lodash.com/docs#union)
-- [unionBy( array , ...arrays , [iteratee=_.identity] )](https://lodash.com/docs#unionBy)
-- [unionWith( array , ...arrays , [comparator] )](https://lodash.com/docs#unionWith)
+- [unionBy( array , ...arrays , iteratee )](https://lodash.com/docs#unionBy)
+- [unionWith( array , ...arrays , comparator )](https://lodash.com/docs#unionWith)
 - [intersection( array , ...arrays )](https://lodash.com/docs#intersection)
-- [intersectionBy( array , ...arrays , [iteratee=_.identity] )](https://lodash.com/docs#intersectionBy)
-- [intersectionWith( array , ...arrays , [comparator] )](https://lodash.com/docs#intersectionWith)
+- [intersectionBy( array , ...arrays , iteratee )](https://lodash.com/docs#intersectionBy)
+- [intersectionWith( array , ...arrays , comparator )](https://lodash.com/docs#intersectionWith)
 - [difference( array , ...arrays )](https://lodash.com/docs#difference)
-- [differenceBy( array , ...arrays , [iteratee=_.identity] )](https://lodash.com/docs#differenceBy)
-- [differenceWith( array , ...arrays , [comparator] )](https://lodash.com/docs#differenceWith)
+- [differenceBy( array , ...arrays , iteratee )](https://lodash.com/docs#differenceBy)
+- [differenceWith( array , ...arrays , comparator )](https://lodash.com/docs#differenceWith)
 - [xor( array , ...arrays )](https://lodash.com/docs#xor)
-- [xorBy( array , ...arrays , [iteratee=_.identity] )](https://lodash.com/docs#xorBy)
-- [xorWith( array , ...arrays , [comparator] )](https://lodash.com/docs#xorWith)
+- [xorBy( array , ...arrays , iteratee )](https://lodash.com/docs#xorBy)
+- [xorWith( array , ...arrays , comparator )](https://lodash.com/docs#xorWith)
 
 ---
 
 - [zip( ...arrays )](https://lodash.com/docs#zip)
-- [zipWith( ...arrays , [iteratee=(...group)=>group] )](https://lodash.com/docs#zipWith)
+- [zipWith( ...arrays , iteratee )](https://lodash.com/docs#zipWith)
 - [unzip( array )](https://lodash.com/docs#unzip)
-- [unzipWith( array , [iteratee=(...group)=>group] )](https://lodash.com/docs#unzipWith)
+- [unzipWith( array , iteratee )](https://lodash.com/docs#unzipWith)
 
 ---
 
