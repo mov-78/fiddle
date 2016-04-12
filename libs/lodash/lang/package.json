@@ -1,0 +1,7 @@
+{ "name" : "fiddle-lodash-lang"
+, "scripts" : { "test" : "mocha" }
+, "dependencies" : { "chai" : "~3.5.0"
+                   , "lodash" : "~4.7.0"
+                   , "mocha" : "~2.4.5"
+                   }
+}
