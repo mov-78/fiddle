@@ -182,6 +182,38 @@ describe( 'lodash/lang'
               )
 
 
+            //
+            // isEqual( value , other )
+            // isEqualWith( value , other , customizer )
+            //
+
+            it( 'isEqual , isEqualWith'
+              , function () {
+
+                  _.isEqual( { foo : { bar : 'baz' } }
+                           , { foo : { bar : 'baz' } }
+                           )
+                    .should.be.true
+                  _.isEqual( [ [ 0 ] , 1 ]
+                           , [ [ 0 ] , 1 ]
+                           )
+                    .should.be.true
+
+                  _.isEqualWith( { foo : { bar : 'baz' } }
+                               , { foo : { bar : 'baz' } }
+                               , ( value , othValue , key , object , other ) => _.isEqual( value , othValue )
+                               )
+                    .should.be.true
+                  _.isEqualWith( [ [ 0 ] , 1 ]
+                               , [ [ 0 ] , 1 ]
+                               , ( value , othValue , index , array , other ) => _.isEqual( value , othValue )
+                               )
+                    .should.be.true
+
+                }
+              )
+
+
             // isEmpty( value )
             it( 'isEmpty( value )'
               , function () {
@@ -323,6 +355,14 @@ describe( 'lodash/lang'
                   _.toString( Symbol( 'foo' ) ).should.equal( 'Symbol(foo)' )
                   _.toString( Symbol.for( 'foo' ) ).should.equal( 'Symbol(foo)' )
                   _.toString( -0 ).should.equal( '-0' )
+
+
+                  //
+                  // toPlainObject( value )
+                  //
+
+                  _.toPlainObject( _.create( {} , { foo : 'bar' } ) )
+                    .should.have.ownProperty( 'foo' )
 
 
                   //

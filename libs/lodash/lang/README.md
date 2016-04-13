@@ -39,6 +39,11 @@ $ npm test
 
 ---
 
+- [isEqual( value , other )](https://lodash.com/docs#isEqual)
+- [isEqualWith( value , other , customizer )](https://lodash.com/docs#isEqualWith)
+
+---
+
 - [clone( value )](https://lodash.com/docs#clone)
 - [cloneWith( value , customizer )](https://lodash.com/docs#cloneWith)
 - [cloneDeep( value )](https://lodash.com/docs#cloneDeep)
