@@ -52,14 +52,34 @@ describe( 'lodash/lang'
               )
             it( 'isNumber , isInteger , isSafeInteger , isFinite , isNaN'
               , function () {
+
                   _.isNumber( 0 ).should.be.true
+                  _.isNumber( +1 / 0 ).should.be.true
+                  _.isNumber( -1 / 0 ).should.be.true
+                  _.isNumber( 0 / 0 ).should.be.true
+                  _.isNumber( new Number ).should.be.true
+
+                  _.isInteger( 0 ).should.be.true
+                  _.isInteger( new Number( 0 ) ).should.be.false
                   _.isInteger( Math.PI ).should.be.false
+                  _.isInteger( new Number( Math.PI ) ).should.be.false
+                  _.isInteger( +1 / 0 ).should.be.false
+                  _.isInteger( -1 / 0 ).should.be.false
+                  _.isInteger( 0 / 0 ).should.be.false
+
+                  _.isSafeInteger( Number.MAX_SAFE_INTEGER ).should.be.true
+                  _.isSafeInteger( Number.MIN_SAFE_INTEGER ).should.be.true
                   _.isSafeInteger( Number.MAX_SAFE_INTEGER + 1 ).should.be.false
                   _.isSafeInteger( Number.MIN_SAFE_INTEGER - 1 ).should.be.false
-                  _.isFinite( 1 / 0 ).should.be.false
+
+                  _.isFinite( +1 / 0 ).should.be.false
+                  _.isFinite( -1 / 0 ).should.be.false
+                  _.isFinite( 0 / 0 ).should.be.false
+
                   _.isNaN( 0 / 0 ).should.be.true
                   _.isNaN( '' ).should.be.false
                   _.isNaN( undefined ).should.be.false
+
                 }
               )
             it( 'isString'
@@ -81,20 +101,21 @@ describe( 'lodash/lang'
 
                   // isObject( value ) 等同于：
                   //    const type = typeof value
-                  //    !!value && ( type === 'object' || type === 'function' )
+                  //    return !!value && ( type === 'object' || type === 'function' )
                   _.isObject( null ).should.be.false
                   _.isObject( {} ).should.be.true
                   _.isObject( _.noop ).should.be.true
 
 
                   // isObjectLike( value ) 等同于：
-                  //    !!value && typeof value === 'object'
+                  //    return !!value && typeof value === 'object'
                   _.isObjectLike( null ).should.be.false
                   _.isObjectLike( {} ).should.be.true
-                  _.isObjectLike( _.noop ).should.be.false
+                  _.isObjectLike( _.noop ).should.be.false // ←
 
                   _.isPlainObject( {} ).should.be.true
                   _.isPlainObject( _.create( null ) ).should.be.true
+                  _.isPlainObject( _.create( {} ) ).should.be.false
                   _.isPlainObject( new class {} ).should.be.false
 
                 }
@@ -105,25 +126,25 @@ describe( 'lodash/lang'
                   _.isArguments( arguments ).should.be.true
 
                   // isArray( value ) 等同于：
-                  //    Array.isArray( value )
+                  //    return Array.isArray( value )
                   _.isArray( [] ).should.be.true
                   _.isArray( '' ).should.be.false
                   _.isArray( _.noop ).should.be.false
                   _.isArray( arguments ).should.be.false
 
                   // isArrayLike( value ) 等同于：
-                  //    value != null && isLength( getLength( value ) ) && !isFunction( value )
+                  //    return value != null && isLength( getLength( value ) ) && !isFunction( value )
                   _.isArrayLike( [] ).should.be.true
-                  _.isArrayLike( '' ).should.be.true
+                  _.isArrayLike( '' ).should.be.true // ←
                   _.isArrayLike( _.noop ).should.be.false
-                  _.isArrayLike( arguments ).should.be.true
+                  _.isArrayLike( arguments ).should.be.true // ←
 
                   // isArrayLikeObject( value ) 等同于：
-                  //    isObjectLike( value ) && isArrayLike( value )
+                  //    return isObjectLike( value ) && isArrayLike( value )
                   _.isArrayLikeObject( [] ).should.be.true
-                  _.isArrayLikeObject( '' ).should.be.false
+                  _.isArrayLikeObject( '' ).should.be.false // ←
                   _.isArrayLikeObject( _.noop ).should.be.false
-                  _.isArrayLikeObject( arguments ).should.be.true
+                  _.isArrayLikeObject( arguments ).should.be.true // ←
 
                 }
               )
@@ -168,6 +189,7 @@ describe( 'lodash/lang'
                   _.isEmpty( {} ).should.be.true
                   _.isEmpty( _.create( { foo : 'bar' } ) ).should.be.true
                   _.isEmpty( [] ).should.be.true
+                  _.isEmpty( { length : 0 } ).should.be.false
                   _.isEmpty( new Set ).should.be.true
                   _.isEmpty( new WeakSet ).should.be.true
                   _.isEmpty( new Map ).should.be.true
@@ -231,7 +253,23 @@ describe( 'lodash/lang'
             //    return isArray( value ) ? value : [ value ]
             //
 
-            it( 'castArray' , _.noop )
+            it( 'castArray'
+              , function () {
+
+                  _.castArray()
+                    .should.be.an( 'array' )
+                    .that.is.empty
+
+                  _.castArray( [ 'foo' , 'bar' ] )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ 'foo' , 'bar' ] )
+
+                  _.castArray( 'foo' , 'bar' )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ 'foo' ] )
+
+                }
+              )
 
 
             //
@@ -246,11 +284,88 @@ describe( 'lodash/lang'
             it( 'toNumber , toInteger , toSafeInteger , toString , toPlainObject , toArray'
               , function () {
 
+                  const makeIterable = function ( n ) {
+                                         let i = 0
+                                           , iterator = { next() {
+                                                            if ( i === n ) {
+                                                              return { done : true }
+                                                            } else {
+                                                              i += 1
+                                                              return { done : false , value : [ i , i ] }
+                                                            }
+                                                          }
+                                                        }
+                                         return { [ Symbol.iterator ]() { return iterator } }
+                                       }
+
+
+                  //
+                  // toNumber( value )
+                  // toInteger( value )
+                  // toSafeInteger( value )
+                  //
+
+                  _.toNumber( '010' ).should.equal( 10 )
+                  _.toNumber( '0o10' ).should.equal( 8 )
+                  _.toNumber( '0x10' ).should.equal( 16 )
+                  _.toNumber( Symbol( 'foo' ) ).should.be.nan
+                  _.toNumber( Symbol.for( 'foo' ) ).should.be.nan
+                  _.toNumber( { valueOf() { return '0x10' } } ).should.equal( 16 )
+                  _.toNumber( { toString() { return '0x10' } } ).should.equal( 16 )
+
+
+                  //
+                  // toString( value )
+                  //
+
                   _.toString( null ).should.equal( '' )
                   _.toString( undefined ).should.equal( '' )
                   _.toString( Symbol( 'foo' ) ).should.equal( 'Symbol(foo)' )
                   _.toString( Symbol.for( 'foo' ) ).should.equal( 'Symbol(foo)' )
                   _.toString( -0 ).should.equal( '-0' )
+
+
+                  //
+                  // toArray( value )
+                  //
+
+                  // Falsy Values
+                  _.toArray( +0 ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( -0 ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( 0 / 0 ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( '' ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( false ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( null ).should.be.an( 'array' ).that.is.empty
+                  _.toArray( undefined ).should.be.an( 'array' ).that.is.empty
+
+                  // Array-Like
+                  _.toArray( 'foo' )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ 'f' , 'o' , 'o' ] )
+                  _.toArray( { length : 2 , '0' : 'foo' , '1' : 'bar' } )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ 'foo' , 'bar' ] )
+
+                  // Iterable
+                  _.toArray( makeIterable( 1 ) )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ [ 1 , 1 ] ] )
+
+                  // Map & Set
+                  _.toArray( new Set( makeIterable( 1 ) ) )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ [ 1 , 1 ] ] )
+                  _.toArray( new Map( makeIterable( 1 ) ) )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ [ 1 , 1 ] ] )
+
+                  // Object
+                  _.toArray( _.create( { foo : 1 }
+                                     , { bar : 2 }
+                                     )
+                           )
+                    .should.be.an( 'array' )
+                    .that.is.deep.equal( [ 2 ] )
 
                 }
               )
@@ -258,10 +373,10 @@ describe( 'lodash/lang'
 
             //
             // lt( value , other )
-            // lte( value , other )
-            // eq( value , other )
             // gt( value , other )
+            // lte( value , other )
             // gte( value , other )
+            // eq( value , other )
             //
 
             it( 'lt , lte , eq , gt , gte'

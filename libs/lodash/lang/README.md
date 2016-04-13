@@ -23,6 +23,7 @@ $ npm test
 - [isArray( value )](https://lodash.com/docs#isArray)
 - [isArrayLike( value )](https://lodash.com/docs#isArrayLike)
 - [isArrayLikeObject( value )](https://lodash.com/docs#isArrayLikeObject)
+- [isArguments( value )](https://lodash.com/docs#isArguments)
 - [isFunction( value )](https://lodash.com/docs#isFunction)
 - [isDate( value )](https://lodash.com/docs#isDate)
 - [isRegExp( value )](https://lodash.com/docs#isRegExp)
@@ -60,6 +61,6 @@ $ npm test
 
 - [lt( value , other )](https://lodash.com/docs#lt)
 - [lte( value , other )](https://lodash.com/docs#lte)
-- [eq( value , other )](https://lodash.com/docs#eq)
 - [gt( value , other )](https://lodash.com/docs#gt)
 - [gte( value , other )](https://lodash.com/docs#gte)
+- [eq( value , other )](https://lodash.com/docs#eq)
