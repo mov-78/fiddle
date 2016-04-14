@@ -17,7 +17,7 @@ describe( 'lodash/number'
                 }
               )
 
-            // inRange( number , [start=0] , end )
+            // inRange( number , [lower=0] , upper )
             it( 'inRange'
               , function () {
                   _.inRange( 0 , 0 , 5 ).should.be.true

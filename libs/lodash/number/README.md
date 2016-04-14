@@ -8,4 +8,4 @@ $ npm test
 ---
 
 - [clamp( number , [lower] , upper )](https://lodash.com/docs#clamp)
-- [inRange( number , [start=0] , end )](https://lodash.com/docs#inRange)
+- [inRange( number , [lower=0] , upper )](https://lodash.com/docs#inRange)
