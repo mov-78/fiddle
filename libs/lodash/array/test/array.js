@@ -147,7 +147,7 @@ describe( 'lodash/array'
 
             //
             // pull( array , ...values )
-            // pullAt( array , indexes )
+            // pullAt( array , ...indexes )
             // pullAll( array , values )
             // pullAllBy( array , values , iteratee )
             // pullAllWith( array , values , comparator )
