@@ -148,9 +148,9 @@ describe( 'lodash/array'
             //
             // pull( array , ...values )
             // pullAt( array , indexes )
-            // pullAll( array , other )
-            // pullAllBy( array , other , iteratee )
-            // pullAllWith( array , other , comparator )
+            // pullAll( array , values )
+            // pullAllBy( array , values , iteratee )
+            // pullAllWith( array , values , comparator )
             //
 
             it( 'pull , pullAll , pullAllBy , pullAllWith , pullAt'
