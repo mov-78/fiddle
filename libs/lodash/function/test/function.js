@@ -2,6 +2,7 @@
 
 const _ = require( 'lodash' )
     , chai = require( 'chai' )
+    , lolex = require( 'lolex' )
     , sinon = require( 'sinon' )
     , expect = chai.expect
 
@@ -16,12 +17,19 @@ describe( 'lodash/function'
 
             let spy
               , stub
+              , clock
 
             beforeEach( function () {
                           spy = sinon.spy()
                           stub = sinon.stub()
+                          clock = lolex.install()
                         }
                       )
+
+            afterEach( function () {
+                         clock.uninstall()
+                       }
+                     )
 
 
             // bind( func , ctxt , [partials] )
@@ -263,6 +271,34 @@ describe( 'lodash/function'
                   stub.returns( true )
                   expect( _.negate( stub )() ).to.be.false
                   stub.should.have.been.called
+                }
+              )
+
+
+            // defer( func , ...args )
+            it( 'defer'
+              , function () {
+
+                  _.runInContext( { setTimeout : clock.setTimeout } ).defer( spy )
+                  spy.should.not.have.been.called
+
+                  clock.tick( 1 )
+                  spy.should.have.been.called
+
+                }
+              )
+
+
+            // delay( func , wait , ...args )
+            it( 'delay'
+              , function () {
+
+                  _.runInContext( { setTimeout : clock.setTimeout } ).delay( spy , 100 )
+                  spy.should.not.have.been.called
+
+                  clock.tick( 100 )
+                  spy.should.have.been.called
+
                 }
               )
 

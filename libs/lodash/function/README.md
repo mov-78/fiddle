@@ -40,3 +40,8 @@ $ npm test
 ---
 
 - [negate( func )](https://lodash.com/docs#negate)
+
+---
+
+- [defer( func , ...args )](https://lodash.com/docs#defer)
+- [delay( func , wait , ...args )](https://lodash.com/docs#delay)
