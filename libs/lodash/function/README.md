@@ -14,6 +14,8 @@ $ npm test
 - [curryRight( func , [arity=func.length] )](https://lodash.com/docs#curryRight)
 - [wrap( value , wrapper )](https://lodash.com/docs#wrap)
 
+> 对于生成的函数，不设置 [Function.length](http://mzl.la/1qKB7Kq) 属性
+
 ---
 
 - [before( n , func )](https://lodash.com/docs#before)

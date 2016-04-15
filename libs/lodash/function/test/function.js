@@ -28,16 +28,19 @@ describe( 'lodash/function'
             it( 'bind'
               , function () {
 
-                  _.bind( spy , null , 1 , 2 )()
-                  spy.should.have.been.calledOn( null )
+                  const ctxt = {}
+
+                  _.bind( spy , ctxt , 1 , 2 )()
+                  spy.should.have.been.calledOn( ctxt )
                   spy.should.have.been.calledWithExactly( 1 , 2 )
 
                   // 可以通过更改 _.bind.placeholder 来自定义占位符
                   _.bind.placeholder.should.equal( _ )
 
                   spy.reset()
-                  _.bind( spy , null , _ , 2 )()
-                  spy.should.have.been.calledOn( null )
+
+                  _.bind( spy , ctxt , _ , 2 )()
+                  spy.should.have.been.calledOn( ctxt )
                   spy.should.have.been.calledWithExactly( undefined , 2 )
 
                 }
@@ -97,9 +100,8 @@ describe( 'lodash/function'
 
             it( 'wrap'
               , function () {
-                  _.wrap( 1
-                        , ( ...args ) => args
-                        )( 2 ).should.deep.equal( [ 1 , 2 ] )
+                  _.wrap( 1 , spy )( 2 )
+                  spy.should.have.been.calledWithExactly( 1 , 2 )
                 }
               )
 
@@ -116,6 +118,7 @@ describe( 'lodash/function'
                   spy.should.have.been.callCount( 4 )
 
                   spy.reset()
+
                   _.times( 5 , _.after( 5 , spy ) )
                   spy.should.have.been.callCount( 1 )
 
@@ -193,14 +196,12 @@ describe( 'lodash/function'
               , function () {
 
                   // reset( func , [start=func.length-1] )
-                  // https://mdn.io/rest_parameters
                   _.rest( spy , 1 )( 1 , 2 , 3 )
                   spy.should.have.been.calledWithExactly( 1 , [ 2 , 3 ] )
 
                   // spread( func , [start=0] )
-                  // https://mdn.io/spread_operator
                   spy.reset()
-                  _.spread( spy )( [ 1 , 2 , 3 ] )
+                  _.spread( spy , 1 )( 1 , [  2 , 3 ] )
                   spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
 
                 }
@@ -236,6 +237,7 @@ describe( 'lodash/function'
               , function () {
                   stub.returns( true )
                   expect( _.negate( stub )() ).to.be.false
+                  stub.should.have.been.called
                 }
               )
 
