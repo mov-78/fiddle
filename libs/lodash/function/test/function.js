@@ -148,12 +148,12 @@ describe( 'lodash/function'
               , function () {
 
                   _.times( 5 , _.before( 5 , spy ) )
-                  spy.should.have.been.callCount( 4 )
+                  spy.should.have.callCount( 4 )
 
                   spy.reset()
 
                   _.times( 5 , _.after( 5 , spy ) )
-                  spy.should.have.been.callCount( 1 )
+                  spy.should.have.callCount( 1 )
 
                 }
               )
