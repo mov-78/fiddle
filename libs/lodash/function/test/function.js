@@ -47,6 +47,31 @@ describe( 'lodash/function'
               )
 
 
+            // bindKey( object , key , [partials] )
+            it( 'bindKey'
+              , function () {
+
+                  const object = { method : spy }
+                      , bound = _.bindKey( object
+                                         , 'method'
+                                         , 'foo'
+                                         )
+
+                  bound( 'bar' )
+                  spy.should.have.been.calledOn( object )
+                  spy.should.have.been.calledWithExactly( 'foo' , 'bar' )
+
+                  object.method = stub
+
+                  bound( 'bar' )
+                  stub.should.have.been.calledOn( object )
+                  stub.should.have.been.calledWithExactly( 'foo' , 'bar' )
+
+
+                }
+              )
+
+
             //
             // partial( func , [partials] )
             // partialRight( func , [partials] )

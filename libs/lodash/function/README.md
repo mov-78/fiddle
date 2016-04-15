@@ -8,6 +8,7 @@ $ npm test
 ---
 
 - [bind( func , ctxt , [partials] )](https://lodash.com/docs#bind)
+- [bindKey( object , key , [partials] )](https://lodash.com/docs#bindKey)
 - [partial( func , [partials] )](https://lodash.com/docs#partial)
 - [partialRight( func , [partials] )](https://lodash.com/docs#partialRight)
 - [curry( func , [arity=func.length] )](https://lodash.com/docs#curry)
