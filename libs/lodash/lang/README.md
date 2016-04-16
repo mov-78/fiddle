@@ -44,6 +44,11 @@ $ npm test
 
 ---
 
+- [isMatch( object , source )](https://lodash.com/docs#isMatch)
+- [isMatchWith( object , source , customizer )](https://lodash.com/docs#isMatchWith)
+
+---
+
 - [clone( value )](https://lodash.com/docs#clone)
 - [cloneWith( value , customizer )](https://lodash.com/docs#cloneWith)
 - [cloneDeep( value )](https://lodash.com/docs#cloneDeep)

@@ -214,6 +214,29 @@ describe( 'lodash/lang'
               )
 
 
+            //
+            // isMatch( object , source )
+            // isMatchWith( object , source , customizer )
+            //
+
+            it( 'isMatch , isMatchWith'
+              , function () {
+
+                  _.isMatch( { name : 'lodash' , license : 'MIT' }
+                           , { license : 'MIT' }
+                           )
+                    .should.be.true
+
+                  _.isMatchWith( { name : 'lodash' , license : 'MIT' }
+                               , { license : 'MIT' }
+                               , ( objVal , srcVal , key , object , source ) => objVal === srcVal
+                               )
+                    .should.be.true
+
+                }
+              )
+
+
             // isEmpty( value )
             it( 'isEmpty( value )'
               , function () {
