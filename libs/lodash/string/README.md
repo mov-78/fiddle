@@ -49,9 +49,21 @@ $ npm test
 
 - [template( string , [options] )](https://lodash.com/docs#template)
 
+```
+options.interpolate = _.templateSettings.interpolate<String|RegExp>
+options.evaluate = _.templateSettings.evaluate<String|RegExp>
+options.escape = _.templateSettings.escape<String|RegExp>
+options.imports = _.templateSettings.imports<Object>
+```
+
 ---
 
 - [truncate( string , [options] )](https://lodash.com/docs#truncate)
+
+```
+options.length=30
+options.omission='…'
+```
 
 ---
 
