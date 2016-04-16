@@ -4,7 +4,11 @@ const _ = require( 'lodash' )
     , chai = require( 'chai' )
     , sinon = require( 'sinon' )
 
-before( chai.should )
+before( function () {
+          chai.should()
+          chai.use( require( 'sinon-chai' ) )
+        }
+      )
 
 describe( 'lodash/object'
         , function () {
@@ -284,17 +288,17 @@ describe( 'lodash/object'
                   _.forIn( obj
                          , ( value , key , object ) => spy( key )
                          )
-                  spy.callCount.should.equal( _.keysIn( obj ).length )
-                  spy.calledWith( 'foo' ).should.be.true
-                  spy.calledWith( 'bar' ).should.be.true
+                  spy.should.have.callCount( _.keysIn( obj ).length )
+                  spy.should.have.been.calledWith( 'foo' )
+                  spy.should.have.been.calledWith( 'bar' )
 
                   spy.reset()
                   _.forOwn( obj
                           , ( value , key , object ) => spy( key )
                           )
-                  spy.callCount.should.equal( _.keys( obj ).length )
-                  spy.calledWith( 'foo' ).should.be.false
-                  spy.calledWith( 'bar' ).should.be.true
+                  spy.should.have.callCount( _.keys( obj ).length )
+                  spy.should.not.have.been.calledWith( 'foo' )
+                  spy.should.have.been.calledWith( 'bar' )
 
 
                 }

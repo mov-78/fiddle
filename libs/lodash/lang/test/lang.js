@@ -384,7 +384,7 @@ describe( 'lodash/lang'
                   // toPlainObject( value )
                   //
 
-                  _.toPlainObject( _.create( {} , { foo : 'bar' } ) )
+                  _.toPlainObject( _.create( { foo : 'bar' } ) )
                     .should.have.ownProperty( 'foo' )
 
 

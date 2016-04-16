@@ -81,8 +81,8 @@ describe( 'lodash/function'
 
 
             //
-            // partial( func , [partials] )
-            // partialRight( func , [partials] )
+            // partial( func , partials )
+            // partialRight( func , partials )
             //
             // 占位符：
             //    _.partial.placeholder

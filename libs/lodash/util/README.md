@@ -65,5 +65,4 @@ $ npm test
 
 ---
 
-
 - [nthArg( [n=0] )](https://lodash.com/docs#nthArg)
