@@ -238,7 +238,7 @@ describe( 'lodash/lang'
 
 
             // isEmpty( value )
-            it( 'isEmpty( value )'
+            it( 'isEmpty'
               , function () {
                   _.isEmpty( '' ).should.be.true
                   _.isEmpty( {} ).should.be.true

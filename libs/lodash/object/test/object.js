@@ -254,7 +254,7 @@ describe( 'lodash/object'
             // entriesIn|toPairsIn( object )
             //
 
-            it( 'entries , entriesIn , toPairs , toPairsIn'
+            it( 'entries|toPairs , entriesIn|toPairsIn'
               , function () {
 
                   const obj = _.create( { foo : 'bar' }
@@ -350,9 +350,9 @@ describe( 'lodash/object'
 
 
             //
-            // pick( object , ...keys|keys )
+            // pick( object , ...key|keys )
             // pickBy( object , predicate )
-            // omit( object , ...keys|keys )
+            // omit( object , ...key|keys )
             // omitBy( object , predicate )
             //
 

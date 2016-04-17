@@ -67,9 +67,9 @@ $ npm test
 
 ---
 
-- [pick( object , ...keys|keys )](https://lodash.com/docs#pick)
+- [pick( object , ...key|keys )](https://lodash.com/docs#pick)
 - [pickBy( object , predicate )](https://lodash.com/docs#pickBy)
-- [omit( object , ...keys|keys )](https://lodash.com/docs#omit)
+- [omit( object , ...key|keys )](https://lodash.com/docs#omit)
 - [omitBy( object , predicate )](https://lodash.com/docs#omitBy)
 
 ---
