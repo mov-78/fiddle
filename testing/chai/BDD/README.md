@@ -29,16 +29,23 @@ $ npm test
 - [a( type , [message] )](http://chaijs.com/api/bdd/#method_a)
 - [an( type , [message] )](http://chaijs.com/api/bdd/#method_a)
 
+> - 判断依据：Object.prototype.toString
+> - 类型：chainableMethod（chainingBehavior 为 noop）
+
 ---
 
 - [include( value , [message] )](http://chaijs.com/api/bdd/#method_include)
 - [contain( value , [message] )](http://chaijs.com/api/bdd/#method_include)
+
+> 类型：chainableMethod（chainingBehavior 设置 contains flag）
 
 ---
 
 - [ok](http://chaijs.com/api/bdd/#method_ok)
 - [true](http://chaijs.com/api/bdd/#method_true)
 - [false](http://chaijs.com/api/bdd/#method_false)
+
+> 类型：property
 
 ---
 
@@ -47,18 +54,27 @@ $ npm test
 - [exist](http://chaijs.com/api/bdd/#method_exist)
 - [NaN](http://chaijs.com/api/bdd/#method_nan)
 
+> 类型：property
+
 ---
 
 - [empty](http://chaijs.com/api/bdd/#method_empty)
+
+> 类型：property
 
 ---
 
 - [arguments](http://chaijs.com/api/bdd/#method_arguments)
 
+> 类型：property
+
 ---
 
 - [equal( value , [message] )](http://chaijs.com/api/bdd/#method_equal)
 - [eql( value , [message] )](http://chaijs.com/api/bdd/#method_eql)
+
+> - 类型：method
+> - 相关 flag：deep
 
 ---
 
@@ -68,9 +84,14 @@ $ npm test
 - [lte|most( value , [message] )](http://chaijs.com/api/bdd/#method_most)
 - [within( min , max , [message] )](http://chaijs.com/api/bdd/#method_within)
 
+> - 相关 flag：doLength
+> - 类型：method
+
 ---
 
 - [instanceof|instanceOf( constructor , [message] )](http://chaijs.com/api/bdd/#method_instanceof)
+
+> 类型：method
 
 ---
 
@@ -78,43 +99,70 @@ $ npm test
 - [ownProperty( key , [message] )](http://chaijs.com/api/bdd/#method_ownproperty)
 - [ownPropertyDescriptor( key , [descriptor] , [message] )](http://chaijs.com/api/bdd/#method_ownpropertydescriptor)
 
+> - 相关 flag：deep
+> - 类型：method
+
 ---
 
 - [length( value , [message] )](http://chaijs.com/api/bdd/#method_length)
+
+> 类型：chainableMethod（chainingBehavior 设置 doLength flag）
+
 - [lengthOf( value , [message] )](http://chaijs.com/api/bdd/#method_lengthof)
+
+> 类型：method
 
 ---
 
 - [match|matches( regex , [message] )](http://chaijs.com/api/bdd/#method_match)
 - [string( substring , [message] )](http://chaijs.com/api/bdd/#method_string)
 
+> 类型：method
+
 ---
 
 - [key|keys( [key] , [key]... )](http://chaijs.com/api/bdd/#method_keys)
+
+> - 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
+> - 类型：method
 
 ---
 
 - [throw|throws|Throw( ... )](http://chaijs.com/api/bdd/#method_throw)
 
+> 类型：method
+
 ---
 
 - [respondTo( method , [message] )](http://chaijs.com/api/bdd/#method_respondto)
+
+> - 相关 flag：itself
+> - 类型：method
 
 ---
 
 - [satisfy|satisfies( func , [message] )](http://chaijs.com/api/bdd/#method_satisfy)
 
+> 类型：method
+
 ---
 
 - [closeTo|approximately( expected , delta , [message] )](http://chaijs.com/api/bdd/#method_closeto)
+
+> 类型：method
 
 ---
 
 - [members( subset , [message] )](http://chaijs.com/api/bdd/#method_members)
 
+> - 相关 flag：include , deep
+> - 类型：method
+
 ---
 
 - [oneOf( list , [message] )](http://chaijs.com/api/bdd/#method_oneof)
+
+> 类型：method
 
 ---
 
@@ -122,8 +170,12 @@ $ npm test
 - [increase( object , key , [message] )](http://chaijs.com/api/bdd/#method_increase)
 - [decrease( object , key , [message] )](http://chaijs.com/api/bdd/#method_decrease)
 
+> 类型：chainableMethod（chainingBehavior 为 noop）
+
 ---
 
 - [extensible](http://chaijs.com/api/bdd/#method_extensible)
 - [sealed](http://chaijs.com/api/bdd/#method_sealed)
 - [frozen](http://chaijs.com/api/bdd/#method_frozen)
+
+> 类型：property
