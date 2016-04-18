@@ -84,7 +84,7 @@ chai
 
 
                             //
-                            // 如果在该断言中调用了其他断言，则可能需要将当前断言的 flags 传递给它：
+                            // 如果在该断言中调用了其他断言，则需要将当前断言的 flags 传递给它：
                             //
                             //    chai.util.transferFlags( sourceAssertion , targetAssertion , includeAll = true )
                             //

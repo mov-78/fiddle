@@ -308,7 +308,7 @@ expect( 'foobar' ).to.have.string( 'foo' )
 
 
 //
-// key|keys( [key] , [key]... )
+// key|keys( ...keys )
 // 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
 // 类型：method
 //

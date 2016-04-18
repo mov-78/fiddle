@@ -121,7 +121,7 @@ $ npm test
 
 ---
 
-- [key|keys( [key] , [key]... )](http://chaijs.com/api/bdd/#method_keys)
+- [key|keys( ...keys )](http://chaijs.com/api/bdd/#method_keys)
 
 > - 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
 > - 类型：method
