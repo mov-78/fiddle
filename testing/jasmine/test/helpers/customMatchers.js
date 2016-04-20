@@ -14,7 +14,7 @@ module.exports =
         {
 
           // compare: 在「正断言」及「负断言」形式中均调用
-          // negativeCompare: 仅在「负断言」形式中调用；可选，覆盖 compare
+          // negativeCompare: 仅在「负断言」形式中调用；可选，且覆盖 compare
           compare( actual , expected ) {
 
             const type = typeof actual

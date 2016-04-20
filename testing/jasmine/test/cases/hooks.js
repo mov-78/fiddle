@@ -1,4 +1,3 @@
-// Hooks
 describe( 'Hooks'
         , function () {
 

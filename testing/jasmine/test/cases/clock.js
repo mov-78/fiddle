@@ -19,7 +19,7 @@ describe( 'Manually ticking the Jasmine Clock'
 
                   expect( this.callback ).not.toHaveBeenCalled()
 
-                  jasmine.clock().tick( 10001 ) // move time forward
+                  jasmine.clock().tick( 10000 ) // move time forward
                   expect( this.callback ).toHaveBeenCalled()
 
                 }

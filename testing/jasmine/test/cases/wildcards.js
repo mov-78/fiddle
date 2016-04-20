@@ -3,6 +3,7 @@
 // jasmine.any( constructor )
 describe( 'jasmine.any'
         , function () {
+
             it( 'matches any value of a given type'
               , function () {
 
@@ -24,6 +25,7 @@ describe( 'jasmine.any'
 
               }
             )
+
           }
         )
 
@@ -82,7 +84,7 @@ describe( 'jasmine.objectContaining'
         )
 
 
-// jasmine.arrayContaining( schema )
+// jasmine.arrayContaining( subset )
 describe( 'jasmine.arrayContaining'
         , function () {
             it( 'matches arrays with some of the values'
@@ -101,17 +103,10 @@ describe( 'jasmine.arrayContaining'
 describe( 'jasmine.stringMatching'
         , function () {
 
-            beforeEach( function () {
-                          this.foobar = { foo : 'bar' }
-                        }
-                      )
-
             it( 'matches as a regexp'
               , function () {
-                  expect( this.foobar )
-                    .toEqual( { foo : jasmine.stringMatching( /^b/ ) } )
-                  expect( this.foobar )
-                    .toEqual( { foo : jasmine.stringMatching( 'b' ) } )
+                  expect( 'foobar' ).toEqual( jasmine.stringMatching( /^foo/ ) )
+                  expect( 'foobar' ).toEqual( jasmine.stringMatching( 'foo' ) )
                 }
               )
 

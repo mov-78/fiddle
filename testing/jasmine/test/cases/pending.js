@@ -18,6 +18,7 @@ describe( 'Pending test case'
 
           }
         )
+
 // 临时挂起「测试套件」
 // 挂起后，「测试套件」内所有「测试用例」均自动挂起
 xdescribe( 'Pending test suite' , () => null )

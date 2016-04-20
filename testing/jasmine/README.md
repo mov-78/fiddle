@@ -7,7 +7,7 @@ $ npm test
 
 ---
 
-![结构组织](https://raw.githubusercontent.com/pwnn/img/master/jasmine.png)
+![jasmine.png](https://raw.githubusercontent.com/pwnn/img/master/jasmine.png)
 
 ---
 
@@ -33,7 +33,6 @@ $ npm test
 Hooks:
 
 ```js
-// Hooks
 describe( 'Hooks'
         , function () {
 
@@ -157,7 +156,7 @@ describe( 'Testing async code'
 - `jasmine.any( constructor )`
 - `jasmine.anything()`
 - `jasmine.objectContaining( schema )`
-- `jasmine.arrayContaining( schema )`
+- `jasmine.arrayContaining( subset )`
 - `jasmine.stringMatching( substring|regex )`
 
 ---
@@ -191,7 +190,7 @@ describe( 'Manually ticking the Jasmine Clock'
 
                   expect( this.callback ).not.toHaveBeenCalled()
 
-                  jasmine.clock().tick( 10001 ) // move time forward
+                  jasmine.clock().tick( 10000 ) // move time forward
                   expect( this.callback ).toHaveBeenCalled()
 
                 }
