@@ -1,8 +1,8 @@
 'use strict'
 
-const chai = require('chai'),
-      noop = require('lodash.noop'),
-      assert = chai.assert
+const chai = require('chai')
+const noop = require('lodash.noop')
+const assert = chai.assert
 
 describe('TDD', function () {
 
@@ -59,9 +59,9 @@ describe('TDD', function () {
     assert.strictEqual(1, 1)
     assert.notStrictEqual(1, '1')
 
-    const proto = { foo: 'bar' },
-          foo = { baz: 'qux' },
-          bar = { baz: 'qux' } // [1] 对于 primitives 使用 === 判断相等性
+    const proto = { foo: 'bar' }
+    const foo = { baz: 'qux' }
+    const bar = { baz: 'qux' } // [1] 对于 primitives 使用 === 判等
 
     // [2] 非枚举属性不在考虑范围之内
     Object.defineProperty(bar, 'hidden', { enumerable: false })
@@ -119,11 +119,11 @@ describe('TDD', function () {
     assert.isUndefined(undefined)
     assert.isDefined(null)
 
-    assert.isNumber(Number.NaN)
-    assert.isNumber(Number.POSITIVE_INFINITY)
-    assert.isNumber(Number.NEGATIVE_INFINITY)
+    assert.isNumber(0/0)
+    assert.isNumber(+1/0)
+    assert.isNumber(-1/0)
     assert.isNaN('one') // WTF?
-    assert.isNaN(Number.NaN)
+    assert.isNaN(0/0)
 
     assert.isString('')
 
@@ -137,11 +137,11 @@ describe('TDD', function () {
     assert.isNotObject(/^/)
 
     assert.isArray([])
-    assert.isNotArray({ length: 1 })        // [1] Array-like Object
-    ;(() => assert.isNotArray(arguments))() // [2] Arguments
+    assert.isNotArray({ length: 1 })  // [1] Array-like Object
+    assert.isNotArray(arguments)      // [2] Arguments
 
-    assert.isFunction(() => null)
     assert.isFunction(noop)
+    assert.isFunction(() => null)
 
   })
 
@@ -173,9 +173,9 @@ describe('TDD', function () {
 
   it('instanceOf', function () {
 
-    const proto = {},
-          Stub = class {},
-          obj = new Stub
+    const proto = {}
+    const Stub = class {}
+    const obj = new Stub
 
     assert.instanceOf(obj, Stub)
 
@@ -346,9 +346,9 @@ describe('TDD', function () {
 
   it('changes, increases, decreases', function () {
 
-    const KEY = 'KEY',
-          obj = { [ KEY ]: 0 },
-          func = () => { obj[ KEY ] = 1 }
+    const KEY = 'KEY'
+    const obj = { [ KEY ]: 0 }
+    const func = () => { obj[ KEY ] = 1 }
 
     assert.changes(func, obj, KEY)
 
