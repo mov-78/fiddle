@@ -1,6 +1,10 @@
-{ "name" : "fiddle-mocha"
-, "scripts" : { "test" : "mocha" }
-, "dependencies" : { "lodash.noop" : "~3.0.1"
-                   , "mocha" : "~2.4.5"
-                   }
+{
+  "name": "fiddle-mocha",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "lodash.noop": "~3.0.1",
+    "mocha": "~2.4.5"
+  }
 }
