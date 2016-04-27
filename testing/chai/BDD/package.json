@@ -1,6 +1,11 @@
-{ "name" : "fiddle-chai-BDD"
-, "scripts" : { "test" : "node index.js" }
-, "dependencies" : { "chai" : "~3.5.0"
-                   , "lodash.noop" : "~3.0.1"
-                   }
+{
+  "name": "fiddle-chai-BDD",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "chai": "~3.5.0",
+    "lodash.noop": "~3.0.1",
+    "mocha": "~2.4.5"
+  }
 }
