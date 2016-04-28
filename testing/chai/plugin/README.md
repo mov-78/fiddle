@@ -13,15 +13,17 @@ $ npm test
 
 ```js
 // 基本等同于：
-Object.defineProperty( chai.Assertion.prototype
-                     , name
-                     , { configurable : true
-                       , get() {
-                           let result = getter.call( this )
-                           return result === undefined ? this : result
-                         }
-                       }
-                     )
+Object.defineProperty(
+  context ,
+  name ,
+  {
+    configurable : true ,
+    get() {
+      let result = getter.call( this )
+      return result === undefined ? this : result
+    }
+  }
+)
 ```
 
 覆盖或扩展（继承）已有断言__属性__：
@@ -35,15 +37,17 @@ const descriptor = Object.getOwnPropertyDescriptor( context , name )
 if ( descriptor && typeof descriptor.get === 'function' ) {
   _super = descriptor.get
 }
-Object.defineProperty( context
-                     , name
-                     , { configurable : true
-                       , get() {
-                           let result = getter( _super ).call( this )
-                           return result === undefined ? this : result
-                         }
-                       }
-                     )
+Object.defineProperty(
+  context ,
+  name ,
+  {
+    configurable : true ,
+    get() {
+      let result = getter( _super ).call( this )
+      return result === undefined ? this : result
+    }
+  }
+)
 ```
 
 添加断言__方法__：
@@ -85,28 +89,30 @@ if ( typeof chainingBehavior !== 'function' ) {
   chainingBehavior = function noop() {}
 }
 let chainableBehavior = { method , chainingBehavior }
-//
-chai.Assertion.prototype.__methods = chai.Assertion.prototype.__methods || {}
-chai.Assertion.prototype.__methods[ name ] = chainableBehavior
-//
-Object.defineProperty( chai.Assertion.prototype
-                     , name
-                     , { configurable : true
-                       , get() {
-                           chainableBehavior.chainingBehavior.call( this )
-                           let assert = function () {
-                             let result = chainableBehavior.method.apply( this , arguments )
-                             return result === undefined ? this : result
-                           }
-                           Reflect.setPrototypeOf( assert , this )
-                           assert.apply = Function.prototype.apply
-                           assert.bind = Function.prototype.bind
-                           assert.call = Function.prototype.call
-                           chai.util.transferFlags( this , assert )
-                           return assert
-                         }
-                       }
-                     )
+
+context.__methods = context.__methods || {}
+context.__methods[ name ] = chainableBehavior
+
+Object.defineProperty(
+  context ,
+  name ,
+  {
+    configurable : true ,
+    get() {
+      chainableBehavior.chainingBehavior.call( this )
+      let assert = function () {
+        let result = chainableBehavior.method.apply( this , arguments )
+        return result === undefined ? this : result
+      }
+      Reflect.setPrototypeOf( assert , this )
+      assert.apply = Function.prototype.apply
+      assert.bind = Function.prototype.bind
+      assert.call = Function.prototype.call
+      chai.util.transferFlags( this , assert )
+      return assert
+    }
+  }
+)
 ```
 
 覆盖或扩展（继承）已有__链式断言方法__：

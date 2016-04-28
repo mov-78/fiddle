@@ -1,8 +1,8 @@
 'use strict'
 
 const chai = require( 'chai' )
-    , sinon = require( 'sinon' )
-    , expect = chai.expect
+const sinon = require( 'sinon' )
+const expect = chai.expect
 
 before( chai.should )
 
@@ -14,616 +14,552 @@ before( chai.should )
 //    - spy.restore()
 //
 
-describe( 'Creating spies'
-        , function () {
+describe( 'Creating spies' , function () {
 
-            // [1] sinon.spy()
-            it( 'with sinon.spy()'
-              , function () {
+  // [1] sinon.spy()
+  it( 'with sinon.spy()' , function () {
 
-                  const bareSpy = sinon.spy()
+    const bareSpy = sinon.spy()
 
-                  bareSpy.should.exist
-                  bareSpy.should.be.a( 'function' )
+    bareSpy.should.exist
+    bareSpy.should.be.a( 'function' )
 
-                }
-              )
+  } )
 
-            // [2] sinon.spy( func )
-            it( 'with sinon.spy( func )'
-              , function () {
+  // [2] sinon.spy( func )
+  it( 'with sinon.spy( func )' , function () {
 
-                  const bareSpy = sinon.spy()
-                      , spy = sinon.spy( bareSpy )
+    const bareSpy = sinon.spy()
+    const spy = sinon.spy( bareSpy )
 
-                  spy.should.exist
-                  spy.should.be.a( 'function' )
+    spy.should.exist
+    spy.should.be.a( 'function' )
 
-                  // delegates to the original function
-                  spy()
-                  bareSpy.called.should.be.true
+    // delegates to the original function
+    spy()
+    bareSpy.called.should.be.true
 
-                }
-              )
+  } )
 
-            // [3] sinon.spy( obj , method )
-            it( 'with sinon.spy( obj , method )'
-              , function () {
+  // [3] sinon.spy( obj , method )
+  it( 'with sinon.spy( obj , method )' , function () {
 
-                  let called = false
-                  const obj = { method() { called = true } }
-                      , _method = obj.method
-                      , spy = sinon.spy( obj , 'method' )
+    let called = false
+    const obj = { method() { called = true } }
+    const _method = obj.method
+    const spy = sinon.spy( obj , 'method' )
 
-                  spy.should.exist
-                  spy.should.be.a( 'function' )
+    spy.should.exist
+    spy.should.be.a( 'function' )
 
-                  // overrides original method
-                  obj.method.should.equal( spy )
-                  obj.method.should.not.equal( _method )
+    // overrides original method
+    obj.method.should.equal( spy )
+    obj.method.should.not.equal( _method )
 
-                  // but will delegates to the original method
-                  obj.method()
-                  called.should.be.true
+    // but will delegates to the original method
+    obj.method()
+    called.should.be.true
 
-                  // and can be restored
-                  spy.restore()
-                  obj.method.should.not.equal( spy )
-                  obj.method.should.equal( _method )
+    // and can be restored
+    spy.restore()
+    obj.method.should.not.equal( spy )
+    obj.method.should.equal( _method )
 
-                }
-              )
+  } )
 
-          }
-        )
+} )
 
 
 //
 // Spy 相关属性、接口
 //
 
-describe( 'Spy'
-        , function () {
+describe( 'Spy' , function () {
 
-            let spy
-            beforeEach( function () {
-                          spy = sinon.spy()
-                        }
-                      )
+  let spy
 
+  beforeEach( function () {
+    spy = sinon.spy()
+  } )
 
-            //
-            // spy.args
-            // spy.returnValues
-            // spy.thisValues
-            // spy.exceptions
-            //
 
-            it( '#args'
-              , function () {
+  //
+  // spy.args
+  // spy.returnValues
+  // spy.thisValues
+  // spy.exceptions
+  //
 
-                  spy(); spy( 1 ); spy( 2 , 3 )
+  it( 'args' , function () {
 
-                  spy.args.should.be.an( 'array' )
+    spy(); spy( 1 ); spy( 2 , 3 )
 
-                  spy.args[ 0 ].should.equal( spy.getCall( 0 ).args )
-                  spy.args[ 0 ].should.be.an( 'array' )
-                  spy.args[ 0 ].should.deep.equal( [] )
+    spy.args.should.be.an( 'array' )
 
-                  spy.args[ 1 ].should.equal( spy.getCall( 1 ).args )
-                  spy.args[ 1 ].should.be.an( 'array' )
-                  spy.args[ 1 ].should.deep.equal( [ 1 ] )
+    spy.args[ 0 ].should.equal( spy.getCall( 0 ).args )
+    spy.args[ 0 ].should.be.an( 'array' )
+    spy.args[ 0 ].should.deep.equal( [] )
 
-                  spy.args[ 2 ].should.equal( spy.getCall( 2 ).args )
-                  spy.args[ 2 ].should.be.an( 'array' )
-                  spy.args[ 2 ].should.deep.equal( [ 2 , 3 ] )
+    spy.args[ 1 ].should.equal( spy.getCall( 1 ).args )
+    spy.args[ 1 ].should.be.an( 'array' )
+    spy.args[ 1 ].should.deep.equal( [ 1 ] )
 
-                }
-              )
-            it( '#returnValues'
-              , function () {
+    spy.args[ 2 ].should.equal( spy.getCall( 2 ).args )
+    spy.args[ 2 ].should.be.an( 'array' )
+    spy.args[ 2 ].should.deep.equal( [ 2 , 3 ] )
 
-                  const spy = sinon.spy( ( x ) => x )
+  } )
+  it( 'returnValues' , function () {
 
-                  spy( 1 ); spy( 2 )
+    const spy = sinon.spy( ( x ) => x )
 
-                  spy.returnValues.should.be.an( 'array' )
+    spy( 1 ); spy( 2 )
 
-                  spy.returnValues[ 0 ].should.equal( spy.getCall( 0 ).returnValue )
-                  spy.returnValues[ 0 ].should.equal( 1 )
+    spy.returnValues.should.be.an( 'array' )
 
-                  spy.returnValues[ 1 ].should.equal( spy.getCall( 1 ).returnValue )
-                  spy.returnValues[ 1 ].should.equal( 2 )
+    spy.returnValues[ 0 ].should.equal( spy.getCall( 0 ).returnValue )
+    spy.returnValues[ 0 ].should.equal( 1 )
 
-                }
-              )
-            it( '#thisValues'
-              , function () {
+    spy.returnValues[ 1 ].should.equal( spy.getCall( 1 ).returnValue )
+    spy.returnValues[ 1 ].should.equal( 2 )
 
-                  const ctxt1 = {}
-                      , ctxt2 = {}
+  } )
+  it( 'thisValues' , function () {
 
-                  spy.call( ctxt1 )
-                  spy.call( ctxt2 )
+    const ctxt1 = {}
+    const ctxt2 = {}
 
-                  spy.thisValues.should.be.an( 'array' )
+    spy.call( ctxt1 )
+    spy.call( ctxt2 )
 
-                  spy.thisValues[ 0 ].should.equal( spy.getCall( 0 ).thisValue )
-                  spy.thisValues[ 0 ].should.equal( ctxt1 )
+    spy.thisValues.should.be.an( 'array' )
 
-                  spy.thisValues[ 1 ].should.equal( spy.getCall( 1 ).thisValue )
-                  spy.thisValues[ 1 ].should.equal( ctxt2 )
+    spy.thisValues[ 0 ].should.equal( spy.getCall( 0 ).thisValue )
+    spy.thisValues[ 0 ].should.equal( ctxt1 )
 
-                }
-              )
-            it( '#exceptions'
-              , function () {
+    spy.thisValues[ 1 ].should.equal( spy.getCall( 1 ).thisValue )
+    spy.thisValues[ 1 ].should.equal( ctxt2 )
 
-                  const spy = sinon.spy( ( error ) => { throw error } )
+  } )
+  it( 'exceptions' , function () {
 
-                  try {
-                    spy( 'foo' )
-                  } catch ( error ) {
-                    // noop
-                  }
-                  try {
-                    spy( 'bar' )
-                  } catch ( error ) {
-                    // noop
-                  }
+    const spy = sinon.spy( ( error ) => { throw error } )
 
-                  spy.exceptions.should.be.an( 'array' )
+    try {
+      spy( 'foo' )
+    } catch ( error ) {
+      // noop
+    }
+    try {
+      spy( 'bar' )
+    } catch ( error ) {
+      // noop
+    }
 
-                  spy.exceptions[ 0 ].should.equal( spy.getCall( 0 ).exception )
-                  spy.exceptions[ 0 ].should.equal( 'foo' )
+    spy.exceptions.should.be.an( 'array' )
 
-                  spy.exceptions[ 1 ].should.equal( spy.getCall( 1 ).exception )
-                  spy.exceptions[ 1 ].should.equal( 'bar' )
+    spy.exceptions[ 0 ].should.equal( spy.getCall( 0 ).exception )
+    spy.exceptions[ 0 ].should.equal( 'foo' )
 
-                }
-              )
+    spy.exceptions[ 1 ].should.equal( spy.getCall( 1 ).exception )
+    spy.exceptions[ 1 ].should.equal( 'bar' )
 
+  } )
 
-            //
-            // spy.called
-            // spy.callCount
-            // spy.calledOnce|Twice|Thrice
-            //
 
-            it( '#called'
-              , function () {
+  //
+  // spy.called
+  // spy.callCount
+  // spy.calledOnce|Twice|Thrice
+  //
 
-                  spy.called.should.be.false
+  it( 'called' , function () {
 
-                  spy()
-                  spy.called.should.be.true
+    spy.called.should.be.false
 
-                }
-              )
-            it( '#callCount , #calledOnce , #calledTwice , #calledThrice'
-              , function () {
+    spy()
+    spy.called.should.be.true
 
-                  spy()
-                  spy.calledOnce.should.be.true
-                  spy.callCount.should.equal( 1 )
+  } )
+  it( 'callCount , calledOnce|Twice|Thrice' , function () {
 
-                  spy()
-                  spy.calledTwice.should.be.true
-                  spy.callCount.should.equal( 2 )
+    spy()
+    spy.calledOnce.should.be.true
+    spy.callCount.should.equal( 1 )
 
-                  spy()
-                  spy.calledThrice.should.be.true
-                  spy.callCount.should.equal( 3 )
+    spy()
+    spy.calledTwice.should.be.true
+    spy.callCount.should.equal( 2 )
 
-                }
-              )
+    spy()
+    spy.calledThrice.should.be.true
+    spy.callCount.should.equal( 3 )
 
+  } )
 
-            //
-            // spy.calledWith( ...args|matchers )
-            // spy.alwaysCalledWith( ...args|matchers )
-            // spy.neverCalledWith( ...args|matchers )
-            //    - 支持局部匹配
-            //    - 支持通配符（matcher 实参）
-            //    - 使用 deep equal 判等
-            //
 
-            it( '#calledWith|alwaysCalledWith|neverCalledWith( ...args|matchers )'
-              , function() {
+  //
+  // spy.calledWith( ...args|matchers )
+  // spy.alwaysCalledWith( ...args|matchers )
+  // spy.neverCalledWith( ...args|matchers )
+  //    - 支持局部匹配
+  //    - 支持通配符（matcher 实参）
+  //    - 使用 deep equal 判等
+  //
 
-                  spy( { foo : 'bar' } , 'baz' )
+  it( 'calledWith|alwaysCalledWith|neverCalledWith' , function() {
 
-                  spy.calledWith( { foo : 'bar' } ).should.be.true
-                  spy.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
+    spy( { foo : 'bar' } , 'baz' )
 
-                }
-              )
+    spy.calledWith( { foo : 'bar' } ).should.be.true
+    spy.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
 
+  } )
 
-            //
-            // spy.calledWithExactly( ...args|matchers )
-            // spy.alwaysCalledWithExactly( ...args|matchers )
-            // 与 calledWith 系列类似，但不支持局部匹配
-            //    - 支持通配符（matcher 实参）
-            //    - 使用 deep equal 判等
-            //
 
-            it( '#calledWithExactly|alwaysCalledWithExactly( ...args|matchers )'
-              , function () {
+  //
+  // spy.calledWithExactly( ...args|matchers )
+  // spy.alwaysCalledWithExactly( ...args|matchers )
+  // 与 calledWith 系列类似，但不支持局部匹配
+  //    - 支持通配符（matcher 实参）
+  //    - 使用 deep equal 判等
+  //
 
-                  spy( { foo : 'bar' } , 'baz' )
+  it( 'calledWithExactly|alwaysCalledWithExactly' , function () {
 
-                  spy.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
-                  spy.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
+    spy( { foo : 'bar' } , 'baz' )
 
-                }
-              )
+    spy.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
+    spy.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
+  } )
 
-            //
-            // spy.calledWithMatch( ...args )
-            // spy.alwaysCalledWithMatch( ...args )
-            // spy.neverCalledWithMatch( ...args )
-            //
-            // 等同于：
-            //    spy.calledWith( sinon.match( arg1 )... )
-            //    spy.alwaysCalledWith( sinon.match( arg1 )... )
-            //    spy.neverCalledWith( sinon.match( arg1 )... )
-            //
 
-            it( '#calledWithMatch|alwaysCalledWithMatch|neverCalledWithMatch( ...args )'
-              , function () {
+  //
+  // spy.calledWithMatch( ...args )
+  // spy.alwaysCalledWithMatch( ...args )
+  // spy.neverCalledWithMatch( ...args )
+  //
+  // 等同于：
+  //    spy.calledWith( sinon.match( arg1 )... )
+  //    spy.alwaysCalledWith( sinon.match( arg1 )... )
+  //    spy.neverCalledWith( sinon.match( arg1 )... )
+  //
 
-                  spy( 'foo' ); spy( 'foobar' )
+  it( 'calledWithMatch|alwaysCalledWithMatch|neverCalledWithMatch' , function () {
 
-                  spy.calledWithMatch( /^foo/ ).should.be.true
-                  spy.alwaysCalledWithMatch( /^foo/ ).should.be.true
-                  spy.neverCalledWithMatch( /^\s*$/ ).should.be.true
+    spy( 'foo' ); spy( 'foobar' )
 
-                }
-              )
+    spy.calledWithMatch( /^foo/ ).should.be.true
+    spy.alwaysCalledWithMatch( /^foo/ ).should.be.true
+    spy.neverCalledWithMatch( /^\s*$/ ).should.be.true
 
+  } )
 
-            //
-            // spy.calledWithNew()
-            //
 
-            it( '#calledWithNew()'
-              , function () {
+  //
+  // spy.calledWithNew()
+  //
 
-                  spy.calledWithNew().should.be.false
+  it( 'calledWithNew' , function () {
 
-                  new spy()
-                  spy.calledWithNew().should.be.true
+    spy.calledWithNew().should.be.false
 
-                }
-              )
+    new spy()
+    spy.calledWithNew().should.be.true
 
+  } )
 
-            //
-            // spy.returned( value|matcher )
-            // spy.alwaysReturned( value|matcher )
-            //
 
-            it( '#returned( value|matcher ) , #alwaysReturned( value|matcher )'
-              , function () {
+  //
+  // spy.returned( value|matcher )
+  // spy.alwaysReturned( value|matcher )
+  //
 
-                  const spy1 = sinon.spy( ( x ) => x )
-                      , spy2 = sinon.spy( ( x ) => 0 )
+  it( 'returned , alwaysReturned' , function () {
 
-                  spy1( 1 ); spy1( 2 )
-                  spy2( 1 ); spy2( 2 )
+    const spy1 = sinon.spy( ( x ) => x )
+    const spy2 = sinon.spy( ( x ) => 0 )
 
-                  spy1.returned( 1 ).should.be.true
-                  spy1.returned( 2 ).should.be.true
-                  spy1.alwaysReturned( 1 ).should.be.false
-                  spy1.alwaysReturned( 2 ).should.be.false
+    spy1( 1 ); spy1( 2 )
+    spy2( 1 ); spy2( 2 )
 
-                  spy2.returned( 0 ).should.be.true
-                  spy2.alwaysReturned( 0 ).should.be.true
+    spy1.returned( 1 ).should.be.true
+    spy1.returned( 2 ).should.be.true
+    spy1.alwaysReturned( 1 ).should.be.false
+    spy1.alwaysReturned( 2 ).should.be.false
 
-                  // deep equal & matcher support
-                  spy1( { foo : 'bar' } )
-                  spy1.returned( { foo : 'bar' } ).should.be.true
-                  spy1.returned( sinon.match.same( { foo : 'bar' } ) ).should.be.false
+    spy2.returned( 0 ).should.be.true
+    spy2.alwaysReturned( 0 ).should.be.true
 
-                }
-              )
+    // deep equal & matcher support
+    spy1( { foo : 'bar' } )
+    spy1.returned( { foo : 'bar' } ).should.be.true
+    spy1.returned( sinon.match.same( { foo : 'bar' } ) ).should.be.false
 
+  } )
 
-            //
-            // spy.calledOn( ctxt )
-            // spy.alwaysCalledOn( ctxt )
-            //
 
-            it( '#calledOn( ctxt ) , #alwaysCalledOn( ctxt )'
-              , function () {
+  //
+  // spy.calledOn( ctxt )
+  // spy.alwaysCalledOn( ctxt )
+  //
 
-                  const ctxt = {}
+  it( 'calledOn , alwaysCalledOn' , function () {
 
-                  spy.call( ctxt )
-                  spy.call( null )
+    const ctxt = {}
 
-                  spy.calledOn( ctxt ).should.be.true
-                  spy.alwaysCalledOn( ctxt ).should.be.false
+    spy.call( ctxt )
+    spy.call( null )
 
-                }
-              )
+    spy.calledOn( ctxt ).should.be.true
+    spy.alwaysCalledOn( ctxt ).should.be.false
 
+  } )
 
-            //
-            // spy.threw( [value] )
-            // spy.alwaysThrew( [value] )
-            //
 
-            it( '#threw( [value] ) , #alwaysThrew( [value] )'
-              , function () {
+  //
+  // spy.threw( [value] )
+  // spy.alwaysThrew( [value] )
+  //
 
-                  const ERR = 'error'
-                      , spy = sinon.spy( ( pass ) => { if ( !pass ) { throw ERR } } )
+  it( 'threw , alwaysThrew' , function () {
 
-                  try {
-                    spy( true )
-                    spy( false )
-                  } catch ( error ) {
-                    // noop
-                  }
+    const ERR = 'error'
+    const spy = sinon.spy( ( pass ) => { if ( !pass ) { throw ERR } } )
 
-                  spy.threw().should.be.true
-                  spy.threw( ERR ).should.be.true
+    try {
+      spy( true )
+      spy( false )
+    } catch ( error ) {
+      // noop
+    }
 
-                  spy.alwaysThrew().should.be.false
-                  spy.alwaysThrew( ERR ).should.be.false
+    spy.threw().should.be.true
+    spy.threw( ERR ).should.be.true
 
-                }
-              )
+    spy.alwaysThrew().should.be.false
+    spy.alwaysThrew( ERR ).should.be.false
 
+  } )
 
-            //
-            // spy.withArgs( ...args|matchers )
-            //
 
-            it( '#withArgs( ...args|matchers )'
-              , function () {
+  //
+  // spy.withArgs( ...args|matchers )
+  //
 
-                  spy( 'foo' ); spy( 1 , 'bar' )
+  it( 'withArgs' , function () {
 
-                  spy.withArgs( sinon.match.string ).calledOnce.should.be.true
-                  spy.withArgs( sinon.match.number ).calledOnce.should.be.true // partial matching
-                  spy.withArgs( sinon.match.number , sinon.match.string ).calledOnce.should.be.true
+    spy( 'foo' ); spy( 1 , 'bar' )
 
-                }
-              )
+    spy.withArgs( sinon.match.string ).calledOnce.should.be.true
+    spy.withArgs( sinon.match.number ).calledOnce.should.be.true // partial matching
+    spy.withArgs( sinon.match.number , sinon.match.string ).calledOnce.should.be.true
 
+  } )
 
-            //
-            // spy.calledAfter( anotherSpy )
-            // spy.calledBefore( anotherSpy )
-            //
 
-            it( '#calledAfter( anotherSpy )'
-              , function () {
-                  const anotherSpy = sinon.spy()
-                  anotherSpy(); spy()
-                  spy.calledAfter( anotherSpy ).should.be.true
-                }
-              )
-            it( '#calledBefore( anotherSpy )'
-              , function () {
-                  const anotherSpy = sinon.spy()
-                  spy(); anotherSpy()
-                  spy.calledBefore( anotherSpy ).should.be.true
-                }
-              )
+  //
+  // spy.calledAfter( anotherSpy )
+  // spy.calledBefore( anotherSpy )
+  //
 
+  it( 'calledAfter' , function () {
+    const anotherSpy = sinon.spy()
+    anotherSpy(); spy()
+    spy.calledAfter( anotherSpy ).should.be.true
+  } )
+  it( 'calledBefore' , function () {
+    const anotherSpy = sinon.spy()
+    spy(); anotherSpy()
+    spy.calledBefore( anotherSpy ).should.be.true
+  } )
 
-            //
-            // spy.reset()
-            //
 
-            it( '#reset()'
-              , function () {
+  //
+  // spy.reset()
+  //
 
-                  spy()
-                  spy.called.should.be.true
+  it( 'reset' , function () {
 
-                  spy.reset()
-                  spy.called.should.be.false
+    spy()
+    spy.called.should.be.true
 
-                }
-              )
+    spy.reset()
+    spy.called.should.be.false
 
-          }
-        )
+  } )
+
+} )
 
 
 //
 // SpyCall 相关属性、接口
 //
 
-describe( 'SpyCall'
-        , function () {
+describe( 'SpyCall' , function () {
 
-            let spy
-            beforeEach( function () {
-                          spy = sinon.spy()
-                        }
-                      )
+  let spy
 
-
-            //
-            // spyCall.args
-            // spyCall.returnValue
-            // spyCall.thisValue
-            // spyCall.exception
-            //
-
-            it( '#args'
-              , function () {
-
-                  spy( 1 )
-
-                  const spyCall = spy.getCall( 0 )
-
-                  spyCall.args.should.be.an( 'array' )
-                  spyCall.args.should.deep.equal( [ 1 ] )
-
-                }
-              )
-            it( '#returnValue'
-              , function () {
-
-                  const spy = sinon.spy( () => 'foobar' )
-
-                  spy()
-
-                  spy.getCall( 0 ).returnValue.should.equal( 'foobar' )
-
-                }
-              )
-            it( '#thisValue'
-              , function () {
-
-                  const ctxt = {}
-
-                  spy.call( ctxt )
-
-                  spy.getCall( 0 ).thisValue.should.equal( ctxt )
-
-                }
-              )
-            it( '#exception'
-              , function () {
-
-                  const ERR = 'error'
-                      , spy = sinon.spy( ( error ) => { throw error } )
-
-                  try {
-                    spy( ERR )
-                  } catch( error ) {
-                    // noop
-                  }
-
-                  spy.getCall( 0 ).exception.should.equal( ERR )
-
-                }
-              )
+  beforeEach( function () {
+    spy = sinon.spy()
+  } )
 
 
-            //
-            // spyCall.calledWith( ...args|matchers )
-            // spyCall.notCalledWith( ...args|matchers )
-            //    - 支持局部匹配
-            //    - 支持通配符（matcher 实参）
-            //    - 使用 deep equal 判等
-            //
+  //
+  // spyCall.args
+  // spyCall.returnValue
+  // spyCall.thisValue
+  // spyCall.exception
+  //
 
-            it( '#calledWith( ...args|matchers ) , #notCalledWith( ...args|matchers )'
-              , function () {
+  it( 'args' , function () {
 
-                  spy( { foo : 'bar' } , 'baz' )
+    spy( 1 )
 
-                  const spyCall = spy.getCall( 0 )
+    const spyCall = spy.getCall( 0 )
 
-                  spyCall.calledWith( { foo : 'bar' } ).should.be.true
-                  spyCall.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
+    spyCall.args.should.be.an( 'array' )
+    spyCall.args.should.deep.equal( [ 1 ] )
 
-                }
-              )
+  } )
+  it( 'returnValue' , function () {
 
+    const spy = sinon.spy( () => 'foobar' )
 
-            //
-            // spyCall.calledWithExactly( ...args|matchers )
-            // 与 calledWith 系列类似，但不支持局部匹配
-            //    - 支持通配符（matcher 实参）
-            //    - 使用 deep equal 判等
-            //
+    spy()
 
-            it( '#calledWithExactly( ...args|matchers )'
-              , function () {
+    spy.getCall( 0 ).returnValue.should.equal( 'foobar' )
 
-                  spy( { foo : 'bar' } , 'baz' )
+  } )
+  it( 'thisValue' , function () {
 
-                  const spyCall = spy.getCall( 0 )
+    const ctxt = {}
 
-                  spyCall.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
-                  spyCall.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
+    spy.call( ctxt )
 
-                }
-              )
+    spy.getCall( 0 ).thisValue.should.equal( ctxt )
 
+  } )
+  it( 'exception' , function () {
 
-            //
-            // spyCall.calledWithMatch( ...args )
-            // spyCall.notCalledWithMatch( ...args )
-            //
-            // 等同于：
-            //    spyCall.calledWith( sinon.match( arg1 )... )
-            //    spyCall.notCalledWith( sinon.match( arg1 )... )
-            //
+    const ERR = 'error'
+    const spy = sinon.spy( ( error ) => { throw error } )
 
-            it( '#calledWithMatch( ...args ) , #notCalledWithMatch( ...args )'
-              , function () {
+    try {
+      spy( ERR )
+    } catch( error ) {
+      // noop
+    }
 
-                  spy( 'foobar' )
+    spy.getCall( 0 ).exception.should.equal( ERR )
 
-                  const spyCall = spy.getCall( 0 )
-
-                  spyCall.calledWithMatch( /^foo/ ).should.be.true
-                  spyCall.notCalledWithMatch( /^\s*$/ ).should.be.true
-
-                }
-              )
+  } )
 
 
-            //
-            // spyCall.calledOn( ctxt )
-            //
+  //
+  // spyCall.calledWith( ...args|matchers )
+  // spyCall.notCalledWith( ...args|matchers )
+  //    - 支持局部匹配
+  //    - 支持通配符（matcher 实参）
+  //    - 使用 deep equal 判等
+  //
 
-            it( '#calledOn( ctxt )'
-              , function () {
+  it( 'calledWith , notCalledWith' , function () {
 
-                  const ctxt = {}
+    spy( { foo : 'bar' } , 'baz' )
 
-                  spy() ; spy.call( ctxt )
+    const spyCall = spy.getCall( 0 )
 
-                  let spyCall = spy.getCall( 0 )
-                  spyCall.calledOn( ctxt ).should.be.false
+    spyCall.calledWith( { foo : 'bar' } ).should.be.true
+    spyCall.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
 
-                  spyCall = spy.getCall( 1 )
-                  spyCall.calledOn( ctxt ).should.be.true
-
-                }
-              )
+  } )
 
 
-            //
-            // spyCall.threw( [value] )
-            //
+  //
+  // spyCall.calledWithExactly( ...args|matchers )
+  // 与 calledWith 系列类似，但不支持局部匹配
+  //    - 支持通配符（matcher 实参）
+  //    - 使用 deep equal 判等
+  //
 
-            it( '#threw( [value] )'
-              , function () {
+  it( 'calledWithExactly' , function () {
 
-                  const ERR = 'error'
-                      , spy = sinon.spy( ( pass ) => { if ( !pass ) { throw ERR } } )
+    spy( { foo : 'bar' } , 'baz' )
 
-                  try {
-                    spy( true )
-                    spy( false )
-                  } catch( error ) {
-                    // noop
-                  }
+    const spyCall = spy.getCall( 0 )
 
-                  let spyCall = spy.getCall( 0 )
-                  spyCall.threw().should.be.false
-                  spyCall.threw( ERR ).should.be.false
+    spyCall.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
+    spyCall.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
-                  spyCall = spy.getCall( 1 )
-                  spyCall.threw().should.be.true
-                  spyCall.threw( ERR ).should.be.true
+  } )
 
-                }
-              )
 
-          }
-        )
+  //
+  // spyCall.calledWithMatch( ...args )
+  // spyCall.notCalledWithMatch( ...args )
+  //
+  // 等同于：
+  //    spyCall.calledWith( sinon.match( arg1 )... )
+  //    spyCall.notCalledWith( sinon.match( arg1 )... )
+  //
+
+  it( 'calledWithMatch , notCalledWithMatch' , function () {
+
+    spy( 'foobar' )
+
+    const spyCall = spy.getCall( 0 )
+
+    spyCall.calledWithMatch( /^foo/ ).should.be.true
+    spyCall.notCalledWithMatch( /^\s*$/ ).should.be.true
+
+  } )
+
+
+  //
+  // spyCall.calledOn( ctxt )
+  //
+
+  it( 'calledOn' , function () {
+
+    const ctxt = {}
+
+    spy() ; spy.call( ctxt )
+
+    let spyCall = spy.getCall( 0 )
+    spyCall.calledOn( ctxt ).should.be.false
+
+    spyCall = spy.getCall( 1 )
+    spyCall.calledOn( ctxt ).should.be.true
+
+  } )
+
+
+  //
+  // spyCall.threw( [value] )
+  //
+
+  it( 'threw' , function () {
+
+    const ERR = 'error'
+    const spy = sinon.spy( ( pass ) => { if ( !pass ) { throw ERR } } )
+
+    try {
+      spy( true )
+      spy( false )
+    } catch( error ) {
+      // noop
+    }
+
+    let spyCall = spy.getCall( 0 )
+    spyCall.threw().should.be.false
+    spyCall.threw( ERR ).should.be.false
+
+    spyCall = spy.getCall( 1 )
+    spyCall.threw().should.be.true
+    spyCall.threw( ERR ).should.be.true
+
+  } )
+
+} )
