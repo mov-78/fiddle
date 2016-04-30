@@ -1,9 +1,13 @@
-{ "name" : "fiddle-lodash-object"
-, "scripts" : { "test" : "mocha" }
-, "dependencies" : { "chai" : "~3.5.0"
-                   , "lodash" : "~4.7.0"
-                   , "mocha" : "~2.4.5"
-                   , "sinon" : "~1.17.3"
-                   , "sinon-chai" : "~2.8.0"
-                   }
+{
+  "name": "fiddle-lodash-object",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "chai": "~3.5.0",
+    "lodash": "~4.7.0",
+    "mocha": "~2.4.5",
+    "sinon": "~1.17.3",
+    "sinon-chai": "~2.8.0"
+  }
 }

@@ -1,219 +1,193 @@
 'use strict'
 
 const _ = require( 'lodash' )
-    , chai = require( 'chai' )
-    , sinon = require( 'sinon' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( function () {
-          chai.should()
-          chai.use( require( 'sinon-chai' ) )
-        }
-      )
+  chai.should()
+  chai.use( require( 'sinon-chai' ) )
+} )
 
-describe( 'lodash/util'
-        , function () {
+describe( 'lodash/util' , function () {
 
-            let spy
-              , stub
+  let spy
+  let stub
 
-            beforeEach( function () {
-                          spy = sinon.spy()
-                          stub = sinon.stub()
-                        }
-                      )
+  beforeEach( function () {
+    spy = sinon.spy()
+    stub = sinon.stub()
+  } )
 
 
-            // attempt( func , ...args )
-            it( 'attempt'
-              , function () {
-                  _.attempt( () => 'tinted' ).should.equal( 'tinted' )
-                  _.attempt( () => { throw 'tinted' } ).should.be.an( 'error' )
-                }
-              )
+  // attempt( func , ...args )
+  it( 'attempt' , function () {
+    _.attempt( () => 'tinted' ).should.equal( 'tinted' )
+    _.attempt( () => { throw 'tinted' } ).should.be.an( 'error' )
+  } )
 
 
-            // bindAll( object , ...methods )
-            it( 'bindAll'
-              , function () {
+  // bindAll( object , ...methods )
+  it( 'bindAll' , function () {
 
-                  let func
-                  const object = { method() { return this } }
+    let func
+    const object = { method() { return this } }
 
-                  _.bindAll( object , 'method' )
-                  func = object.method
+    _.bindAll( object , 'method' )
+    func = object.method
 
-                  func().should.equal( object )
+    func().should.equal( object )
 
-                }
-              )
+  } )
 
 
-            //
-            // cond( pairs )
-            //    pairs := Array<[ predicate , function ]>
-            //
+  //
+  // cond( pairs )
+  //    pairs := Array<[ predicate , function ]>
+  //
 
-            it( 'cond'
-              , function () {
-                  _.cond( [ [ _.isNumber , _.constant( 'number' ) ]
-                          , [ _.isString , _.constant( 'string' ) ]
-                          ]
-                        )( 'foobar' )
-                    .should.equal( 'string' )
-                }
-              )
-
-
-            // conforms( spec )
-            it( 'conforms'
-              , function () {
-                  _.conforms( { foo : _.isNumber
-                              , bar : _.isString
-                              }
-                            )( { foo : 0
-                               , bar : 'baz'
-                               }
-                             ).should.be.true
-                }
-              )
+  it( 'cond' , function () {
+    _.cond(
+      [
+        [ _.isNumber , _.constant( 'number' ) ] ,
+        [ _.isString , _.constant( 'string' ) ]
+      ]
+    )( 'foobar' ).should.equal( 'string' )
+  } )
 
 
-            //
-            // range( [start=0] , end , [step=±1] )
-            // rangeRight( [start=0] , end , [step=±1] )
-            // 区间：[ start , end )
-            //
-
-            it( 'range , rangeRight'
-              , function () {
-
-                  _.range( 2 ).should.deep.equal( [ 0 , 1  ] )
-                  _.range( -2 ).should.deep.equal( [ 0 , -1 ] ) // step = -1 ∀ start < 0
-                  _.range( 0 , 2 ).should.deep.equal( [ 0 , 1 ] )
-
-                  _.rangeRight( 2 ).should.deep.equal( [ 1 , 0  ] )
-                  _.rangeRight( -2 ).should.deep.equal( [ -1 , 0 ] ) // step = -1 ∀ start < 0
-                  _.rangeRight( 0 , 2 ).should.deep.equal( [ 1 , 0 ] )
-
-                }
-              )
+  // conforms( spec )
+  it( 'conforms' , function () {
+    _.conforms(
+      {
+        foo : _.isNumber ,
+        bar : _.isString
+      }
+    )(
+      {
+        foo : 0 ,
+        bar : 'baz'
+      }
+    ).should.be.true
+  } )
 
 
-            //
-            // property( path )
-            // propertyOf( object )
-            // method( path , ...args )
-            // methodOf( object , ...args )
-            //
+  //
+  // range( [start=0] , end , [step=±1] )
+  // rangeRight( [start=0] , end , [step=±1] )
+  // 区间：[ start , end )
+  //
 
-            it( 'property , propertyOf'
-              , function () {
+  it( 'range , rangeRight' , function () {
 
-                  _.property( 'foo.bar' )( { foo : { bar : 'baz' } } )
-                    .should.equal( 'baz' )
+    _.range( 2 ).should.deep.equal( [ 0 , 1  ] )
+    _.range( -2 ).should.deep.equal( [ 0 , -1 ] ) // step = -1 ∀ start < 0
+    _.range( 0 , 2 ).should.deep.equal( [ 0 , 1 ] )
 
-                  _.propertyOf( { foo : { bar : 'baz' } } )( 'foo.bar' )
-                    .should.equal( 'baz' )
+    _.rangeRight( 2 ).should.deep.equal( [ 1 , 0  ] )
+    _.rangeRight( -2 ).should.deep.equal( [ -1 , 0 ] ) // step = -1 ∀ start < 0
+    _.rangeRight( 0 , 2 ).should.deep.equal( [ 1 , 0 ] )
 
-                }
-              )
-            it( 'method , methodOf'
-              , function () {
-
-                  _.method( 'foo.bar' , 'baz' )( { foo : { bar : _.identity } } )
-                    .should.equal( 'baz' )
-
-                  _.methodOf( { foo : { bar : _.identity } } , 'baz' )( 'foo.bar' )
-                    .should.equal( 'baz' )
-
-                }
-              )
+  } )
 
 
-            //
-            // matches( source )
-            // matchesProperty( path , value )
-            //
+  //
+  // property( path )
+  // propertyOf( object )
+  // method( path , ...args )
+  // methodOf( object , ...args )
+  //
 
-            it( 'matches , matchesProperty'
-              , function () {
+  it( 'property , propertyOf' , function () {
 
-                  let matcher
-                  const pkg = { name : 'lodash' , license : 'MIT' }
+    _.property( 'foo.bar' )( { foo : { bar : 'baz' } } )
+      .should.equal( 'baz' )
 
-                  // matches( source )
-                  // 等同于：partialRight( isMatch , source )
+    _.propertyOf( { foo : { bar : 'baz' } } )( 'foo.bar' )
+      .should.equal( 'baz' )
 
-                  matcher = _.matches( { license : 'MIT' } )
-                  matcher( pkg ).should.be.true
+  } )
+  it( 'method , methodOf' , function () {
 
-                  matcher = _.partialRight( _.isMatch , { license : 'MIT' } )
-                  matcher( pkg ).should.be.true
+    _.method( 'foo.bar' , 'baz' )( { foo : { bar : _.identity } } )
+      .should.equal( 'baz' )
 
-                  // matchesProperty( path , value )
-                  _.matchesProperty( 'foo.bar' , 'baz' )( { foo : { bar : 'baz' } } )
-                    .should.be.true
+    _.methodOf( { foo : { bar : _.identity } } , 'baz' )( 'foo.bar' )
+      .should.equal( 'baz' )
 
-                }
-              )
-
-
-            //
-            // over( iteratees )
-            // overSome( predicates )
-            // overEvery( predicates )
-            //
-
-            it( 'over , overSome , overEvery'
-              , function () {
-
-                  _.over( Math.max , Math.min )( 1 , 2 , 3 )
-                    .should.be.an( 'array' )
-                    .that.is.deep.equal( [ 3 , 1 ] )
-
-                  _.overSome( _.isNumber , _.isInteger )( 1 , 2 , 3 )
-                    .should.be.true
-
-                  _.overEvery( _.isNumber , _.isInteger )( 1 , 2 , 3 )
-                    .should.be.true
-
-                }
-              )
+  } )
 
 
-            //
-            // flow( funcs )
-            // flowRight( funcs )
-            //
+  //
+  // matches( source )
+  // matchesProperty( path , value )
+  //
 
-            it( 'flow , flowRight'
-              , function () {
-                  _.flow( _.add , ( n ) => n * n )( 1 , 2 ).should.equal( 9 )
-                  _.flowRight( ( n ) => n * n , _.add )( 1 , 2 ).should.equal( 9 )
-                }
-              )
+  it( 'matches , matchesProperty' , function () {
 
+    let matcher
+    const pkg = { name : 'lodash' , license : 'MIT' }
 
-            // times( n , iteratee )
-            it( 'times'
-              , function () {
-                  stub.returnsArg( 0 )
-                  _.times( 10
-                         , ( index ) => stub( index )
-                         )
-                    .should.be.an( 'array' )
-                    .that.is.deep.equal( _.range( 10 ) )
-                  stub.should.have.callCount( 10 )
-                }
-              )
+    // matches( source )
+    // 等同于：partialRight( isMatch , source )
+
+    matcher = _.matches( { license : 'MIT' } )
+    matcher( pkg ).should.be.true
+
+    matcher = _.partialRight( _.isMatch , { license : 'MIT' } )
+    matcher( pkg ).should.be.true
+
+    // matchesProperty( path , value )
+    _.matchesProperty( 'foo.bar' , 'baz' )( { foo : { bar : 'baz' } } ).should.be.true
+
+  } )
 
 
-            // nthArg( [n=0] )
-            it( 'nthArg'
-              , function () {
-                  _.nthArg( 1 )( 'foo' , 'bar' , 'baz' ).should.equal( 'bar' )
-                }
-              )
+  //
+  // over( iteratees )
+  // overSome( predicates )
+  // overEvery( predicates )
+  //
 
-          }
-        )
+  it( 'over , overSome , overEvery' , function () {
+
+    _.over( Math.max , Math.min )( 1 , 2 , 3 )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( [ 3 , 1 ] )
+
+    _.overSome( _.isNumber , _.isInteger )( 1 , 2 , 3 )
+      .should.be.true
+
+    _.overEvery( _.isNumber , _.isInteger )( 1 , 2 , 3 )
+      .should.be.true
+
+  } )
+
+
+  //
+  // flow( funcs )
+  // flowRight( funcs )
+  //
+
+  it( 'flow , flowRight' , function () {
+    _.flow( _.add , ( n ) => n * n )( 1 , 2 ).should.equal( 9 )
+    _.flowRight( ( n ) => n * n , _.add )( 1 , 2 ).should.equal( 9 )
+  } )
+
+
+  // times( n , iteratee )
+  it( 'times' , function () {
+    stub.returnsArg( 0 )
+    _.times( 10 , ( index ) => stub( index ) )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( _.range( 10 ) )
+    stub.should.have.callCount( 10 )
+  } )
+
+
+  // nthArg( [n=0] )
+  it( 'nthArg' , function () {
+    _.nthArg( 1 )( 'foo' , 'bar' , 'baz' ).should.equal( 'bar' )
+  } )
+
+} )
