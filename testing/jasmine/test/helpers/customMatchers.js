@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   toBeEmpty( util , customSymmetricEqualityTesters ) {
 
@@ -23,19 +21,19 @@ module.exports = {
           let message // 用于构建错误信息
 
           if ( type === 'string' || Array.isArray( actual ) ) {
-            pass = ( actual.length === 0 )
+            pass = actual.length === 0
           } else if ( type === 'object' && actual !== null ) {
-            pass = ( Object.keys( actual ).length === 0 )
+            pass = Object.keys( actual ).length === 0
           } else {
             pass = false
           }
 
           if ( pass ) {
-            //「负断言」不成立时的错误信息
-            message = `Expected ${actual} to not be empty`
+            // 「负断言」不成立时的错误信息
+            message = `Expected ${ actual } to not be empty`
           } else {
-            //「正断言」不成立时的错误信息
-            message = `Expected ${actual} to be empty`
+            // 「正断言」不成立时的错误信息
+            message = `Expected ${ actual } to be empty`
           }
 
           return { pass , message }

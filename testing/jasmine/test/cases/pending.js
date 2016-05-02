@@ -6,7 +6,7 @@ describe( 'Pending test case' , function () {
   xit( 'can be specified using xit( title , [implementation] )' )
 
   // [2] 使用 pending( [reason] ) 来挂起「测试用例」
-  it( 'can be specified using pending( [reason] )' , function() {
+  it( 'can be specified using pending( [reason] )' , function () {
     pending( 'Temporarily disabled with pending( [reason] )' )
   } )
 

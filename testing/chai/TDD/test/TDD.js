@@ -1,5 +1,3 @@
-'use strict'
-
 const chai = require( 'chai' )
 const noop = require( 'lodash.noop' )
 const assert = chai.assert
@@ -64,11 +62,11 @@ describe( 'TDD' , function () {
     const bar = { baz : 'qux' } // [1] 对于 primitives 使用 === 判等
 
     // [2] 非枚举属性不在考虑范围之内
-    Object.defineProperty( bar , 'hidden' , { enumerable : false } )
+    Reflect.defineProperty( bar , 'hidden' , { enumerable : false } )
     assert.deepEqual( foo , bar )
 
     // [3] 但是原型属性在考虑范围之内
-    Object.setPrototypeOf( foo , proto )
+    Reflect.setPrototypeOf( foo , proto )
     assert.notDeepEqual( foo , bar )
 
     // * 其中 [1][3] 与 node assert 模块不兼容
@@ -119,11 +117,11 @@ describe( 'TDD' , function () {
     assert.isUndefined( undefined )
     assert.isDefined( null )
 
-    assert.isNumber( 0/0 )
-    assert.isNumber( +1/0 )
-    assert.isNumber( -1/0 )
+    assert.isNumber( 0 / 0 )
+    assert.isNumber( +1 / 0 )
+    assert.isNumber( -1 / 0 )
     assert.isNaN( 'one' ) // WTF?
-    assert.isNaN( 0/0 )
+    assert.isNaN( 0 / 0 )
 
     assert.isString( '' )
 
@@ -133,7 +131,7 @@ describe( 'TDD' , function () {
     assert.isObject( {} ) // assert.typeOf( expression , 'object' )
     assert.isNotObject( [] )
     assert.isNotObject( () => null )
-    assert.isNotObject( new Date )
+    assert.isNotObject( new Date() )
     assert.isNotObject( /^/ )
 
     assert.isArray( [] )
@@ -162,7 +160,7 @@ describe( 'TDD' , function () {
     assert.typeOf( [] , 'array' )
     assert.typeOf( () => null , 'function' )
     assert.typeOf( /^/ , 'regexp' )
-    assert.typeOf( new Date , 'date' )
+    assert.typeOf( new Date() , 'date' )
   } )
 
 
@@ -175,11 +173,11 @@ describe( 'TDD' , function () {
 
     const proto = {}
     const Stub = class {}
-    const obj = new Stub
+    const obj = new Stub()
 
     assert.instanceOf( obj , Stub )
 
-    Object.setPrototypeOf( obj , proto )
+    Reflect.setPrototypeOf( obj , proto )
     assert.notInstanceOf( obj , Stub )
 
   } )
@@ -267,18 +265,14 @@ describe( 'TDD' , function () {
 
     let func = null
 
-    class Exception extends Error {
-      constructor( message ) {
-        super( message )
-      }
-    }
+    class Exception extends Error {}
 
     // [1] assert.throws( func )
-    func = () => { throw new Error }
+    func = () => { throw new Error() }
     assert.throws( func )
 
     // [2] assert.throws( func , constructor , [message] )
-    func = () => { throw new Exception }
+    func = () => { throw new Exception() }
     assert.throws( func , Exception )
 
     // [3] assert.throws( func , string|regex , [message] )
@@ -391,11 +385,11 @@ describe( 'TDD' , function () {
     // empty object
     obj = {}
 
-    assert.isExtensible( obj )
+    assert.isExtensible( obj ) // eslint-disable-line prefer-reflect
     assert.isNotSealed( obj )
     assert.isNotFrozen( obj )
 
-    Object.preventExtensions( obj )
+    Reflect.preventExtensions( obj )
     assert.isNotExtensible( obj )
     assert.isSealed( obj ) // empty
     assert.isFrozen( obj ) // empty
@@ -413,11 +407,11 @@ describe( 'TDD' , function () {
     // non-empty object
     obj = { foo : 'bar' }
 
-    assert.isExtensible( obj )
+    assert.isExtensible( obj ) // eslint-disable-line prefer-reflect
     assert.isNotSealed( obj )
     assert.isNotFrozen( obj )
 
-    Object.preventExtensions( obj )
+    Reflect.preventExtensions( obj )
     assert.isNotExtensible( obj )
     assert.isNotSealed( obj )
     assert.isNotFrozen( obj )

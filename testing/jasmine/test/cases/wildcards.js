@@ -1,5 +1,3 @@
-'use strict'
-
 // jasmine.any( constructor )
 describe( 'jasmine.any' , function () {
 
@@ -12,14 +10,14 @@ describe( 'jasmine.any' , function () {
     expect( [] ).toEqual( jasmine.any( Array ) )
     expect( () => null ).toEqual( jasmine.any( Function ) )
     expect( /^/ ).toEqual( jasmine.any( RegExp ) )
-    expect( new Date ).toEqual( jasmine.any( Date ) )
-    expect( new Set ).toEqual( jasmine.any( Set ) )
-    expect( new WeakSet ).toEqual( jasmine.any( WeakSet ) )
-    expect( new Map ).toEqual( jasmine.any( Map ) )
-    expect( new WeakMap ).toEqual( jasmine.any( WeakMap ) )
+    expect( new Date() ).toEqual( jasmine.any( Date ) )
+    expect( new Set() ).toEqual( jasmine.any( Set ) )
+    expect( new WeakSet() ).toEqual( jasmine.any( WeakSet ) )
+    expect( new Map() ).toEqual( jasmine.any( Map ) )
+    expect( new WeakMap() ).toEqual( jasmine.any( WeakMap ) )
 
     class Model {}
-    expect( new Model ).toEqual( jasmine.any( Model ) )
+    expect( new Model() ).toEqual( jasmine.any( Model ) )
 
   } )
 

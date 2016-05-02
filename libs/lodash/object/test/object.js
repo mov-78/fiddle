@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 const sinon = require( 'sinon' )
@@ -17,7 +15,7 @@ describe( 'lodash/object' , function () {
     const proto = {}
     const obj = _.create( proto , { foo : 'bar' } )
 
-    Object.getPrototypeOf( obj ).should.equal( proto )
+    Reflect.getPrototypeOf( obj ).should.equal( proto )
     obj.should.have.ownProperty( 'foo' , 'bar' )
 
   } )
@@ -132,15 +130,15 @@ describe( 'lodash/object' , function () {
     _.set( {} , 'foo.bar' , 'baz' )
       .should.deep.equal( { foo : { bar : 'baz' } } )
     _.set( {} , '[0][0]' , 'foo' )
-      .should.deep.equal( { '0' : [ 'foo' ] } )
+      .should.deep.equal( { 0 : [ 'foo' ] } )
 
-    _.update( { foo : { bar : 'baz' } } , 'foo.bar' , ( value ) => value )
+    _.update( { foo : { bar : 'baz' } } , 'foo.bar' , value => value )
       .should.deep.equal( { foo : { bar : 'baz' } } )
 
-    _.update( {} , 'foo.bar' , ( value ) => 'baz' )
+    _.update( {} , 'foo.bar' , value => 'baz' )
       .should.deep.equal( { foo : { bar : 'baz' } } )
-    _.update( {} , '[0][0]' , ( value ) => 'foo' )
-      .should.deep.equal( { '0' : [ 'foo' ] } )
+    _.update( {} , '[0][0]' , value => 'foo' )
+      .should.deep.equal( { 0 : [ 'foo' ] } )
 
     _.unset( obj , 'foo.bar' ).should.be.true
     obj.should.deep.equal( { foo : {} } )
@@ -159,7 +157,7 @@ describe( 'lodash/object' , function () {
 
   it( 'keys , keysIn , functions , functionsIn , values , valuesIn' , function () {
 
-    let obj = _.create( { foo() {} } , { bar() {} , baz : null } )
+    let obj = _.create( { foo : _.noop } , { bar : _.noop , baz : null } )
 
     _.keys( obj ).should.have.members( [ 'bar' , 'baz' ] )
     _.keysIn( obj ).should.have.members( [ 'foo' , 'bar' , 'baz' ] )
@@ -210,6 +208,7 @@ describe( 'lodash/object' , function () {
     spy.should.have.been.calledWith( 'bar' )
 
     spy.reset()
+
     _.forOwn( obj , ( value , key , object ) => spy( key ) )
     spy.should.have.callCount( _.keys( obj ).length )
     spy.should.not.have.been.calledWith( 'foo' )
@@ -290,7 +289,7 @@ describe( 'lodash/object' , function () {
     _.invert( { foo : 'qux' , bar : 'qux' } )
       .should.deep.equal( { qux : 'bar' } ) // `invert` 覆盖同名属性
 
-    _.invertBy( { foo : 'qux' , bar : 'qux' } , ( value ) => `group:${value}` )
+    _.invertBy( { foo : 'qux' , bar : 'qux' } , value => `group:${ value }` )
       .should.deep.equal( { 'group:qux' : [ 'foo' , 'bar' ] } ) // `invertBy` 合并同名属性
 
   } )

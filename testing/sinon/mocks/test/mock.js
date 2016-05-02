@@ -1,5 +1,3 @@
-'use strict'
-
 const sinon = require( 'sinon' )
 
 //
@@ -26,7 +24,7 @@ describe( 'Expectation' , function () {
 
   it( 'exactly' , function () {
     mock.expects( 'nop' ).exactly( 2 )
-    obj.nop(); obj.nop()
+    obj.nop() ; obj.nop()
     mock.verify()
   } )
   it( 'once' , function () {
@@ -36,12 +34,12 @@ describe( 'Expectation' , function () {
   } )
   it( 'twice' , function () {
     mock.expects( 'nop' ).twice()
-    obj.nop(); obj.nop()
+    obj.nop() ; obj.nop()
     mock.verify()
   } )
   it( 'thrice' , function () {
     mock.expects( 'nop' ).thrice()
-    obj.nop(); obj.nop(); obj.nop()
+    obj.nop() ; obj.nop() ; obj.nop()
     mock.verify()
   } )
   it( 'atLeast|atMost' , function () {

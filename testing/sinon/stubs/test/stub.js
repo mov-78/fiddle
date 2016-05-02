@@ -1,5 +1,3 @@
-'use strict'
-
 const chai = require( 'chai' )
 const sinon = require( 'sinon' )
 
@@ -342,7 +340,7 @@ describe( 'Stub' , function () {
 
   it( 'withArgs' , function () {
 
-    bareStub.returns( 'unknown')
+    bareStub.returns( 'unknown' )
     bareStub.withArgs( sinon.match.number ).returns( 'number' )
     bareStub.withArgs( sinon.match.string ).returns( 'string' )
 

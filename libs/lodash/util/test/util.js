@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 const sinon = require( 'sinon' )
@@ -23,14 +21,14 @@ describe( 'lodash/util' , function () {
   // attempt( func , ...args )
   it( 'attempt' , function () {
     _.attempt( () => 'tinted' ).should.equal( 'tinted' )
-    _.attempt( () => { throw 'tinted' } ).should.be.an( 'error' )
+    _.attempt( () => { throw new Error() } ).should.be.an( 'error' )
   } )
 
 
   // bindAll( object , ...methods )
   it( 'bindAll' , function () {
 
-    let func
+    let func = null
     const object = { method() { return this } }
 
     _.bindAll( object , 'method' )
@@ -80,11 +78,11 @@ describe( 'lodash/util' , function () {
 
   it( 'range , rangeRight' , function () {
 
-    _.range( 2 ).should.deep.equal( [ 0 , 1  ] )
+    _.range( 2 ).should.deep.equal( [ 0 , 1 ] )
     _.range( -2 ).should.deep.equal( [ 0 , -1 ] ) // step = -1 ∀ start < 0
     _.range( 0 , 2 ).should.deep.equal( [ 0 , 1 ] )
 
-    _.rangeRight( 2 ).should.deep.equal( [ 1 , 0  ] )
+    _.rangeRight( 2 ).should.deep.equal( [ 1 , 0 ] )
     _.rangeRight( -2 ).should.deep.equal( [ -1 , 0 ] ) // step = -1 ∀ start < 0
     _.rangeRight( 0 , 2 ).should.deep.equal( [ 1 , 0 ] )
 
@@ -170,15 +168,15 @@ describe( 'lodash/util' , function () {
   //
 
   it( 'flow , flowRight' , function () {
-    _.flow( _.add , ( n ) => n * n )( 1 , 2 ).should.equal( 9 )
-    _.flowRight( ( n ) => n * n , _.add )( 1 , 2 ).should.equal( 9 )
+    _.flow( _.add , n => n * n )( 1 , 2 ).should.equal( 9 )
+    _.flowRight( n => n * n , _.add )( 1 , 2 ).should.equal( 9 )
   } )
 
 
   // times( n , iteratee )
   it( 'times' , function () {
     stub.returnsArg( 0 )
-    _.times( 10 , ( index ) => stub( index ) )
+    _.times( 10 , index => stub( index ) )
       .should.be.an( 'array' )
       .that.is.deep.equal( _.range( 10 ) )
     stub.should.have.callCount( 10 )

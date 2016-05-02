@@ -1,12 +1,12 @@
-'use strict'
-
 const chai = require( 'chai' )
+const assert = chai.assert
 const expect = chai.expect
-const should = chai.should()
+
+chai.should()
 
 expect( expect( {} ) ).to.be.instanceof( chai.Assertion )
 
-expect( ( {} ).should ).to.be.instanceof( chai.Assertion )
+expect( {}.should ).to.be.instanceof( chai.Assertion )
 expect( Object.prototype ).to.have.ownProperty( 'should' )
 
 // 调用 chai.use( factory ) 方法来引入插件相关接口
@@ -103,7 +103,7 @@ chai.use( function ( _chai , utils ) {
     //
 
     const negate = chai.util.flag( this , 'negate' )
-    const assertion = new chai.Assertion
+    const assertion = new chai.Assertion()
 
     utils.transferFlags( this , assertion , true )
     expect( utils.flag( assertion , 'negate' ) ).to.equal( negate )
@@ -116,7 +116,7 @@ chai.use( function ( _chai , utils ) {
     this.assert(
 
       // [1] 表达式
-      negate ? false : true ,
+      !negate ,
 
       // [2] 仅当 negate flag 未开启且表达式为假时使用
       // [3] 仅当 negate flag 开启且表达式为真时使用
@@ -153,7 +153,7 @@ chai.use( function ( _chai , utils ) {
   //    }
   //
 
-  chai.Assertion.addMethod( 'method' , function method(/* params */) {} )
+  chai.Assertion.addMethod( 'method' , function method( /* params */ ) {} )
 
   expect( chai.Assertion.prototype ).to.have.ownProperty( 'method' )
 
@@ -202,7 +202,7 @@ chai.use( function ( _chai , utils ) {
 
   chai.Assertion.addChainableMethod(
     'chainableMethod' ,
-    function method(/* params */) {} ,
+    function method( /* params */ ) {} ,
     function chainingBehavior() {}
   )
 

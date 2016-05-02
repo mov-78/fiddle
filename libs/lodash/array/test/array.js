@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 
@@ -58,7 +56,7 @@ describe( 'lodash/array' , function () {
     const predicate = ( value , index , array ) => value % 2 === 0
 
     _.findIndex( array , predicate ).should.equal( 1 )
-    _.findLastIndex( array , predicate ). should.equal( 3 )
+    _.findLastIndex( array , predicate ).should.equal( 3 )
 
   } )
 
@@ -142,6 +140,7 @@ describe( 'lodash/array' , function () {
 
     array = [ 1 , 2 , 3 , 4 , 5 ]
     _.pull( array , 2 , 4 ).should.deep.equal( [ 1 , 3 , 5 ] )
+    array.should.deep.equal( [ 1 , 3 , 5 ] )
 
     array = [ 1 , 2 , 3 , 4 , 5 ]
     _.pullAt( array , 1 , 3 ).should.deep.equal( [ 2 , 4 ] )
@@ -149,13 +148,14 @@ describe( 'lodash/array' , function () {
 
     array = [ 1 , 2 , 3 , 4 , 5 ]
     _.pullAll( array , [ 2 , 4 ] ).should.deep.equal( [ 1 , 3 , 5 ] )
-
-    array = [ 1 , 2 , 3 , 4 , 5 ]
-    _.pullAllBy( array , [ 2 , 4 ] , ( value ) => value )
     array.should.deep.equal( [ 1 , 3 , 5 ] )
 
     array = [ 1 , 2 , 3 , 4 , 5 ]
-    _.pullAllWith( array , [ 2 , 4 ] , ( arrVal , othVal ) => arrVal === othVal )
+    _.pullAllBy( array , [ 2 , 4 ] , value => value ).should.deep.equal( [ 1 , 3 , 5 ] )
+    array.should.deep.equal( [ 1 , 3 , 5 ] )
+
+    array = [ 1 , 2 , 3 , 4 , 5 ]
+    _.pullAllWith( array , [ 2 , 4 ] , ( arrVal , othVal ) => arrVal === othVal ).should.deep.equal( [ 1 , 3 , 5 ] )
     array.should.deep.equal( [ 1 , 3 , 5 ] )
 
   } )
@@ -172,9 +172,7 @@ describe( 'lodash/array' , function () {
     const array = [ 1 , 2 , 1 ]
 
     _.uniq( array ).should.deep.equal( [ 1 , 2 ] )
-
-    _.uniqBy( array , ( value ) => value ).should.deep.equal( [ 1 , 2 ] )
-
+    _.uniqBy( array , value => value ).should.deep.equal( [ 1 , 2 ] )
     _.uniqWith( array , ( arrVal , othVal ) => arrVal === othVal ).should.deep.equal( [ 1 , 2 ] )
 
   } )
@@ -246,7 +244,7 @@ describe( 'lodash/array' , function () {
     _.union( [ 1 , 2 ] , [ 2 , 3 ] )
       .should.deep.equal( [ 1 , 2 , 3 ] )
 
-    _.unionBy( [ 1 , 2 ] , [ 2 , 3 ] , ( value ) => value )
+    _.unionBy( [ 1 , 2 ] , [ 2 , 3 ] , value => value )
       .should.deep.equal( [ 1 , 2 , 3 ] )
 
     _.unionWith( [ 1 , 2 ] , [ 2 , 3 ] , ( arrVal , othVal ) => arrVal === othVal )
@@ -258,7 +256,7 @@ describe( 'lodash/array' , function () {
     _.intersection( [ 1 , 2 ] , [ 2 , 3 ] )
       .should.deep.equal( [ 2 ] )
 
-    _.intersectionBy( [ 1 , 2 ] , [ 2 , 3 ] , ( value ) => value )
+    _.intersectionBy( [ 1 , 2 ] , [ 2 , 3 ] , value => value )
       .should.deep.equal( [ 2 ] )
 
     _.intersectionWith( [ 1 , 2 ] , [ 2 , 3 ] , ( arrVal , othVal ) => arrVal === othVal )
@@ -270,7 +268,7 @@ describe( 'lodash/array' , function () {
     _.difference( [ 1 , 2 ] , [ 2 , 3 ] )
       .should.deep.equal( [ 1 ] )
 
-    _.differenceBy( [ 1 , 2 ] , [ 2 , 3 ] , ( value ) => value )
+    _.differenceBy( [ 1 , 2 ] , [ 2 , 3 ] , value => value )
       .should.deep.equal( [ 1 ] )
 
     _.differenceWith( [ 1 , 2 ] , [ 2 , 3 ] , ( arrVal , othVal ) => arrVal === othVal )
@@ -282,7 +280,7 @@ describe( 'lodash/array' , function () {
     _.xor( [ 1 , 2 ] , [ 2 , 3 ] )
       .should.deep.equal( [ 1 , 3 ] )
 
-    _.xorBy( [ 1 , 2 ] , [ 2 , 3 ] , ( value ) => value )
+    _.xorBy( [ 1 , 2 ] , [ 2 , 3 ] , value => value )
       .should.deep.equal( [ 1 , 3 ] )
 
     _.xorWith( [ 1 , 2 ] , [ 2 , 3 ] , ( arrVal , othVal ) => arrVal === othVal )
@@ -361,9 +359,12 @@ describe( 'lodash/array' , function () {
 
   // reverse( array )
   it( 'reverse' , function () {
+
     const array = [ 1 , 2 , 3 ]
+
     _.reverse( array )
     array.should.deep.equal( [ 3 , 2 , 1 ] )
+
   } )
 
 } )

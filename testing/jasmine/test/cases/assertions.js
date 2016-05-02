@@ -1,5 +1,3 @@
-'use strict'
-
 // 基础断言、自定义断言及自定义对称/非对称判等逻辑
 describe( 'Base assertion' , function () {
 
@@ -35,15 +33,15 @@ describe( 'Base assertion' , function () {
 
     // 自定义对称判等逻辑
     expect( { id : 1 , message : 'foo' } )
-      .toEqual( { id : 1 , message : 'bar' })
+      .toEqual( { id : 1 , message : 'bar' } )
 
     // 自定义非对称判等逻辑
     expect( 'foo|bar|baz|qux' )
-      .toEqual( { asymmetricMatch( actual ) {
-                    return actual.split( '|' )[ 1 ] === 'bar'
-                  }
-                }
-              )
+      .toEqual( {
+        asymmetricMatch( actual ) {
+          return actual.split( '|' )[ 1 ] === 'bar'
+        }
+      } )
 
   } )
 
@@ -87,7 +85,7 @@ describe( 'Base assertion' , function () {
     expect( [ 1 , 2 ] ).toContain( 1 )
 
     expect( [ [ 1 ] , 2 ] ).not.toContain( 1 )
-    expect( [ [ { foo: 1 } ] ] ).toContain( [ { foo : 1 } ] )
+    expect( [ [ { foo : 1 } ] ] ).toContain( [ { foo : 1 } ] )
 
   } )
 
@@ -110,18 +108,14 @@ describe( 'Base assertion' , function () {
 
   // toThrow()
   it( 'toThrow()' , function () {
-    expect( () => { throw new Error } ).toThrow()
+    expect( () => { throw new Error() } ).toThrow()
     expect( () => null ).not.toThrow()
   } )
 
   // toThrowError( [constructor] , [string|regex] )
   it( 'toThrowError( [constructor] , [string|regex] )' , function () {
 
-    class Exception extends Error {
-      constructor( message ) {
-        super( message )
-      }
-    }
+    class Exception extends Error {}
 
     const func = () => { throw new Exception( 'foobar' ) }
 

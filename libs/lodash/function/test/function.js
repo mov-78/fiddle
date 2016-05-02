@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 const lolex = require( 'lolex' )
@@ -85,7 +83,7 @@ describe( 'lodash/function' , function () {
 
     spy.reset()
 
-    _.partialRight( spy , 2  )( 1 )
+    _.partialRight( spy , 2 )( 1 )
     spy.should.have.been.calledWithExactly( 1 , 2 )
 
   } )
@@ -185,8 +183,8 @@ describe( 'lodash/function' , function () {
   it( 'overArgs' , function () {
     _.overArgs(
       spy ,
-      ( value ) => value + value ,
-      ( value ) => value * value
+      value => value + value ,
+      value => value * value
     )( 1 , 2 , 3 )
     spy.should.have.been.calledWithExactly( 2 , 4 , 3 )
   } )
@@ -205,7 +203,7 @@ describe( 'lodash/function' , function () {
 
     // spread( func , [start=0] )
     spy.reset()
-    _.spread( spy , 1 )( 1 , [  2 , 3 ] )
+    _.spread( spy , 1 )( 1 , [ 2 , 3 ] )
     spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
 
   } )
@@ -244,6 +242,7 @@ describe( 'lodash/function' , function () {
   it( 'defer' , function () {
 
     _.runInContext( { setTimeout : clock.setTimeout } ).defer( spy )
+
     spy.should.not.have.been.called
 
     clock.tick( 1 )
@@ -256,6 +255,7 @@ describe( 'lodash/function' , function () {
   it( 'delay' , function () {
 
     _.runInContext( { setTimeout : clock.setTimeout } ).delay( spy , 100 )
+
     spy.should.not.have.been.called
 
     clock.tick( 100 )

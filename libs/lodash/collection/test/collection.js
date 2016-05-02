@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 
@@ -130,12 +128,16 @@ describe( 'lodash/collection' , function () {
   it( 'find , findLast' , function () {
 
     // [1] Array
-    _.find( [ 1 , 2 , 3 ] , ( value , index , array ) => value % 2 === 0 )
-      .should.equal( 2 )
+    _.find(
+      [ 1 , 2 , 3 ] ,
+      ( value , index , array ) => value % 2 === 0
+    ).should.equal( 2 )
 
     // [2] Object
-    _.find( { foo : 1 , bar : 2 , baz : 3 } , ( value , key , object ) => value % 2 === 0 )
-      .should.equal( 2 )
+    _.find(
+      { foo : 1 , bar : 2 , baz : 3 } ,
+      ( value , key , object ) => value % 2 === 0
+    ).should.equal( 2 )
 
   } )
 
@@ -171,40 +173,40 @@ describe( 'lodash/collection' , function () {
   it( 'countBy' , function () {
 
     // [1] Array
-    _.countBy( [ 1 , 2 , 3 , 4 ] , ( value ) => value % 2 )
+    _.countBy( [ 1 , 2 , 3 , 4 ] , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : 2 , '1' : 2 } )
+      .that.is.deep.equal( { 0 : 2 , 1 : 2 } )
 
     // [2] Object
-    _.countBy( { foo : 1 , bar : 2 } , ( value ) => value % 2 )
+    _.countBy( { foo : 1 , bar : 2 } , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : 1 , '1' : 1 } )
+      .that.is.deep.equal( { 0 : 1 , 1 : 1 } )
 
   } )
   it( 'keyBy' , function () {
 
     // [1] Array
-    _.keyBy( [ 1 , 2 , 3 ] , ( value ) => value % 2 )
+    _.keyBy( [ 1 , 2 , 3 ] , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : 2 , '1' : 3 } )
+      .that.is.deep.equal( { 0 : 2 , 1 : 3 } )
 
     // [2] Object
-    _.keyBy( { foo : 1 , bar : 2 , baz : 3 } , ( value ) => value % 2 )
+    _.keyBy( { foo : 1 , bar : 2 , baz : 3 } , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : 2 , '1' : 3 } )
+      .that.is.deep.equal( { 0 : 2 , 1 : 3 } )
 
   } )
   it( 'groupBy' , function () {
 
     // [1] Array
-    _.groupBy( [ 1 , 2 , 3 ] , ( value ) => value % 2 )
+    _.groupBy( [ 1 , 2 , 3 ] , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : [ 2 ] , '1' : [ 1 , 3 ] } )
+      .that.is.deep.equal( { 0 : [ 2 ] , 1 : [ 1 , 3 ] } )
 
     // [2] Object
-    _.groupBy( { foo : 1 , bar : 2 , baz : 3 } , ( value ) => value % 2 )
+    _.groupBy( { foo : 1 , bar : 2 , baz : 3 } , value => value % 2 )
       .should.be.an( 'object' )
-      .that.is.deep.equal( { '0' : [ 2 ] , '1' : [ 1 , 3 ] } )
+      .that.is.deep.equal( { 0 : [ 2 ] , 1 : [ 1 , 3 ] } )
 
   } )
 
@@ -213,12 +215,12 @@ describe( 'lodash/collection' , function () {
   it( 'partition' , function () {
 
     // [1] Array
-    _.partition( [ 1 , 2 , 3 ] , ( value ) => value % 2 === 0 )
+    _.partition( [ 1 , 2 , 3 ] , value => value % 2 === 0 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ [ 2 ] , [ 1 , 3 ] ] )
 
     // [2] Object
-    _.partition( { foo : 1 , bar : 2 , baz : 3 } , ( value ) => value % 2 === 0 )
+    _.partition( { foo : 1 , bar : 2 , baz : 3 } , value => value % 2 === 0 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ [ 2 ] , [ 1 , 3 ] ] )
 
@@ -233,12 +235,12 @@ describe( 'lodash/collection' , function () {
   it( 'sortBy , orderBy' , function () {
 
     // [1] Array
-    _.sortBy( [ 5 , 2 , 3 ] , ( value ) => value % 3 )
+    _.sortBy( [ 5 , 2 , 3 ] , value => value % 3 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 3 , 5 , 2 ] ) // stable-sort
 
     // [2] Object
-    _.sortBy( { foo : 5 , bar : 2 , baz : 3 } , ( value ) => value % 3 )
+    _.sortBy( { foo : 5 , bar : 2 , baz : 3 } , value => value % 3 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 3 , 5 , 2 ] ) // stable-sort
 

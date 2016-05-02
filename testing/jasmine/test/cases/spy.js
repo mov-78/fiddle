@@ -1,5 +1,3 @@
-'use strict'
-
 //
 // 创建 Spy
 //
@@ -82,8 +80,7 @@ describe( 'A spy, when configured to call through' , function () {
     foo.setBar( 'baz' )
     fetchedBar = foo.getBar()
 
-  }
-            )
+  } )
 
   it( 'will delegate to the actual implementation' , function () {
 
@@ -372,20 +369,18 @@ describe( 'A spy' , function () {
     foo.setBar.call( ctxt , 'bar' , 'baz' )
 
     expect( foo.setBar.calls.all() )
-      .toEqual(
-                [
-                  {
-                    object : foo ,
-                    args : [ 'foo' ] ,
-                    returnValue : undefined
-                  } ,
-                  {
-                    object : ctxt ,
-                    args : [ 'bar' , 'baz' ] ,
-                    returnValue : undefined
-                  }
-                ]
-              )
+      .toEqual( [
+        {
+          object : foo ,
+          args : [ 'foo' ] ,
+          returnValue : undefined
+        } ,
+        {
+          object : ctxt ,
+          args : [ 'bar' , 'baz' ] ,
+          returnValue : undefined
+        }
+      ] )
 
     expect( foo.setBar.calls.first() )
       .toEqual( foo.setBar.calls.all()[ 0 ] )
@@ -444,8 +439,7 @@ describe( 'Multiple spies, when created manually' , function () {
 
   beforeEach( function () {
 
-    this.tape =
-      jasmine.createSpyObj( 'tape' , [ 'play' , 'pause' , 'stop' , 'rewind' ] )
+    this.tape = jasmine.createSpyObj( 'tape' , [ 'play' , 'pause' , 'stop' , 'rewind' ] )
 
     this.tape.play()
     this.tape.pause()

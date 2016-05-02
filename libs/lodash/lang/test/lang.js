@@ -1,5 +1,3 @@
-'use strict'
-
 const _ = require( 'lodash' )
 const chai = require( 'chai' )
 
@@ -53,7 +51,7 @@ describe( 'lodash/lang' , function () {
     _.isNumber( +1 / 0 ).should.be.true
     _.isNumber( -1 / 0 ).should.be.true
     _.isNumber( 0 / 0 ).should.be.true
-    _.isNumber( new Number ).should.be.true
+    _.isNumber( new Number() ).should.be.true
 
     _.isInteger( 0 ).should.be.true
     _.isInteger( new Number( 0 ) ).should.be.false
@@ -106,7 +104,7 @@ describe( 'lodash/lang' , function () {
     _.isPlainObject( {} ).should.be.true
     _.isPlainObject( _.create( null ) ).should.be.true
     _.isPlainObject( _.create( {} ) ).should.be.false
-    _.isPlainObject( new class {} ).should.be.false
+    _.isPlainObject( new class {}() ).should.be.false
 
   } )
   it( 'isArray , isArrayLike , isArrayLikeObject , isArguments' , function () {
@@ -141,21 +139,21 @@ describe( 'lodash/lang' , function () {
     _.isFunction( function* () {} ).should.be.true
   } )
   it( 'isDate' , function () {
-    _.isDate( new Date ).should.be.true
+    _.isDate( new Date() ).should.be.true
   } )
   it( 'isRegExp' , function () {
     _.isRegExp( /^/ ).should.be.true
-    _.isRegExp( new RegExp ).should.be.true
+    _.isRegExp( new RegExp() ).should.be.true
   } )
   it( 'isSymbol' , function () {
     _.isSymbol( Symbol() ).should.be.true
     _.isSymbol( Symbol.for( '' ) ).should.be.true
   } )
   it( 'isSet , isWeakSet , isMap , isWeakMap' , function () {
-    _.isSet( new Set ).should.be.true
-    _.isWeakSet( new WeakSet ).should.be.true
-    _.isMap( new Map ).should.be.true
-    _.isWeakMap( new WeakMap ).should.be.true
+    _.isSet( new Set() ).should.be.true
+    _.isWeakSet( new WeakSet() ).should.be.true
+    _.isMap( new Map() ).should.be.true
+    _.isWeakMap( new WeakMap() ).should.be.true
   } )
 
 
@@ -217,10 +215,10 @@ describe( 'lodash/lang' , function () {
     _.isEmpty( _.create( { foo : 'bar' } ) ).should.be.true
     _.isEmpty( [] ).should.be.true
     _.isEmpty( { length : 0 } ).should.be.false
-    _.isEmpty( new Set ).should.be.true
-    _.isEmpty( new WeakSet ).should.be.true
-    _.isEmpty( new Map ).should.be.true
-    _.isEmpty( new WeakMap ).should.be.true
+    _.isEmpty( new Set() ).should.be.true
+    _.isEmpty( new WeakSet() ).should.be.true
+    _.isEmpty( new Map() ).should.be.true
+    _.isEmpty( new WeakMap() ).should.be.true
   } )
 
 
@@ -303,7 +301,7 @@ describe( 'lodash/lang' , function () {
 
     const makeIterable = function ( n ) {
       let i = 0
-      let iterator = {
+      const iterator = {
         next() {
           if ( i === n ) {
             return { done : true }
@@ -368,7 +366,7 @@ describe( 'lodash/lang' , function () {
     _.toArray( 'foo' )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 'f' , 'o' , 'o' ] )
-    _.toArray( { length : 2 , '0' : 'foo' , '1' : 'bar' } )
+    _.toArray( { length : 2 , 0 : 'foo' , 1 : 'bar' } )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 'foo' , 'bar' ] )
 

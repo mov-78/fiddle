@@ -1,8 +1,8 @@
-'use strict'
-
-const expect = require( 'chai' ).expect
-const should = require( 'chai' ).should() // invoke
+const chai = require( 'chai' )
+const expect = chai.expect
 const noop = require( 'lodash.noop' )
+
+before( chai.should )
 
 describe( 'BDD' , function () {
 
@@ -26,12 +26,12 @@ describe( 'BDD' , function () {
     expect( () => null ).to.be.a( 'function' )
     expect( function* () {} ).to.be.a( 'generatorfunction' )
     expect( /^/ ).to.be.a( 'regexp' )
-    expect( new Date ).to.be.a( 'date' )
+    expect( new Date() ).to.be.a( 'date' )
     expect( Symbol() ).to.be.a( 'symbol' )
-    expect( new Set ).to.be.a( 'set' )
-    expect( new WeakSet ).to.be.a( 'weakset' )
-    expect( new Map ).to.be.a( 'map' )
-    expect( new WeakMap ).to.be.a( 'weakmap' )
+    expect( new Set() ).to.be.a( 'set' )
+    expect( new WeakSet() ).to.be.a( 'weakset' )
+    expect( new Map() ).to.be.a( 'map' )
+    expect( new WeakMap() ).to.be.a( 'weakmap' )
 
     // ;( null ).should.be.a( 'null' )
     // ;( undefined ).should.be.an( 'undefined' )
@@ -44,12 +44,12 @@ describe( 'BDD' , function () {
     ;( () => null ).should.be.a( 'function' )
     ;( function* () {} ).should.be.a( 'generatorfunction' )
     ;( /^/ ).should.be.a( 'regexp' )
-    ;( new Date ).should.be.a( 'date' )
+    ;( new Date() ).should.be.a( 'date' )
     ;( Symbol() ).should.be.a( 'symbol' )
-    ;( new Set ).should.be.a( 'set' )
-    ;( new WeakSet ).should.be.a( 'weakset' )
-    ;( new Map ).should.be.a( 'map' )
-    ;( new WeakMap ).should.be.a( 'weakmap' )
+    ;( new Set() ).should.be.a( 'set' )
+    ;( new WeakSet() ).should.be.a( 'weakset' )
+    ;( new Map() ).should.be.a( 'map' )
+    ;( new WeakMap() ).should.be.a( 'weakmap' )
 
   } )
 
@@ -103,12 +103,16 @@ describe( 'BDD' , function () {
   //
 
   it( 'null , undefined , exist' , function () {
+
     expect( null ).to.be.null
     expect( undefined ).to.not.be.null
+
     expect( undefined ).to.be.undefined
     expect( null ).to.not.be.undefined
+
     expect( null ).to.not.exist
     expect( undefined ).to.not.exist
+
   } )
 
 
@@ -242,12 +246,12 @@ describe( 'BDD' , function () {
 
     const proto = {}
     const Stub = class Stub {}
-    const obj = new Stub
+    const obj = new Stub()
 
     expect( obj ).to.be.instanceOf( Stub )
     obj.should.be.instanceOf( Stub )
 
-    Object.setPrototypeOf( obj , proto )
+    Reflect.setPrototypeOf( obj , proto )
 
     expect( obj ).to.not.be.instanceOf( Stub )
     obj.should.not.be.instanceOf( Stub )
@@ -290,6 +294,7 @@ describe( 'BDD' , function () {
     ;( { foo : 'bar' } ).should.have.ownProperty( 'foo' )
 
     // ownPropertyDescriptor( key , [descriptor] , [message] )
+    /* eslint-disable indent */
     expect( 'string' ).to.have.ownPropertyDescriptor( 'length' )
     expect( 'string' ).to.have
       .ownPropertyDescriptor(
@@ -312,6 +317,7 @@ describe( 'BDD' , function () {
           configurable : false
         }
       )
+    /* eslint-enable indent */
 
     // ownPropertyDescriptor() 调用后更改当前断言主体为指定属性的描述符
     expect( 'string' ).to.have.ownPropertyDescriptor( 'length' ).that.is.an( 'object' )
@@ -398,19 +404,15 @@ describe( 'BDD' , function () {
 
     let func = null
 
-    class Exception extends Error {
-      constructor( message ) {
-        super( message )
-      }
-    }
+    class Exception extends Error {}
 
     // [1] throw()
-    func = () => { throw new Error }
+    func = () => { throw new Error() }
     expect( func ).to.throw()
     func.should.throw
 
     // [2] throw( constructor , [message] )
-    func = () => { throw new Exception }
+    func = () => { throw new Exception() }
     expect( func ).to.throw( Exception )
     func.should.throw( Exception )
 
@@ -442,12 +444,12 @@ describe( 'BDD' , function () {
     class Stub { instanceMethod() {} }
     Stub.staticMethod = noop
 
-    expect( new Stub ).to.respondTo( 'instanceMethod' )
+    expect( new Stub() ).to.respondTo( 'instanceMethod' )
     expect( Stub ).to.respondTo( 'instanceMethod' )
     expect( Stub ).to.not.respondTo( 'staticMethod' )
     expect( Stub ).itself.to.respondTo( 'staticMethod' )
 
-    ;( new Stub ).should.respondTo( 'instanceMethod' )
+    ;( new Stub() ).should.respondTo( 'instanceMethod' )
     ;( Stub ).should.respondTo( 'instanceMethod' )
     Stub.should.not.respondTo( 'staticMethod' )
     Stub.should.itself.respondTo( 'staticMethod' )
@@ -462,7 +464,7 @@ describe( 'BDD' , function () {
 
   it( 'satisfy' , function () {
 
-    const isEven = ( num ) => num % 2 === 0
+    const isEven = num => num % 2 === 0
 
     expect( 2 ).to.satisfy( isEven )
     expect( 1 ).to.not.satisfy( isEven )
@@ -588,7 +590,7 @@ describe( 'BDD' , function () {
     obj.should.not.be.sealed
     obj.should.not.be.frozen
 
-    Object.preventExtensions( obj )
+    Reflect.preventExtensions( obj )
     expect( obj ).to.not.be.extensible
     expect( obj ).to.be.sealed  // empty
     expect( obj ).to.be.frozen  // empty
@@ -622,7 +624,7 @@ describe( 'BDD' , function () {
     obj.should.not.be.sealed
     obj.should.not.be.frozen
 
-    Object.preventExtensions( obj )
+    Reflect.preventExtensions( obj )
     expect( obj ).to.not.be.extensible
     expect( obj ).to.not.be.sealed
     expect( obj ).to.not.be.frozen

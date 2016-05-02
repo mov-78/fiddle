@@ -1,0 +1,11 @@
+env :
+  mocha : true
+  node : true
+rules :
+  func-names : off
+  max-len : off
+  no-invalid-this : off
+  no-magic-numbers : off
+  no-unused-expressions : off
+  prefer-arrow-callback : off
+extends : pwn

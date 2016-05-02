@@ -4,6 +4,8 @@
     "test": "jasmine JASMINE_CONFIG_PATH=test/config.json"
   },
   "dependencies": {
+    "eslint": "~2.9.0",
+    "eslint-config-pwn": "~2.1.0",
     "jasmine": "~2.4.1"
   }
 }
