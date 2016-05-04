@@ -201,4 +201,28 @@ describe( 'Manually ticking the Jasmine Clock' , function () {
   } )
 
 } )
+
+describe( 'Mocking a Date object' , function () {
+
+  beforeEach( function () {
+    jasmine.clock().install()
+  } )
+
+  afterEach( function () {
+    jasmine.clock().uninstall()
+  } )
+
+  it( 'mocks the current date' , function () {
+
+    const baseTime = new Date( 2015 , 3 , 18 )
+
+    // jasmine.clock().mockDate( [date] )
+    jasmine.clock().mockDate( baseTime )
+    jasmine.clock().tick( 1000 )
+
+    expect( new Date().getTime() ).toEqual( baseTime.getTime() + 1000 )
+
+  } )
+
+} )
 ```
