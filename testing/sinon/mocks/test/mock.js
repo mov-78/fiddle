@@ -10,7 +10,7 @@ describe( 'Expectation' , function () {
   let mock
 
   beforeEach( function () {
-    obj = { nop() {} }
+    obj = { noop() {} }
     mock = sinon.mock( obj )
   } )
 
@@ -23,32 +23,32 @@ describe( 'Expectation' , function () {
   //
 
   it( 'exactly' , function () {
-    mock.expects( 'nop' ).exactly( 2 )
-    obj.nop() ; obj.nop()
+    mock.expects( 'noop' ).exactly( 2 )
+    obj.noop() ; obj.noop()
     mock.verify()
   } )
   it( 'once' , function () {
-    mock.expects( 'nop' ).once()
-    obj.nop()
+    mock.expects( 'noop' ).once()
+    obj.noop()
     mock.verify()
   } )
   it( 'twice' , function () {
-    mock.expects( 'nop' ).twice()
-    obj.nop() ; obj.nop()
+    mock.expects( 'noop' ).twice()
+    obj.noop() ; obj.noop()
     mock.verify()
   } )
   it( 'thrice' , function () {
-    mock.expects( 'nop' ).thrice()
-    obj.nop() ; obj.nop() ; obj.nop()
+    mock.expects( 'noop' ).thrice()
+    obj.noop() ; obj.noop() ; obj.noop()
     mock.verify()
   } )
   it( 'atLeast|atMost' , function () {
-    mock.expects( 'nop' ).atLeast( 1 ).atMost( 3 ) // chainable
-    obj.nop()
+    mock.expects( 'noop' ).atLeast( 1 ).atMost( 3 ) // chainable
+    obj.noop()
     mock.verify()
   } )
   it( 'never' , function () {
-    mock.expects( 'nop' ).never().verify()
+    mock.expects( 'noop' ).never().verify()
   } )
 
 
@@ -58,13 +58,13 @@ describe( 'Expectation' , function () {
   //
 
   it( 'withArgs' , function () {
-    mock.expects( 'nop' ).withArgs( 'foo' )
-    obj.nop( 'foo' , 'bar' )
+    mock.expects( 'noop' ).withArgs( 'foo' )
+    obj.noop( 'foo' , 'bar' )
     mock.verify()
   } )
   it( 'withExactArgs' , function () {
-    mock.expects( 'nop' ).withExactArgs( 'foo' , 'bar' )
-    obj.nop( 'foo' , 'bar' )
+    mock.expects( 'noop' ).withExactArgs( 'foo' , 'bar' )
+    obj.noop( 'foo' , 'bar' )
     mock.verify()
   } )
 
@@ -74,8 +74,8 @@ describe( 'Expectation' , function () {
   //
 
   it( 'on' , function () {
-    mock.expects( 'nop' ).on( mock )
-    obj.nop.call( mock )
+    mock.expects( 'noop' ).on( mock )
+    obj.noop.call( mock )
     mock.verify()
   } )
 

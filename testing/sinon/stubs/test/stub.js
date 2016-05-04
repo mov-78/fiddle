@@ -130,7 +130,7 @@ describe( 'Stub' , function () {
   // stub.callsArgOnWith( index , ctxt , ...args )
   //
 
-  it( 'allsArg' , function () {
+  it( 'callsArg' , function () {
 
     bareStub.callsArg( 0 )
 
