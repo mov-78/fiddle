@@ -58,7 +58,7 @@ describe( 'Creating stubs' , function () {
     obj.method.should.not.equal( _method )
 
     obj.method()
-    bareSpy.called.should.be.false
+    bareSpy.called.should.be.false // stubbing
 
     // and can be restored
     stub.should.have.property( 'restore' )
@@ -88,7 +88,7 @@ describe( 'Creating stubs' , function () {
 
     obj.method()
     stub.called.should.be.true
-    func.called.should.be.true
+    func.called.should.be.true // call-through
     bareSpy.called.should.be.false
 
     // and can be restored
@@ -196,9 +196,11 @@ describe( 'Stub' , function () {
 
     bareStub.yieldsOn( ctxt )
 
-    bareStub( bareSpy )
+    bareStub( bareSpy , bareSpy )
 
     bareSpy.called.should.be.true
+    bareSpy.calledOnce.should.be.true
+
     bareSpy.calledOn( ctxt ).should.be.true
 
   } )
@@ -271,7 +273,7 @@ describe( 'Stub' , function () {
     bareStub.yield( 'foo' )
     bareStub.yield( 'bar' )
 
-    // invokes (only) the first matching function as callback
+    // invokes (only) the first matching function
     spy1.called.should.be.true
     spy2.called.should.be.false
 
@@ -329,8 +331,13 @@ describe( 'Stub' , function () {
   //
 
   it( 'onCall , onFirstCall|onSecondCall|onThirdCall' , function () {
-    bareStub.onCall( 0 ).returns( 'tinted' )
-    bareStub().should.equal( 'tinted' )
+
+    bareStub.onCall( 0 ).returns( 'tinted#1' )
+    bareStub.onCall( 1 ).returns( 'tinted#2' )
+
+    bareStub().should.equal( 'tinted#1' )
+    bareStub().should.equal( 'tinted#2' )
+
   } )
 
 

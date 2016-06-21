@@ -202,7 +202,7 @@ describe( 'Spy' , function () {
   // spy.neverCalledWith( ...args|matchers )
   //    - 支持局部匹配
   //    - 支持通配符（matcher 实参）
-  //    - 使用 deep equal 判等
+  //    - 使用 deepEqual 判等
   //
 
   it( 'calledWith|alwaysCalledWith|neverCalledWith' , function () {
@@ -210,6 +210,7 @@ describe( 'Spy' , function () {
     spy( { foo : 'bar' } , 'baz' )
 
     spy.calledWith( { foo : 'bar' } ).should.be.true
+    spy.calledWith( { foo : 'bar' } , 'baz' ).should.be.true
     spy.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
 
   } )
@@ -220,13 +221,14 @@ describe( 'Spy' , function () {
   // spy.alwaysCalledWithExactly( ...args|matchers )
   // 与 calledWith 系列类似，但不支持局部匹配
   //    - 支持通配符（matcher 实参）
-  //    - 使用 deep equal 判等
+  //    - 使用 deepEqual 判等
   //
 
   it( 'calledWithExactly|alwaysCalledWithExactly' , function () {
 
     spy( { foo : 'bar' } , 'baz' )
 
+    spy.calledWithExactly( { foo : 'bar' } ).should.not.be.true
     spy.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
     spy.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
@@ -291,7 +293,7 @@ describe( 'Spy' , function () {
     spy2.returned( 0 ).should.be.true
     spy2.alwaysReturned( 0 ).should.be.true
 
-    // deep equal & matcher support
+    // deepEqual & matcher support
     spy1( { foo : 'bar' } )
     spy1.returned( { foo : 'bar' } ).should.be.true
     spy1.returned( sinon.match.same( { foo : 'bar' } ) ).should.be.false
@@ -352,7 +354,7 @@ describe( 'Spy' , function () {
     spy( 'foo' ) ; spy( 1 , 'bar' )
 
     spy.withArgs( sinon.match.string ).calledOnce.should.be.true
-    spy.withArgs( sinon.match.number ).calledOnce.should.be.true // partial matching
+    spy.withArgs( sinon.match.number ).calledOnce.should.be.true // 支持局部匹配
     spy.withArgs( sinon.match.number , sinon.match.string ).calledOnce.should.be.true
 
   } )
@@ -363,15 +365,11 @@ describe( 'Spy' , function () {
   // spy.calledBefore( anotherSpy )
   //
 
-  it( 'calledAfter' , function () {
+  it( 'calledAfter , calledBefore' , function () {
     const anotherSpy = sinon.spy()
     anotherSpy() ; spy()
     spy.calledAfter( anotherSpy ).should.be.true
-  } )
-  it( 'calledBefore' , function () {
-    const anotherSpy = sinon.spy()
-    spy() ; anotherSpy()
-    spy.calledBefore( anotherSpy ).should.be.true
+    anotherSpy.calledBefore( spy ).should.be.true
   } )
 
 
@@ -461,7 +459,7 @@ describe( 'SpyCall' , function () {
   // spyCall.notCalledWith( ...args|matchers )
   //    - 支持局部匹配
   //    - 支持通配符（matcher 实参）
-  //    - 使用 deep equal 判等
+  //    - 使用 deepEqual 判等
   //
 
   it( 'calledWith , notCalledWith' , function () {
@@ -471,6 +469,7 @@ describe( 'SpyCall' , function () {
     const spyCall = spy.getCall( 0 )
 
     spyCall.calledWith( { foo : 'bar' } ).should.be.true
+    spyCall.calledWith( { foo : 'bar' } , 'baz' ).should.be.true
     spyCall.calledWith( sinon.match.same( { foo : 'bar' } ) ).should.be.false
 
   } )
@@ -480,7 +479,7 @@ describe( 'SpyCall' , function () {
   // spyCall.calledWithExactly( ...args|matchers )
   // 与 calledWith 系列类似，但不支持局部匹配
   //    - 支持通配符（matcher 实参）
-  //    - 使用 deep equal 判等
+  //    - 使用 deepEqual 判等
   //
 
   it( 'calledWithExactly' , function () {
@@ -489,6 +488,7 @@ describe( 'SpyCall' , function () {
 
     const spyCall = spy.getCall( 0 )
 
+    spyCall.calledWithExactly( { foo : 'bar' } ).should.not.be.true
     spyCall.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
     spyCall.calledWithExactly( sinon.match.same( { foo : 'bar' } ) , 'baz' ).should.be.false
 
@@ -526,11 +526,8 @@ describe( 'SpyCall' , function () {
 
     spy() ; spy.call( ctxt )
 
-    let spyCall = spy.getCall( 0 )
-    spyCall.calledOn( ctxt ).should.be.false
-
-    spyCall = spy.getCall( 1 )
-    spyCall.calledOn( ctxt ).should.be.true
+    spy.getCall( 0 ).calledOn( ctxt ).should.be.false
+    spy.getCall( 1 ).calledOn( ctxt ).should.be.true
 
   } )
 
@@ -540,6 +537,8 @@ describe( 'SpyCall' , function () {
   //
 
   it( 'threw' , function () {
+
+    let spyCall
 
     const ERR = 'error'
     const spy = sinon.spy( pass => { if ( !pass ) { throw ERR } } )
@@ -551,7 +550,7 @@ describe( 'SpyCall' , function () {
       // noop
     }
 
-    let spyCall = spy.getCall( 0 )
+    spyCall = spy.getCall( 0 )
     spyCall.threw().should.be.false
     spyCall.threw( ERR ).should.be.false
 
