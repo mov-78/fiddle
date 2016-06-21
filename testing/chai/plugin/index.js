@@ -87,7 +87,7 @@ chai.use( function ( _chai , utils ) {
     //
     // 如果在该断言中调用了其他断言，则需要将当前断言的 flags 传递给它：
     //
-    //    chai.util.transferFlags( sourceAssertion , targetAssertion , includeAll = true )
+    //    chai.util.transferFlags( sourceAssertion , targetAssertion , [includeAll=true] )
     //
     // 基本等同于：
     //

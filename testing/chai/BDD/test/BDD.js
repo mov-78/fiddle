@@ -1,3 +1,4 @@
+const is = require( '@pwn/is' )
 const chai = require( 'chai' )
 const expect = chai.expect
 const noop = require( 'lodash.noop' )
@@ -63,11 +64,11 @@ describe( 'BDD' , function () {
   it( 'include(contain)' , function () {
 
     expect( 'string' ).to.include( 'str' )                              // [1] String
-    expect( [ { foo : 'bar' } , 'baz' ] ).to.include( { foo : 'bar' } ) // [2] Array
+    expect( [ { foo : 'bar' } , 'baz' ] ).to.include( { foo : 'bar' } ) // [2] Array(支持 deepEqual)
     expect( [ [ 1 ] , 2 , 3 ] ).to.not.include( 1 )                     // top-level only
 
     'string'.should.include( 'str' )                                // [1] String
-    ;[ { foo : 'bar' } , 'baz' ].should.include( { foo : 'bar' } )  // [2] Array
+    ;[ { foo : 'bar' } , 'baz' ].should.include( { foo : 'bar' } )  // [2] Array(支持 deepEqual)
     ;[ [ 1 ] , 2 , 3 ].should.not.include( 1 )                      // top-level only
 
   } )
@@ -124,10 +125,10 @@ describe( 'BDD' , function () {
   it( 'NaN' , function () {
 
     expect( 0 / 0 ).to.be.NaN
-    expect( 'one' ).to.be.NaN
+    expect( 'one' ).to.be.NaN // 未对非数值类型进行过滤
 
     ;( 0 / 0 ).should.be.NaN
-    'one'.should.be.NaN
+    'one'.should.be.NaN // 未对非数值类型进行过滤
 
   } )
 
@@ -400,7 +401,7 @@ describe( 'BDD' , function () {
   // 类型：method
   //
 
-  it( 'throw' , function () {
+  it( 'throw , throws , Throw' , function () {
 
     let func = null
 
@@ -464,12 +465,11 @@ describe( 'BDD' , function () {
 
   it( 'satisfy' , function () {
 
-    const isEven = num => num % 2 === 0
+    expect( 2 ).to.satisfy( is.even )
+    expect( 1 ).to.not.satisfy( is.even )
 
-    expect( 2 ).to.satisfy( isEven )
-    expect( 1 ).to.not.satisfy( isEven )
-    ;( 2 ).should.satisfy( isEven )
-    ;( 1 ).should.not.satisfy( isEven )
+    ;( 2 ).should.satisfy( is.even )
+    ;( 1 ).should.not.satisfy( is.even )
 
   } )
 

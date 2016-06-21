@@ -4,6 +4,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "@pwn/is": "~1.0.2",
     "chai": "~3.5.0",
     "eslint": "~2.9.0",
     "eslint-config-pwn": "~4.1.0",

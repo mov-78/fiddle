@@ -110,7 +110,7 @@ describe( 'TDD' , function () {
   // assert.isNotFunction( expression , [message] )
   //
 
-  it( 'isNull , isUndefined , isNumber , isString , isBoolean , isObject , isArray , isFunction' , function () {
+  it( 'isNull , isUndefined , isNumber , isNaN , isString , isBoolean , isObject , isArray , isFunction' , function () {
 
     assert.isNull( null )
     assert.isNotNull( undefined )
@@ -120,7 +120,8 @@ describe( 'TDD' , function () {
     assert.isNumber( 0 / 0 )
     assert.isNumber( +1 / 0 )
     assert.isNumber( -1 / 0 )
-    assert.isNaN( 'one' ) // WTF?
+
+    assert.isNaN( 'one' ) // isNaN 并没有对非数值类型进行过滤
     assert.isNaN( 0 / 0 )
 
     assert.isString( '' )
@@ -140,6 +141,7 @@ describe( 'TDD' , function () {
 
     assert.isFunction( noop )
     assert.isFunction( () => null )
+    assert.isNotFunction( function* () {} ) // eslint-disable-line no-empty-function
 
   } )
 
@@ -171,8 +173,8 @@ describe( 'TDD' , function () {
 
   it( 'instanceOf' , function () {
 
-    const proto = {}
-    const Stub = class {}
+    const proto = Object.create( null )
+    const Stub = class Stub {}
     const obj = new Stub()
 
     assert.instanceOf( obj , Stub )
@@ -192,14 +194,14 @@ describe( 'TDD' , function () {
   it( 'include , oneOf' , function () {
 
     assert.include( 'foobar' , 'foo' )                              // [1] String
-    assert.include( [ { foo : 'bar' } , 'baz' ] , { foo : 'bar' } ) // [2] Array
+    assert.include( [ { foo : 'bar' } , 'baz' ] , { foo : 'bar' } ) // [2] Array(支持 deepEqual)
     assert.notInclude( [ 1 ] , '1' )                                // strict equal
     assert.notInclude( [ [ 1 ] , 2 ] , 1 )                          // top-level only
 
     assert.oneOf( 3 , [ 1 , 3 , 5 ] )
     assert.throws( () => { assert.oneOf( '1' , [ 1 ] ) } )        // strict equal
     assert.throws( () => { assert.oneOf( 1 , [ [ 1 ] , 2 ] ) } )  // top-level only
-    assert.throws( () => { assert.oneOf( { foo : 1 } , [ { foo : 1 } ] ) } )
+    assert.throws( () => { assert.oneOf( { foo : 1 } , [ { foo : 1 } ] ) } ) // 不支持 deepEqual
 
   } )
 
@@ -263,7 +265,7 @@ describe( 'TDD' , function () {
 
   it( 'throws' , function () {
 
-    let func = null
+    let func
 
     class Exception extends Error {}
 

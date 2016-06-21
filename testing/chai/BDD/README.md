@@ -52,6 +52,11 @@ $ npm test
 - [null](http://chaijs.com/api/bdd/#method_null)
 - [undefined](http://chaijs.com/api/bdd/#method_undefined)
 - [exist](http://chaijs.com/api/bdd/#method_exist)
+
+> 类型：property
+
+---
+
 - [NaN](http://chaijs.com/api/bdd/#method_nan)
 
 > 类型：property
@@ -106,7 +111,7 @@ $ npm test
 
 - [length( value , [message] )](http://chaijs.com/api/bdd/#method_length)
 
-> 类型：chainableMethod（chainingBehavior 设置 doLength flag）
+> 类型：chainableMethod（chainingBehavior 设置 `doLength` flag）
 
 - [lengthOf( value , [message] )](http://chaijs.com/api/bdd/#method_lengthof)
 
