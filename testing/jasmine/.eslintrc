@@ -1,12 +1,12 @@
-env :
-  jasmine : true
-  node : true
-rules :
-  consistent-return : off
-  func-names : off
-  max-len : off
-  no-invalid-this : off
-  no-magic-numbers : off
-  no-unused-vars : off
-  prefer-arrow-callback : off
-extends : pwn
+env:
+  jasmine: true
+  node: true
+rules:
+  consistent-return: off
+  func-names: off
+  max-len: off
+  no-invalid-this: off
+  no-magic-numbers: off
+  no-unused-vars: off
+  prefer-arrow-callback: off
+extends: pwn

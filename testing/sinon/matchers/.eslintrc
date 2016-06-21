@@ -1,9 +1,9 @@
-env :
-  mocha : true
-  node : true
-rules :
-  max-len : off
-  no-new-wrappers : off
-  no-unused-expressions : off
-  prefer-arrow-callback : off
-extends : pwn
+env:
+  mocha: true
+  node: true
+rules:
+  max-len: off
+  no-new-wrappers: off
+  no-unused-expressions: off
+  prefer-arrow-callback: off
+extends: pwn

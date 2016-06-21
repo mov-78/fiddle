@@ -1,15 +1,15 @@
-env :
-  mocha : true
-  node : true
-rules :
-  func-names : off
-  max-len : off
-  no-magic-numbers : off
-  no-empty-function : off
-  no-extra-parens : off
-  no-throw-literal : off
-  no-unused-expressions : off
-  prefer-arrow-callback : off
-  prefer-rest-params : off
-  semi-spacing : off
-extends : pwn
+env:
+  mocha: true
+  node: true
+rules:
+  func-names: off
+  max-len: off
+  no-magic-numbers: off
+  no-empty-function: off
+  no-extra-parens: off
+  no-throw-literal: off
+  no-unused-expressions: off
+  prefer-arrow-callback: off
+  prefer-rest-params: off
+  semi-spacing: off
+extends: pwn
