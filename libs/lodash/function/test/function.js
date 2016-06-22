@@ -59,6 +59,7 @@ describe( 'lodash/function' , function () {
 
     object.method = stub
 
+    // Lazy Function Definition Pattern
     bound( 'bar' )
     stub.should.have.been.calledOn( object )
     stub.should.have.been.calledWithExactly( 'foo' , 'bar' )
@@ -127,11 +128,13 @@ describe( 'lodash/function' , function () {
 
   it( 'before , after' , function () {
 
+    // callCount < n
     _.times( 5 , _.before( 5 , spy ) )
     spy.should.have.callCount( 4 )
 
     spy.reset()
 
+    // callCount >= n
     _.times( 5 , _.after( 5 , spy ) )
     spy.should.have.callCount( 1 )
 
@@ -203,7 +206,7 @@ describe( 'lodash/function' , function () {
 
     // spread( func , [start=0] )
     spy.reset()
-    _.spread( spy , 1 )( 1 , [ 2 , 3 ] )
+    _.spread( spy , 1 )( 1 , [ 2 , 3 ] , [ 4 , 5 ] )
     spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
 
   } )

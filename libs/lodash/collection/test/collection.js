@@ -15,7 +15,7 @@ describe( 'lodash/collection' , function () {
     _.size( 'foobar' ).should.equal( 6 )
 
     // [3] Object
-    _.size( { foo : 'bar' , baz : 'qux' } ).should.equal( 2 )
+    _.size( _.create( { foo : 'bar' } , { baz : 'qux' } ) ).should.equal( 1 )
 
   } )
 
@@ -59,7 +59,7 @@ describe( 'lodash/collection' , function () {
     // [2] Object
     // 与 mapValues 类似，区别为：
     //    - mapValues：返回对象 - 保持对象结构
-    //    - map：返回数组 - 忽略对象结构
+    //    - map：返回数组 - 忽略（打平）对象结构
     _.map( { foo : 1 , bar : { baz : 2 } } , ( value , key , object ) => value )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 1 , { baz : 2 } ] )
@@ -85,7 +85,7 @@ describe( 'lodash/collection' , function () {
     // [2] Object
     // 与 pickBy|omitBy 类似，区别为：
     //    - pickBy|omitBy：返回对象 - 保持对象结构
-    //    - filter：返回数组 - 忽略对象结构
+    //    - filter：返回数组 - 忽略（打平）对象结构
     _.filter( { foo : 1 , bar : 2 } , ( value , key , object ) => value % 2 === 0 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 2 ] )
@@ -137,7 +137,7 @@ describe( 'lodash/collection' , function () {
     _.find(
       { foo : 1 , bar : 2 , baz : 3 } ,
       ( value , key , object ) => value % 2 === 0
-    ).should.equal( 2 )
+    ).should.equal( 2 ) // 返回的是 value 而不是 key
 
   } )
 
@@ -228,8 +228,8 @@ describe( 'lodash/collection' , function () {
 
 
   //
-  // sortBy( collection , iteratee )
-  // orderBy( collection , iteratee , [orderBy] )
+  // sortBy( collection , iteratees )
+  // orderBy( collection , iteratees , [orders] )
   //
 
   it( 'sortBy , orderBy' , function () {

@@ -66,8 +66,8 @@ $ npm test
 
 ---
 
-- [sortBy( collection , iteratee )](https://lodash.com/docs#sortBy)
-- [orderBy( collection , iteratee , [orderBy] )](https://lodash.com/docs#orderBy)
+- [sortBy( collection , iteratees )](https://lodash.com/docs#sortBy)
+- [orderBy( collection , iteratees , [orders] )](https://lodash.com/docs#orderBy)
 
 ---
 

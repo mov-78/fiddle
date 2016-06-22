@@ -29,12 +29,13 @@ describe( 'lodash/util' , function () {
   it( 'bindAll' , function () {
 
     let func = null
-    const object = { method() { return this } }
+    const object = { method : spy }
 
     _.bindAll( object , 'method' )
     func = object.method
 
-    func().should.equal( object )
+    func()
+    spy.should.have.been.calledOn( object )
 
   } )
 
@@ -54,7 +55,7 @@ describe( 'lodash/util' , function () {
   } )
 
 
-  // conforms( spec )
+  // conforms( schema )
   it( 'conforms' , function () {
     _.conforms(
       {
@@ -163,8 +164,8 @@ describe( 'lodash/util' , function () {
 
 
   //
-  // flow( funcs )
-  // flowRight( funcs )
+  // flow( ...func )
+  // flowRight( ...func )
   //
 
   it( 'flow , flowRight' , function () {

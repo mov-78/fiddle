@@ -16,7 +16,7 @@ $ npm test
 ---
 
 - [cond( pairs )](https://lodash.com/docs#cond)
-- [conforms( spec )](https://lodash.com/docs#conforms)
+- [conforms( schema )](https://lodash.com/docs#conforms)
 
 ---
 
@@ -43,8 +43,8 @@ $ npm test
 
 ---
 
-- [flow( funcs )](https://lodash.com/docs#flow)
-- [flowRight( funcs )](https://lodash.com/docs#flowRight)
+- [flow( ...func )](https://lodash.com/docs#flow)
+- [flowRight( ...func )](https://lodash.com/docs#flowRight)
 
 ---
 

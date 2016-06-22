@@ -27,9 +27,16 @@ describe( 'lodash/math' , function () {
   //
 
   it( 'floor , ceil , round' , function () {
-    _.floor( 0.046 , 2 ).should.equal( 0.04 )
-    _.ceil( 0.046 , 2 ).should.equal( 0.05 )
-    _.round( 0.046 , 2 ).should.equal( 0.05 )
+
+    _.floor( Math.PI ).should.equal( 3 )
+    _.floor( Math.PI , 2 ).should.equal( 3.14 )
+
+    _.ceil( Math.PI ).should.equal( 4 )
+    _.ceil( Math.PI , 2 ).should.equal( 3.15 )
+
+    _.round( 0.4 ).should.equal( 0 )
+    _.round( 0.5 ).should.equal( 1 )
+
   } )
 
 

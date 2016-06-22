@@ -157,6 +157,20 @@ describe( 'lodash/lang' , function () {
   } )
 
 
+  // isEmpty( value )
+  it( 'isEmpty' , function () {
+    _.isEmpty( '' ).should.be.true
+    _.isEmpty( {} ).should.be.true
+    _.isEmpty( _.create( { foo : 'bar' } ) ).should.be.true
+    _.isEmpty( [] ).should.be.true
+    _.isEmpty( { length : 0 } ).should.be.false
+    _.isEmpty( new Set() ).should.be.true
+    _.isEmpty( new WeakSet() ).should.be.true
+    _.isEmpty( new Map() ).should.be.true
+    _.isEmpty( new WeakMap() ).should.be.true
+  } )
+
+
   //
   // isEqual( value , other )
   // isEqualWith( value , other , customizer )
@@ -205,20 +219,6 @@ describe( 'lodash/lang' , function () {
       ( objVal , srcVal , key , object , source ) => objVal === srcVal
     ).should.be.true
 
-  } )
-
-
-  // isEmpty( value )
-  it( 'isEmpty' , function () {
-    _.isEmpty( '' ).should.be.true
-    _.isEmpty( {} ).should.be.true
-    _.isEmpty( _.create( { foo : 'bar' } ) ).should.be.true
-    _.isEmpty( [] ).should.be.true
-    _.isEmpty( { length : 0 } ).should.be.false
-    _.isEmpty( new Set() ).should.be.true
-    _.isEmpty( new WeakSet() ).should.be.true
-    _.isEmpty( new Map() ).should.be.true
-    _.isEmpty( new WeakMap() ).should.be.true
   } )
 
 

@@ -32,32 +32,36 @@ describe( 'lodash/object' , function () {
 
   it( 'assign , assignIn|extend , assignWith , assignInWith|extendWith' , function () {
 
-    _.assign( {} , _.create( { foo : 'bar' } , { baz : 'qux' } ) )
-      .should.deep.equal( { baz : 'qux' } )
-
-    _.extend( {} , _.create( { foo : 'bar' } , { baz : 'qux' } ) )
-      .should.deep.equal( { foo : 'bar' , baz : 'qux' } )
+    _.assign( {} , { a : 0 , b : 1 } , _.create( { a : 2 , c : 3 } ) )
+      .should.deep.equal( { a : 0 , b : 1 } )
+    _.extend( {} , { a : 0 , b : 1 } , _.create( { a : 2 , c : 3 } ) )
+      .should.deep.equal( { a : 2 , b : 1 , c : 3 } )
 
     _.assignWith(
       {} ,
-      _.create( { foo : 'bar' } , { baz : 'qux' } ) ,
+      { a : 0 , b : 1 } ,
+      _.create( { a : 2 , c : 3 } ) ,
       ( objVal , srcVal , key , obj , source ) => srcVal
-    ).should.deep.equal( { baz : 'qux' } )
-
+    ).should.deep.equal( { a : 0 , b : 1 } )
     _.extendWith(
       {} ,
-      _.create( { foo : 'bar' } , { baz : 'qux' } ) ,
+      { a : 0 , b : 1 } ,
+      _.create( { a : 2 , c : 3 } ) ,
       ( objVal , srcVal , key , obj , source ) => srcVal
-    ).should.deep.equal( { foo : 'bar' , baz : 'qux' } )
+    ).should.deep.equal( { a : 2 , b : 1 , c : 3 } )
 
   } )
   it( 'defaults , defaultsDeep' , function () {
 
-    _.defaults( { foo : 'bar' } , { foo : 'tinted' , baz : 'qux' } )
-      .should.deep.equal( { foo : 'bar' , baz : 'qux' } )
+    // - 考虑继承属性
+    // - 仅在 object 中对应属性未定义时才设置，且仅设置一次
+    _.defaults( { m : 0 } , _.create( { m : 1 , n : 2 } ) )
+      .should.deep.equal( { m : 0 , n : 2 } )
 
-    _.defaultsDeep( { foo : { bar : 'baz' } } , { foo : { baz : 'qux' } } )
-      .should.deep.equal( { foo : { bar : 'baz' , baz : 'qux' } } )
+    _.defaults( { a : { b : 0 } } , { a : { b : 1 , c : 2 } } )
+      .should.deep.equal( { a : { b : 0 } } )
+    _.defaultsDeep( { a : { b : 0 } } , { a : { b : 1 , c : 2 } } )
+      .should.deep.equal( { a : { b : 0 , c : 2 } } )
 
   } )
 
@@ -91,6 +95,19 @@ describe( 'lodash/object' , function () {
   } )
 
 
+  // result( object , path , [defaultValue] )
+  it( 'result' , function () {
+    _.result( {
+      foo : {
+        baz : 'qux' ,
+        bar() {
+          return this.baz
+        }
+      }
+    } , 'foo.bar' ).should.equal( 'qux' )
+  } )
+
+
   // at( object , ...paths|paths )
   it( 'at' , function () {
 
@@ -107,13 +124,6 @@ describe( 'lodash/object' , function () {
   } )
 
 
-  // result( object , path , [defaultValue] )
-  it( 'result' , function () {
-    _.result( { foo : { baz : 'qux' , bar() { return this.baz } } } , 'foo.bar' )
-      .should.equal( 'qux' )
-  } )
-
-
   //
   // set( object , path , value )
   // update( object , path , updater )
@@ -121,8 +131,6 @@ describe( 'lodash/object' , function () {
   //
 
   it( 'set , update , unset' , function () {
-
-    const obj = { foo : { bar : 'baz' } }
 
     _.set( { foo : { bar : 'baz' } } , 'foo.bar' , 'qux' )
       .should.deep.equal( { foo : { bar : 'qux' } } )
@@ -140,6 +148,7 @@ describe( 'lodash/object' , function () {
     _.update( {} , '[0][0]' , value => 'foo' )
       .should.deep.equal( { 0 : [ 'foo' ] } )
 
+    const obj = { foo : { bar : 'baz' } }
     _.unset( obj , 'foo.bar' ).should.be.true
     obj.should.deep.equal( { foo : {} } )
 
@@ -149,13 +158,13 @@ describe( 'lodash/object' , function () {
   //
   // keys( object )
   // keysIn( object )
-  // functions( object )
-  // functionsIn( object )
   // values( object )
   // valuesIn( object )
+  // functions( object )
+  // functionsIn( object )
   //
 
-  it( 'keys , keysIn , functions , functionsIn , values , valuesIn' , function () {
+  it( 'keys , keysIn , values , valuesIn , functions , functionsIn' , function () {
 
     let obj = _.create( { foo : _.noop } , { bar : _.noop , baz : null } )
 
@@ -225,11 +234,11 @@ describe( 'lodash/object' , function () {
 
   it( 'mapKeys , mapValues' , function () {
 
-    _.mapKeys( { foo : 'bar' } , ( value , key , object ) => key )
-      .should.deep.equal( { foo : 'bar' } )
+    _.mapKeys( { foo : 'bar' , baz : 'bar' } , ( value , key , object ) => value )
+      .should.deep.equal( { bar : 'bar' } )
 
-    _.mapValues( { foo : 'bar' } , ( value , key , object ) => value )
-      .should.deep.equal( { foo : 'bar' } )
+    _.mapValues( { foo : 'bar' } , ( value , key , object ) => key )
+      .should.deep.equal( { foo : 'foo' } )
 
   } )
 
@@ -303,7 +312,7 @@ describe( 'lodash/object' , function () {
     _.invoke( obj , 'foo.bar' ).should.equal( 'tinted' )
     obj.foo.bar.called.should.be.true
 
-    _.invoke( obj , 'not.exist' )
+    _.invoke( obj , 'not.exist' ) // 若方法不存在不会抛出异常
 
   } )
 

@@ -26,8 +26,8 @@ $ npm test
 - [has( object , path )](https://lodash.com/docs#has)
 - [hasIn( object , path )](https://lodash.com/docs#hasIn)
 - [get( object , path , [defaultValue] )](https://lodash.com/docs#get)
-- [at( object , ...paths|paths )](https://lodash.com/docs#at)
 - [result( object , path , [defaultValue] )](https://lodash.com/docs#result)
+- [at( object , ...paths|paths )](https://lodash.com/docs#at)
 - [set( object , path , value )](https://lodash.com/docs#set) ✪
 - [update( object , path , updater )](https://lodash.com/docs#update) ✪
 - [unset( object , path )](https://lodash.com/docs#unset) ✪
@@ -36,10 +36,10 @@ $ npm test
 
 - [keys( object )](https://lodash.com/docs#keys)
 - [keysIn( object )](https://lodash.com/docs#keysIn)
-- [functions( object )](https://lodash.com/docs#functions)
-- [functionsIn( object )](https://lodash.com/docs#functionsIn)
 - [values( object )](https://lodash.com/docs#values)
 - [valuesIn( object )](https://lodash.com/docs#valuesIn)
+- [functions( object )](https://lodash.com/docs#functions)
+- [functionsIn( object )](https://lodash.com/docs#functionsIn)
 
 ---
 

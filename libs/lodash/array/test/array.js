@@ -39,7 +39,7 @@ describe( 'lodash/array' , function () {
     _.indexOf( array , 4 ).should.equal( -1 )
 
     _.lastIndexOf( array , 2 ).should.equal( 2 )
-    _.lastIndexOf( array , 2 , -3 ).should.equal( 1 )
+    _.lastIndexOf( array , 2 , -2 ).should.equal( 2 )
     _.lastIndexOf( array , 4 ).should.equal( -1 )
 
   } )
@@ -71,10 +71,11 @@ describe( 'lodash/array' , function () {
   it( 'take , takeRight , takeWhile , takeRightWhile' , function () {
 
     const array = [ 1 , 2 , 3 ]
-    const predicate = ( value , index , array ) => value % 2 !== 0
+    const predicate = ( value , index , array ) => value % 2 === 1
 
     _.take( array ).should.deep.equal( [ 1 ] )
     _.take( array , 2 ).should.deep.equal( [ 1 , 2 ] )
+
     _.takeRight( array ).should.deep.equal( [ 3 ] )
     _.takeRight( array , 2 ).should.deep.equal( [ 2 , 3 ] )
 
@@ -94,10 +95,11 @@ describe( 'lodash/array' , function () {
   it( 'drop , dropRight , dropWhile , dropRightWhile' , function () {
 
     const array = [ 1 , 2 , 3 ]
-    const predicate = ( value , index , array ) => value % 2 !== 0
+    const predicate = ( value , index , array ) => value % 2 === 1
 
     _.drop( array ).should.deep.equal( [ 2 , 3 ] )
     _.drop( array , 2 ).should.deep.equal( [ 3 ] )
+
     _.dropRight( array ).should.deep.equal( [ 1 , 2 ] )
     _.dropRight( array , 2 ).should.deep.equal( [ 1 ] )
 
@@ -344,6 +346,7 @@ describe( 'lodash/array' , function () {
 
 
   // fill( array , value , [start=0] , [end=array.length] )
+  // 填充区间：[ start , end )
   it( 'fill' , function () {
     _.fill( [ 1 , 2 , 3 , 4 , 5 ] , 0 , 1 , 3 )
       .should.deep.equal( [ 1 , 0 , 0 , 4 , 5 ] )
