@@ -1,6 +1,0 @@
-{
-  "name": "fiddle",
-  "dependencies": {
-    "grunt": "^0.4.5"
-  }
-}
