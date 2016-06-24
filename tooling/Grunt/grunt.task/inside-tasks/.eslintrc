@@ -1,0 +1,6 @@
+env:
+  node: true
+extends: pwn
+rules:
+  max-len: off
+  prefer-arrow-callback: off
