@@ -1,8 +1,8 @@
 
-# Created by https://www.gitignore.io/api/osx,linux,bower,node
+# Created by https://www.gitignore.io/api/osx,bower,node
 
 ### OSX ###
-.DS_Store
+*.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -20,6 +20,7 @@ Icon
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -27,16 +28,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-
-### Linux ###
-*~
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
 
 
 ### Bower ###
@@ -63,6 +54,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# nyc test coverage
+.nyc_output
+
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -72,15 +66,12 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directory
-# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+# Dependency directories
 node_modules
+jspm_packages
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
-
-### fiddle ###
-!grunt.log
