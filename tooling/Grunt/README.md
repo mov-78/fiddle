@@ -43,7 +43,7 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
   target : {
     src : 'path/to/src' ,
     dest : 'path/to/dest'
-    // ...其他配置
+    // ...其他选项
   }
 }
 ```
@@ -85,9 +85,9 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
   target : {
     files : [
       {
-        expand : true ,
+        expand : true , // 开启一对一映射模式
         cwd : 'path/to/src' ,
-        src : '**/*.js' ,
+        src : '**/*.js' , // 相对于 `cwd` 解析
         dest : 'path/to/dest' ,
         ext : '.min.js' ,
         extDot : 'last'
