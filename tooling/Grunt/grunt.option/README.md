@@ -7,7 +7,8 @@ $ npm test
 
 ---
 
-> `grunt.option` 接口主要用于获取命令行参数及设置任务间共享参数
+> - `grunt.task.current.option` 用于获取任务级/目标级选项
+> - `grunt.option` 用于获取命令行参数及设置任务间共享参数
 
 - [grunt.option( key , [value] )](http://gruntjs.com/api/grunt.option#grunt.option)
 - [grunt.option.init( [defaults] )](http://gruntjs.com/api/grunt.option#grunt.option.init)

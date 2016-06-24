@@ -17,7 +17,7 @@ $ npm test
 - [grunt.log.writeflags( obj , [prefix='Flags'] )](http://gruntjs.com/api/grunt.log#grunt.log.writeflags-grunt.verbose.writeflags)
 - [grunt.log.debug( msg )](http://gruntjs.com/api/grunt.log#grunt.log.debug-grunt.verbose.debug)
 
-辅助方法：
+---
 
 - [grunt.log.wordlist( array , [options] )](http://gruntjs.com/api/grunt.log#grunt.log.wordlist)
 - [grunt.log.wraptext( width , text )](http://gruntjs.com/api/grunt.log#grunt.log.wraptext)
