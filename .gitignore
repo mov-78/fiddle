@@ -41,6 +41,7 @@ bower_components
 # Logs
 logs
 *.log
+!grunt.log
 npm-debug.log*
 
 # Runtime data
