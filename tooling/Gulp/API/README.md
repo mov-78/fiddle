@@ -1,6 +1,6 @@
-该 fiddle 用于演示 [Gulp](http://gulpjs.com/) 核心接口
+该 fiddle 用于演示 gulp 核心接口 [#](https://github.com/gulpjs/gulp/blob/master/docs/API.md)
 
-> Gulp := [Vinyl](https://github.com/gulpjs/vinyl) + [Orchestrator](https://github.com/robrich/orchestrator) + [Gaze](https://github.com/shama/gaze)
+> gulp := [vinyl](https://github.com/gulpjs/vinyl) + [orchestrator](https://github.com/robrich/orchestrator) + [gaze](https://github.com/shama/gaze)
 
 ```js
 // 经典流程
@@ -33,7 +33,7 @@ __gulp.dest( path:String|Function , [opts:Object] )__ [#](https://github.com/gul
 
 __gulp.task( name:String , [deps:Array] , [fn:Function] )__ [#](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn)
 
-用于定义任务。Gulp 内部使用 [Orchestrator](https://github.com/robrich/orchestrator) 来进行任务管理。
+用于定义任务。gulp 内部使用 [Orchestrator](https://github.com/robrich/orchestrator) 来进行任务管理。
 
 `deps` 依赖内的任务全部并行执行。如果依赖中包含异步任务，则这些异步任务需要：
 
@@ -41,11 +41,11 @@ __gulp.task( name:String , [deps:Array] , [fn:Function] )__ [#](https://github.c
 - 返回一个 `Promise` 对象
 - 返回一个 `Stream` 对象
 
-来告知 Gulp 任务何时结束。
+来告知 gulp 任务何时结束。
 
 __gulp.watch( glob:String|Array , [opts:Object] , tasks:Array|callback:Function )__ [#](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb)
 
-用于侦测文件变更并在事件触发时执行指定任务集或回调。Gulp 内部使用 [gaze](https://github.com/shama/gaze) 来侦测文件变更。
+用于侦测文件变更并在事件触发时执行指定任务集或回调。gulp 内部使用 [gaze](https://github.com/shama/gaze) 来侦测文件变更。
 
 ```js
 // [1] 执行指定任务集
