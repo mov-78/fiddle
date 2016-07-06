@@ -18,7 +18,7 @@ obj.trigger( 'notify' , 'offline' )
 
 ---
 
-__Backbone.Events.on( name , callback , [context] )__ [#](#http://backbonejs.org/#Events-on)
+__Backbone.Events.on( name , callback , [context] )__ [#](http://backbonejs.org/#Events-on)
 
 > 别名：`bind`
 
