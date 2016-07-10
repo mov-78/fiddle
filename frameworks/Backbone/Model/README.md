@@ -7,20 +7,18 @@ __Backbone.Model.extend( [protoProps] , [staticProps] )__ [#](http://backbonejs.
 类工厂，用于创建 `Backbone.Model` 子类。
 
 ```js
-let DomainModel = Backbone.Model.extend( {
+Backbone.Model.extend( {
 
   // 用于声明默认 attributes，可以为字面量或函数
   defaults : {} ,
 
-  // 自定义初始化函数，在 Model 实例创建后调用
-  initialize : function ( attrs , opts ) {
-    assert( this instanceof DomainModel )
-  } ,
-
   // 自定义构造函数
   constructor : function ( ...args ) {
-    Backbone.Model.apply( this , args ) // 调用父类构造函数
+    Backbone.Model.apply( this , args )
   } ,
+
+  // 自定义初始化函数
+  initialize : function ( attrs , opts ) {} ,
 
   // 自定义校验逻辑
   // - set(option.validate=true) 及 save 操作均会自动触发校验逻辑
@@ -39,8 +37,7 @@ assert( Backbone.Model.prototype.isPrototypeOf( DomainModel.prototype ) )
 // 静态方法通过 _.extend 复制而来
 assert( DomainModel.extend === Backbone.Model.extend )
 
-// 创建 Model 实例
-// new Model( [attrs] , [opts] )
+// new Backbone.Model( [attrs] , [opts] )
 ```
 
 ---
