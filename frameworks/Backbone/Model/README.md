@@ -66,7 +66,9 @@ assert( DomainModel.extend === Backbone.Model.extend )
 __Backbone.Model.prototype.toJSON()__ [#](http://backbonejs.org/#Model-toJSON)
 
 ```js
-return _.clone( this.attributes )
+toJSON : function () {
+  return _.clone( this.attributes )
+}
 ```
 
 ---
@@ -74,5 +76,7 @@ return _.clone( this.attributes )
 __Backbone.Model.prototype.clone()__ [#](http://backbonejs.org/#Model-clone)
 
 ```js
-return new this.constructor( this.attributes )
+clone : function () {
+  return new this.constructor( this.attributes )
+}
 ```
