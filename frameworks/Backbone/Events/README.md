@@ -3,7 +3,7 @@
 > Event = name + target
 
 ```js
-// `Backbone.Events` 可以被任意对象 mixin 进来以提供注册/触发具名事件的能力
+// Backbone.Events 可以被任意对象 mixin 进来以提供注册/触发具名事件的能力
 
 let obj = {}
 _.extend( obj , Backbone.Events )
@@ -38,7 +38,7 @@ Backbone 内部在触发任意事件后都会触发一个特殊的 `all` 事件�
 
 ```js
 let proxy = {}
-_.extend( Backbone.Events )
+_.extend( proxy , Backbone.Events )
 
 proxy.on( 'all' , function ( name , ...args ) {
   other.trigger( name , ...args )

@@ -24,8 +24,8 @@ Backbone.View.extend( {
 
   // 或依据以下属性创建视图的根节点
   id : 'id' , // 覆盖 attributes.id
-  tagName : 'div' , // 覆盖 attributes.class
-  className : 'className' ,
+  tagName : 'div' ,
+  className : 'className' , // 覆盖 attributes.class
   attributes : { title : 'title' } ,
 
   // 配置事件代理集
@@ -47,13 +47,9 @@ Backbone.View.extend( {
 
 // new Backbone.View( [opts] )
 // 其中 opts 支持如下字段（直接设为实例属性）：
-//    - model
-//    - collection
+//    - model/collection
 //    - el
-//    - tagName
-//    - id
-//    - className
-//    - attributes
+//    - tagName/id/className/attributes
 //    - events
 ```
 
@@ -154,9 +150,7 @@ undelegate : function ( type , selector , listener ) {
 
 ```js
 undelegateEvents : function () {
-  if ( this.$el ) {
-    this.$el.off( '.delegateEvents' + this.cid )
-  }
+  this.$el.off( '.delegateEvents' + this.cid )
   return this
 }
 ```

@@ -32,11 +32,6 @@ Backbone.Model.extend( {
 
 } )
 
-// 实例方法通过原型链继承
-assert( Backbone.Model.prototype.isPrototypeOf( DomainModel.prototype ) )
-// 静态方法通过 _.extend 复制而来
-assert( DomainModel.extend === Backbone.Model.extend )
-
 // new Backbone.Model( [attrs] , [opts] )
 ```
 
