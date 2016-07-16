@@ -4,7 +4,7 @@
 
 __Backbone.Model.extend( [protoProps] , [staticProps] )__ [#](http://backbonejs.org/#Model-extend)
 
-类工厂，用于创建 `Backbone.Model` 子类。
+类工厂，用于创建 `Backbone.Model` 子类：
 
 ```js
 Backbone.Model.extend( {
