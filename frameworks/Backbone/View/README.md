@@ -10,12 +10,37 @@ __Backbone.View.extend( [protoProps] , [staticProps] )__ [#](http://backbonejs.o
 Backbone.View.extend( {
 
   // 自定义构造函数
-  constructor : function ( ...args ) {
-    Backbone.View.apply( this , args )
+  constructor( options ) {
+
+    this.cid = _.uniqueId( 'view' )
+
+    _.extend(
+      this ,
+      _.pick(
+        options ,
+        [ 'model' , 'collection' , 'el' , 'tagName' , 'id' , 'className' , 'attributes' , 'events' ]
+      )
+    )
+    if ( !this.el ) {
+      let attrs = _.extend( {} , _.result( this , 'attributes' ) )
+      if ( this.id ) {
+        attrs.id = _.result( this , 'id' )
+      }
+      if ( this.className ) {
+        attrs[ 'class' ] = _.result( this , 'className' )
+      }
+      this.setElement( document.createElement( _.result( this , 'tagName' ) ) )
+      this.$el.attr( attrs )
+    } else {
+      this.setElement( _.result( this , 'el' ) )
+    }
+
+    this.initialize.apply( this , arguments )
+
   } ,
 
   // 自定义初始化函数
-  initialize : function ( ...args ) {
+  initialize( ...args ) {
     this.listenTo( this.model , 'change' , this.render )
   } ,
 
@@ -38,19 +63,12 @@ Backbone.View.extend( {
   template : _.template( '...' ) ,
 
   // 「约定」指定渲染方法
-  render : function () {
+  render() {
     this.$el.html( this.template( this.model.toJSON() ) )
-    return this
+    return this // chainable
   }
 
 } )
-
-// new Backbone.View( [opts] )
-// 其中 opts 支持如下字段（直接设为实例属性）：
-//    - model/collection
-//    - el
-//    - tagName/id/className/attributes
-//    - events
 ```
 
 ---
@@ -58,7 +76,7 @@ Backbone.View.extend( {
 __Backbone.View.prototype.$( selector )__ [#](http://backbonejs.org/#View-dollar)
 
 ```js
-$ : function ( selector ) {
+$( selector ) {
   return this.$el.find( selector )
 }
 ```
@@ -70,15 +88,12 @@ __Backbone.View.prototype.setElement( element )__ [#](http://backbonejs.org/#Vie
 变更视图根节点，重新配置事件代理。
 
 ```js
-setElement : function ( el ) {
+setElement( el ) {
   this.undelegateEvents()
-  this._setElement( el )
-  this.delegateEvents()
-  return this
-} ,
-_setElement : function ( el ) {
   this.$el = el instanceof Backbone.$ ? el : Backbone.$( el )
   this.el = this.$el[ 0 ]
+  this.delegateEvents()
+  return this
 }
 ```
 
@@ -89,7 +104,7 @@ __Backbone.View.prototype.remove()__ [#](http://backbonejs.org/#View-remove)
 将视图根节点从 DOM 中移除，同时调用 `stopListening` 来停止监听其他对象上的事件。
 
 ```js
-remove : function () {
+remove() {
   this.$el.remove()
   this.stopListening()
   return this
@@ -105,8 +120,8 @@ remove : function () {
 - __Backbone.View.prototype.delegate( type , selector , listener )__ [#](http://backbonejs.org/#View-delegateEvents)
 
 ```js
-delegate : function ( type , selector , listener ) {
-  this.$el.on( type + '.delegateEvents' + this.cid , selector , listener )
+delegate( type , selector , listener ) {
+  this.$el.on( `${ type }.delegateEvents${ this.cid }` , selector , listener )
   return this
 }
 ```
@@ -114,23 +129,21 @@ delegate : function ( type , selector , listener ) {
 - __Backbone.View.prototype.delegateEvents( [events] )__ [#](http://backbonejs.org/#View-delegateEvents)
 
 ```js
-delegateEvents : function( events ) {
-  var key
-  var method
-  var match
+delegateEvents( events ) {
   events || ( events = _.result( this , 'events' ) )
   if ( !events ) {
     return this
   }
-  for ( key in events ) {
-    method = events[ key ]
+  this.undelegateEvents()
+  for ( let key in events ) {
+    let method = events[ key ]
     if ( !_.isFunction( method ) ) {
       method = this[ method ]
     }
     if ( !method ) {
       continue
     }
-    match = key.match( /^(\S+)\s*(.*)$/ )
+    let match = key.match( /^(\S+)\s*(.*)$/ )
     this.delegate( match[ 1 ] , match[ 2 ] , _.bind( method , this ) )
   }
   return this
@@ -140,8 +153,8 @@ delegateEvents : function( events ) {
 - __Backbone.View.prototype.undelegate( type , selector , listener )__ [#](http://backbonejs.org/#View-undelegateEvents)
 
 ```js
-undelegate : function ( type , selector , listener ) {
-  this.$el.off( type + '.delegateEvents' + this.cid , selector , listener )
+undelegate( type , selector , listener ) {
+  this.$el.off( `${ type }.delegateEvents${ this.cid }` , selector , listener )
   return this
 }
 ```
@@ -149,8 +162,10 @@ undelegate : function ( type , selector , listener ) {
 - __Backbone.View.prototype.undelegateEvents()__ [#](http://backbonejs.org/#View-undelegateEvents)
 
 ```js
-undelegateEvents : function () {
-  this.$el.off( '.delegateEvents' + this.cid )
+undelegateEvents() {
+  if ( this.$el ) {
+    this.$el.off( `.delegateEvents${ this.cid }` )
+  }
   return this
 }
 ```
