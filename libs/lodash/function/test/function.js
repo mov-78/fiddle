@@ -79,13 +79,13 @@ describe( 'lodash/function' , function () {
 
   it( 'partial , partialRight' , function () {
 
-    _.partial( spy , 1 )( 2 )
-    spy.should.have.been.calledWithExactly( 1 , 2 )
+    _.partial( spy , 1 , 2 )( 3 )
+    spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
 
     spy.reset()
 
-    _.partialRight( spy , 2 )( 1 )
-    spy.should.have.been.calledWithExactly( 1 , 2 )
+    _.partialRight( spy , 2 , 3 )( 1 )
+    spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
 
   } )
 
@@ -105,11 +105,16 @@ describe( 'lodash/function' , function () {
     _.curry( spy , 3 )( 1 , 2 )( 3 , 4 )
     spy.should.have.been.calledWithExactly( 1 , 2 , 3 , 4 )
 
+    spy.reset()
+
+    _.curryRight( spy , 3 )( 3 )( 2 )( 1 )
+    spy.should.have.been.calledWithExactly( 1 , 2 , 3 )
+
   } )
 
 
   //
-  // wrap( value , wrapper )
+  // wrap( value , [wrapper=_.identity] )
   //
   // 等同于：
   //    partial( wrapper , value )

@@ -238,11 +238,23 @@ describe( 'lodash/collection' , function () {
     _.sortBy( [ 5 , 2 , 3 ] , value => value % 3 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 3 , 5 , 2 ] ) // stable-sort
+    _.orderBy( [ 2 , 1 , 3 ] , _.identity , 'desc' )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( [ 3 , 2 , 1 ] ) // stable-sort
+    _.orderBy( [ 2 , 1 , 3 ] , _.identity , 'asc' )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( [ 1 , 2 , 3 ] ) // stable-sort
 
     // [2] Object
     _.sortBy( { foo : 5 , bar : 2 , baz : 3 } , value => value % 3 )
       .should.be.an( 'array' )
       .that.is.deep.equal( [ 3 , 5 , 2 ] ) // stable-sort
+    _.orderBy( { foo : 2 , bar : 1 , baz : 3 } , _.identity , 'desc' )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( [ 3 , 2 , 1 ] ) // stable-sort
+    _.orderBy( { foo : 2 , bar : 1 , baz : 3 } , _.identity , 'asc' )
+      .should.be.an( 'array' )
+      .that.is.deep.equal( [ 1 , 2 , 3 ] ) // stable-sort
 
   } )
 

@@ -13,7 +13,7 @@ $ npm test
 - [partialRight( func , partials )](https://lodash.com/docs#partialRight)
 - [curry( func , [arity=func.length] )](https://lodash.com/docs#curry)
 - [curryRight( func , [arity=func.length] )](https://lodash.com/docs#curryRight)
-- [wrap( value , wrapper )](https://lodash.com/docs#wrap)
+- [wrap( value , [wrapper=_.identity] )](https://lodash.com/docs#wrap)
 
 > 对于生成的函数，不设置 [Function.length](http://mzl.la/1qKB7Kq) 属性
 

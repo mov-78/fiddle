@@ -37,9 +37,9 @@ $ npm test
 
 ---
 
-- [over( iteratees )](https://lodash.com/docs#over)
-- [overSome( predicates )](https://lodash.com/docs#overSome)
-- [overEvery( predicates )](https://lodash.com/docs#overEvery)
+- [over( ...iteratees )](https://lodash.com/docs#over)
+- [overSome( ...predicates )](https://lodash.com/docs#overSome)
+- [overEvery( ...predicates )](https://lodash.com/docs#overEvery)
 
 ---
 

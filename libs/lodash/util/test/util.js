@@ -143,9 +143,9 @@ describe( 'lodash/util' , function () {
 
 
   //
-  // over( iteratees )
-  // overSome( predicates )
-  // overEvery( predicates )
+  // over( ...iteratees )
+  // overSome( ...predicates )
+  // overEvery( ...predicates )
   //
 
   it( 'over , overSome , overEvery' , function () {
@@ -156,9 +156,13 @@ describe( 'lodash/util' , function () {
 
     _.overSome( _.isNumber , _.isInteger )( 1 , 2 , 3 )
       .should.be.true
+    _.overSome( _.isNumber , _.isString )( 1 , 2 , 3 )
+      .should.be.true
 
     _.overEvery( _.isNumber , _.isInteger )( 1 , 2 , 3 )
       .should.be.true
+    _.overEvery( _.isNumber , _.isString )( 1 , 2 , 3 )
+      .should.be.false
 
   } )
 

@@ -331,6 +331,8 @@ describe( 'lodash/array' , function () {
 
     _.zipObject( [ 'foo' ] , [ 'bar' ] )
       .should.deep.equal( { foo : 'bar' } )
+    _.zipObject( [ 'foo.bar' ] , [ 'baz' ] )
+      .should.deep.equal( { 'foo.bar' : 'baz' } )
 
     _.zipObjectDeep( [ 'foo.bar' ] , [ 'baz' ] )
       .should.deep.equal( { foo : { bar : 'baz' } } )

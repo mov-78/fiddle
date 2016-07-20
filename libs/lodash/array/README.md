@@ -39,7 +39,7 @@ $ npm test
 - [without( array , ...values )](https://lodash.com/docs#without)
 - [remove( array , predicate )](https://lodash.com/docs#remove) ✪
 - [pull( array , ...values )](https://lodash.com/docs#pull) ✪
-- [pullAt( array , ...indexes )](https://lodash.com/docs#pullAt) ✪
+- [pullAt( array , ...indexes|indexes )](https://lodash.com/docs#pullAt) ✪
 - [pullAll( array , values )](https://lodash.com/docs#pullAll) ✪
 - [pullAllBy( array , values , iteratee )](https://lodash.com/docs#pullAllBy) ✪
 - [pullAllWith( array , values , comparator )](https://lodash.com/docs#pullAllWith) ✪

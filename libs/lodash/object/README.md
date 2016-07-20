@@ -40,9 +40,6 @@ $ npm test
 - [valuesIn( object )](https://lodash.com/docs#valuesIn)
 - [functions( object )](https://lodash.com/docs#functions)
 - [functionsIn( object )](https://lodash.com/docs#functionsIn)
-
----
-
 - [entries|toPairs( object )](https://lodash.com/docs#toPairs)
 - [entriesIn|toPairsIn( object )](https://lodash.com/docs#toPairsIn)
 

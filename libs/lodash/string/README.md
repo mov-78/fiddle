@@ -20,7 +20,7 @@ $ npm test
 ---
 
 - [startsWith( string , target , [position=0] )](https://lodash.com/docs#startsWith)
-- [endsWith( string , target , [position=string.length] )](https://lodash.com/docs#endsWith)
+- [endsWith( string , target , [length=string.length] )](https://lodash.com/docs#endsWith)
 
 ---
 

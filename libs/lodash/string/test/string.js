@@ -33,7 +33,7 @@ describe( 'lodash/string' , function () {
 
   //
   // startsWith( string , target , [position=0] )
-  // endsWith( string , target , [position=string.length] )
+  // endsWith( string , target , [length=string.length] )
   //
 
   it( 'startsWith , endsWith' , function () {
@@ -101,8 +101,8 @@ describe( 'lodash/string' , function () {
   //
   // template( string , [options] )
   //    - options.interpolate = _.templateSettings.interpolate
-  //    - options.evaluate = _.templateSettings.evaluate
   //    - options.escape = _.templateSettings.escape
+  //    - options.evaluate = _.templateSettings.evaluate
   //    - options.imports = _.templateSettings.imports
   //
 
@@ -115,15 +115,15 @@ describe( 'lodash/string' , function () {
     compile( { name : 'Pwn' } )
       .should.equal( 'Pwn' )
 
-    // evaluate
-    compile = _.template( '<% print( _.toUpper( name ) ) %>' )
-    compile( { name : 'Pwn' } )
-      .should.equal( 'PWN' )
-
     // escape
     compile = _.template( '<%- value %>' )
     compile( { value : '<script></script>' } )
       .should.equal( '&lt;script&gt;&lt;/script&gt;' )
+
+    // evaluate
+    compile = _.template( '<% print( _.toUpper( name ) ) %>' )
+    compile( { name : 'Pwn' } )
+      .should.equal( 'PWN' )
 
     // imports
     // 用于引入额外自由变量
