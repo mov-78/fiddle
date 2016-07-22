@@ -1,4 +1,4 @@
-[@callback](http://usejsdoc.org/tags-callback.html) 用于定义回调函数签名：
+[@callback](http://usejsdoc.org/tags-callback.html) 用于定义回调：
 
 ```js
 /**
