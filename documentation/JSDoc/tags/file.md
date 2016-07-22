@@ -7,4 +7,4 @@
  */
 ```
 
-> 相关：[@author](http://usejsdoc.org/tags-author.html) [@version](http://usejsdoc.org/tags-version.html)
+> 相关：[@author](http://usejsdoc.org/tags-author.html) [@version](http://usejsdoc.org/tags-version.html) [@copyright](http://usejsdoc.org/tags-copyright.html)
