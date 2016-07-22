@@ -7,4 +7,4 @@
  */
 ```
 
-> 相关：[@file](http://usejsdoc.org/tags-file.html)
+> 相关标签：[@file](http://usejsdoc.org/tags-file.html)
