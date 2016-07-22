@@ -1,4 +1,4 @@
-[@public](http://usejsdoc.org/tags-public.html) 用于标记公共成员：
+[@public](http://usejsdoc.org/tags-public.html) 用于标记公有成员：
 
 ```js
 /** @public */
