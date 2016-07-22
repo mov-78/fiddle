@@ -4,4 +4,4 @@
 /** @protected */
 ```
 
-> 相关标签：[@public](http://usejsdoc.org/tags-public.html) [@private](http://usejsdoc.org/tags-private.html) [@access](usejsdoc.org/tags-access.html)
+> 相关标签：[@public](http://usejsdoc.org/tags-public.html) [@private](http://usejsdoc.org/tags-private.html) [@access](http://usejsdoc.org/tags-access.html)

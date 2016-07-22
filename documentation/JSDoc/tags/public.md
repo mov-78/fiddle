@@ -5,4 +5,4 @@
 ```
 
 > - 默认情况下所有成员均被视为公共成员
-> - 相关标签：[@protected](http://usejsdoc.org/tags-protected.html) [@private](http://usejsdoc.org/tags-private.html) [@access](usejsdoc.org/tags-access.html)
+> - 相关标签：[@protected](http://usejsdoc.org/tags-protected.html) [@private](http://usejsdoc.org/tags-private.html) [@access](http://usejsdoc.org/tags-access.html)
