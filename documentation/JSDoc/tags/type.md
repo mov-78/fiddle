@@ -1,4 +1,6 @@
-[@type](http://usejsdoc.org/tags-type.html) 用于标记实体类型：
+[@type](http://usejsdoc.org/tags-type.html) 用于标记实体数据类型：
+
+> - `@kind` 描述的是实体的类别（类、模块等）
 
 ```js
 /** @type {TYPE_EXPRESSION} */
@@ -18,4 +20,4 @@
 - `{!Object}`
 
 > - 类型表达式亦可用于其他标签
-> - 相关标签：[@typedef](http://usejsdoc.org/tags-typedef.html) [@callback](http://usejsdoc.org/tags-callback.html) [@param](http://usejsdoc.org/tags-param.html) [@returns](http://usejsdoc.org/tags-returns.html) [@property](http://usejsdoc.org/tags-property.html)
+> - 相关标签：[@typedef](http://usejsdoc.org/tags-typedef.html) [@callback](http://usejsdoc.org/tags-callback.html) [@kind](http://usejsdoc.org/tags-kind.html)
