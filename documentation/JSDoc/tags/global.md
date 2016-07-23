@@ -1,4 +1,4 @@
-[@global](http://usejsdoc.org/tags-global.html) 用于标记全局变量（更改默认作用域）：
+[@global](http://usejsdoc.org/tags-global.html) 更改默认作用域，用于标记当前实体为全局变量：
 
 ```js
 /** @global */

@@ -1,4 +1,4 @@
-[@instance](http://usejsdoc.org/tags-instance.html) 用于标记实例属性（更改默认作用域）：
+[@instance](http://usejsdoc.org/tags-instance.html) 更改默认作用域，用于标记当前实体为父实体的实例属性：
 
 ```js
 /** @instance */

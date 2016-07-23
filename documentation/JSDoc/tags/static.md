@@ -1,4 +1,4 @@
-[@static](http://usejsdoc.org/tags-static.html) 用于标记静态属性（更改默认作用域）：
+[@static](http://usejsdoc.org/tags-static.html) 更改默认作用域，用于标记当前实体为父实体的静态属性：
 
 ```js
 /** @static */
