@@ -4,4 +4,4 @@
 /** @listens <EVENT_NAME> */
 ```
 
-> 相关标签：[@event](http://usejsdoc.org/tags-event.html) [@fires](#http://usejsdoc.org/tags-fires.html
+> 相关标签：[@event](http://usejsdoc.org/tags-event.html) [@fires](#http://usejsdoc.org/tags-fires.html)
