@@ -1,4 +1,4 @@
-[@listens](http://usejsdoc.org/tags-listens.html) 用于标记实体监听了哪些事件：
+[@listens](http://usejsdoc.org/tags-listens.html) 用于标记条目监听了哪些事件：
 
 ```js
 /** @listens <EVENT_NAME> */

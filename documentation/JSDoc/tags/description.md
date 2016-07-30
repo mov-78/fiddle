@@ -1,6 +1,6 @@
 > 别名：@desc
 
-[@description](http://usejsdoc.org/tags-description.html) 用于添加实体描述：
+[@description](http://usejsdoc.org/tags-description.html) 用于添加条目描述：
 
 ```js
 /** @description <DESCRIPTION> */

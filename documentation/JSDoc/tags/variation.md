@@ -1,4 +1,4 @@
-[@variation](http://usejsdoc.org/tags-variation.html) 用于标记实体变种：
+[@variation](http://usejsdoc.org/tags-variation.html) 用于标记条目变种：
 
 ```js
 /** @variation <VARIATION_NUMBER> */

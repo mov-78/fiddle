@@ -1,6 +1,6 @@
-[@kind](http://usejsdoc.org/tags-kind.html) 用于描述实体类别（类、模块等）：
+[@kind](http://usejsdoc.org/tags-kind.html) 用于描述条目类别（类、模块等）：
 
-> - `@type` 描述的是实体的数据类型
+> - `@type` 描述的是条目的数据类型
 
 ```js
 /** @kind <KINDNAME> */

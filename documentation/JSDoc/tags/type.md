@@ -1,6 +1,6 @@
-[@type](http://usejsdoc.org/tags-type.html) 用于标记实体数据类型：
+[@type](http://usejsdoc.org/tags-type.html) 用于标记条目数据类型：
 
-> - `@kind` 描述的是实体的类别（类、模块等）
+> - `@kind` 描述的是条目的类别（类、模块等）
 
 ```js
 /** @type {TYPE_EXPRESSION} */

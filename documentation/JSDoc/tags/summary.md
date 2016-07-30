@@ -1,4 +1,4 @@
-[@summary](http://usejsdoc.org/tags-summary.html) 用于提供实体描述摘要：
+[@summary](http://usejsdoc.org/tags-summary.html) 用于提供条目描述摘要：
 
 ```js
 /** @summary <TEXT> */

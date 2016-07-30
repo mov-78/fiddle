@@ -1,4 +1,4 @@
-[@version](http://usejsdoc.org/tags-version.html) 用于标记实体版本：
+[@version](http://usejsdoc.org/tags-version.html) 用于标记条目版本：
 
 ```js
 /** @version <VERSION> */

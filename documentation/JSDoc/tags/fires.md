@@ -1,6 +1,6 @@
 > 别名：@emit
 
-[@fires](http://usejsdoc.org/tags-fires.html) 用于标记实体将触发哪些事件：
+[@fires](http://usejsdoc.org/tags-fires.html) 用于标记条目将触发哪些事件：
 
 ```js
 /** @fires <NAMEPATH>#[event:]<EVENT_NAME> */

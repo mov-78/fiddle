@@ -1,4 +1,4 @@
-[@inner](http://usejsdoc.org/tags-inner.html) 更改默认作用域，用于标记当前实体为父实体的内部成员：
+[@inner](http://usejsdoc.org/tags-inner.html) 更改默认作用域，用于标记当前条目为父条目的内部成员：
 
 ```js
 /** @inner */
