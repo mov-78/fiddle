@@ -4,8 +4,8 @@
     "test": "grunt"
   },
   "dependencies": {
-    "eslint": "~2.13.1",
-    "eslint-config-pwn": "~4.1.0",
+    "eslint": "~3.2.2",
+    "eslint-config-pwn": "~4.3.0",
     "grunt": "~1.0.1",
     "lodash.noop": "~3.0.1"
   }

@@ -1,5 +1,5 @@
-const noop = require( 'lodash.noop' )
+let noop = require( 'lodash.noop' )
 
 module.exports = function ( grunt ) {
-  grunt.registerTask( 'extern' , noop )
+    grunt.registerTask( 'extern' , noop )
 }
