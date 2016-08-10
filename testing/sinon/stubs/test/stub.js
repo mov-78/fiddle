@@ -1,24 +1,24 @@
-const chai = require( 'chai' )
-const sinon = require( 'sinon' )
+let chai = require( 'chai' )
+let sinon = require( 'sinon' )
 
 before( function () {
 
-  chai.should()
+    chai.should()
 
-  // custom assertion that checks whether an object is a spy using duck-typing
-  chai.use( function ( _chai , _util ) {
-    _chai.Assertion
-      .addProperty( 'spy' , function () {
+    // custom assertion that checks whether an object is a spy using duck-typing
+    chai.use( function ( _chai , _util ) {
+        _chai.Assertion
+            .addProperty( 'spy' , function () {
 
-        const ownKeys = Object.keys( this._obj )
-        const spyKeys = Object.keys( sinon.spy() )
-        const assert = new _chai.Assertion( ownKeys )
+                let ownKeys = Object.keys( this._obj )
+                let spyKeys = Object.keys( sinon.spy() )
+                let assert = new _chai.Assertion( ownKeys )
 
-        _util.transferFlags( this , assert , false )
-        assert.include.members( spyKeys )
+                _util.transferFlags( this , assert , false )
+                assert.include.members( spyKeys )
 
-      } )
-  } )
+            } )
+    } )
 
 } )
 
@@ -32,76 +32,76 @@ before( function () {
 
 describe( 'Creating stubs' , function () {
 
-  let bareSpy
+    let bareSpy
 
-  beforeEach( function () {
-    bareSpy = sinon.spy()
-  } )
+    beforeEach( function () {
+        bareSpy = sinon.spy()
+    } )
 
 
-  // [1] sinon.stub()
-  it( 'with sinon.stub()' , function () {
-    sinon.stub().should.be.a.spy
-  } )
+    // [1] sinon.stub()
+    it( 'with sinon.stub()' , function () {
+        sinon.stub().should.be.a.spy
+    } )
 
-  // [2] sinon.stub( obj , method )
-  it( 'with sinon.stub( obj , method )' , function () {
+    // [2] sinon.stub( obj , method )
+    it( 'with sinon.stub( obj , method )' , function () {
 
-    const obj = { method() { bareSpy() } }
-    const _method = obj.method
-    const stub = sinon.stub( obj , 'method' )
+        let obj = { method() { bareSpy() } }
+        let _method = obj.method
+        let stub = sinon.stub( obj , 'method' )
 
-    stub.should.be.a.spy
+        stub.should.be.a.spy
 
-    // overrides original method
-    obj.method.should.equal( stub )
-    obj.method.should.not.equal( _method )
+        // overrides original method
+        obj.method.should.equal( stub )
+        obj.method.should.not.equal( _method )
 
-    obj.method()
-    bareSpy.called.should.be.false // stubbing
+        obj.method()
+        bareSpy.called.should.be.false // stubbing
 
-    // and can be restored
-    stub.should.have.property( 'restore' )
-    stub.restore()
+        // and can be restored
+        stub.should.have.property( 'restore' )
+        stub.restore()
 
-    obj.method.should.not.equal( stub )
-    obj.method.should.equal( _method )
+        obj.method.should.not.equal( stub )
+        obj.method.should.equal( _method )
 
-    obj.method()
-    bareSpy.called.should.be.true
+        obj.method()
+        bareSpy.called.should.be.true
 
-  } )
+    } )
 
-  // [3] sinon.stub( obj , method , func )
-  it( 'with sinon.stub( obj , method , func )' , function () {
+    // [3] sinon.stub( obj , method , func )
+    it( 'with sinon.stub( obj , method , func )' , function () {
 
-    const obj = { method() { bareSpy() } }
-    const _method = obj.method
-    const func = sinon.spy()
-    const stub = sinon.stub( obj , 'method' , func )
+        let obj = { method() { bareSpy() } }
+        let _method = obj.method
+        let func = sinon.spy()
+        let stub = sinon.stub( obj , 'method' , func )
 
-    stub.should.be.a.spy
+        stub.should.be.a.spy
 
-    // overrides original method
-    obj.method.should.equal( stub )
-    obj.method.should.not.equal( _method )
+        // overrides original method
+        obj.method.should.equal( stub )
+        obj.method.should.not.equal( _method )
 
-    obj.method()
-    stub.called.should.be.true
-    func.called.should.be.true // call-through
-    bareSpy.called.should.be.false
+        obj.method()
+        stub.called.should.be.true
+        func.called.should.be.true // call-through
+        bareSpy.called.should.be.false
 
-    // and can be restored
-    stub.should.have.property( 'restore' )
-    stub.restore()
+        // and can be restored
+        stub.should.have.property( 'restore' )
+        stub.restore()
 
-    obj.method.should.not.equal( stub )
-    obj.method.should.equal( _method )
+        obj.method.should.not.equal( stub )
+        obj.method.should.equal( _method )
 
-    obj.method()
-    bareSpy.called.should.be.true
+        obj.method()
+        bareSpy.called.should.be.true
 
-  } )
+    } )
 
 } )
 
@@ -112,256 +112,256 @@ describe( 'Creating stubs' , function () {
 
 describe( 'Stub' , function () {
 
-  let ctxt
-  let bareSpy
-  let bareStub
+    let ctxt
+    let bareSpy
+    let bareStub
 
-  beforeEach( function () {
-    ctxt = {}
-    bareSpy = sinon.spy()
-    bareStub = sinon.stub()
-  } )
+    beforeEach( function () {
+        ctxt = {}
+        bareSpy = sinon.spy()
+        bareStub = sinon.stub()
+    } )
 
 
-  //
-  // stub.callsArg( index )
-  // stub.callsArgOn( index , ctxt )
-  // stub.callsArgWith( index , ...args )
-  // stub.callsArgOnWith( index , ctxt , ...args )
-  //
+    //
+    // stub.callsArg( index )
+    // stub.callsArgOn( index , ctxt )
+    // stub.callsArgWith( index , ...args )
+    // stub.callsArgOnWith( index , ctxt , ...args )
+    //
 
-  it( 'callsArg' , function () {
+    it( 'callsArg' , function () {
 
-    bareStub.callsArg( 0 )
+        bareStub.callsArg( 0 )
 
-    bareStub( bareSpy )
-    bareSpy.called.should.be.true
+        bareStub( bareSpy )
+        bareSpy.called.should.be.true
 
-  } )
-  it( 'callsArgOn' , function () {
+    } )
+    it( 'callsArgOn' , function () {
 
-    bareStub.callsArgOn( 0 , ctxt )
+        bareStub.callsArgOn( 0 , ctxt )
 
-    bareStub( bareSpy )
+        bareStub( bareSpy )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledOn( ctxt ).should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledOn( ctxt ).should.be.true
 
-  } )
-  it( 'callsArgWith' , function () {
+    } )
+    it( 'callsArgWith' , function () {
 
-    bareStub.callsArgWith( 0 , 'foobar' )
+        bareStub.callsArgWith( 0 , 'foobar' )
 
-    bareStub( bareSpy )
+        bareStub( bareSpy )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledWith( 'foobar' ).should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledWith( 'foobar' ).should.be.true
 
-  } )
-  it( 'callsArgOnWith' , function () {
+    } )
+    it( 'callsArgOnWith' , function () {
 
-    bareStub.callsArgOnWith( 0 , ctxt , 'foobar' )
+        bareStub.callsArgOnWith( 0 , ctxt , 'foobar' )
 
-    bareStub( bareSpy )
+        bareStub( bareSpy )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledOn( ctxt ).should.be.true
-    bareSpy.calledWith( 'foobar' ).should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledOn( ctxt ).should.be.true
+        bareSpy.calledWith( 'foobar' ).should.be.true
 
-  } )
+    } )
 
 
-  //
-  // stub.yields( ...args )
-  // stub.yieldsOn( ctxt , ...args )
-  // stub.yieldsTo( key , ...args )
-  // stub.yieldsToOn( key , ctxt , ...args )
-  //
-  //
+    //
+    // stub.yields( ...args )
+    // stub.yieldsOn( ctxt , ...args )
+    // stub.yieldsTo( key , ...args )
+    // stub.yieldsToOn( key , ctxt , ...args )
+    //
+    //
 
-  it( 'yields' , function () {
+    it( 'yields' , function () {
 
-    bareStub.yields( 'foo' , 'bar' )
+        bareStub.yields( 'foo' , 'bar' )
 
-    bareStub( 0 , bareSpy , bareSpy )
+        bareStub( 0 , bareSpy , bareSpy )
 
-    // invokes (only) the first matching function as callback
-    bareSpy.called.should.be.true
-    bareSpy.calledOnce.should.be.true
+        // invokes (only) the first matching function as callback
+        bareSpy.called.should.be.true
+        bareSpy.calledOnce.should.be.true
 
-    bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
+        bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
 
-  } )
-  it( 'yieldsOn' , function () {
+    } )
+    it( 'yieldsOn' , function () {
 
-    bareStub.yieldsOn( ctxt )
+        bareStub.yieldsOn( ctxt )
 
-    bareStub( bareSpy , bareSpy )
+        bareStub( bareSpy , bareSpy )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledOnce.should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledOnce.should.be.true
 
-    bareSpy.calledOn( ctxt ).should.be.true
+        bareSpy.calledOn( ctxt ).should.be.true
 
-  } )
-  it( 'yieldsTo' , function () {
+    } )
+    it( 'yieldsTo' , function () {
 
-    const obj = { method : bareSpy }
+        let obj = { method : bareSpy }
 
-    bareStub.yieldsTo( 'method' )
+        bareStub.yieldsTo( 'method' )
 
-    bareStub( obj )
-    bareSpy.called.should.be.true
+        bareStub( obj )
+        bareSpy.called.should.be.true
 
-  } )
-  it( 'yieldsToOn' , function () {
+    } )
+    it( 'yieldsToOn' , function () {
 
-    const obj = { method : bareSpy }
+        let obj = { method : bareSpy }
 
-    bareStub.yieldsToOn( 'method' , ctxt )
+        bareStub.yieldsToOn( 'method' , ctxt )
 
-    bareStub( obj )
+        bareStub( obj )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledOn( ctxt ).should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledOn( ctxt ).should.be.true
 
-  } )
+    } )
 
 
-  //
-  // stub.callArg( index )
-  // stub.callArgWith( index , ...args )
-  //
+    //
+    // stub.callArg( index )
+    // stub.callArgWith( index , ...args )
+    //
 
-  it( 'callArg' , function () {
+    it( 'callArg' , function () {
 
-    bareStub( bareSpy )
-    bareSpy.called.should.be.false
+        bareStub( bareSpy )
+        bareSpy.called.should.be.false
 
-    bareStub.callArg( 0 )
-    bareSpy.called.should.be.true
+        bareStub.callArg( 0 )
+        bareSpy.called.should.be.true
 
-  } )
-  it( 'callArgWith' , function () {
+    } )
+    it( 'callArgWith' , function () {
 
-    bareStub( bareSpy )
-    bareSpy.called.should.be.false
+        bareStub( bareSpy )
+        bareSpy.called.should.be.false
 
-    bareStub.callArgWith( 0 , 'foo' , 'bar' )
+        bareStub.callArgWith( 0 , 'foo' , 'bar' )
 
-    bareSpy.called.should.be.true
-    bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
+        bareSpy.called.should.be.true
+        bareSpy.calledWith( 'foo' , 'bar' ).should.be.true
 
-  } )
+    } )
 
 
-  //
-  // stub.yield( ...args )
-  // stub.yieldTo( key , ...args )
-  //
+    //
+    // stub.yield( ...args )
+    // stub.yieldTo( key , ...args )
+    //
 
-  it( 'yield' , function () {
+    it( 'yield' , function () {
 
-    const spy1 = sinon.spy()
-    const spy2 = sinon.spy()
+        let spy1 = sinon.spy()
+        let spy2 = sinon.spy()
 
-    bareStub( spy1 , spy2 )
+        bareStub( spy1 , spy2 )
 
-    spy1.called.should.be.false
-    spy2.called.should.be.false
+        spy1.called.should.be.false
+        spy2.called.should.be.false
 
-    bareStub.yield( 'foo' )
-    bareStub.yield( 'bar' )
+        bareStub.yield( 'foo' )
+        bareStub.yield( 'bar' )
 
-    // invokes (only) the first matching function
-    spy1.called.should.be.true
-    spy2.called.should.be.false
+        // invokes (only) the first matching function
+        spy1.called.should.be.true
+        spy2.called.should.be.false
 
-    spy1.getCall( 0 ).args.should.deep.equal( [ 'foo' ] )
-    spy1.getCall( 1 ).args.should.deep.equal( [ 'bar' ] )
+        spy1.getCall( 0 ).args.should.deep.equal( [ 'foo' ] )
+        spy1.getCall( 1 ).args.should.deep.equal( [ 'bar' ] )
 
-  } )
-  it( 'yieldTo' , function () {
+    } )
+    it( 'yieldTo' , function () {
 
-    const obj = { method : bareSpy }
+        let obj = { method : bareSpy }
 
-    bareStub( obj )
+        bareStub( obj )
 
-    bareSpy.called.should.be.false
+        bareSpy.called.should.be.false
 
-    bareStub.yieldTo( 'method' )
-    bareSpy.called.should.be.true
+        bareStub.yieldTo( 'method' )
+        bareSpy.called.should.be.true
 
-  } )
+    } )
 
 
-  //
-  // stub.returns( value )
-  // stub.returnsArg( index )
-  // stub.returnsThis()
-  //
+    //
+    // stub.returns( value )
+    // stub.returnsArg( index )
+    // stub.returnsThis()
+    //
 
-  it( 'returns' , function () {
-    bareStub.returns( 'tinted' )
-    bareStub().should.equal( 'tinted' )
-  } )
-  it( 'returnsArg' , function () {
-    bareStub.returnsArg( 1 )
-    bareStub( 1 , 2 , 3 ).should.equal( 2 )
-  } )
-  it( 'returnsThis' , function () {
-    bareStub.returnsThis()
-    bareStub.call( ctxt ).should.equal( ctxt )
-  } )
+    it( 'returns' , function () {
+        bareStub.returns( 'tinted' )
+        bareStub().should.equal( 'tinted' )
+    } )
+    it( 'returnsArg' , function () {
+        bareStub.returnsArg( 1 )
+        bareStub( 1 , 2 , 3 ).should.equal( 2 )
+    } )
+    it( 'returnsThis' , function () {
+        bareStub.returnsThis()
+        bareStub.call( ctxt ).should.equal( ctxt )
+    } )
 
 
-  //
-  // stub.throws( [value] )
-  //
+    //
+    // stub.throws( [value] )
+    //
 
-  it( 'throws' , function () {
-    bareStub.throws( new Error( 'error' ) )
-    bareStub.should.throw( 'error' )
-  } )
+    it( 'throws' , function () {
+        bareStub.throws( new Error( 'error' ) )
+        bareStub.should.throw( 'error' )
+    } )
 
 
-  //
-  // stub.onCall( index )
-  // stub.onFirstCall|onSecondCall|onThirdCall()
-  //
+    //
+    // stub.onCall( index )
+    // stub.onFirstCall|onSecondCall|onThirdCall()
+    //
 
-  it( 'onCall , onFirstCall|onSecondCall|onThirdCall' , function () {
+    it( 'onCall , onFirstCall|onSecondCall|onThirdCall' , function () {
 
-    bareStub.onCall( 0 ).returns( 'tinted#1' )
-    bareStub.onCall( 1 ).returns( 'tinted#2' )
+        bareStub.onCall( 0 ).returns( 'tinted#1' )
+        bareStub.onCall( 1 ).returns( 'tinted#2' )
 
-    bareStub().should.equal( 'tinted#1' )
-    bareStub().should.equal( 'tinted#2' )
+        bareStub().should.equal( 'tinted#1' )
+        bareStub().should.equal( 'tinted#2' )
 
-  } )
+    } )
 
 
-  //
-  // stub.withArgs( ...args|matchers )
-  //
+    //
+    // stub.withArgs( ...args|matchers )
+    //
 
-  it( 'withArgs' , function () {
+    it( 'withArgs' , function () {
 
-    bareStub.returns( 'unknown' )
-    bareStub.withArgs( sinon.match.number ).returns( 'number' )
-    bareStub.withArgs( sinon.match.string ).returns( 'string' )
+        bareStub.returns( 'unknown' )
+        bareStub.withArgs( sinon.match.number ).returns( 'number' )
+        bareStub.withArgs( sinon.match.string ).returns( 'string' )
 
-    bareStub( 1 ).should.equal( 'number' )
-    bareStub( 'foobar' ).should.equal( 'string' )
-    bareStub( true ).should.equal( 'unknown' )
+        bareStub( 1 ).should.equal( 'number' )
+        bareStub( 'foobar' ).should.equal( 'string' )
+        bareStub( true ).should.equal( 'unknown' )
 
-    // mix & match
-    bareStub
-      .withArgs( sinon.match.array )
-      .onCall( 0 )
-      .returns( 'tinted' )
-    bareStub( [] ).should.equal( 'tinted' )
+        // mix & match
+        bareStub
+            .withArgs( sinon.match.array )
+            .onCall( 0 )
+            .returns( 'tinted' )
+        bareStub( [] ).should.equal( 'tinted' )
 
-  } )
+    } )
 
 } )

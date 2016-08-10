@@ -3,10 +3,7 @@ env:
   node: true
 rules:
   func-names: off
-  max-len: off
-  no-magic-numbers: off
   no-shadow: off
   no-unused-expressions: off
   no-unused-vars: off
-  prefer-arrow-callback: off
 extends: pwn

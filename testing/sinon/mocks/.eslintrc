@@ -4,6 +4,4 @@ env:
 rules:
   func-names: off
   no-empty-function: off
-  no-magic-numbers: off
-  prefer-arrow-callback: off
 extends: pwn
