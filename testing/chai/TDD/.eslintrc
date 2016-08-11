@@ -2,7 +2,6 @@ env:
   mocha: true
   node: true
 rules:
-  func-names: off
   no-throw-literal: off
   prefer-rest-params: off
 extends: pwn

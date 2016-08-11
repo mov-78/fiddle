@@ -2,7 +2,6 @@ env:
   mocha: true
   node: true
 rules:
-  func-names: off
   no-empty-function: off
   no-extra-parens: off
   no-throw-literal: off
