@@ -2,7 +2,5 @@ env:
   mocha: true
   node: true
 rules:
-  func-names: off
-  no-invalid-this: off
   no-unused-expressions: off
 extends: pwn

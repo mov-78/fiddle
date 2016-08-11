@@ -2,8 +2,6 @@ env:
   mocha: true
   node: true
 rules:
-  func-names: off
-  no-shadow: off
   no-unused-expressions: off
   no-unused-vars: off
 extends: pwn
