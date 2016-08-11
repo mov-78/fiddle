@@ -7,11 +7,11 @@
 let gulp = require( 'gulp' )
 
 gulp.task( 'name' , function () {
-  gulp
-    .src( 'path/to/src' ) // source globs
-    .pipe( plugin() )
-    .pipe( anotherPlugin() )
-    .pipe( gulp.dest( 'path/to/dest' ) ) // destination folder
+    gulp
+        .src( 'path/to/src' ) // source globs
+        .pipe( plugin() )
+        .pipe( anotherPlugin() )
+        .pipe( gulp.dest( 'path/to/dest' ) ) // destination folder
 } )
 ```
 
@@ -54,10 +54,10 @@ gulp.watch( 'path/to/file' , 'task' )
 // [2] 执行指定回调
 gulp.watch( 'path/to/file' , opts , function ( event ) {
 
-  // opts:Object - 传递给 Gaze 构造函数的选项
+    // opts:Object - 传递给 Gaze 构造函数的选项
 
-  // event.path:String - 触发文件变更事件的文件路径
-  // event.type:String - 文件变更类型（枚举型）：`added|changed|deleted|renamed`
+    // event.path:String - 触发文件变更事件的文件路径
+    // event.type:String - 文件变更类型（枚举型）：`added|changed|deleted|renamed`
 
 } )
 ```
