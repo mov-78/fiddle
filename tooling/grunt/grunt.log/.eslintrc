@@ -1,5 +1,3 @@
 env:
   node: true
 extends: pwn
-rules:
-  prefer-arrow-callback: off
