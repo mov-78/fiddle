@@ -14,15 +14,15 @@ $ npm test
 ```js
 // 基本等同于：
 Object.defineProperty(
-  context ,
-  name ,
-  {
-    configurable : true ,
-    get() {
-      let result = getter.call( this )
-      return result === undefined ? this : result
+    context ,
+    name ,
+    {
+        configurable : true ,
+        get() {
+            let result = getter.call( this )
+            return result === undefined ? this : result
+        }
     }
-  }
 )
 ```
 
@@ -33,20 +33,20 @@ Object.defineProperty(
 ```js
 // 基本等同于：
 let _super = function noop() {}
-const descriptor = Object.getOwnPropertyDescriptor( context , name )
+let descriptor = Object.getOwnPropertyDescriptor( context , name )
 if ( descriptor && typeof descriptor.get === 'function' ) {
-  _super = descriptor.get
+    _super = descriptor.get
 }
 Object.defineProperty(
-  context ,
-  name ,
-  {
-    configurable : true ,
-    get() {
-      let result = getter( _super ).call( this )
-      return result === undefined ? this : result
+    context ,
+    name ,
+    {
+        configurable : true ,
+        get() {
+            let result = getter( _super ).call( this )
+            return result === undefined ? this : result
+        }
     }
-  }
 )
 ```
 
@@ -56,9 +56,9 @@ Object.defineProperty(
 
 ```js
 // 基本等同于：
-chai.Assertion.prototype[ name ] = function () {
-  let result = method.apply( this , arguments )
-  return result === undefined ? this : result
+chai.Assertion.prototype[ name ] = function ( ...args ) {
+    let result = method.apply( this , args )
+    return result === undefined ? this : result
 }
 ```
 
@@ -68,14 +68,14 @@ chai.Assertion.prototype[ name ] = function () {
 
 ```js
 // 基本等同于：
-const _method = context[ name ]
+let _method = context[ name ]
 let _super = function noop() { return this }
 if ( _method && typeof _method === 'function' ) {
-  _super = _method
+    _super = _method
 }
-context[ name ] = function () {
-  let result = method( _super ).apply( this , arguments )
-  return result === undefined ? this : result
+context[ name ] = function ( ...args ) {
+    let result = method( _super ).apply( this , args )
+    return result === undefined ? this : result
 }
 ```
 
@@ -86,7 +86,7 @@ context[ name ] = function () {
 ```js
 // 基本等同于：
 if ( typeof chainingBehavior !== 'function' ) {
-  chainingBehavior = function noop() {}
+    chainingBehavior = function noop() {}
 }
 let chainableBehavior = { method , chainingBehavior }
 
@@ -94,24 +94,24 @@ context.__methods = context.__methods || {}
 context.__methods[ name ] = chainableBehavior
 
 Object.defineProperty(
-  context ,
-  name ,
-  {
-    configurable : true ,
-    get() {
-      chainableBehavior.chainingBehavior.call( this )
-      let assert = function () {
-        let result = chainableBehavior.method.apply( this , arguments )
-        return result === undefined ? this : result
-      }
-      Reflect.setPrototypeOf( assert , this )
-      assert.apply = Function.prototype.apply
-      assert.bind = Function.prototype.bind
-      assert.call = Function.prototype.call
-      chai.util.transferFlags( this , assert )
-      return assert
+    context ,
+    name ,
+    {
+        configurable : true ,
+        get() {
+            chainableBehavior.chainingBehavior.call( this )
+            let assert = function ( ...args ) {
+                let result = chainableBehavior.method.apply( this , args )
+                return result === undefined ? this : result
+            }
+            Reflect.setPrototypeOf( assert , this )
+            assert.apply = Function.prototype.apply
+            assert.bind = Function.prototype.bind
+            assert.call = Function.prototype.call
+            chai.util.transferFlags( this , assert )
+            return assert
+        }
     }
-  }
 )
 ```
 
@@ -123,15 +123,15 @@ Object.defineProperty(
 // 基本等同于：
 let chainableBehavior = context.__methods[ name ]
 
-const _method = chainableBehavior.method
-chainableBehavior.method = function () {
-  let result = method( _method ).apply( this , arguments )
-  return result === undefined ? this : result
+let _method = chainableBehavior.method
+chainableBehavior.method = function ( ...args ) {
+    let result = method( _method ).apply( this , args )
+    return result === undefined ? this : result
 }
 
-const _chainingBehavior = chainableBehavior.chainingBehavior
+let _chainingBehavior = chainableBehavior.chainingBehavior
 chainableBehavior.chainingBehavior = function () {
-  let result = chainingBehavior( _chainingBehavior ).call( this )
-  return result === undefined ? this : result
+    let result = chainingBehavior( _chainingBehavior ).call( this )
+    return result === undefined ? this : result
 }
 ```
