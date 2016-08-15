@@ -1,10 +1,10 @@
 env:
-  mocha: true
-  node: true
+    mocha: true
+    node: true
 rules:
-  no-empty-function: off
-  no-new-wrappers: off
-  no-unused-expressions: off
-  no-unused-vars: off
-  prefer-rest-params: off
+    no-empty-function: off
+    no-new-wrappers: off
+    no-unused-expressions: off
+    no-unused-vars: off
+    prefer-rest-params: off
 extends: pwn
