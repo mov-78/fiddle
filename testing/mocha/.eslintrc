@@ -1,4 +1,4 @@
 env:
-  mocha: true
-  node: true
+    mocha: true
+    node: true
 extends: pwn

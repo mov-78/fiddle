@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "eslint": "~3.2.2",
-    "eslint-config-pwn": "~4.3.0",
+    "eslint-config-pwn": "~5.2.0",
     "lodash.noop": "~3.0.1",
     "mocha": "~2.4.5"
   }
