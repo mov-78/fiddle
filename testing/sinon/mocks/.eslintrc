@@ -1,6 +1,6 @@
 env:
-  mocha: true
-  node: true
+    mocha: true
+    node: true
 rules:
-  no-empty-function: off
+    no-empty-function: off
 extends: pwn

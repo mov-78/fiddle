@@ -6,7 +6,7 @@
   "dependencies": {
     "chai": "~3.5.0",
     "eslint": "~3.2.2",
-    "eslint-config-pwn": "~4.3.0",
+    "eslint-config-pwn": "~5.0.2",
     "mocha": "~2.4.5",
     "sinon": "~1.17.3"
   }
