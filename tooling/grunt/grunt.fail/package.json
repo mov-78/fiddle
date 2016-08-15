@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "eslint": "~3.2.2",
-    "eslint-config-pwn": "~4.3.0",
+    "eslint-config-pwn": "~5.0.2",
     "grunt": "~1.0.1"
   }
 }
