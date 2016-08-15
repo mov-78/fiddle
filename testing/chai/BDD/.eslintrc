@@ -1,11 +1,11 @@
 env:
-  mocha: true
-  node: true
+    mocha: true
+    node: true
 rules:
-  no-empty-function: off
-  no-extra-parens: off
-  no-throw-literal: off
-  no-unused-expressions: off
-  prefer-rest-params: off
-  semi-spacing: off
+    no-empty-function: off
+    no-extra-parens: off
+    no-throw-literal: off
+    no-unused-expressions: off
+    prefer-rest-params: off
+    semi-spacing: off
 extends: pwn
