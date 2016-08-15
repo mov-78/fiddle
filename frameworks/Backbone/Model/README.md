@@ -9,46 +9,46 @@ __Backbone.Model.extend( [protoProps] , [staticProps] )__ [#](http://backbonejs.
 ```js
 Backbone.Model.extend( {
 
-  // 用于声明默认 attributes，可以为字面量或函数
-  defaults : {} ,
+    // 用于声明默认 attributes，可以为字面量或函数
+    defaults : {} ,
 
-  // 自定义构造函数
-  constructor( attrs , opts ) {
+    // 自定义构造函数
+    constructor( attrs , opts ) {
 
-    this.cid = _.uniqueId( this.cidPrefix ) // 自增 ID
-    this.attributes = {} // 核心属性
+        this.cid = _.uniqueId( this.cidPrefix ) // 自增 ID
+        this.attributes = {} // 核心属性
 
-    if ( opts.collection ) {
-      this.collection = opts.collection
-    }
-    if ( opts.parse ) {
-      attrs = this.parse( attrs , opts )
-    }
+        if ( opts.collection ) {
+            this.collection = opts.collection
+        }
+        if ( opts.parse ) {
+            attrs = this.parse( attrs , opts )
+        }
 
-    attrs = _.defaults( attrs , _.result( 'defaults' ) )
-    this.set( attrs , opts )
+        attrs = _.defaults( attrs , _.result( 'defaults' ) )
+        this.set( attrs , opts )
 
-    this.changed = {}
+        this.changed = {}
 
-    this.initialize.apply( this , arguments )
+        this.initialize.apply( this , arguments )
 
-  } ,
+    } ,
 
-  // 自定义初始化函数
-  initialize( ...args ) {} ,
+    // 自定义初始化函数
+    initialize( ...args ) {} ,
 
-  // 自定义校验逻辑
-  // - set(option.validate=true) 及 save 操作均会自动触发校验逻辑
-  // - 可以调用 Backbone.Model.prototype.isValid() 方法来主动触发校验逻辑
-  validate( attrs , opts ) {
-    // - 返回任意真值来告知 Backbone 校验失败
-    // - model.validationError 保存了最近一次失败校验的返回值
-  } ,
+    // 自定义校验逻辑
+    // - set(option.validate=true) 及 save 操作均会自动触发校验逻辑
+    // - 可以调用 Backbone.Model.prototype.isValid() 方法来主动触发校验逻辑
+    validate( attrs , opts ) {
+        // - 返回任意真值来告知 Backbone 校验失败
+        // - model.validationError 保存了最近一次失败校验的返回值
+    } ,
 
-  idAttribute : 'id' ,
-  cidPrefix : 'c' ,
+    idAttribute : 'id' ,
+    cidPrefix : 'c' ,
 
-  // ...更多实例方法
+    // ...更多实例方法
 
 } )
 
@@ -63,7 +63,7 @@ __Backbone.Model.prototype.has( key )__ [#](http://backbonejs.org/#Model-has)
 
 ```js
 has( key ) {
-  return this.get( key ) != null
+    return this.get( key ) != null
 }
 ```
 
@@ -71,7 +71,7 @@ __Backbone.Model.prototype.get( key )__ [#](http://backbonejs.org/#Model-get)
 
 ```js
 get( key ) {
-  return this.attributes[ key ]
+    return this.attributes[ key ]
 }
 ```
 
@@ -79,7 +79,7 @@ __Backbone.Model.prototype.escape( key )__ [#](http://backbonejs.org/#Model-esca
 
 ```js
 escape( key ) {
-  return _.escape( this.get( key ) )
+    return _.escape( this.get( key ) )
 }
 ```
 
@@ -103,7 +103,7 @@ __Backbone.Model.prototype.unset( key , [opts] )__ [#](http://backbonejs.org/#Mo
 
 ```js
 unset( key , opts ) {
-  return this.set( key , null , _.extend( {} , opts , { unset : true } ) )
+    return this.set( key , null , _.extend( {} , opts , { unset : true } ) )
 }
 ```
 
@@ -111,11 +111,11 @@ __Backbone.Model.prototype.clear( [opts] )__ [#](http://backbonejs.org/#Model-cl
 
 ```js
 clear( opts ) {
-  let attrs = {}
-  for ( let key in this.attributes ) {
-    attrs[ key ] = null
-  }
-  return this.set( attrs , _.extend( {} , opts , { unset : true } ) )
+    let attrs = {}
+    for ( let key in this.attributes ) {
+        attrs[ key ] = null
+    }
+    return this.set( attrs , _.extend( {} , opts , { unset : true } ) )
 }
 ```
 
@@ -125,11 +125,11 @@ clear( opts ) {
 
 ```js
 hasChanged( key ) {
-  if ( key == null ) {
-    return !_.isEmpty( this.changed )
-  } else {
-    return _.has( this.changed , key )
-  }
+    if ( key == null ) {
+        return !_.isEmpty( this.changed )
+    } else {
+        return _.has( this.changed , key )
+    }
 }
 ```
 
@@ -138,23 +138,23 @@ hasChanged( key ) {
 ```js
 changedAttributes( attrs ) {
 
-  // 获取已有的变更集
-  if ( !attrs ) {
-    return this.hasChanged() ? _.clone( this.changed ) : false
-  }
-
-  // 获取可能的变更集
-  let prev = this._changing ? this._previousAttributes : this.attributes
-  let changed = {}
-
-  for ( let key in attrs ) {
-    let val = attrs[ key ]
-    if ( !_.isEqual( prev[ key ] , val ) ) {
-      changed[ key ] = val
+    // [1] 获取已有的变更集
+    if ( !attrs ) {
+        return this.hasChanged() ? _.clone( this.changed ) : false
     }
-  }
 
-  return _.size( changed ) ? changed : false
+    // [2] 获取可能的变更集
+    let prev = this._changing ? this._previousAttributes : this.attributes
+    let changed = {}
+
+    for ( let key in attrs ) {
+        let val = attrs[ key ]
+        if ( !_.isEqual( prev[ key ] , val ) ) {
+            changed[ key ] = val
+        }
+    }
+
+    return _.size( changed ) ? changed : false
 
 }
 ```
@@ -163,7 +163,7 @@ changedAttributes( attrs ) {
 
 ```js
 previous( key ) {
-  return this._previousAttributes[ key ]
+    return this._previousAttributes[ key ]
 }
 ```
 
@@ -171,7 +171,7 @@ previous( key ) {
 
 ```js
 previousAttributes() {
-  return _.clone( this._previousAttributes )
+    return _.clone( this._previousAttributes )
 }
 ```
 
@@ -184,7 +184,7 @@ __Backbone.Model.prototype.toJSON()__ [#](http://backbonejs.org/#Model-toJSON)
 
 ```js
 toJSON() {
-  return _.clone( this.attributes )
+    return _.clone( this.attributes )
 }
 ```
 
@@ -194,6 +194,6 @@ __Backbone.Model.prototype.clone()__ [#](http://backbonejs.org/#Model-clone)
 
 ```js
 clone() {
-  return new this.constructor( this.attributes )
+    return new this.constructor( this.attributes )
 }
 ```

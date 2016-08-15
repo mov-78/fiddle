@@ -11,56 +11,56 @@ __Backbone.Collection.extend( [protoProps] , [staticProps] )__ [#](http://backbo
 ```js
 Backbone.Collection.extend( {
 
-  // 自定义构造函数
-  constructor( models , options ) {
+    // 自定义构造函数
+    constructor( models , options ) {
 
-    if ( options.model ) {
-      this.model = options.model
-    }
-    if ( options.comparator ) {
-      this.comparator = options.comparator
-    }
+        if ( options.model ) {
+            this.model = options.model
+        }
+        if ( options.comparator ) {
+            this.comparator = options.comparator
+        }
 
-    // [1] as List
-    this.models = []  // 可以通过 this.models 直接访问 models
-    this.length = 0   // models 长度
+        // [1] as List
+        this.models = []  // 可以通过 this.models 直接访问 models
+        this.length = 0   // models 长度
 
-    // [2] as Hash
-    this._byId = {}
+        // [2] as Hash
+        this._byId = {}
 
-    this.initialize.apply( this , arguments )
+        this.initialize.apply( this , arguments )
 
-    if ( models ) {
-      this.reset( models , _.extend( { silent : true } , options ) )
-    }
+        if ( models ) {
+            this.reset( models , _.extend( { silent : true } , options ) )
+        }
 
-  } ,
+    } ,
 
-  // 自定义初始化函数
-  initialize( ...args ) {} ,
+    // 自定义初始化函数
+    initialize( ...args ) {} ,
 
-  // model 构造函数；默认为 Backbone.Model
-  model : Backbone.Model ,
+    // model 构造函数；默认为 Backbone.Model
+    model : Backbone.Model ,
 
-  // 唯一标识生成器
-  modelId( attrs ) {
-    return attrs[ this.model.prototype.idAttribute || 'id' ]
-  } ,
+    // 唯一标识生成器
+    modelId( attrs ) {
+        return attrs[ this.model.prototype.idAttribute || 'id' ]
+    } ,
 
-  // [1] sortAttr
-  comparator : 'id' ,
-  // [2] sort
-  comparator( model , other ) {
-    let rank1 = this.modelId( model.attributes )
-    let rank2 = this.modelId( other.attributes )
-    return rank1 > rank2 ? 1 : ( rank1 < rank2 ? : -1 : 0 )
-  } ,
-  // [3] sortBy
-  comparator( model ) {
-    return this.modelId( model.attributes )
-  } ,
+    // [1] sortAttr
+    comparator : 'id' ,
+    // [2] sort
+    comparator( model , other ) {
+        let rank1 = this.modelId( model.attributes )
+        let rank2 = this.modelId( other.attributes )
+        return rank1 > rank2 ? 1 : ( rank1 < rank2 ? : -1 : 0 )
+    } ,
+    // [3] sortBy
+    comparator( model ) {
+        return this.modelId( model.attributes )
+    } ,
 
-  // ...更多实例方法
+    // ...更多实例方法
 
 } )
 ```
@@ -77,7 +77,7 @@ Backbone.Collection 核心方法，同时支持三种操作（通过 `options` �
 
 ```js
 model.on( 'add' , function ( addedModel , collection , setOptions ) {
-  // setOptions.index - 新增 model 的位置
+    // setOptions.index - 新增 model 的位置
 } )
 collection.on( 'add' , function ( addedModel , collection , setOptions ) {} ) // proxied
 ```
@@ -86,7 +86,7 @@ collection.on( 'add' , function ( addedModel , collection , setOptions ) {} ) //
 
 ```js
 model.on( 'remove' , function ( removedModel , collection , setOptions ) {
-  // setOptions.index - 被删除的 model 的位置
+    // setOptions.index - 被删除的 model 的位置
 } )
 collection.on( 'remove' , function ( removedModel , collection , setOptions ) {} ) // proxied
 ```
@@ -104,9 +104,9 @@ collection.on( 'change' , function ( model , setOptions ) {} ) // proxied
 
 ```js
 collection.on( 'update' , function ( collection , setOptions ) {
-  // setOptions.changes.added - 新增的 models
-  // setOptions.changes.removed - 移除的 models
-  // setOptions.changes.merged - 变更的 models
+    // setOptions.changes.added - 新增的 models
+    // setOptions.changes.removed - 移除的 models
+    // setOptions.changes.merged - 变更的 models
 } )
 ```
 
@@ -122,7 +122,7 @@ __Backbone.Collection.prototype.has( id|cid|attrs|model )__ [#](#)
 
 ```js
 has( obj ) {
-  return this.get( obj ) != null
+    return this.get( obj ) != null
 }
 ```
 
@@ -132,9 +132,9 @@ __Backbone.Collection.prototype.get( id|cid|attrs|model )__ [#](http://backbonej
 
 ```js
 get( obj ) {
-  return this._byId[ obj ] ||
-         this._byId[ this.modelId( obj.attributes || obj ) ] ||
-         obj.cid && this._byId[ obj.cid ]
+    return this._byId[ obj ] ||
+           this._byId[ this.modelId( obj.attributes || obj ) ] ||
+           obj.cid && this._byId[ obj.cid ]
 }
 ```
 
@@ -144,7 +144,7 @@ __Backbone.Collection.prototype.add( models , [options] )__ [#](http://backbonej
 
 ```js
 add( models , options ) {
-  return this.set( models , _.extend( { merge : false } , options , { add : true, remove : false } ) )
+    return this.set( models , _.extend( { merge : false } , options , { add : true, remove : false } ) )
 }
 ```
 
@@ -155,40 +155,40 @@ __Backbone.Collection.prototype.remove( models , options )__ [#](http://backbone
 ```js
 remove( models , options ) {
 
-  let removed = []
-  this.models.forEach( ( model , index ) = > {
+    let removed = []
+    this.models.forEach( ( model , index ) = > {
 
-    model = this.get( model )
-    if ( !model ) {
-      return
+        model = this.get( model )
+        if ( !model ) {
+            return
+        }
+
+        index = this.models.indexOf( model )
+        this.models.splice( index , 1 )
+        this.length -= 1
+
+        delete this._byId[ model.cid ]
+        let id = this.modelId( model.attributes )
+        if ( id ) {
+            delete this._byId[ id ]
+        }
+
+        if ( !options.silent ) {
+            options.index = index
+            model.trigger( 'remove' , model , this , options )
+        }
+
+        removed.push( model )
+        model.off( 'all' , this._onModelEvent , this )
+
+    } )
+
+    if ( !options.silent && removed.length ) {
+        options.changes = { added : [] , merged : [] , removed }
+        this.trigger( 'update' , this , options )
     }
 
-    index = this.models.indexOf( model )
-    this.models.splice( index , 1 )
-    this.length -= 1
-
-    delete this._byId[ model.cid ]
-    let id = this.modelId( model.attributes )
-    if ( id ) {
-      delete this._byId[ id ]
-    }
-
-    if ( !options.silent ) {
-      options.index = index
-      model.trigger( 'remove' , model , this , options )
-    }
-
-    removed.push( model )
-    model.off( 'all' , this._onModelEvent , this )
-
-  } )
-
-  if ( !options.silent && removed.length ) {
-    options.changes = { added : [] , merged : [] , removed }
-    this.trigger( 'update' , this , options )
-  }
-
-  return removed
+    return removed
 
 }
 ```
@@ -201,7 +201,7 @@ __Backbone.Collection.prototype.at( index )__ [#](http://backbonejs.org/#Collect
 
 ```js
 at( index ) {
-  return this.models[ index < 0 ? index + this.length : index ]
+    return this.models[ index < 0 ? index + this.length : index ]
 }
 ```
 
@@ -211,7 +211,7 @@ __Backbone.Collection.prototype.push( model , [options] )__ [#](http://backbonej
 
 ```js
 push( models , options ) {
-  return this.add( models , _.extend( { at : this.length } , options ) )
+    return this.add( models , _.extend( { at : this.length } , options ) )
 }
 ```
 
@@ -221,7 +221,7 @@ __Backbone.Collection.prototype.pop( [options] )__ [#](http://backbonejs.org/#Co
 
 ```js
 pop( options ) {
-  return this.remove( this.at( this.length - 1 ) , options )
+    return this.remove( this.at( this.length - 1 ) , options )
 }
 ```
 
@@ -231,7 +231,7 @@ __Backbone.Collection.prototype.unshift( model , [options] )__ [#](http://backbo
 
 ```js
 unshift( models , options ) {
-  return this.add( models , _.extend( { at : 0 } , options ) )
+    return this.add( models , _.extend( { at : 0 } , options ) )
 }
 ```
 
@@ -242,7 +242,7 @@ __Backbone.Collection.prototype.shift( [options] )__ [#](http://backbonejs.org/#
 
 ```js
 shift( options ) {
-  return this.remove( this.at( 0 ) , options )
+    return this.remove( this.at( 0 ) , options )
 }
 ```
 
@@ -252,7 +252,7 @@ __Backbone.Collection.prototype.slice()__ [#](http://backbonejs.org/#Collection-
 
 ```js
 slice( ...args ) {
-  return this.models.slice( args )
+    return this.models.slice( args )
 }
 ```
 
@@ -264,7 +264,7 @@ __Backbone.Collection.prototype.reset( models , [options] )__ [#](http://backbon
 
 ```js
 collection.on( 'reset' , function ( collection , options ) {
-  // options.previousModels - 批量更新前 this.models 的副本
+    // options.previousModels - 批量更新前 this.models 的副本
 } )
 ```
 
@@ -274,7 +274,7 @@ __Backbone.Collection.prototype.pluck( key )__ [#](http://backbonejs.org/#Collec
 
 ```js
 pluck( key ) {
-  return this.map( key )
+    return this.map( key )
 }
 ```
 
@@ -282,7 +282,7 @@ __Backbone.Collection.prototype.where( attrs )__ [#](http://backbonejs.org/#Coll
 
 ```js
 where( attrs ) {
-  return this.filter( attrs )
+    return this.filter( attrs )
 }
 ```
 
@@ -290,7 +290,7 @@ __Backbone.Collection.prototype.findWhere( attrs )__ [#](http://backbonejs.org/#
 
 ```js
 findWhere( attrs ) {
-  return this.find( attrs )
+    return this.find( attrs )
 }
 ```
 
@@ -300,7 +300,7 @@ __Backbone.Collection.prototype.toJSON()__ [#](http://backbonejs.org/#Collection
 
 ```js
 toJSON() {
-  return this.map( model => model.toJSON() )
+    return this.map( model => model.toJSON() )
 }
 ```
 
@@ -310,9 +310,9 @@ __Backbone.Collection.prototype.clone()__ [#](http://backbonejs.org/#Collection-
 
 ```js
 clone() {
-  return new this.constructor(
-    this.models ,
-    { model : this.model , comparator : this.comparator }
-  )
+    return new this.constructor(
+        this.models ,
+        { model : this.model , comparator : this.comparator }
+    )
 }
 ```

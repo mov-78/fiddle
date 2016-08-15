@@ -28,8 +28,8 @@ __Backbone.Events.on( name , callback , [context] )__ [#](http://backbonejs.org/
 
 ```js
 model.on( {
-  event1 : callback1,
-  event2 : callback2
+    event1 : callback1,
+    event2 : callback2
   // ...
 } , optionalContext )
 ```
@@ -41,7 +41,7 @@ let proxy = {}
 _.extend( proxy , Backbone.Events )
 
 proxy.on( 'all' , function ( name , ...args ) {
-  other.trigger( name , ...args )
+    other.trigger( name , ...args )
 } )
 ```
 
