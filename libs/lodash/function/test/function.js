@@ -1,8 +1,8 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
-let lolex = require( 'lolex' )
-let sinon = require( 'sinon' )
-let expect = chai.expect
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
+const lolex = require( 'lolex' )
+const sinon = require( 'sinon' )
+const expect = chai.expect
 
 before( function () {
     chai.should()
@@ -29,7 +29,7 @@ describe( 'lodash/function' , function () {
     // bind( func , ctxt , [partials] )
     it( 'bind' , function () {
 
-        let ctxt = {}
+        const ctxt = {}
 
         _.bind( spy , ctxt , 1 , 2 )()
         spy.should.have.been.calledOn( ctxt )
@@ -50,8 +50,8 @@ describe( 'lodash/function' , function () {
     // bindKey( object , key , [partials] )
     it( 'bindKey' , function () {
 
-        let object = { method : spy }
-        let bound = _.bindKey( object , 'method' , 'foo' )
+        const object = { method : spy }
+        const bound = _.bindKey( object , 'method' , 'foo' )
 
         bound( 'bar' )
         spy.should.have.been.calledOn( object )
@@ -224,7 +224,7 @@ describe( 'lodash/function' , function () {
         // 该构造函数必须实现 Map 相关接口
         _.memoize.Cache = Map
 
-        let memoized = _.memoize(
+        const memoized = _.memoize(
             stub.returns( 'tinted' ) ,
             ( ...args ) => args[ 0 ] // 通过定义 resolver 实参来设置缓存键
         )

@@ -1,6 +1,6 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
-let sinon = require( 'sinon' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( function () {
     chai.should()
@@ -29,7 +29,7 @@ describe( 'lodash/util' , function () {
     it( 'bindAll' , function () {
 
         let func = null
-        let object = { method : spy }
+        const object = { method : spy }
 
         _.bindAll( object , 'method' )
         func = object.method
@@ -115,7 +115,7 @@ describe( 'lodash/util' , function () {
     it( 'matches , matchesProperty' , function () {
 
         let matcher
-        let pkg = { name : 'lodash' , license : 'MIT' }
+        const pkg = { name : 'lodash' , license : 'MIT' }
 
         // matches( source )
         // 等同于：partialRight( isMatch , source )

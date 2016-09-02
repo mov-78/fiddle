@@ -1,7 +1,7 @@
 env:
     mocha: true
     node: true
+extends: pwn
 rules:
     no-throw-literal: off
     prefer-rest-params: off
-extends: pwn

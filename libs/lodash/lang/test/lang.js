@@ -1,5 +1,5 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
 
 before( chai.should )
 
@@ -299,9 +299,9 @@ describe( 'lodash/lang' , function () {
 
     it( 'toNumber , toInteger , toSafeInteger , toString , toPlainObject , toArray' , function () {
 
-        let makeIterable = function ( n ) {
+        const makeIterable = function ( n ) {
             let i = 0
-            let iterator = {
+            const iterator = {
                 next() {
                     if ( i === n ) {
                         return { done : true }

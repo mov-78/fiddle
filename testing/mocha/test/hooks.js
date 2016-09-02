@@ -1,4 +1,4 @@
-let noop = require( 'lodash.noop' )
+const noop = require( 'lodash.noop' )
 
 describe( 'Hooks' , function () {
 

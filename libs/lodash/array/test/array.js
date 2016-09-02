@@ -1,5 +1,5 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
 
 before( chai.should )
 
@@ -14,7 +14,7 @@ describe( 'lodash/array' , function () {
 
     it( 'first , last , initial , tail' , function () {
 
-        let array = [ 1 , 2 , 3 ]
+        const array = [ 1 , 2 , 3 ]
 
         _.first( array ).should.equal( 1 )
         _.last( array ).should.equal( 3 )
@@ -32,7 +32,7 @@ describe( 'lodash/array' , function () {
 
     it( 'indexOf , lastIndexOf' , function () {
 
-        let array = [ 1 , 2 , 2 , 3 ]
+        const array = [ 1 , 2 , 2 , 3 ]
 
         _.indexOf( array , 2 ).should.equal( 1 )
         _.indexOf( array , 2 , -2 ).should.equal( 2 )
@@ -52,8 +52,8 @@ describe( 'lodash/array' , function () {
 
     it( 'findIndex , findLastIndex' , function () {
 
-        let array = [ 1 , 2 , 3 , 4 , 5 ]
-        let predicate = ( value , index , array ) => value % 2 === 0
+        const array = [ 1 , 2 , 3 , 4 , 5 ]
+        const predicate = ( value , index , array ) => value % 2 === 0
 
         _.findIndex( array , predicate ).should.equal( 1 )
         _.findLastIndex( array , predicate ).should.equal( 3 )
@@ -70,8 +70,8 @@ describe( 'lodash/array' , function () {
 
     it( 'take , takeRight , takeWhile , takeRightWhile' , function () {
 
-        let array = [ 1 , 2 , 3 ]
-        let predicate = ( value , index , array ) => value % 2 === 1
+        const array = [ 1 , 2 , 3 ]
+        const predicate = ( value , index , array ) => value % 2 === 1
 
         _.take( array ).should.deep.equal( [ 1 ] )
         _.take( array , 2 ).should.deep.equal( [ 1 , 2 ] )
@@ -94,8 +94,8 @@ describe( 'lodash/array' , function () {
 
     it( 'drop , dropRight , dropWhile , dropRightWhile' , function () {
 
-        let array = [ 1 , 2 , 3 ]
-        let predicate = ( value , index , array ) => value % 2 === 1
+        const array = [ 1 , 2 , 3 ]
+        const predicate = ( value , index , array ) => value % 2 === 1
 
         _.drop( array ).should.deep.equal( [ 2 , 3 ] )
         _.drop( array , 2 ).should.deep.equal( [ 3 ] )
@@ -119,8 +119,8 @@ describe( 'lodash/array' , function () {
     // remove( array , predicate )
     it( 'remove' , function () {
 
-        let odds = [ 1 , 2 , 3 , 4 , 5 ]
-        let evens = _.remove( odds , ( value , index , array ) => value % 2 === 0 )
+        const odds = [ 1 , 2 , 3 , 4 , 5 ]
+        const evens = _.remove( odds , ( value , index , array ) => value % 2 === 0 )
 
         odds.should.deep.equal( [ 1 , 3 , 5 ] )
         evens.should.deep.equal( [ 2 , 4 ] )
@@ -171,7 +171,7 @@ describe( 'lodash/array' , function () {
 
     it( 'uniq , uniqBy , uniqWith' , function () {
 
-        let array = [ 1 , 2 , 1 ]
+        const array = [ 1 , 2 , 1 ]
 
         _.uniq( array ).should.deep.equal( [ 1 , 2 ] )
         _.uniqBy( array , value => value ).should.deep.equal( [ 1 , 2 ] )
@@ -191,7 +191,7 @@ describe( 'lodash/array' , function () {
     // chunk( array , [size=0] )
     it( 'chunk' , function () {
 
-        let array = [ 1 , 2 , 3 ]
+        const array = [ 1 , 2 , 3 ]
 
         _.chunk( array )
             .should.be.an( 'array' )
@@ -365,7 +365,7 @@ describe( 'lodash/array' , function () {
     // reverse( array )
     it( 'reverse' , function () {
 
-        let array = [ 1 , 2 , 3 ]
+        const array = [ 1 , 2 , 3 ]
 
         _.reverse( array )
         array.should.deep.equal( [ 3 , 2 , 1 ] )

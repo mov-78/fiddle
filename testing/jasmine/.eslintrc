@@ -1,6 +1,6 @@
 env:
     jasmine: true
     node: true
+extends: pwn
 rules:
     no-unused-vars: off
-extends: pwn

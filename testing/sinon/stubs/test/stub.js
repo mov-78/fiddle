@@ -1,5 +1,5 @@
-let chai = require( 'chai' )
-let sinon = require( 'sinon' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( function () {
 
@@ -10,9 +10,9 @@ before( function () {
         _chai.Assertion
             .addProperty( 'spy' , function () {
 
-                let ownKeys = Object.keys( this._obj )
-                let spyKeys = Object.keys( sinon.spy() )
-                let assert = new _chai.Assertion( ownKeys )
+                const ownKeys = Object.keys( this._obj )
+                const spyKeys = Object.keys( sinon.spy() )
+                const assert = new _chai.Assertion( ownKeys )
 
                 _util.transferFlags( this , assert , false )
                 assert.include.members( spyKeys )
@@ -47,9 +47,9 @@ describe( 'Creating stubs' , function () {
     // [2] sinon.stub( obj , method )
     it( 'with sinon.stub( obj , method )' , function () {
 
-        let obj = { method() { bareSpy() } }
-        let _method = obj.method
-        let stub = sinon.stub( obj , 'method' )
+        const obj = { method() { bareSpy() } }
+        const _method = obj.method
+        const stub = sinon.stub( obj , 'method' )
 
         stub.should.be.a.spy
 
@@ -75,10 +75,10 @@ describe( 'Creating stubs' , function () {
     // [3] sinon.stub( obj , method , func )
     it( 'with sinon.stub( obj , method , func )' , function () {
 
-        let obj = { method() { bareSpy() } }
-        let _method = obj.method
-        let func = sinon.spy()
-        let stub = sinon.stub( obj , 'method' , func )
+        const obj = { method() { bareSpy() } }
+        const _method = obj.method
+        const func = sinon.spy()
+        const stub = sinon.stub( obj , 'method' , func )
 
         stub.should.be.a.spy
 
@@ -206,7 +206,7 @@ describe( 'Stub' , function () {
     } )
     it( 'yieldsTo' , function () {
 
-        let obj = { method : bareSpy }
+        const obj = { method : bareSpy }
 
         bareStub.yieldsTo( 'method' )
 
@@ -216,7 +216,7 @@ describe( 'Stub' , function () {
     } )
     it( 'yieldsToOn' , function () {
 
-        let obj = { method : bareSpy }
+        const obj = { method : bareSpy }
 
         bareStub.yieldsToOn( 'method' , ctxt )
 
@@ -262,8 +262,8 @@ describe( 'Stub' , function () {
 
     it( 'yield' , function () {
 
-        let spy1 = sinon.spy()
-        let spy2 = sinon.spy()
+        const spy1 = sinon.spy()
+        const spy2 = sinon.spy()
 
         bareStub( spy1 , spy2 )
 
@@ -283,7 +283,7 @@ describe( 'Stub' , function () {
     } )
     it( 'yieldTo' , function () {
 
-        let obj = { method : bareSpy }
+        const obj = { method : bareSpy }
 
         bareStub( obj )
 

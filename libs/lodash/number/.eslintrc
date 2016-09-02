@@ -1,6 +1,6 @@
 env:
     mocha: true
     node: true
+extends: pwn
 rules:
     no-unused-expressions: off
-extends: pwn

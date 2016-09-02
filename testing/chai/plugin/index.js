@@ -1,6 +1,6 @@
-let chai = require( 'chai' )
-let assert = chai.assert
-let expect = chai.expect
+const chai = require( 'chai' )
+const assert = chai.assert
+const expect = chai.expect
 
 chai.should()
 
@@ -35,7 +35,7 @@ chai.use( function ( _chai , utils ) {
     //        {
     //            configurable : true ,
     //            get() {
-    //                let result = getter.call( this )
+    //                const result = getter.call( this )
     //                return result === undefined ? this : result
     //            }
     //        }
@@ -90,7 +90,7 @@ chai.use( function ( _chai , utils ) {
         // 基本等同于：
         //
         //    includeAll = arguments.length === 3 ? includeAll : true
-        //    let flags = sourceAssertion.__flags || ( sourceAssertion.__flags = {} )
+        //    const flags = sourceAssertion.__flags || ( sourceAssertion.__flags = {} )
         //    for ( let key in flags ) {
         //        if ( flags.hasOwnProperty( key ) ) {
         //            if ( includeAll || ( key !== 'object' && key !== 'ssfi' && key !== 'message' ) ) {
@@ -100,8 +100,8 @@ chai.use( function ( _chai , utils ) {
         //    }
         //
 
-        let negate = chai.util.flag( this , 'negate' )
-        let assertion = new chai.Assertion()
+        const negate = chai.util.flag( this , 'negate' )
+        const assertion = new chai.Assertion()
 
         utils.transferFlags( this , assertion , true )
         expect( utils.flag( assertion , 'negate' ) ).to.equal( negate )
@@ -146,7 +146,7 @@ chai.use( function ( _chai , utils ) {
     // 基本等同于：
     //
     //    context[ name ] = function ( ...args ) {
-    //        let result = method.apply( this , args )
+    //        const result = method.apply( this , args )
     //        return result === undefined ? this : result
     //    }
     //
@@ -171,7 +171,7 @@ chai.use( function ( _chai , utils ) {
     //    if ( typeof chainingBehavior !== 'function' ) {
     //        chainingBehavior = function noop() {}
     //    }
-    //    let chainableBehavior = { method , chainingBehavior }
+    //    const chainableBehavior = { method , chainingBehavior }
     //
     //    context.__methods = context.__methods || {}
     //    context.__methods[ name ] = chainableBehavior
@@ -183,8 +183,8 @@ chai.use( function ( _chai , utils ) {
     //            configurable : true ,
     //            get() {
     //                chainableBehavior.chainingBehavior.call( this )
-    //                let assert = function ( ...args ) {
-    //                    let result = chainableBehavior.method.apply( this , args )
+    //                const assert = function ( ...args ) {
+    //                    const result = chainableBehavior.method.apply( this , args )
     //                    return result === undefined ? this : result
     //                }
     //                Reflect.setPrototypeOf( assert , this )
@@ -216,7 +216,7 @@ chai.use( function ( _chai , utils ) {
     // 基本等同于：
     //
     //    let _super = function noop() {}
-    //    let descriptor = Object.getOwnPropertyDescriptor( context , name )
+    //    const descriptor = Object.getOwnPropertyDescriptor( context , name )
     //    if ( descriptor && typeof descriptor.get === 'function' ) {
     //        _super = descriptor.get
     //    }
@@ -226,7 +226,7 @@ chai.use( function ( _chai , utils ) {
     //        {
     //            configurable : true ,
     //            get() {
-    //                let result = getter( _super ).call( this )
+    //                const result = getter( _super ).call( this )
     //                return result === undefined ? this : result
     //            }
     //        }
@@ -248,13 +248,13 @@ chai.use( function ( _chai , utils ) {
     //
     // 基本等同于：
     //
-    //    let _method = context[ name ]
     //    let _super = function noop() { return this }
+    //    const _method = context[ name ]
     //    if ( _method && typeof _method === 'function' ) {
     //        _super = _method
     //    }
     //    context[ name ] = function ( ...args ) {
-    //        let result = method( _super ).apply( this , args )
+    //        const result = method( _super ).apply( this , args )
     //        return result === undefined ? this : result
     //    }
     //
@@ -274,17 +274,17 @@ chai.use( function ( _chai , utils ) {
     //
     // 基本等同于：
     //
-    //    let chainableBehavior = context.__methods[ name ]
+    //    const chainableBehavior = context.__methods[ name ]
     //
-    //    let _method = chainableBehavior.method
+    //    const _method = chainableBehavior.method
     //    chainableBehavior.method = function ( ...args ) {
-    //        let result = method( _method ).apply( this , args )
+    //        const result = method( _method ).apply( this , args )
     //        return result === undefined ? this : result
     //    }
     //
-    //    let _chainingBehavior = chainableBehavior.chainingBehavior
+    //    const _chainingBehavior = chainableBehavior.chainingBehavior
     //    chainableBehavior.chainingBehavior = function () {
-    //        let result = chainingBehavior( _chainingBehavior ).call( this )
+    //        const result = chainingBehavior( _chainingBehavior ).call( this )
     //        return result === undefined ? this : result
     //    }
     //

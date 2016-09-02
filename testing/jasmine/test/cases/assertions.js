@@ -117,7 +117,7 @@ describe( 'Base assertion' , function () {
 
         class Exception extends Error {}
 
-        let func = () => { throw new Exception( 'foobar' ) }
+        const func = () => { throw new Exception( 'foobar' ) }
 
         expect( func ).toThrowError( Exception )
         expect( func ).toThrowError( Exception , 'foobar' )

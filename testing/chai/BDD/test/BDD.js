@@ -1,7 +1,7 @@
-let is = require( '@pwn/is' )
-let chai = require( 'chai' )
-let expect = chai.expect
-let noop = require( 'lodash.noop' )
+const is = require( '@pwn/is' )
+const chai = require( 'chai' )
+const expect = chai.expect
+const noop = require( 'lodash.noop' )
 
 before( chai.should )
 
@@ -163,7 +163,7 @@ describe( 'BDD' , function () {
 
     it( 'arguments' , function () {
 
-        let argumentsLikeObject = { caller() {} , callee() {} , length : 1 }
+        const argumentsLikeObject = { caller() {} , callee() {} , length : 1 }
 
         expect( arguments ).to.be.arguments
         expect( argumentsLikeObject ).to.not.be.arguments
@@ -245,9 +245,9 @@ describe( 'BDD' , function () {
 
     it( 'instanceof' , function () {
 
-        let proto = {}
-        let Stub = class Stub {}
-        let obj = new Stub()
+        const proto = {}
+        const Stub = class Stub {}
+        const obj = new Stub()
 
         expect( obj ).to.be.instanceOf( Stub )
         obj.should.be.instanceOf( Stub )
@@ -494,8 +494,8 @@ describe( 'BDD' , function () {
 
     it( 'members' , function () {
 
-        let obj1 = { foo : 'bar' }
-        let obj2 = { foo : 'bar' }
+        const obj1 = { foo : 'bar' }
+        const obj2 = { foo : 'bar' }
 
         expect( [ 1 , 3 , 2 ] ).to.include.members( [ 2 , 3 ] )
         expect( [ obj1 ] ).to.not.include.members( [ obj2 ] )
@@ -541,9 +541,9 @@ describe( 'BDD' , function () {
 
     it( 'change , increase , decrease' , function () {
 
-        let KEY = 'KEY'
-        let obj = { [ KEY ] : 0 }
-        let func = () => { obj[ KEY ] = 1 }
+        const KEY = 'KEY'
+        const obj = { [ KEY ] : 0 }
+        const func = () => { obj[ KEY ] = 1 }
 
         obj[ KEY ] = 0
         expect( func ).to.change( obj , KEY )

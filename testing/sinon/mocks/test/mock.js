@@ -1,4 +1,4 @@
-let sinon = require( 'sinon' )
+const sinon = require( 'sinon' )
 
 //
 // Expectation 核心接口

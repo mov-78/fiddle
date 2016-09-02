@@ -1,5 +1,5 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
 
 before( chai.should )
 

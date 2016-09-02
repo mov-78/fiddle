@@ -1,5 +1,5 @@
-let chai = require( 'chai' )
-let sinon = require( 'sinon' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( chai.should )
 
@@ -50,8 +50,8 @@ describe( 'Matchers' , function () {
 
     it( 'sinon.match.same( ref )' , function () {
 
-        let c1 = [ 0 , 1 ]
-        let c2 = [ 0 , 1 ]
+        const c1 = [ 0 , 1 ]
+        const c2 = [ 0 , 1 ]
 
         bareSpy( c1 )
         bareSpy.calledWith( sinon.match.same( c1 ) ).should.be.true

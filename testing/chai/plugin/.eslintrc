@@ -1,7 +1,7 @@
 env:
     mocha: true
     node: true
+extends: pwn
 rules:
     no-empty-function: off
     no-unused-expressions: off
-extends: pwn

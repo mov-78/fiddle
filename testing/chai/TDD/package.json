@@ -6,7 +6,7 @@
   "dependencies": {
     "chai": "~3.5.0",
     "eslint": "~3.2.2",
-    "eslint-config-pwn": "~5.0.2",
+    "eslint-config-pwn": "~5.0.4",
     "lodash.noop": "~3.0.1",
     "mocha": "~2.4.5"
   }

@@ -1,6 +1,6 @@
-let chai = require( 'chai' )
-let noop = require( 'lodash.noop' )
-let assert = chai.assert
+const chai = require( 'chai' )
+const noop = require( 'lodash.noop' )
+const assert = chai.assert
 
 describe( 'TDD' , function () {
 
@@ -57,9 +57,9 @@ describe( 'TDD' , function () {
         assert.strictEqual( 1 , 1 )
         assert.notStrictEqual( 1 , '1' )
 
-        let proto = { foo : 'bar' }
-        let foo = { baz : 'qux' }
-        let bar = { baz : 'qux' } // [1] 对于 primitives 使用 === 判等
+        const proto = { foo : 'bar' }
+        const foo = { baz : 'qux' }
+        const bar = { baz : 'qux' } // [1] 对于 primitives 使用 === 判等
 
         // [2] 非枚举属性不在考虑范围之内
         Reflect.defineProperty( bar , 'hidden' , { enumerable : false } )
@@ -173,9 +173,9 @@ describe( 'TDD' , function () {
 
     it( 'instanceOf' , function () {
 
-        let proto = Object.create( null )
-        let Stub = class Stub {}
-        let obj = new Stub()
+        const proto = Object.create( null )
+        const Stub = class Stub {}
+        const obj = new Stub()
 
         assert.instanceOf( obj , Stub )
 
@@ -342,9 +342,9 @@ describe( 'TDD' , function () {
 
     it( 'changes , increases , decreases' , function () {
 
-        let KEY = 'KEY'
-        let obj = { [ KEY ] : 0 }
-        let func = () => { obj[ KEY ] = 1 }
+        const KEY = 'KEY'
+        const obj = { [ KEY ] : 0 }
+        const func = () => { obj[ KEY ] = 1 }
 
         assert.changes( func , obj , KEY )
 

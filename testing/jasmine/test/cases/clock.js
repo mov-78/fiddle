@@ -50,7 +50,7 @@ describe( 'Mocking a Date object' , function () {
 
     it( 'mocks the current date' , function () {
 
-        let baseTime = new Date( 2015 , 3 , 18 )
+        const baseTime = new Date( 2015 , 3 , 18 )
 
         // jasmine.clock().mockDate( [date] )
         jasmine.clock().mockDate( baseTime )

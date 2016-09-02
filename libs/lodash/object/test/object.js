@@ -1,6 +1,6 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
-let sinon = require( 'sinon' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( function () {
     chai.should()
@@ -12,8 +12,8 @@ describe( 'lodash/object' , function () {
     // create( prototype , [properties] )
     it( 'create' , function () {
 
-        let proto = {}
-        let obj = _.create( proto , { foo : 'bar' } )
+        const proto = {}
+        const obj = _.create( proto , { foo : 'bar' } )
 
         Reflect.getPrototypeOf( obj ).should.equal( proto )
         obj.should.have.ownProperty( 'foo' , 'bar' )
@@ -73,7 +73,7 @@ describe( 'lodash/object' , function () {
 
     it( 'has , hasIn' , function () {
 
-        let obj = _.create( { foo : { bar : 1 } } , { baz : { qux : 2 } } )
+        const obj = _.create( { foo : { bar : 1 } } , { baz : { qux : 2 } } )
 
         _.has( obj , 'foo.bar' ).should.be.false
         _.has( obj , 'baz.qux' ).should.be.true
@@ -87,7 +87,7 @@ describe( 'lodash/object' , function () {
     // get( object , path , [defaultValue] )
     it( 'get' , function () {
 
-        let obj = { foo : { bar : 'baz' } }
+        const obj = { foo : { bar : 'baz' } }
 
         _.get( obj , 'foo.bar' ).should.equal( 'baz' )
         _.get( obj , 'not.exist' , 'qux' ).should.equal( 'qux' )
@@ -148,7 +148,7 @@ describe( 'lodash/object' , function () {
         _.update( {} , '[0][0]' , value => 'foo' )
             .should.deep.equal( { 0 : [ 'foo' ] } )
 
-        let obj = { foo : { bar : 'baz' } }
+        const obj = { foo : { bar : 'baz' } }
         _.unset( obj , 'foo.bar' ).should.be.true
         obj.should.deep.equal( { foo : {} } )
 
@@ -189,7 +189,7 @@ describe( 'lodash/object' , function () {
 
     it( 'entries|toPairs , entriesIn|toPairsIn' , function () {
 
-        let obj = _.create( { foo : 'bar' } , { baz : 'qux' } )
+        const obj = _.create( { foo : 'bar' } , { baz : 'qux' } )
 
         _.toPairs( obj )
             .should.have.deep.members( [ [ 'baz' , 'qux' ] ] )
@@ -208,8 +208,8 @@ describe( 'lodash/object' , function () {
 
     it( 'forIn , forInRight , forOwn , forOwnRight' , function () {
 
-        let spy = sinon.spy()
-        let obj = _.create( { foo : 1 } , { bar : 2 } )
+        const spy = sinon.spy()
+        const obj = _.create( { foo : 1 } , { bar : 2 } )
 
         _.forIn( obj , ( value , key , object ) => spy( key ) )
         spy.should.have.callCount( _.keysIn( obj ).length )
@@ -272,8 +272,8 @@ describe( 'lodash/object' , function () {
 
     it( 'pick , pickBy , omit , omitBy' , function () {
 
-        let obj = { foo : 1 , bar : 2 }
-        let predicate = ( value , key ) => value % 2 === 0
+        const obj = { foo : 1 , bar : 2 }
+        const predicate = ( value , key ) => value % 2 === 0
 
         _.pick( obj , 'foo' )
             .should.deep.equal( { foo : 1 } )
@@ -307,7 +307,7 @@ describe( 'lodash/object' , function () {
     // invoke( object , path , ...args )
     it( 'invoke' , function () {
 
-        let obj = { foo : { bar : sinon.stub().returns( 'tinted' ) } }
+        const obj = { foo : { bar : sinon.stub().returns( 'tinted' ) } }
 
         _.invoke( obj , 'foo.bar' ).should.equal( 'tinted' )
         obj.foo.bar.called.should.be.true

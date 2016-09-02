@@ -1,5 +1,5 @@
-let _ = require( 'lodash' )
-let chai = require( 'chai' )
+const _ = require( 'lodash' )
+const chai = require( 'chai' )
 
 before( chai.should )
 
@@ -49,7 +49,7 @@ describe( 'lodash/math' , function () {
 
     it( 'min , minBy , max , maxBy' , function () {
 
-        let array = [ 3 , 1 , 2 ]
+        const array = [ 3 , 1 , 2 ]
 
         _.min( array ).should.equal( 1 )
         _.minBy( array , value => value ).should.equal( 1 )
@@ -69,7 +69,7 @@ describe( 'lodash/math' , function () {
 
     it( 'mean , meanBy , sum , sumBy' , function () {
 
-        let array = [ 1 , 2 , 3 , 4 ]
+        const array = [ 1 , 2 , 3 , 4 ]
 
         _.mean( array ).should.equal( 2.5 )
         _.meanBy( array , value => value ).should.equal( 2.5 )

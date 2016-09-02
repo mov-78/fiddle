@@ -121,7 +121,7 @@ xdescribe( 'Pending test suite' , () => null )
 ```js
 describe( 'Testing async code' , function () {
 
-    let asyncTask = done => { setTimeout( done , 0 ) }
+    const asyncTask = done => { setTimeout( done , 0 ) }
 
     // Hooks 亦拥有异步支持
     beforeAll( asyncTask )
@@ -214,7 +214,7 @@ describe( 'Mocking a Date object' , function () {
 
     it( 'mocks the current date' , function () {
 
-        let baseTime = new Date( 2015 , 3 , 18 )
+        const baseTime = new Date( 2015 , 3 , 18 )
 
         // jasmine.clock().mockDate( [date] )
         jasmine.clock().mockDate( baseTime )

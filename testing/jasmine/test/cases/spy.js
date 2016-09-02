@@ -8,7 +8,7 @@ describe( 'A spy' , function () {
     let bar = null
     let setBarCalled
 
-    let args = [ 1 , 2 , 3 ]
+    const args = [ 1 , 2 , 3 ]
 
     beforeEach( function () {
 
@@ -363,7 +363,7 @@ describe( 'A spy' , function () {
     // calls.mostRecent()
     it( 'tracks the arguments, return value and context of all calls' , function () {
 
-        let ctxt = {}
+        const ctxt = {}
 
         foo.setBar( 'foo' )
         foo.setBar.call( ctxt , 'bar' , 'baz' )

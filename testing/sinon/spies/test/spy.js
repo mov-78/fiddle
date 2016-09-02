@@ -1,5 +1,5 @@
-let chai = require( 'chai' )
-let sinon = require( 'sinon' )
+const chai = require( 'chai' )
+const sinon = require( 'sinon' )
 
 before( chai.should )
 
@@ -16,7 +16,7 @@ describe( 'Creating spies' , function () {
     // [1] sinon.spy()
     it( 'with sinon.spy()' , function () {
 
-        let bareSpy = sinon.spy()
+        const bareSpy = sinon.spy()
 
         bareSpy.should.exist
         bareSpy.should.be.a( 'function' )
@@ -26,8 +26,8 @@ describe( 'Creating spies' , function () {
     // [2] sinon.spy( func )
     it( 'with sinon.spy( func )' , function () {
 
-        let bareSpy = sinon.spy()
-        let spy = sinon.spy( bareSpy )
+        const bareSpy = sinon.spy()
+        const spy = sinon.spy( bareSpy )
 
         spy.should.exist
         spy.should.be.a( 'function' )
@@ -42,9 +42,9 @@ describe( 'Creating spies' , function () {
     it( 'with sinon.spy( obj , method )' , function () {
 
         let called = false
-        let obj = { method() { called = true } }
-        let _method = obj.method
-        let spy = sinon.spy( obj , 'method' )
+        const obj = { method() { called = true } }
+        const _method = obj.method
+        const spy = sinon.spy( obj , 'method' )
 
         spy.should.exist
         spy.should.be.a( 'function' )
@@ -108,7 +108,7 @@ describe( 'Spy' , function () {
     } )
     it( 'returnValues' , function () {
 
-        let spy = sinon.spy( x => x )
+        const spy = sinon.spy( x => x )
 
         spy( 1 ) ; spy( 2 )
 
@@ -123,8 +123,8 @@ describe( 'Spy' , function () {
     } )
     it( 'thisValues' , function () {
 
-        let ctxt1 = {}
-        let ctxt2 = {}
+        const ctxt1 = {}
+        const ctxt2 = {}
 
         spy.call( ctxt1 )
         spy.call( ctxt2 )
@@ -140,7 +140,7 @@ describe( 'Spy' , function () {
     } )
     it( 'exceptions' , function () {
 
-        let spy = sinon.spy( error => { throw error } )
+        const spy = sinon.spy( error => { throw error } )
 
         try {
             spy( 'foo' )
@@ -278,8 +278,8 @@ describe( 'Spy' , function () {
 
     it( 'returned , alwaysReturned' , function () {
 
-        let spy1 = sinon.spy( x => x )
-        let spy2 = sinon.spy( x => 0 )
+        const spy1 = sinon.spy( x => x )
+        const spy2 = sinon.spy( x => 0 )
 
         spy1( 1 ) ; spy1( 2 )
         spy2( 1 ) ; spy2( 2 )
@@ -307,7 +307,7 @@ describe( 'Spy' , function () {
 
     it( 'calledOn , alwaysCalledOn' , function () {
 
-        let ctxt = {}
+        const ctxt = {}
 
         spy()
         spy.call( ctxt )
@@ -325,8 +325,8 @@ describe( 'Spy' , function () {
 
     it( 'threw , alwaysThrew' , function () {
 
-        let ERR = 'error'
-        let spy = sinon.spy( pass => { if ( !pass ) { throw ERR } } )
+        const ERR = 'error'
+        const spy = sinon.spy( pass => { if ( !pass ) { throw ERR } } )
 
         try {
             spy( true )
@@ -365,7 +365,7 @@ describe( 'Spy' , function () {
     //
 
     it( 'calledAfter , calledBefore' , function () {
-        let anotherSpy = sinon.spy()
+        const anotherSpy = sinon.spy()
         anotherSpy() ; spy()
         spy.calledAfter( anotherSpy ).should.be.true
         anotherSpy.calledBefore( spy ).should.be.true
@@ -413,7 +413,7 @@ describe( 'SpyCall' , function () {
 
         spy( 1 )
 
-        let spyCall = spy.getCall( 0 )
+        const spyCall = spy.getCall( 0 )
 
         spyCall.args.should.be.an( 'array' )
         spyCall.args.should.deep.equal( [ 1 ] )
@@ -421,7 +421,7 @@ describe( 'SpyCall' , function () {
     } )
     it( 'returnValue' , function () {
 
-        let spy = sinon.spy( () => 'foobar' )
+        const spy = sinon.spy( () => 'foobar' )
 
         spy()
 
@@ -430,7 +430,7 @@ describe( 'SpyCall' , function () {
     } )
     it( 'thisValue' , function () {
 
-        let ctxt = {}
+        const ctxt = {}
 
         spy.call( ctxt )
 
@@ -439,8 +439,8 @@ describe( 'SpyCall' , function () {
     } )
     it( 'exception' , function () {
 
-        let ERR = 'error'
-        let spy = sinon.spy( error => { throw error } )
+        const ERR = 'error'
+        const spy = sinon.spy( error => { throw error } )
 
         try {
             spy( ERR )
@@ -465,7 +465,7 @@ describe( 'SpyCall' , function () {
 
         spy( { foo : 'bar' } , 'baz' )
 
-        let spyCall = spy.getCall( 0 )
+        const spyCall = spy.getCall( 0 )
 
         spyCall.calledWith( { foo : 'bar' } ).should.be.true
         spyCall.calledWith( { foo : 'bar' } , 'baz' ).should.be.true
@@ -485,7 +485,7 @@ describe( 'SpyCall' , function () {
 
         spy( { foo : 'bar' } , 'baz' )
 
-        let spyCall = spy.getCall( 0 )
+        const spyCall = spy.getCall( 0 )
 
         spyCall.calledWithExactly( { foo : 'bar' } ).should.not.be.true
         spyCall.calledWithExactly( { foo : 'bar' } , 'baz' ).should.be.true
@@ -507,7 +507,7 @@ describe( 'SpyCall' , function () {
 
         spy( 'foobar' )
 
-        let spyCall = spy.getCall( 0 )
+        const spyCall = spy.getCall( 0 )
 
         spyCall.calledWithMatch( /^foo/ ).should.be.true
         spyCall.notCalledWithMatch( /^\s*$/ ).should.be.true
@@ -521,7 +521,7 @@ describe( 'SpyCall' , function () {
 
     it( 'calledOn' , function () {
 
-        let ctxt = {}
+        const ctxt = {}
 
         spy() ; spy.call( ctxt )
 
@@ -539,8 +539,8 @@ describe( 'SpyCall' , function () {
 
         let spyCall
 
-        let ERR = 'error'
-        let spy = sinon.spy( pass => { if ( !pass ) { throw ERR } } )
+        const ERR = 'error'
+        const spy = sinon.spy( pass => { if ( !pass ) { throw ERR } } )
 
         try {
             spy( true )
