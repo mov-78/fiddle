@@ -17,11 +17,11 @@ function Model() {
  * @ignore
  */
 let Muk = {
-  /**
-   * @class
-   * @ignore
-   */
-  Model() {
-  }
+    /**
+    * @class
+    * @ignore
+    */
+    Model() {
+    }
 }
 ```

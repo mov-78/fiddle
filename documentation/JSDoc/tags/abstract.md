@@ -4,9 +4,9 @@
 
 ```js
 class Model {
-  /** @abstract */
-  parse() {
-    throw new Error( 'not implemented' )
-  }
+    /** @abstract */
+    parse() {
+        throw new Error( 'not implemented' )
+    }
 }
 ```
