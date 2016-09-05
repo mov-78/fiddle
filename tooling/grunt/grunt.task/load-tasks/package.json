@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "eslint": "~3.2.2",
-    "eslint-config-pwn": "~5.0.2",
+    "eslint-config-pwn": "~5.0.4",
     "grunt": "~1.0.1",
     "grunt-cat": "~0.1.2",
     "lodash.noop": "~3.0.1"

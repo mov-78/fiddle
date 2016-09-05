@@ -1,6 +1,6 @@
-let assert = require( 'assert' )
-let noop = require( 'lodash.noop' )
-let inspect = require( 'util' ).inspect
+const assert = require( 'assert' )
+const noop = require( 'lodash.noop' )
+const inspect = require( 'util' ).inspect
 
 module.exports = function ( grunt ) {
 
@@ -52,7 +52,7 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'task1' , function () {
 
         // 异步支持（任务执行上不是异步，而是同步阻塞）
-        let done = this.async()
+        const done = this.async()
 
         // 获取当前任务实例：
         // - this 关键字

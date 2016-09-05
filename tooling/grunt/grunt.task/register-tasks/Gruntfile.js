@@ -1,4 +1,4 @@
-let inspect = require( 'util' ).inspect
+const inspect = require( 'util' ).inspect
 
 module.exports = function ( grunt ) {
 
