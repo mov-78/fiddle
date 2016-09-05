@@ -4,7 +4,7 @@
 
 ```js
 // 经典流程
-let gulp = require( 'gulp' )
+const gulp = require( 'gulp' )
 
 gulp.task( 'name' , function () {
     gulp
