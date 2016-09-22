@@ -12,8 +12,6 @@ require.config( { /* configuration */ } ) // merged
 <script src="path/to/require.js"></script>
 ```
 
----
-
 ## 常见配置模式
 
 [via](https://github.com/requirejs/requirejs/wiki/Patterns-for-separating-config-from-the-main-module)
