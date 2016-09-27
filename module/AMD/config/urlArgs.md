@@ -2,13 +2,13 @@
 
 ```js
 require.config( {
-    urlArgs : `bust=${ ( new Date ).getTime() }`
+    urlArgs : 'bust=' + ( new Date ).getTime()
 } )
 
 // v2.2.0+
 require.config( {
-    urlArgs( id , url ) {
-        const suffix = `bust=${ ( new Date ).getTime() }`
+    urlArgs : function( id , url ) {
+        var suffix = 'bust=' + ( new Date ).getTime()
         return ( url.indexOf( '?' ) === -1 ? '?' : '&' ) + suffix
     }
 } )
