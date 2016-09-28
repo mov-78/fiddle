@@ -1,6 +1,6 @@
-[context](http://requirejs.org/docs/api.html#config-context) 选项用于指定「加载上下文」：
+[context](http://requirejs.org/docs/api.html#config-context) 选项用于指定「解析上下文」：
 
-> 每个「加载上下文」维护了一组独立的配置及模块加载记录
+> 每个「解析上下文」维护了一组独立的配置及模块解析记录
 
 ```js
 var req1 = require.config( {
