@@ -12,17 +12,9 @@ var req2 = require.config( {
     baseUrl : 'js/v2'
 } )
 
-require( [ 'main' ] , function ( main ) {
-} )
-// 等同于：
-req1( [ 'main' ] , function ( main ) {
-} )
+require( [ 'main' ] ) // 等同于 req1( [ 'main' ] )
 
 req2( [ 'require' , 'alpha' ] , function ( require , alpha ) {
-    require( [ 'beta' ] , function ( beta ) {
-    } )
-    // 等同于：
-    req2( [ 'beta' ] , function ( beta ) {
-    } )
+    require( [ 'beta' ] ) // 等同于 req2( [ 'beta' ] )
 } )
 ```
