@@ -1,4 +1,10 @@
 ```js
+require.config( {
+    // 确保 IE 下可以正确捕获脚本错误
+    // http://requirejs.org/docs/api.html#ieloadfail
+    enforceDefine : true
+} )
+
 require.onError = function onError( err ) {
 
     // err.requireType:String - 错误类型
