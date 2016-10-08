@@ -3,5 +3,3 @@
 ```html
 <script data-main="main" src="path/to/require.js"></script>
 ```
-
-> `require.js` 将插入一个 `<script async src="main.js"></script>` 标签来异步加载「入口模块」

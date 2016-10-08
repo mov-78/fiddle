@@ -29,14 +29,14 @@ require.config( { /* configuration */ } ) // merged
 <script src="path/to/require.js"></script>
 <script src="path/to/config.js"></script>
 <script>
-require.config( { /* configuration */ } ) // 页面专属配置
+require.config( { /* configuration */ } )
 require( [ 'main' ] )
 </script>
 ```
 
 ```js
 // config.js
-require.config( { /* configuration */ } ) // 通用配置
+require.config( { /* configuration */ } )
 ```
 
 ### 3

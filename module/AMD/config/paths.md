@@ -8,10 +8,9 @@ require.config( {
     paths : {
         a : 'lib/a' ,
         b : 'http://example.com/b' ,
-        c : '/lib/c' ,
-        d : [ // path-fallback
-            'http://cdn.com/d' ,    // 1. 首先尝试加载 CDN 版本
-            'vendor/d'              // 2. 加载失败时回退至本地版本
+        c : [ // path-fallback
+            'http://cdn.com/c' ,    // 1. 首先尝试加载 CDN 版本
+            'vendor/c'              // 2. 加载失败时回退至本地版本
         ]
     }
 } )

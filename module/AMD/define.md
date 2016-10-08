@@ -1,6 +1,6 @@
 ```js
 // define 可以为「自由变量」或「全局变量」
-define( [id:String] , [dependencies:String[]] , factory:(Object|Function) )
+define( [id:String] , [dependencies:String[]] , factory:Object|Function )
 ```
 
 __id__
@@ -22,7 +22,7 @@ __dependencies__
     - 「顶级」模块标识：`baseUrl` + `id`
     - 「相对」模块标识：相对于当前模块解析
 - 预留模块标识 `require`、`exports`、`module` 走独立的解析流程（遵循 CommonJS 语义）
-- 若未指定，则默认为 `[ 'require' , 'exports' , 'module' ]` — 此时将蜕变为类 CommonJS 模块
+- 若未指定，则默认为 `[ 'require' , 'exports' , 'module' ]` — 此时将蜕变为 CommonJS 包装模块
 
 __factory__
 
