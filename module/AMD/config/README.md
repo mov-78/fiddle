@@ -2,7 +2,7 @@
 
 ```js
 require.config( { /* configuration */ } )
-require.config( { /* configuration */ } ) // merged
+require.config( { /* configuration */ } ) // 合并新增配置项或覆盖已有配置项
 ```
 
 或：
@@ -12,7 +12,7 @@ require.config( { /* configuration */ } ) // merged
 <script src="path/to/require.js"></script>
 ```
 
-## 常见配置模式
+## 分离配置及入口模块的几种常见模式
 
 [via](https://github.com/requirejs/requirejs/wiki/Patterns-for-separating-config-from-the-main-module)
 
