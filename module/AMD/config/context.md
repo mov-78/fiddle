@@ -17,4 +17,9 @@ require( [ 'main' ] ) // 等同于 req1( [ 'main' ] )
 req2( [ 'require' , 'alpha' ] , function ( require , alpha ) {
     require( [ 'beta' ] ) // 等同于 req2( [ 'beta' ] )
 } )
+
+// alpha.js
+define( function factory( require ) {
+    // 此处 require 等同于 req2
+} )
 ```
