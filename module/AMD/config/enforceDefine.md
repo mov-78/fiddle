@@ -7,7 +7,7 @@
 
 ```js
 require.config( {
-    enforceDefine : true
+    enforceDefine : true // 建议开启该选项以辅助 require.js 在 IE 中捕获脚本加载错误 http://requirejs.org/docs/api.html#ieloadfail
 } )
 ```
 
