@@ -3,7 +3,7 @@
 ```html
 <script>
 var require = {
-    // require.js 在处理配置项时即刻异步加载列出的依赖项
+    // require.js 在处理完配置项后立即并行加载列出的依赖项
     deps : [ 'config' ]
 }
 </script>
