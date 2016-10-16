@@ -7,6 +7,10 @@ require.config( {
 
 // v2.2.0+
 require.config( {
+    /**
+     * @param {String} id - 模块标识
+     * @param {String} url - 解析后的 URL
+     */
     urlArgs : function( id , url ) {
         var suffix = 'bust=' + ( new Date ).getTime()
         return ( url.indexOf( '?' ) === -1 ? '?' : '&' ) + suffix
