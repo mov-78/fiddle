@@ -17,7 +17,7 @@ define( [ 'require' ] , function factory( require ) {
 
 同步：
 
-> AMD 规范规定，在同步加载尚未加载过的模块时，「必须」抛出异常（包含已定义但尚未加载的情况）
+> AMD 规范规定，在同步加载模块定义尚未执行的模块时，必须抛出异常
 
 ```js
 var mod = require( 'mod' ) // 全局同步
