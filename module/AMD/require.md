@@ -1,25 +1,42 @@
-同步加载：
+全局：
+
+```js
+var mod = require( 'mod' )
+assert( require === requirejs )
+```
+
+局部：
+
+```js
+define( [ 'require' ] , function factory( require ) {
+    var mod = require( 'mod' )
+} )
+```
+
+---
+
+同步：
 
 > AMD 规范规定，在同步加载尚未加载过的模块时，「必须」抛出异常（包含已定义但尚未加载的情况）
 
 ```js
-var mod = require( 'mod' ) // 全局同步加载
+var mod = require( 'mod' ) // 全局同步
 
 define( [ 'require' ] , function factory( require ) {
-    var mod = require( 'mod' ) // 局部同步加载
+    var mod = require( 'mod' ) // 局部同步
 } )
 ```
 
-异步加载：
+异步：
 
 ```js
 require( [ 'mod' ] , function ( mod ) {
-    // 全局异步加载
+    // 全局异步
 } )
 
 define( [ 'require' ] , function factory( require ) {
     require( [ 'mod' ] , function ( mod ) {
-        // 局部异步加载
+        // 局部异步
     } )
 } )
 ```
