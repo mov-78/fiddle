@@ -6,7 +6,7 @@ require.config( {
     enforceDefine : true ,
 
     paths : {
-        mew : 'https://cdn/mew.js'
+        mew : '//cdn/mew.js'
     }
 
 } )
@@ -41,7 +41,7 @@ require(
 ```js
 require.config( {
     paths : {
-        mew : [ 'https://cdn/mew.js' , 'vendor/mew' ]
+        mew : [ '//cdn/mew.js' , 'vendor/mew' ]
     }
 } )
 ```

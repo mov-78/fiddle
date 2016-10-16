@@ -1,6 +1,6 @@
 [map](http://requirejs.org/docs/api.html#config-map) 选项用于设置指定模块（集）下的路径/模块别名
 
-> - 当 `map` 用于指定模块集时，仅匹配模块标识前缀段
+> - 当 `map` 用于路径别名时，仅匹配模块标识前缀段
 > - `paths` 用于设置通用路径/模块别名，而 `map` 则用于设置指定模块（集）下的路径/模块别名
 > - 不支持 `path-fallback`
 
@@ -17,7 +17,7 @@ require.config( {
         // 指定模块（集）下的路径/模块别名
         // 覆盖通用路径/模块别名
         prefix : {
-            foo : 'baz'
+            foo : 'bar'
         }
 
     }
