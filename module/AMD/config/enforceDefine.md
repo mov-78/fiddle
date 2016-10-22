@@ -1,4 +1,4 @@
-[enforceDefine](http://requirejs.org/docs/api.html#config-enforceDefine) 选项用于设置在加载的脚本不是 AMD 模块且无对应的有效兼容性配置时，是否会抛出异常
+[enforceDefine](http://requirejs.org/docs/api.html#config-enforceDefine) 选项用于设置在请求的脚本不是 AMD 模块且无对应的有效兼容性配置时，是否会抛出异常
 
 > 以下均为无效兼容性配置：
 > - 对应的 `shim` 配置项不存在

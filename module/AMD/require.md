@@ -7,6 +7,8 @@ assert( require === requirejs ) // https://github.com/requirejs/requirejs/commit
 
 局部：
 
+> 局部 require 接受「相对模块标识」
+
 ```js
 define( [ 'require' ] , function factory( require ) {
     var mod = require( 'mod' )

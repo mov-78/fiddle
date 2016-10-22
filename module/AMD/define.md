@@ -17,7 +17,7 @@ __dependencies__
 - 必须为字面量
 - 依赖项并行加载执行，且仅当所有依赖项执行完毕后才执行当前模块
 - 预留模块标识 `require`、`exports`、`module` 走独立的解析流程（遵循 CommonJS 语义）
-- 若未指定，则默认为 `[ 'require' , 'exports' , 'module' ]` — 此时将蜕变为 CommonJS 包装模块
+- 若未指定，且模块定义至少包含一个参数，则默认为 `[ 'require' , 'exports' , 'module' ]` — 此时将蜕变为 CommonJS 包装模块
 
 __factory__
 
