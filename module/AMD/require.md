@@ -2,7 +2,7 @@
 
 ```js
 var mod = require( 'mod' )
-assert( require === requirejs )
+assert( require === requirejs ) // https://github.com/requirejs/requirejs/commit/be45948433b053921dc6a6a57bf06d04e13b3b39
 ```
 
 局部：
