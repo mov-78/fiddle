@@ -1,8 +1,8 @@
 ## 声明配置项
 
 ```js
-require.config( { /* configuration */ } )
 require.config( { /* configuration */ } ) // 合并新增配置项或覆盖已有配置项
+require( { /* configuration */ } )
 ```
 
 或：
