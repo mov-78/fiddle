@@ -40,7 +40,7 @@
 > 1. 基于静态分析递归找出目标模块所有的依赖项
 > 2. 将目标模块及其依赖项转换为标准具名 AMD 模块
 > 3. 将目标模块及转换后的依赖项合并至同一个文件
-> 4. 压缩该文件即生成对应的构建层
+> 4. 压缩该文件即生成对应的构建层（可通过 [optimize](./optimize.md) 及 [skipDirOptimize](./skipDirOptimize.md) 选项进行配置）
 
 ---
 
@@ -50,3 +50,5 @@
 - [baseUrl](./baseUrl.md)
 - [dir](./dir.md)
 - [out](./out.md)
+- [optimize](./optimize.md)
+- [skipDirOptimize](./skipDirOptimize.md)
