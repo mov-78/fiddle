@@ -14,5 +14,4 @@
 - [skipDirOptimize](./skipDirOptimize.md)
 - [normalizeDirDefines](./normalizeDirDefines.md)
 - [uglify](./uglify.md)
-- [uglify2](./uglify2.md)
 - [closure](./closure.md)
