@@ -15,5 +15,4 @@
 
 - [appDir](./appDir.md)
 - [baseUrl](./baseUrl.md)
-- [keepBuildDir](./keepBuildDir.md)
 - [out](./out.md)
