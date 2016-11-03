@@ -11,10 +11,7 @@ $ r.js -o [[key=value]...] [profile.js] # 构建模式
 
 ---
 
-两种构建模式：
-
-- 单文件构建模式（由 [out](./out.md) 选项激活）
-- 项目构建模式（由 [dir](./dir.md) 选项激活）
+![流程图](http://ocv7sq6bh.bkt.clouddn.com/r.js.png)
 
 ---
 
