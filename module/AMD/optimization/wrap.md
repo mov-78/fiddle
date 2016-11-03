@@ -11,6 +11,7 @@
     wrap : true ,
 
     // 引用外部文件
+    // 相对路径相对于构建配置文件或工作目录解析
     wrap : {
         startFile : 'path/to/start.frag' ,
         endFile : 'path/to/end.frag'
