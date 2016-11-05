@@ -9,7 +9,5 @@
 
 ---
 
-相关选项：
-
 - [config-map](../config/map.md)
 - [mainConfigFile](./mainConfigFile.md)

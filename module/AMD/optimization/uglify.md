@@ -10,6 +10,4 @@
 
 ---
 
-相关选项：
-
 - [optimize](./optimize.md)

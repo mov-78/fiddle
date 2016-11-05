@@ -37,8 +37,6 @@
 
 ---
 
-相关选项：
-
 - [appDir](./appDir.md)
 - [baseUrl](./baseUrl.md)
 - [dir](./dir.md)

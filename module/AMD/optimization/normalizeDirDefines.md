@@ -12,8 +12,6 @@
 
 ---
 
-相关选项：
-
 - [dir](./dir.md)
 - [optimize](./optimize.md)
 - [skipDirOptimize](./skipDirOptimize.md)

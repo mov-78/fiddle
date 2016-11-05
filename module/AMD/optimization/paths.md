@@ -11,7 +11,5 @@
 
 ---
 
-相关选项：
-
 - [config-paths](../config/paths.md)
 - [mainConfigFile](./mainConfigFile.md)

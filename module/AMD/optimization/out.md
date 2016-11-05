@@ -17,7 +17,5 @@
 
 ---
 
-相关选项：
-
 - [dir](./dir.md)
 - [logLevel](./logLevel.md)

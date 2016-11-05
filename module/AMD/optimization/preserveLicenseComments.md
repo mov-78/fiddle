@@ -9,6 +9,4 @@
 
 ---
 
-相关选项：
-
 - [generateSourceMaps](./generateSourceMaps.md)
