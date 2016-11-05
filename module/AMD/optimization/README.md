@@ -11,7 +11,7 @@ $ r.js -o [profile.js] [[key=value]...] # 构建模式
 
 ---
 
-<a href="http://ocv7sq6bh.bkt.clouddn.com/r.js-workflow.pdf"><img src="http://ocv7sq6bh.bkt.clouddn.com/r.js.png" alt="流程图"></a>
+![流程图](http://ocv7sq6bh.bkt.clouddn.com/r.js.svg?bust=161106.1)
 
 ---
 
