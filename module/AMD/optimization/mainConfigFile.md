@@ -9,8 +9,6 @@
 
 ---
 
-相关选项：
-
 - [baseUrl](./baseUrl.md)
 - [paths](./paths.md)
 - [map](./map.md)

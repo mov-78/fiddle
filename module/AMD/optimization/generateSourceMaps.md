@@ -10,6 +10,4 @@
 
 ---
 
-相关选项：
-
 - [preserveLicenseComments](./preserveLicenseComments.md)

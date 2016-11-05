@@ -1,4 +1,4 @@
-[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 选项用于设置模块路径解析的根路径：
+[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 用于设置模块路径解析的根路径：
 
 ```js
 require.config( {

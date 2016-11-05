@@ -1,4 +1,4 @@
-[skipDataMain](http://requirejs.org/docs/api.html#config-skipDataMain) 选项用于设置是否自动加载执行 `data-main` 属性中指定的「入口模块」：
+[skipDataMain](http://requirejs.org/docs/api.html#config-skipDataMain) 用于设置是否自动加载执行 `data-main` 属性中指定的「入口模块」：
 
 ```js
 require.config( {

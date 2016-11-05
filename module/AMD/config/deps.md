@@ -1,4 +1,4 @@
-[deps](http://requirejs.org/docs/api.html#config-deps) 选项用于设置配置时依赖项
+[deps](http://requirejs.org/docs/api.html#config-deps) 用于设置配置时依赖项
 
 ```html
 <script>
@@ -9,4 +9,4 @@ var require = {
 </script>
 ```
 
-> 相关配置项：[callback](http://requirejs.org/docs/api.html#config-callback)
+> 相关配置项：[callback](./callback.md)

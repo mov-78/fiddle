@@ -1,4 +1,4 @@
-[urlArgs](http://requirejs.org/docs/api.html#config-urlArgs) 选项用于设置资源请求查询字符串
+[urlArgs](http://requirejs.org/docs/api.html#config-urlArgs) 用于设置资源请求查询字符串
 
 ```js
 require.config( {

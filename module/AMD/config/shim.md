@@ -1,4 +1,4 @@
-[shim](http://requirejs.org/docs/api.html#config-shim) 选项用于兼容非 AMD 模块
+[shim](http://requirejs.org/docs/api.html#config-shim) 用于兼容非 AMD 模块
 
 ```js
 require.config( {
@@ -22,4 +22,4 @@ require.config( {
 } )
 ```
 
-> 相关配置项：[enforceDefine](http://requirejs.org/docs/api.html#config-enforceDefine)
+> 相关配置项：[enforceDefine](./enforceDefine.md)

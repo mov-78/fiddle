@@ -14,7 +14,5 @@
 
 ---
 
-相关选项：
-
 - [baseUrl](./baseUrl.md)
 - [dir](./dir.md)
