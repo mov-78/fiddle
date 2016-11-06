@@ -19,7 +19,7 @@ $ r.js -o [profile.js] [[key=value]...] # 构建模式
 
 ---
 
-<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/r.js-workflow.svg?bust=161106.1" alt="流程图"></p>
+<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/rjs-optimization-workflow.svg?bust=161106.1" alt="流程图"></p>
 
 ---
 
