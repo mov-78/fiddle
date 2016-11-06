@@ -9,9 +9,14 @@ $ r.js -convert path/to/commonjs/dir path/to/output/dir # CommonJS 转 AMD
 $ r.js -o [profile.js] [[key=value]...] # 构建模式
 ```
 
+构建配置有三个来源（按优先级排序）：
+
+1. 命令行参数
+2. 构建配置文件
+3. mainConfigFile
 ---
 
-<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/r.js.svg?bust=161106.2" alt="流程图"></p>
+<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/r.js-workflow.svg?bust=161106.1" alt="流程图"></p>
 
 ---
 
