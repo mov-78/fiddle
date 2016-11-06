@@ -3,8 +3,8 @@
 ```html
 <script>
 var require = {
-    deps : [ 'main' ] ,
-    callback : function ( main ) {
+    deps : [ 'config' ] ,
+    callback : function ( config ) {
     }
 }
 </script>
