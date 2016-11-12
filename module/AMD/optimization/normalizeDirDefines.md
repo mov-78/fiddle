@@ -9,6 +9,7 @@
 
 > - 当 `optimize == 'none'` 时，自动设为 `'skip'`
 > - 当 `optimize != 'none' && skipDirOptimize == false` 时，自动设为 `'all'`
+> - 待构建脚本始终会被转换为标准 AMD 模块
 
 ---
 
