@@ -1,8 +1,8 @@
-[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 用于设置模块路径解析的根路径：
+[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 用于设置「顶级模块标识」根路径：
 
 ```js
 require.config( {
-    baseUrl : 'root/path' // baseUrl 相对于当前 HTML 文档解析
+    baseUrl : 'root/path' // baseUrl 本身相对于当前 HTML 文档解析
 } )
 ```
 
