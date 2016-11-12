@@ -1,6 +1,6 @@
-[context](http://requirejs.org/docs/api.html#config-context) 用于指定「解析上下文」：
+[context](http://requirejs.org/docs/api.html#config-context) 用于指定「加载上下文」：
 
-> 每个「解析上下文」维护了一组独立的配置及模块解析记录
+> 每个「加载上下文」维护了一组独立的配置集及其对应的模块解析记录
 
 ```js
 var req1 = require.config( {
@@ -12,7 +12,7 @@ var req2 = require.config( {
     baseUrl : 'js/v2'
 } )
 
-require( [ 'main' ] ) // 等同于 req1( [ 'main' ] )
+req1( [ 'main' ] ) // 等同于 require( [ 'main' ] )
 
 req2( [ 'require' , 'alpha' ] , function ( require , alpha ) {
     require( [ 'beta' ] ) // 等同于 req2( [ 'beta' ] )
