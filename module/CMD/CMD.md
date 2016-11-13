@@ -19,7 +19,7 @@ define( id , deps , factory )   // 具名模块 - Modules/Transport
 
 __require__
 
-`require` 方法用于加载其他模块
+`require` 方法用于加载模块
 
 - `require( id )` - 同步阻塞加载模块
 - `require.async( ids , callback )` - 异步回调加载模块
