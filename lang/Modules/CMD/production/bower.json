@@ -1,7 +1,0 @@
-{
-  "name": "fiddle",
-  "homepage": "https://github.com/pwnn/fiddle",
-  "dependencies": {
-    "seajs": "~3.0.0"
-  }
-}
