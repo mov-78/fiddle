@@ -1,8 +1,8 @@
 ```js
 define.cmd // 空对象，可用于判断当前环境中是否存在 CMD 加载器
 
-define( factory )               // 匿名模块 - Modules/Wrapping
-define( id , deps , factory )   // 具名模块 - Modules/Transport
+define( factory )               // 匿名模块 — Modules/Wrapping
+define( id , deps , factory )   // 具名模块 — Modules/Transport
 ```
 
 ## id
@@ -21,9 +21,9 @@ __require__
 
 `require` 方法用于加载模块
 
-- `require( id )` - 同步阻塞加载
-- `require.async( ids , callback )` - 异步回调加载
-- `require.resolve( id )` - 使用模块系统内部的路径解析机制来获取模块的绝对路径
+- `require( id )` — 同步阻塞加载
+- `require.async( ids , callback )` — 异步回调加载
+- `require.resolve( id )` — 使用模块系统内部的路径解析机制来获取模块的绝对路径
 
 > 在开发阶段，书写 CMD 模块时需要遵循一些简单的[约定](https://github.com/seajs/seajs/issues/259)
 
@@ -38,10 +38,10 @@ __module__
 
 `module` 对象用于获取当前模块的元数据
 
-- `module.id` - 当前模块在模块系统内部的唯一标识（等价于 `module.uri`）
-- `module.uri` - 使用模块系统内部的路径解析机制得到的当前模块的绝对路径
-- `module.dependencies` - 当前模块的依赖项
-- `module.exports` - 当前模块对外提供的接口
+- `module.id` — 当前模块在模块系统内部的唯一标识（等价于 `module.uri`）
+- `module.uri` — 使用模块系统内部的路径解析机制得到的当前模块的绝对路径
+- `module.dependencies` — 当前模块的依赖项
+- `module.exports` — 当前模块对外提供的接口
 
 ---
 

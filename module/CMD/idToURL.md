@@ -2,7 +2,7 @@
 
 相对标识相对于当前模块解析
 
-> 相对标识仅出现在 `require`、`require.async` 及 `deps` 数组中
+> 相对标识仅出现在 `require` 及 `require.async` 中
 
 ## 顶级标识
 
