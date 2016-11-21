@@ -20,6 +20,8 @@ seajs.config( {
 } )
 ```
 
+> 结构化匹配
+
 ## paths
 
 路径别名集
@@ -31,6 +33,8 @@ seajs.config( {
     }
 } )
 ```
+
+> 结构化匹配
 
 ## vars
 
@@ -44,6 +48,8 @@ seajs.config( {
 } )
 ```
 
+> 非结构化匹配（字符串匹配）
+
 ## map
 
 路径映射集
@@ -56,6 +62,8 @@ seajs.config( {
 } )
 ```
 
+> 非结构化匹配（字符串匹配）
+
 ## preload
 
 预加载项
@@ -63,12 +71,10 @@ seajs.config( {
 ```js
 seajs.config( {
     preload : [
-        typeof JSON === 'undefined' ? 'json' : ''
+        typeof JSON === 'undefined' ? 'json' : '' // 空字符串会被忽略掉
     ]
 } )
 ```
-
-> `preload` 中的空字符串会被忽略掉
 
 ## debug
 
