@@ -29,3 +29,7 @@ seajs.require:Function
 ```js
 seajs.data:Object
 ```
+
+---
+
+- [Sea.js 的调试接口](https://github.com/seajs/seajs/issues/263)
