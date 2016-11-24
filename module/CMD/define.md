@@ -1,8 +1,8 @@
 ```js
 define.cmd // 空对象，可用于判断当前环境中是否存在 CMD 加载器
 
-define( factory )               // 匿名模块 — Modules/Wrapping
-define( id , deps , factory )   // 具名模块 — Modules/Transport
+define( factory )               // 匿名模块
+define( id , deps , factory )   // 具名模块
 ```
 
 ## id
