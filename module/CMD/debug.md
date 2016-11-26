@@ -1,6 +1,6 @@
 ## data
 
-通过 `seajs.data`，可以查看 `seajs` 所有配置以及一些内部变量的值
+当前模块系统中的配置信息及部分暴露的内部变量
 
 ```js
 seajs.data:Object
@@ -20,14 +20,6 @@ seajs.cache:Object
 
 ```js
 seajs.resolve:Function
-```
-
-## require
-
-全局的 `require` 方法，可用来直接获取模块接口
-
-```js
-seajs.require:Function
 ```
 
 ---
