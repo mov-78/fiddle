@@ -49,3 +49,4 @@ __module__
 - [CMD 模块定义规范](https://github.com/seajs/seajs/issues/242)
 - [require 书写约定](https://github.com/seajs/seajs/issues/259)
 - [为什么要有约定和构建工具](https://github.com/seajs/seajs/issues/426)
+- [src/module.js#L300](https://github.com/seajs/seajs/blob/3.0.0/src/module.js#L300)

@@ -90,3 +90,4 @@ seajs.config( {
 ---
 
 - [配置](https://github.com/seajs/seajs/issues/262)
+- [src/config.js#L31](https://github.com/seajs/seajs/blob/3.0.0/src/config.js#L31)

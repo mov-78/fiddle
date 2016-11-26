@@ -24,3 +24,4 @@
 
 - [模块标识](https://github.com/seajs/seajs/issues/258)
 - [Modules/1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)
+- [src/util-path.js#L143](https://github.com/seajs/seajs/blob/3.0.0/src/util-path.js#L143)
