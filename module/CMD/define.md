@@ -23,7 +23,7 @@ __require__
 
 - `require( id )` — 同步阻塞加载
 - `require.async( ids , callback )` — 异步回调加载
-- `require.resolve( id )` — 使用模块系统内部的路径解析机制来获取指定模块标识对应的绝对路径
+- `require.resolve( id )` — 利用模块系统内部的路径解析机制来获取指定模块标识对应的绝对路径
 
 > 在开发阶段，书写 CMD 模块时需要遵循一些简单的[约定](https://github.com/seajs/seajs/issues/259)
 
@@ -39,12 +39,13 @@ __module__
 `module` 对象用于获取当前模块的元数据
 
 - `module.id` — 当前模块在模块系统内部的唯一标识（等价于 `module.uri`）
-- `module.uri` — 使用模块系统内部的路径解析机制得到的当前模块的绝对路径
+- `module.uri` — 利用模块系统内部的路径解析机制得到的当前模块的绝对路径
 - `module.dependencies` — 当前模块的依赖项
 - `module.exports` — 当前模块对外提供的接口
 
 ---
 
+- [模块标识](./id.md)
 - [CMD 模块定义规范](https://github.com/seajs/seajs/issues/242)
 - [require 书写约定](https://github.com/seajs/seajs/issues/259)
 - [为什么要有约定和构建工具](https://github.com/seajs/seajs/issues/426)

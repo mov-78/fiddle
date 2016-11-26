@@ -71,7 +71,7 @@ seajs.config( {
 ```js
 seajs.config( {
     preload : [
-        typeof JSON === 'undefined' ? 'json' : '' // 空字符串会被忽略掉
+        typeof JSON === 'undefined' ? 'json-shim' : '' // 空字符串会被忽略掉
     ]
 } )
 ```

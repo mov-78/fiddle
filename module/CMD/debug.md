@@ -1,3 +1,11 @@
+## data
+
+通过 `seajs.data`，可以查看 `seajs` 所有配置以及一些内部变量的值
+
+```js
+seajs.data:Object
+```
+
 ## cache
 
 当前模块系统中的所有模块信息
@@ -20,14 +28,6 @@ seajs.resolve:Function
 
 ```js
 seajs.require:Function
-```
-
-## data
-
-通过 `seajs.data`，可以查看 `seajs` 所有配置以及一些内部变量的值
-
-```js
-seajs.data:Object
 ```
 
 ---

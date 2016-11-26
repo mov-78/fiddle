@@ -23,3 +23,4 @@
 ---
 
 - [模块标识](https://github.com/seajs/seajs/issues/258)
+- [Modules/1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)
