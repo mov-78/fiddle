@@ -43,7 +43,7 @@ seajs.config( {
 ```js
 seajs.config( {
     vars : {
-        locale : 'zh_CN'
+        locale : 'zh_CN' // require( 'i18n/{locale}' )
     }
 } )
 ```
