@@ -2,12 +2,12 @@
 
 ```js
 var mod = require( 'mod' )
-assert( require === requirejs ) // https://github.com/requirejs/requirejs/commit/be45948433b053921dc6a6a57bf06d04e13b3b39
+assert( require === requirejs )
 ```
 
-局部：
+> [be45948433b053921dc6a6a57bf06d04e13b3b39]( https://github.com/requirejsk/requirejs/commit/be45948433b053921dc6a6a57bf06d04e13b3b39)
 
-> 局部 require 接受「相对模块标识」
+局部：
 
 ```js
 define( [ 'require' ] , function factory( require ) {
@@ -15,11 +15,13 @@ define( [ 'require' ] , function factory( require ) {
 } )
 ```
 
+> 局部 require 接受「相对模块标识」
+
 ---
 
 同步：
 
-> AMD 规范规定，在同步加载模块定义尚未执行的模块时，必须抛出异常
+> AMD 规范规定，在同步加载尚未执行的模块时，必须抛出异常
 
 ```js
 var mod = require( 'mod' ) // 全局同步
@@ -47,4 +49,4 @@ define( [ 'require' ] , function factory( require ) {
 
 - [require](https://github.com/amdjs/amdjs-api/blob/master/require.md)
 - [context](http://requirejs.org/docs/api.html#config-context)
-- [CommonJS Modules/1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1#Require)
+- [CommonJS Modules/1.1.1#Require](http://wiki.commonjs.org/wiki/Modules/1.1.1#Require)
