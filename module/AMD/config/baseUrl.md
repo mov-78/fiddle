@@ -1,13 +1,13 @@
-[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 用于设置「顶级模块标识」根路径：
+[baseUrl](http://requirejs.org/docs/api.html#config-baseUrl) 用于设置模块系统的「基础路径」：
 
 ```js
 require.config( {
-    baseUrl : 'root/path' // baseUrl 本身相对于当前 HTML 文档解析
+    baseUrl : 'root/path'
 } )
 ```
 
-`baseUrl` 来源（依优先级排序）：
+「基础路径」来源（依优先级排序）：
 
-- 通过 `require.config` 显式配置
-- 通过 [data-main](../data-main.md) 属性隐式推导
-- 默认相对于当前 HTML 文档解析
+- 通过 `baseUrl` 选项进行配置
+- 通过 [data-main](../data-main.md) 属性推导
+- 默认相对于当前文档解析

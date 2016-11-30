@@ -1,4 +1,4 @@
-[callback](http://requirejs.org/docs/api.html#config-callback) 用于设置配置时依赖项加载执行成功回调
+[callback](http://requirejs.org/docs/api.html#config-callback) 用于设置配置时依赖项执行回调
 
 ```html
 <script>
