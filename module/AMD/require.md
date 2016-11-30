@@ -5,8 +5,6 @@ var mod = require( 'mod' )
 assert( require === requirejs )
 ```
 
-> [be45948433b053921dc6a6a57bf06d04e13b3b39]( https://github.com/requirejsk/requirejs/commit/be45948433b053921dc6a6a57bf06d04e13b3b39)
-
 局部：
 
 ```js
