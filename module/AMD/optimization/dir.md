@@ -14,3 +14,4 @@
 - [appDir](./appDir.md)
 - [baseUrl](./baseUrl.md)
 - [out](./out.md)
+- [fileExclusionRegExp](./fileExclusionRegExp.md)
