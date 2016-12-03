@@ -45,6 +45,12 @@ define( [ 'require' ] , function factory( require ) {
 
 ---
 
+__require.toUrl( id )__
+
+利用模块系统的内部机制来进行路径解析
+
+---
+
 - [require](https://github.com/amdjs/amdjs-api/blob/master/require.md)
 - [context](http://requirejs.org/docs/api.html#config-context)
 - [CommonJS Modules/1.1.1#Require](http://wiki.commonjs.org/wiki/Modules/1.1.1#Require)
