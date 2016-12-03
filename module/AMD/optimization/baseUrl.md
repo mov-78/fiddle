@@ -7,7 +7,7 @@
     baseUrl : 'js' ,
 
     // 在「项目构建模式」下，若未设置 appDir，则 baseUrl 即为源目录
-    dir : '../build'
+    dir : '../dist'
 
 } )
 ```

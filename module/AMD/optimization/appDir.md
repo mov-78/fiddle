@@ -7,7 +7,7 @@
 
     // 设置 appDir 时必须同时设置 baseUrl 及 dir 选项
     baseUrl : 'js' ,
-    dir : '../build'
+    dir : '../dist'
 
 } )
 ```
