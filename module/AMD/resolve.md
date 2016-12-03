@@ -17,3 +17,4 @@
 - [config/baseUrl](./config/baseUrl.md)
 - [config/map](./config/map.md)
 - [config/paths](./config/paths.md)
+- [config/urlArgs](./config/urlArgs.md)
