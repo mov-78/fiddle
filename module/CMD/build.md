@@ -1,4 +1,4 @@
-![构建流程](http://ocv7sq6bh.bkt.clouddn.com/CMD-build-workflow.svg?v=20161122.01)
+![构建流程](https://cdn.rawgit.com/pwnn/img/38924507191127543ad80ca2b628e4aec6c7aa01/fiddle/module/CMD/build-workflow.svg)
 
 ---
 

@@ -25,7 +25,7 @@ $ r.js -o [profile.js] [[key=value]...]
 
 > 构建模式包含「单文件构建模式」及「项目构建模式」：
 
-<p align="center"><img src="https://cdn.rawgit.com/pwnn/img/master/fiddle/module/AMD/rjs-workflow.svg?v=20161203.1" alt="流程图"></p>
+<p align="center"><img src="https://cdn.rawgit.com/pwnn/img/355fc57e12da3b24e037406cd5bd908b779b994a/fiddle/module/AMD/rjs-workflow.svg" alt="流程图"></p>
 
 ---
 

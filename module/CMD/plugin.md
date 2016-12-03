@@ -1,4 +1,4 @@
-![模块生命周期](https://cdn.rawgit.com/pwnn/img/master/fiddle/module/CMD/lifecycle.svg?20161128.1)
+![模块生命周期](https://cdn.rawgit.com/pwnn/img/7a12ac86b960d8c83acf125a262fc920d14f1849/fiddle/module/CMD/lifecycle.svg)
 
 ```js
 seajs.on( type , listener )
