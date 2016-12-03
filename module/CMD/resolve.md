@@ -1,3 +1,7 @@
+![解析流程](https://cdn.rawgit.com/pwnn/img/85512e8bc1c76c83167856d89b596fc70914e5d2/fiddle/module/CMD/resolve.svg)
+
+---
+
 ## 相对标识
 
 相对标识相对于当前模块解析
