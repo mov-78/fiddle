@@ -10,8 +10,8 @@
 
 ---
 
-- [baseUrl](./baseUrl.md)
-- [paths](./paths.md)
-- [map](./map.md)
-- [shim](./shim.md)
-- [deps](./deps.md)
+- [config-baseUrl](../config/baseUrl.md)
+- [config-paths](../config/paths.md)
+- [config-map](../config/map.md)
+- [config-shim](../config/shim.md)
+- [config-deps](../config/deps.md)
