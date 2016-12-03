@@ -1,4 +1,4 @@
-[map](http://requirejs.org/docs/api.html#config-map) 用于设置指定模块（集）下的路径/模块别名：
+[map](http://requirejs.org/docs/api.html#config-map) 用于设置指定模块（集）下的路径/模块别名
 
 > - 结构化匹配
 > - `paths` 用于设置通用路径/模块别名，而 `map` 则用于设置指定模块（集）下的路径/模块别名

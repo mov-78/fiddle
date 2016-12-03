@@ -1,4 +1,4 @@
-[context](http://requirejs.org/docs/api.html#config-context) 用于指定「加载上下文」：
+[context](http://requirejs.org/docs/api.html#config-context) 用于指定「加载上下文」
 
 > 每个「加载上下文」维护了一组独立的配置集及其对应的模块解析记录
 
