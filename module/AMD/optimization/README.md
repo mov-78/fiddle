@@ -31,4 +31,4 @@ $ r.js -o [profile.js] [[key=value]...]
 
 - [r.js](https://github.com/requirejs/r.js)
 - [Optimization](http://requirejs.org/docs/optimization.html)
-- [example.build.js](https://github.com/requirejs/r.js/blob/master/build/example.build.js)
+- [example.build.js](https://github.com/requirejs/r.js/blob/2.3.2/build/example.build.js)
