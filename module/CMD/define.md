@@ -21,7 +21,7 @@ __require__
 
 `require` 方法用于加载模块
 
-- `require( id )` — 同步阻塞加载
+- `require( id )` — （伪）同步阻塞加载
 - `require.async( ids , callback )` — 异步回调加载
 - `require.resolve( id )` — 利用模块系统内部的路径解析机制来获取指定模块标识对应的绝对路径
 
@@ -45,7 +45,6 @@ __module__
 
 ---
 
-- [模块标识](./id.md)
 - [CMD 模块定义规范](https://github.com/seajs/seajs/issues/242)
 - [require 书写约定](https://github.com/seajs/seajs/issues/259)
 - [为什么要有约定和构建工具](https://github.com/seajs/seajs/issues/426)
