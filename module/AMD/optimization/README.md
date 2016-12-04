@@ -29,6 +29,10 @@ $ r.js -o [profile.js] [[key=value]...]
 
 ---
 
+![相对路径解析原则](https://cdn.rawgit.com/pwnn/img/61d112d4a028119fc3490990b41183694f40c8bf/fiddle/module/AMD/rjs-relative-path.svg)
+
+---
+
 - [r.js](https://github.com/requirejs/r.js)
 - [Optimization](http://requirejs.org/docs/optimization.html)
 - [example.build.js](https://github.com/requirejs/r.js/blob/2.3.2/build/example.build.js)
