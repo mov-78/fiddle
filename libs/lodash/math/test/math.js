@@ -36,6 +36,8 @@ describe( 'lodash/math' , function () {
 
         _.round( 0.4 ).should.equal( 0 )
         _.round( 0.5 ).should.equal( 1 )
+        _.round( 0.04 , 1 ).should.equal( 0.0 )
+        _.round( 0.05 , 1 ).should.equal( 0.1 )
 
     } )
 
@@ -52,10 +54,10 @@ describe( 'lodash/math' , function () {
         const array = [ 3 , 1 , 2 ]
 
         _.min( array ).should.equal( 1 )
-        _.minBy( array , value => value ).should.equal( 1 )
+        _.minBy( array , _.identity ).should.equal( 1 )
 
         _.max( array ).should.equal( 3 )
-        _.maxBy( array , value => value ).should.equal( 3 )
+        _.maxBy( array , _.identity ).should.equal( 3 )
 
     } )
 
@@ -72,10 +74,10 @@ describe( 'lodash/math' , function () {
         const array = [ 1 , 2 , 3 , 4 ]
 
         _.mean( array ).should.equal( 2.5 )
-        _.meanBy( array , value => value ).should.equal( 2.5 )
+        _.meanBy( array , _.identity ).should.equal( 2.5 )
 
         _.sum( array ).should.equal( 10 )
-        _.sumBy( array , value => value ).should.equal( 10 )
+        _.sumBy( array , _.identity ).should.equal( 10 )
 
     } )
 
