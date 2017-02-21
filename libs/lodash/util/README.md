@@ -20,6 +20,10 @@ $ npm test
 
 ---
 
+- [defaultTo( value , defaultValue )](https://lodash.com/docs#defaultTo)
+
+---
+
 - [range( [start=0] , end , [step=±1] )](https://lodash.com/docs#range)
 - [rangeRight( [start=0] , end , [step=±1] )](https://lodash.com/docs#rangeRight)
 
@@ -66,3 +70,11 @@ $ npm test
 ---
 
 - [nthArg( [n=0] )](https://lodash.com/docs#nthArg)
+
+---
+
+- [stubTrue()](https://lodash.com/docs#stubTrue)
+- [stubFalse()](https://lodash.com/docs#stubFalse)
+- [stubString()](https://lodash.com/docs#stubString)
+- [stubObject()](https://lodash.com/docs#stubObject)
+- [stubArray()](https://lodash.com/docs#stubArray)
