@@ -36,6 +36,7 @@ describe( 'lodash/object' , function () {
             .should.deep.equal( { a : 0 , b : 1 } )
         _.extend( {} , { a : 0 , b : 1 } , _.create( { a : 2 , c : 3 } ) )
             .should.deep.equal( { a : 2 , b : 1 , c : 3 } )
+        _.extend.should.equal( _.assignIn )
 
         _.assignWith(
             {} ,
@@ -49,6 +50,7 @@ describe( 'lodash/object' , function () {
             _.create( { a : 2 , c : 3 } ) ,
             ( objVal , srcVal , key , obj , source ) => srcVal
         ).should.deep.equal( { a : 2 , b : 1 , c : 3 } )
+        _.extendWith.should.equal( _.assignInWith )
 
     } )
     it( 'defaults , defaultsDeep' , function () {
@@ -191,6 +193,9 @@ describe( 'lodash/object' , function () {
 
         const obj = _.create( { foo : 'bar' } , { baz : 'qux' } )
 
+        _.entries.should.equal( _.toPairs )
+        _.entriesIn.should.equal( _.toPairsIn )
+
         _.toPairs( obj )
             .should.have.deep.members( [ [ 'baz' , 'qux' ] ] )
         _.toPairsIn( obj )
@@ -311,6 +316,7 @@ describe( 'lodash/object' , function () {
 
         _.invoke( obj , 'foo.bar' ).should.equal( 'tinted' )
         obj.foo.bar.called.should.be.true
+        obj.foo.bar.callCount.should.equal( 1 )
 
         _.invoke( obj , 'not.exist' ) // 若方法不存在不会抛出异常
 
