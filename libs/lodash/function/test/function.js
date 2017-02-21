@@ -40,9 +40,9 @@ describe( 'lodash/function' , function () {
 
         spy.reset()
 
-        _.bind( spy , ctxt , _ , 2 )()
+        _.bind( spy , ctxt , _ , 2 )( 1 )
         spy.should.have.been.calledOn( ctxt )
-        spy.should.have.been.calledWithExactly( undefined , 2 )
+        spy.should.have.been.calledWithExactly( 1 , 2 )
 
     } )
 
