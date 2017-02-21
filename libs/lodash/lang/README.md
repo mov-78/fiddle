@@ -74,3 +74,12 @@ $ npm test
 - [gt( value , other )](https://lodash.com/docs#gt)
 - [gte( value , other )](https://lodash.com/docs#gte)
 - [eq( value , other )](https://lodash.com/docs#eq)
+
+---
+
+- [isNative( method )](https://lodash.com/docs#isNative)
+
+---
+
+- [isArrayBuffer( value )](https://lodash.com/docs#isArrayBuffer)
+- [isTypedArray( value )](https://lodash.com/docs#isTypedArray)
