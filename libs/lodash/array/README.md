@@ -9,6 +9,10 @@ $ npm test
 
 ---
 
+- [nth( array , [index=0] )](https://lodash.com/docs#nth)
+
+---
+
 - [first( array )](https://lodash.com/docs#head)
 - [last( array )](https://lodash.com/docs#last)
 - [initial( array )](https://lodash.com/docs#initial)
@@ -58,7 +62,7 @@ $ npm test
 
 ---
 
-- [chunk( array , [size=0] )](https://lodash.com/docs#chunk)
+- [chunk( array , [size=1] )](https://lodash.com/docs#chunk)
 
 ---
 

@@ -5,6 +5,15 @@ before( chai.should )
 
 describe( 'lodash/array' , function () {
 
+    // nth( array , [index=0] )
+    it( 'nth' , function () {
+        const array = [ 1 , 2 , 3 ]
+        _.nth( array ).should.equal( 1 )
+        _.nth( array , 1 ).should.equal( 2 )
+        _.nth( array , -1 ).should.equal( 3 )
+    } )
+
+
     //
     // first( array )
     // last( array )
@@ -136,7 +145,7 @@ describe( 'lodash/array' , function () {
     // pullAllWith( array , values , comparator )
     //
 
-    it( 'pull , pullAll , pullAllBy , pullAllWith , pullAt' , function () {
+    it( 'pull , pullAt , pullAll , pullAllBy , pullAllWith' , function () {
 
         let array
 
@@ -188,14 +197,13 @@ describe( 'lodash/array' , function () {
     } )
 
 
-    // chunk( array , [size=0] )
+    // chunk( array , [size=1] )
     it( 'chunk' , function () {
 
         const array = [ 1 , 2 , 3 ]
 
         _.chunk( array )
-            .should.be.an( 'array' )
-            .that.is.empty
+            .should.deep.equal( [ [ 1 ] , [ 2 ] , [ 3 ] ] )
 
         _.chunk( array , 1 )
             .should.deep.equal( [ [ 1 ] , [ 2 ] , [ 3 ] ] )
@@ -317,8 +325,13 @@ describe( 'lodash/array' , function () {
 
     // fromPairs( array )
     it( 'fromPairs' , function () {
+
         _.fromPairs( [ [ 'foo' , 1 ] , [ 'bar' , 2 ] ] )
             .should.deep.equal( { foo : 1 , bar : 2 } )
+
+        _.fromPairs( _.toPairs( { foo : 1 , bar : 2 } ) )
+            .should.deep.equal( { foo : 1 , bar : 2 } )
+
     } )
 
 
@@ -367,7 +380,7 @@ describe( 'lodash/array' , function () {
 
         const array = [ 1 , 2 , 3 ]
 
-        _.reverse( array )
+        _.reverse( array ).should.deep.equal( [ 3 , 2 , 1 ] )
         array.should.deep.equal( [ 3 , 2 , 1 ] )
 
     } )
