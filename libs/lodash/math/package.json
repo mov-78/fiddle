@@ -7,7 +7,7 @@
     "chai": "~3.5.0",
     "eslint": "~3.2.2",
     "eslint-config-pwn": "~5.0.4",
-    "lodash": "~4.7.0",
+    "lodash": "~4.17.0",
     "mocha": "~2.4.5"
   }
 }
