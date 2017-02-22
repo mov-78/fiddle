@@ -24,13 +24,13 @@ $ npm test
 - `toContain( value )`
 - `toBeLessThan( value )`
 - `toBeGreaterThan( value )`
-- `toBeCloseTo( value , [precesion = 2] )`
+- `toBeCloseTo( value , [precision = 2] )`
 - `toThrow()`
 - `toThrowError( [constructor] , [string|regex] )`
 
 ---
 
-Hooks:
+钩子:
 
 ```js
 describe( 'Hooks' , function () {
@@ -88,7 +88,7 @@ xdescribe( 'Pending test suite' , () => null )
 - `jasmine.createSpy( [identity] )`
 - `jasmine.createSpyObj( [identity] , methodNames )`
 
-`call` 策略：
+存根行为：
 
 - `spyOn( obj , methodName ).and.callThrough()`
 - `spyOn( obj , methodName ).and.stub()`

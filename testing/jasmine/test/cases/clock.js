@@ -5,9 +5,7 @@ describe( 'Manually ticking the Jasmine Clock' , function () {
         jasmine.clock().install()
     } )
 
-    afterEach( function () {
-        jasmine.clock().uninstall()
-    } )
+    afterEach( jasmine.clock().uninstall )
 
     it( 'causes a timeout to be called synchronously' , function () {
 
@@ -40,13 +38,8 @@ describe( 'Manually ticking the Jasmine Clock' , function () {
 
 describe( 'Mocking a Date object' , function () {
 
-    beforeEach( function () {
-        jasmine.clock().install()
-    } )
-
-    afterEach( function () {
-        jasmine.clock().uninstall()
-    } )
+    beforeEach( jasmine.clock().install )
+    afterEach( jasmine.clock().uninstall )
 
     it( 'mocks the current date' , function () {
 

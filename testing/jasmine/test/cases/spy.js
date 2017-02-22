@@ -32,7 +32,7 @@ describe( 'A spy' , function () {
     //    - toHaveBeenCalled()
     //    - toHaveBeenCalledTimes( n )
     //    - toHaveBeenCalledWith( ...args )
-    it( 'tracks all calls to it' , function () {
+    it( 'tracks calls' , function () {
 
         expect( foo.setBar ).toHaveBeenCalled()
         expect( foo.setBar ).toHaveBeenCalledTimes( args.length )
@@ -298,7 +298,7 @@ describe( 'A spy' , function () {
 // spy.calls 记录
 //
 
-describe( 'A spy' , function () {
+describe( 'spy.calls' , function () {
 
     let foo
     let bar = null
@@ -316,7 +316,7 @@ describe( 'A spy' , function () {
     } )
 
     // calls.any()
-    it( 'tracks if it was called at all' , function () {
+    it( 'any' , function () {
 
         expect( foo.setBar.calls.any() ).toBeFalsy()
 
@@ -326,7 +326,7 @@ describe( 'A spy' , function () {
     } )
 
     // calls.count()
-    it( 'tracks the number of times it was called' , function () {
+    it( 'count' , function () {
 
         expect( foo.setBar.calls.count() ).toEqual( 0 )
 
@@ -337,7 +337,7 @@ describe( 'A spy' , function () {
     } )
 
     // calls.argsFor( index )
-    it( 'trakcs the arguments of each call' , function () {
+    it( 'argsFor' , function () {
 
         foo.setBar( 'foo' )
         foo.setBar( 'bar' , 'baz' )
@@ -348,7 +348,7 @@ describe( 'A spy' , function () {
     } )
 
     // calls.allArgs()
-    it( 'trakcs the arguments of all calls' , function () {
+    it( 'allArgs' , function () {
 
         foo.setBar( 'foo' )
         foo.setBar( 'bar' , 'baz' )
@@ -361,7 +361,7 @@ describe( 'A spy' , function () {
     // calls.all()
     // calls.first()
     // calls.mostRecent()
-    it( 'tracks the arguments, return value and context of all calls' , function () {
+    it( 'all , first , mostRecent' , function () {
 
         const ctxt = {}
 
@@ -391,7 +391,7 @@ describe( 'A spy' , function () {
     } )
 
     // calls.reset()
-    it( 'can be reset' , function () {
+    it( 'reset' , function () {
 
         foo.setBar( 'baz' )
         expect( foo.setBar ).toHaveBeenCalled()
