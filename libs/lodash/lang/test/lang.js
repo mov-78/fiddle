@@ -31,6 +31,8 @@ describe( 'lodash/lang' , function () {
     // isWeakSet( value )
     // isMap( value )
     // isWeakMap( value )
+    // isArrayBuffer( value )
+    // isTypedArray( value )
     //
 
     it( 'isNull , isUndefined , isNil' , function () {
@@ -156,6 +158,20 @@ describe( 'lodash/lang' , function () {
         _.isWeakSet( new WeakSet ).should.be.true
         _.isMap( new Map ).should.be.true
         _.isWeakMap( new WeakMap ).should.be.true
+    } )
+    it( 'isArrayBuffer , isTypedArray' , function () {
+
+        _.isArrayBuffer( new ArrayBuffer ).should.be.true
+
+        _.isTypedArray( new Int8Array ).should.be.true
+        _.isTypedArray( new Int16Array ).should.be.true
+        _.isTypedArray( new Int32Array ).should.be.true
+        _.isTypedArray( new Uint8Array ).should.be.true
+        _.isTypedArray( new Uint16Array ).should.be.true
+        _.isTypedArray( new Uint32Array ).should.be.true
+        _.isTypedArray( new Float32Array ).should.be.true
+        _.isTypedArray( new Float64Array ).should.be.true
+
     } )
 
 
@@ -428,27 +444,6 @@ describe( 'lodash/lang' , function () {
     it( 'isNative' , function () {
         _.isNative( Array.prototype.push ).should.be.true
         _.isNative( _.isNative ).should.be.false
-    } )
-
-
-    //
-    // isArrayBuffer( value )
-    // isTypedArray( value )
-    //
-
-    it( 'isArrayBuffer , isTypedArray' , function () {
-
-        _.isArrayBuffer( new ArrayBuffer ).should.be.true
-
-        _.isTypedArray( new Int8Array ).should.be.true
-        _.isTypedArray( new Int16Array ).should.be.true
-        _.isTypedArray( new Int32Array ).should.be.true
-        _.isTypedArray( new Uint8Array ).should.be.true
-        _.isTypedArray( new Uint16Array ).should.be.true
-        _.isTypedArray( new Uint32Array ).should.be.true
-        _.isTypedArray( new Float32Array ).should.be.true
-        _.isTypedArray( new Float64Array ).should.be.true
-
     } )
 
 } )

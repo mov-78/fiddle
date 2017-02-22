@@ -32,6 +32,8 @@ $ npm test
 - [isWeakSet( value )](https://lodash.com/docs#isWeakSet)
 - [isMap( value )](https://lodash.com/docs#isMap)
 - [isWeakMap( value )](https://lodash.com/docs#isWeakMap)
+- [isArrayBuffer( value )](https://lodash.com/docs#isArrayBuffer)
+- [isTypedArray( value )](https://lodash.com/docs#isTypedArray)
 
 ---
 
@@ -78,8 +80,3 @@ $ npm test
 ---
 
 - [isNative( method )](https://lodash.com/docs#isNative)
-
----
-
-- [isArrayBuffer( value )](https://lodash.com/docs#isArrayBuffer)
-- [isTypedArray( value )](https://lodash.com/docs#isTypedArray)
