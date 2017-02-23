@@ -37,7 +37,7 @@ $ npm test
 - [include( value , [message] )](http://chaijs.com/api/bdd/#method_include)
 - [contain( value , [message] )](http://chaijs.com/api/bdd/#method_include)
 
-> 类型：chainableMethod（chainingBehavior 设置 contains flag）
+> 类型：chainableMethod（chainingBehavior 设置 `contains` flag）
 
 ---
 
@@ -79,7 +79,7 @@ $ npm test
 - [eql( value , [message] )](http://chaijs.com/api/bdd/#method_eql)
 
 > - 类型：method
-> - 相关 flag：deep
+> - 相关 flag：`deep`
 
 ---
 
@@ -89,7 +89,7 @@ $ npm test
 - [lte|most( value , [message] )](http://chaijs.com/api/bdd/#method_most)
 - [within( min , max , [message] )](http://chaijs.com/api/bdd/#method_within)
 
-> - 相关 flag：doLength
+> - 相关 flag：`doLength`
 > - 类型：method
 
 ---
@@ -104,7 +104,7 @@ $ npm test
 - [ownProperty( key , [message] )](http://chaijs.com/api/bdd/#method_ownproperty)
 - [ownPropertyDescriptor( key , [descriptor] , [message] )](http://chaijs.com/api/bdd/#method_ownpropertydescriptor)
 
-> - 相关 flag：deep
+> - 相关 flag：`deep`
 > - 类型：method
 
 ---
@@ -128,7 +128,7 @@ $ npm test
 
 - [key|keys( ...keys )](http://chaijs.com/api/bdd/#method_keys)
 
-> - 相关 flag：any|all|contain，其中 any 及 all 互斥（默认使用 all）
+> - 相关 flag：`any`|`all`|`contain`，其中 `any` 及 `all` 互斥（默认使用 `all`）
 > - 类型：method
 
 ---
@@ -141,7 +141,7 @@ $ npm test
 
 - [respondTo( method , [message] )](http://chaijs.com/api/bdd/#method_respondto)
 
-> - 相关 flag：itself
+> - 相关 flag：`itself`
 > - 类型：method
 
 ---
@@ -160,7 +160,7 @@ $ npm test
 
 - [members( subset , [message] )](http://chaijs.com/api/bdd/#method_members)
 
-> - 相关 flag：include , deep
+> - 相关 flag：`include` , `deep`
 > - 类型：method
 
 ---

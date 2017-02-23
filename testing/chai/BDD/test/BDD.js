@@ -27,12 +27,12 @@ describe( 'BDD' , function () {
         expect( () => null ).to.be.a( 'function' )
         expect( function* () {} ).to.be.a( 'generatorfunction' )
         expect( /^/ ).to.be.a( 'regexp' )
-        expect( new Date() ).to.be.a( 'date' )
-        expect( Symbol() ).to.be.a( 'symbol' )
-        expect( new Set() ).to.be.a( 'set' )
-        expect( new WeakSet() ).to.be.a( 'weakset' )
-        expect( new Map() ).to.be.a( 'map' )
-        expect( new WeakMap() ).to.be.a( 'weakmap' )
+        expect( new Date ).to.be.a( 'date' )
+        expect( Symbol.iterator ).to.be.a( 'symbol' )
+        expect( new Set ).to.be.a( 'set' )
+        expect( new WeakSet ).to.be.a( 'weakset' )
+        expect( new Map ).to.be.a( 'map' )
+        expect( new WeakMap ).to.be.a( 'weakmap' )
 
         // ;( null ).should.be.a( 'null' )
         // ;( undefined ).should.be.an( 'undefined' )
@@ -45,12 +45,12 @@ describe( 'BDD' , function () {
         ;( () => null ).should.be.a( 'function' )
         ;( function* () {} ).should.be.a( 'generatorfunction' )
         ;( /^/ ).should.be.a( 'regexp' )
-        ;( new Date() ).should.be.a( 'date' )
-        ;( Symbol() ).should.be.a( 'symbol' )
-        ;( new Set() ).should.be.a( 'set' )
-        ;( new WeakSet() ).should.be.a( 'weakset' )
-        ;( new Map() ).should.be.a( 'map' )
-        ;( new WeakMap() ).should.be.a( 'weakmap' )
+        ;( new Date ).should.be.a( 'date' )
+        ;( Symbol.iterator ).should.be.a( 'symbol' )
+        ;( new Set ).should.be.a( 'set' )
+        ;( new WeakSet ).should.be.a( 'weakset' )
+        ;( new Map ).should.be.a( 'map' )
+        ;( new WeakMap ).should.be.a( 'weakmap' )
 
     } )
 
@@ -65,11 +65,9 @@ describe( 'BDD' , function () {
 
         expect( 'string' ).to.include( 'str' )                              // [1] String
         expect( [ { foo : 'bar' } , 'baz' ] ).to.include( { foo : 'bar' } ) // [2] Array(支持 deepEqual)
-        expect( [ [ 1 ] , 2 , 3 ] ).to.not.include( 1 )                     // top-level only
 
         'string'.should.include( 'str' )                                // [1] String
         ;[ { foo : 'bar' } , 'baz' ].should.include( { foo : 'bar' } )  // [2] Array(支持 deepEqual)
-        ;[ [ 1 ] , 2 , 3 ].should.not.include( 1 )                      // top-level only
 
     } )
 
@@ -238,8 +236,8 @@ describe( 'BDD' , function () {
 
 
     //
-    // instanceof( letructor , [message] )
-    // alias: instanceOf( letructor , [message] )
+    // instanceof( constructor , [message] )
+    // alias: instanceOf( constructor , [message] )
     // 类型：method
     //
 
@@ -327,13 +325,13 @@ describe( 'BDD' , function () {
     } )
 
 
-  //
-  // length
-  // 类型：chainableMethod（chainingBehavior 设置 doLength flag）
-  //
-  // lengthOf( value , [message] )
-  // 类型：method
-  //
+    //
+    // length
+    // 类型：chainableMethod（chainingBehavior 设置 doLength flag）
+    //
+    // lengthOf( value , [message] )
+    // 类型：method
+    //
 
     it( 'length , lengthOf' , function () {
 
@@ -412,24 +410,24 @@ describe( 'BDD' , function () {
         expect( func ).to.throw()
         func.should.throw
 
-        // [2] throw( letructor , [message] )
+        // [2] throw( constructor , [message] )
         func = () => { throw new Exception() }
         expect( func ).to.throw( Exception )
         func.should.throw( Exception )
 
         // [3] throw( string|regex , [message] )
-        func = () => { throw 'description' }
-        expect( func ).to.throw( 'description' )
-        expect( func ).to.throw( /^description$/ )
-        func.should.throw( 'description' )
-        func.should.throw( /^description$/ )
+        func = () => { throw 'fred' }
+        expect( func ).to.throw( 'fred' )
+        expect( func ).to.throw( /^fred$/ )
+        func.should.throw( 'fred' )
+        func.should.throw( /^fred$/ )
 
-        // [4] throw( letructor , string|regex , [message] )
-        func = () => { throw new Exception( 'description' ) }
-        expect( func ).to.throw( Exception , 'description' )
-        expect( func ).to.throw( Exception , /^description$/ )
-        func.should.throw( Exception , 'description' )
-        func.should.throw( Exception , /^description$/ )
+        // [4] throw( constructor , string|regex , [message] )
+        func = () => { throw new Exception( 'fred' ) }
+        expect( func ).to.throw( Exception , 'fred' )
+        expect( func ).to.throw( Exception , /^fred$/ )
+        func.should.throw( Exception , 'fred' )
+        func.should.throw( Exception , /^fred$/ )
 
     } )
 
@@ -445,12 +443,12 @@ describe( 'BDD' , function () {
         class Stub { instanceMethod() {} }
         Stub.staticMethod = noop
 
-        expect( new Stub() ).to.respondTo( 'instanceMethod' )
+        expect( new Stub ).to.respondTo( 'instanceMethod' )
         expect( Stub ).to.respondTo( 'instanceMethod' )
         expect( Stub ).to.not.respondTo( 'staticMethod' )
         expect( Stub ).itself.to.respondTo( 'staticMethod' )
 
-        ;( new Stub() ).should.respondTo( 'instanceMethod' )
+        ;( new Stub ).should.respondTo( 'instanceMethod' )
         ;( Stub ).should.respondTo( 'instanceMethod' )
         Stub.should.not.respondTo( 'staticMethod' )
         Stub.should.itself.respondTo( 'staticMethod' )
@@ -522,11 +520,9 @@ describe( 'BDD' , function () {
     it( 'oneOf' , function () {
 
         expect( 1 ).to.be.oneOf( [ 1 , 2 ] )
-        expect( 1 ).to.not.be.oneOf( [ [ 1 ] , 2 ] ) // top-level only
         expect( { foo : 1 } ).to.not.be.oneOf( [ { foo : 1 } ] )
 
         ;( 1 ).should.be.oneOf( [ 1 , 2 ] )
-        ;( 1 ).should.not.be.oneOf( [ [ 1 ] , 2 ] )  // top-level only
         ;( { foo : 1 } ).should.not.be.oneOf( [ { foo : 1 } ] )
 
     } )
