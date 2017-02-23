@@ -3,6 +3,7 @@
 ---
 
 ```js
+// 引入自定义断言
 chai.use( bundle )
 ```
 
@@ -11,7 +12,7 @@ module.exports = function bundle( chai , utils ) {
 
     expect( utils ).to.equal( chai.utils )
 
-    chai.Assertion.addProperty( 'arrayLikeObject' , function () {
+    chai.Assertion.addProperty( 'name' , function property() {
 
         expect( this ).to.be.instanceOf( chai.Assertion )
 
@@ -220,7 +221,7 @@ Reflect.defineProperty(
 
 覆盖或扩展（继承）已有__链式断言方法__：
 
-- [overwriteChainableMethod( name , method , chainingBehavior )](#)
+- [overwriteChainableMethod( name , method , chainingBehavior )](http://chaijs.com/api/plugins/#method_overwritechainablemethod)
 
 ```js
 // 基本等同于：
