@@ -9,7 +9,7 @@ $ npm test
 
 > Mock = Stub + 预设断言
 
-<p align="center"><img alt="sinon-mock.png" src="https://raw.githubusercontent.com/pwnn/img/master/sinon-mock.png)"></p>
+<p align="center"><img alt="sinon-mock.png" src="https://raw.githubusercontent.com/pwnn/img/master/sinon-mock.png"></p>
 
 ---
 
