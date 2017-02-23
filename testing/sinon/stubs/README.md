@@ -9,7 +9,7 @@ $ npm test
 
 > Stub = Spy + 预设行为
 
-![sinon-stub.png](https://raw.githubusercontent.com/pwnn/img/master/sinon-stub.png)
+<p align="center"><img alt="sinon-stub.png" src="https://raw.githubusercontent.com/pwnn/img/master/sinon-stub.png"></p>
 
 ---
 
@@ -24,7 +24,7 @@ $ npm test
 
 #### 回调相关：
 
-##### 预配置：
+##### 预配置
 
 - `stub.callsArg( index )`
 - `stub.callsArgOn( index , ctxt )`
@@ -35,7 +35,7 @@ $ npm test
 - `stub.yieldsTo( key , ...args )`
 - `stub.yieldsToOn( key , ctxt , ...args )`
 
-##### 手动调用：
+##### 手动调用
 
 - `stub.callArg( index )`
 - `stub.callArgWith( index , ...args )`
@@ -54,13 +54,13 @@ $ npm test
 
 #### 过滤器：
 
-##### 基于调用次序：
+##### 基于调用次序
 
 - `stub.onCall( index )`
 - `stub.onFirstCall()`
 - `stub.onSecondCall()`
 - `stub.onThirdCall()`
 
-##### 基于参数：
+##### 基于参数
 
 - `stub.withArgs( ...args|matchers )`

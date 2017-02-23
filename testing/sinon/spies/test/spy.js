@@ -196,6 +196,20 @@ describe( 'Spy' , function () {
 
 
     //
+    // spy.calledWithNew()
+    //
+
+    it( 'calledWithNew' , function () {
+
+        spy.calledWithNew().should.be.false
+
+        new spy() // eslint-disable-line new-cap, no-new
+        spy.calledWithNew().should.be.true
+
+    } )
+
+
+    //
     // spy.calledWith( ...args|matchers )
     // spy.alwaysCalledWith( ...args|matchers )
     // spy.neverCalledWith( ...args|matchers )
@@ -253,20 +267,6 @@ describe( 'Spy' , function () {
         spy.calledWithMatch( /^foo/ ).should.be.true
         spy.alwaysCalledWithMatch( /^foo/ ).should.be.true
         spy.neverCalledWithMatch( /^\s*$/ ).should.be.true
-
-    } )
-
-
-    //
-    // spy.calledWithNew()
-    //
-
-    it( 'calledWithNew' , function () {
-
-        spy.calledWithNew().should.be.false
-
-        new spy() // eslint-disable-line new-cap, no-new
-        spy.calledWithNew().should.be.true
 
     } )
 

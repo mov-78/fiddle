@@ -27,16 +27,16 @@ describe( 'Matchers' , function () {
 
     it( 'sinon.match( string )' , function () {
 
-        bareSpy( 'lipsum' )
+        bareSpy( 'fred' )
 
-        bareSpy.calledWith( sinon.match( 'ps' ) ).should.be.true
-        bareSpy.calledWith( sinon.match( 'lipsum' ) ).should.be.true
+        bareSpy.calledWith( sinon.match( 're' ) ).should.be.true
+        bareSpy.calledWith( sinon.match( 'fred' ) ).should.be.true
 
     } )
 
     it( 'sinon.match( regexp )' , function () {
-        bareSpy( 'lipsum' )
-        bareSpy.calledWith( sinon.match( /^lip/ ) ).should.be.true
+        bareSpy( 'fred' )
+        bareSpy.calledWith( sinon.match( /^fr/ ) ).should.be.true
     } )
 
     it( 'sinon.match( object )' , function () {
