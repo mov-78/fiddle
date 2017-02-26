@@ -99,9 +99,9 @@ describe( 'Base assertion' , function () {
         expect( 2 ).toBeGreaterThan( 1 )
         expect( 2 ).not.toBeGreaterThan( 2 )
     } )
-    // toBeCloseTo( value , [precesion = 2] )
+    // toBeCloseTo( value , [precision = 2] )
     it( 'toBeCloseTo( value , [precesion = 2] )' , function () {
-        // 校验标准：| actual - expected | < ( 10^( -precesion ) ) / 2
+        // 校验标准：| actual - expected | < ( 10^( -precision ) ) / 2
         expect( 0.3 - 0.2 )
             .toBeCloseTo( 0.1 , -( Math.log( 2 * Number.EPSILON ) / Math.log( 10 ) ) )
     } )

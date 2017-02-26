@@ -7,7 +7,7 @@ $ npm test
 
 ---
 
-![jasmine.png](https://raw.githubusercontent.com/pwnn/img/master/jasmine.png)
+<p align="center"><img alt="jasmine" src="https://raw.githubusercontent.com/pwnn/img/master/jasmine.png"></p>
 
 ---
 
@@ -24,13 +24,13 @@ $ npm test
 - `toContain( value )`
 - `toBeLessThan( value )`
 - `toBeGreaterThan( value )`
-- `toBeCloseTo( value , [precesion = 2] )`
+- `toBeCloseTo( value , [precision = 2] )`
 - `toThrow()`
 - `toThrowError( [constructor] , [string|regex] )`
 
 ---
 
-Hooks:
+钩子:
 
 ```js
 describe( 'Hooks' , function () {
@@ -88,7 +88,7 @@ xdescribe( 'Pending test suite' , () => null )
 - `jasmine.createSpy( [identity] )`
 - `jasmine.createSpyObj( [identity] , methodNames )`
 
-`call` 策略：
+存根行为：
 
 - `spyOn( obj , methodName ).and.callThrough()`
 - `spyOn( obj , methodName ).and.stub()`
@@ -169,9 +169,7 @@ describe( 'Manually ticking the Jasmine Clock' , function () {
         jasmine.clock().install()
     } )
 
-    afterEach( function () {
-        jasmine.clock().uninstall()
-    } )
+    afterEach( jasmine.clock.uninstall )
 
     it( 'causes a timeout to be called synchronously' , function () {
 
@@ -204,13 +202,8 @@ describe( 'Manually ticking the Jasmine Clock' , function () {
 
 describe( 'Mocking a Date object' , function () {
 
-    beforeEach( function () {
-        jasmine.clock().install()
-    } )
-
-    afterEach( function () {
-        jasmine.clock().uninstall()
-    } )
+    beforeEach( jasmine.clock().install )
+    afterEach( jasmine.clock().uninstall )
 
     it( 'mocks the current date' , function () {
 

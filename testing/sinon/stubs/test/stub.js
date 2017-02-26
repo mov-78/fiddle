@@ -7,17 +7,13 @@ before( function () {
 
     // custom assertion that checks whether an object is a spy using duck-typing
     chai.use( function ( _chai , _util ) {
-        _chai.Assertion
-            .addProperty( 'spy' , function () {
-
-                const ownKeys = Object.keys( this._obj )
-                const spyKeys = Object.keys( sinon.spy() )
-                const assert = new _chai.Assertion( ownKeys )
-
-                _util.transferFlags( this , assert , false )
-                assert.include.members( spyKeys )
-
-            } )
+        const spyKeys = Reflect.ownKeys( sinon.spy() )
+        _chai.Assertion.addProperty( 'spy' , function () {
+            const ownKeys = Reflect.ownKeys( this._obj )
+            const assert = new _chai.Assertion( ownKeys )
+            _util.transferFlags( this , assert , false )
+            assert.include.members( spyKeys )
+        } )
     } )
 
 } )

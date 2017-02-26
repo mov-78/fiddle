@@ -7,7 +7,7 @@ $ npm test
 
 ---
 
-![sinon-spy.png](https://raw.githubusercontent.com/pwnn/img/master/sinon-spy.png)
+<p align="center"><img alt="sinon-spy.png" src="https://raw.githubusercontent.com/pwnn/img/master/sinon-spy.png"></p>
 
 ---
 
@@ -32,6 +32,10 @@ $ npm test
 - `spy.callCount`
 - `spy.calledOnce|Twice|Thrice`
 
+#### 调用方式相关：
+
+- `spy.calledWithNew()`
+
 #### 实参相关：
 
 - `spy.calledWith( ...args|matchers )`
@@ -42,7 +46,6 @@ $ npm test
 - `spy.calledWithMatch( ...args )`
 - `spy.alwaysCalledWithMatch( ...args )`
 - `spy.neverCalledWithMatch( ...args )`
-- `spy.calledWithNew()`
 
 #### 返回值相关：
 

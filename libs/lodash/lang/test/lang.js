@@ -31,6 +31,8 @@ describe( 'lodash/lang' , function () {
     // isWeakSet( value )
     // isMap( value )
     // isWeakMap( value )
+    // isArrayBuffer( value )
+    // isTypedArray( value )
     //
 
     it( 'isNull , isUndefined , isNil' , function () {
@@ -101,10 +103,11 @@ describe( 'lodash/lang' , function () {
         _.isObjectLike( {} ).should.be.true
         _.isObjectLike( _.noop ).should.be.false // ←
 
-        _.isPlainObject( {} ).should.be.true
-        _.isPlainObject( _.create( null ) ).should.be.true
+        _.isPlainObject( {} ).should.be.true // [1]
+        _.isPlainObject( _.create( Object.prototype ) ).should.be.true // [1]
+        _.isPlainObject( _.create( null ) ).should.be.true // [2]
         _.isPlainObject( _.create( {} ) ).should.be.false
-        _.isPlainObject( new class {}() ).should.be.false
+        _.isPlainObject( new class {} ).should.be.false
 
     } )
     it( 'isArray , isArrayLike , isArrayLikeObject , isArguments' , function () {
@@ -121,53 +124,69 @@ describe( 'lodash/lang' , function () {
         // isArrayLike( value ) 等同于：
         //    return value != null && isLength( getLength( value ) ) && !isFunction( value )
         _.isArrayLike( [] ).should.be.true
-        _.isArrayLike( '' ).should.be.true // ←
-        _.isArrayLike( _.noop ).should.be.false
-        _.isArrayLike( arguments ).should.be.true // ←
+        _.isArrayLike( '' ).should.be.true
+        _.isArrayLike( _.noop ).should.be.false // ←
+        _.isArrayLike( arguments ).should.be.true
 
         // isArrayLikeObject( value ) 等同于：
         //    return isObjectLike( value ) && isArrayLike( value )
         _.isArrayLikeObject( [] ).should.be.true
         _.isArrayLikeObject( '' ).should.be.false // ←
-        _.isArrayLikeObject( _.noop ).should.be.false
-        _.isArrayLikeObject( arguments ).should.be.true // ←
+        _.isArrayLikeObject( _.noop ).should.be.false // ←
+        _.isArrayLikeObject( arguments ).should.be.true
 
     } )
     it( 'isFunction' , function () {
         _.isFunction( () => null ).should.be.true
         _.isFunction( function () {} ).should.be.true
         _.isFunction( function* () {} ).should.be.true
+        _.isFunction( new Function ).should.be.true // eslint-disable-line
     } )
     it( 'isDate' , function () {
-        _.isDate( new Date() ).should.be.true
+        _.isDate( new Date ).should.be.true
     } )
     it( 'isRegExp' , function () {
         _.isRegExp( /^/ ).should.be.true
-        _.isRegExp( new RegExp() ).should.be.true
+        _.isRegExp( new RegExp ).should.be.true
     } )
     it( 'isSymbol' , function () {
         _.isSymbol( Symbol() ).should.be.true
         _.isSymbol( Symbol.for( '' ) ).should.be.true
     } )
     it( 'isSet , isWeakSet , isMap , isWeakMap' , function () {
-        _.isSet( new Set() ).should.be.true
-        _.isWeakSet( new WeakSet() ).should.be.true
-        _.isMap( new Map() ).should.be.true
-        _.isWeakMap( new WeakMap() ).should.be.true
+        _.isSet( new Set ).should.be.true
+        _.isWeakSet( new WeakSet ).should.be.true
+        _.isMap( new Map ).should.be.true
+        _.isWeakMap( new WeakMap ).should.be.true
+    } )
+    it( 'isArrayBuffer , isTypedArray' , function () {
+
+        _.isArrayBuffer( new ArrayBuffer ).should.be.true
+
+        _.isTypedArray( new Int8Array ).should.be.true
+        _.isTypedArray( new Int16Array ).should.be.true
+        _.isTypedArray( new Int32Array ).should.be.true
+        _.isTypedArray( new Uint8Array ).should.be.true
+        _.isTypedArray( new Uint16Array ).should.be.true
+        _.isTypedArray( new Uint32Array ).should.be.true
+        _.isTypedArray( new Float32Array ).should.be.true
+        _.isTypedArray( new Float64Array ).should.be.true
+
     } )
 
 
     // isEmpty( value )
     it( 'isEmpty' , function () {
         _.isEmpty( '' ).should.be.true
+        _.isEmpty( ' ' ).should.be.false
         _.isEmpty( {} ).should.be.true
         _.isEmpty( _.create( { foo : 'bar' } ) ).should.be.true
         _.isEmpty( [] ).should.be.true
         _.isEmpty( { length : 0 } ).should.be.false
-        _.isEmpty( new Set() ).should.be.true
-        _.isEmpty( new WeakSet() ).should.be.true
-        _.isEmpty( new Map() ).should.be.true
-        _.isEmpty( new WeakMap() ).should.be.true
+        _.isEmpty( new Set ).should.be.true
+        _.isEmpty( new WeakSet ).should.be.true
+        _.isEmpty( new Map ).should.be.true
+        _.isEmpty( new WeakMap ).should.be.true
     } )
 
 
@@ -299,19 +318,25 @@ describe( 'lodash/lang' , function () {
 
     it( 'toNumber , toInteger , toSafeInteger , toString , toPlainObject , toArray' , function () {
 
-        const makeIterable = function ( n ) {
+        function makeIterable( n ) {
             let i = 0
-            const iterator = {
-                next() {
-                    if ( i === n ) {
-                        return { done : true }
-                    } else {
-                        i += 1
-                        return { done : false , value : [ i , i ] }
+            return {
+                [ Symbol.iterator ]() {
+                    return {
+                        next() {
+                            if ( i === n ) {
+                                return { done : true }
+                            } else {
+                                i += 1
+                                return {
+                                    done : false ,
+                                    value : [ i , i ]
+                                }
+                            }
+                        }
                     }
                 }
             }
-            return { [ Symbol.iterator ]() { return iterator } }
         }
 
 
@@ -322,10 +347,11 @@ describe( 'lodash/lang' , function () {
         //
 
         _.toNumber( '010' ).should.equal( 10 )
+        _.toNumber( '0b10' ).should.equal( 2 )
         _.toNumber( '0o10' ).should.equal( 8 )
         _.toNumber( '0x10' ).should.equal( 16 )
-        _.toNumber( Symbol( 'foo' ) ).should.be.nan
-        _.toNumber( Symbol.for( 'foo' ) ).should.be.nan
+        _.toNumber( Symbol( '0' ) ).should.be.nan
+        _.toNumber( Symbol.for( '0' ) ).should.be.nan
         _.toNumber( { valueOf() { return '0x10' } } ).should.equal( 16 )
         _.toNumber( { toString() { return '0x10' } } ).should.equal( 16 )
 
@@ -336,8 +362,8 @@ describe( 'lodash/lang' , function () {
 
         _.toString( null ).should.equal( '' )
         _.toString( undefined ).should.equal( '' )
-        _.toString( Symbol( 'foo' ) ).should.equal( 'Symbol(foo)' )
-        _.toString( Symbol.for( 'foo' ) ).should.equal( 'Symbol(foo)' )
+        _.toString( Symbol( 'fred' ) ).should.equal( 'Symbol(fred)' )
+        _.toString( Symbol.for( 'fred' ) ).should.equal( 'Symbol(fred)' )
         _.toString( -0 ).should.equal( '-0' )
 
 
@@ -384,32 +410,40 @@ describe( 'lodash/lang' , function () {
             .that.is.deep.equal( [ [ 1 , 1 ] ] )
 
         // Object
-        _.toArray( _.create( { foo : 1 } , { bar : 2 } ) )
+        _.toArray( _.create( { qux : 0 } , { foo : 1 , bar : 2 , baz : 3 } ) )
             .should.be.an( 'array' )
-            .that.is.deep.equal( [ 2 ] )
+            .that.is.deep.equal( [ 1 , 2 , 3 ] )
 
     } )
 
 
     //
     // lt( value , other )
-    // gt( value , other )
     // lte( value , other )
+    // gt( value , other )
     // gte( value , other )
     // eq( value , other )
     //
 
-    it( 'lt , lte , eq , gt , gte' , function () {
+    it( 'lt , lte , gt , gte , eq' , function () {
 
         _.lt( 1 , 2 ).should.be.true
-        _.gt( 2 , 1 ).should.be.true
         _.lte( 1 , 2 ).should.be.true
+
+        _.gt( 2 , 1 ).should.be.true
         _.gte( 2 , 1 ).should.be.true
 
         // SameValueZero
         _.eq( {} , {} ).should.be.false
         _.eq( 0 / 0 , 0 / 0 ).should.be.true
 
+    } )
+
+
+    // isNative( method )
+    it( 'isNative' , function () {
+        _.isNative( Array.prototype.push ).should.be.true
+        _.isNative( _.isNative ).should.be.false
     } )
 
 } )

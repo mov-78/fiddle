@@ -61,6 +61,15 @@ describe( 'lodash/util' , function () {
     } )
 
 
+    // defaultTo( value , defaultValue )
+    it( 'defaultTo' , function () {
+        _.defaultTo( Number.NaN , 1 ).should.equal( 1 ) // [1]
+        _.defaultTo( null , 1 ).should.equal( 1 ) // [2]
+        _.defaultTo( undefined , 1 ).should.equal( 1 ) // [3]
+        _.defaultTo( 0 , 1 ).should.equal( 0 )
+    } )
+
+
     //
     // range( [start=0] , end , [step=±1] )
     // rangeRight( [start=0] , end , [step=±1] )
@@ -181,6 +190,23 @@ describe( 'lodash/util' , function () {
     // nthArg( [n=0] )
     it( 'nthArg' , function () {
         _.nthArg( 1 )( 'foo' , 'bar' , 'baz' ).should.equal( 'bar' )
+    } )
+
+
+    //
+    // stubTrue()
+    // stubFalse()
+    // stubString()
+    // stubObject()
+    // stubArray()
+    //
+
+    it( 'stubTrue , stubFalse , stubString , stubObject , stubArray' , function () {
+        _.stubTrue().should.be.true
+        _.stubFalse().should.be.false
+        _.stubString().should.be.a( 'string' ).that.is.empty
+        _.stubObject().should.be.an( 'object' ).that.is.empty
+        _.stubArray().should.be.an( 'array' ).that.is.empty
     } )
 
 } )

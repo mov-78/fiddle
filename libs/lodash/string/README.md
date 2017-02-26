@@ -26,6 +26,8 @@ $ npm test
 
 - [toUpper( string )](https://lodash.com/docs#toUpper)
 - [toLower( string )](https://lodash.com/docs#toLower)
+- [upperFirst( string )](https://lodash.com/docs#upperFirst)
+- [lowerFirst( string )](https://lodash.com/docs#lowerFirst)
 - [capitalize( string )](https://lodash.com/docs#capitalize)
 
 ---
@@ -42,8 +44,8 @@ $ npm test
 
 ---
 
-- [split( string , separator )](https://lodash.com/docs#split)
-- [words( string , pattern )](https://lodash.com/docs#words)
+- [split( string , separator , [limit] )](https://lodash.com/docs#split)
+- [words( string , [pattern] )](https://lodash.com/docs#words)
 
 ---
 
@@ -62,7 +64,7 @@ options.imports = _.templateSettings.imports<Object>
 
 ```
 options.length=30
-options.omission='…'
+options.omission='...'
 ```
 
 ---

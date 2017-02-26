@@ -229,7 +229,7 @@ describe( 'lodash/collection' , function () {
 
     //
     // sortBy( collection , iteratees )
-    // orderBy( collection , iteratees , [orders] )
+    // orderBy( collection , iteratees , [orders=desc|asc] )
     //
 
     it( 'sortBy , orderBy' , function () {

@@ -23,7 +23,7 @@ module.exports = {
                     if ( TYPE === 'string' || Array.isArray( actual ) ) {
                         pass = actual.length === 0
                     } else if ( TYPE === 'object' && actual !== null ) {
-                        pass = Object.keys( actual ).length === 0
+                        pass = Reflect.ownKeys( actual ).length === 0
                     } else {
                         pass = false
                     }

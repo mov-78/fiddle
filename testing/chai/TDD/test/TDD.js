@@ -120,14 +120,17 @@ describe( 'TDD' , function () {
         assert.isNumber( 0 / 0 )
         assert.isNumber( +1 / 0 )
         assert.isNumber( -1 / 0 )
+        assert.isNumber( new Number ) // eslint-disable-line no-new-wrappers
 
         assert.isNaN( 'one' ) // isNaN 并没有对非数值类型进行过滤
         assert.isNaN( 0 / 0 )
 
         assert.isString( '' )
+        assert.isString( new String ) // eslint-disable-line no-new-wrappers
 
         assert.isBoolean( true )
         assert.isBoolean( false )
+        assert.isBoolean( new Boolean ) // eslint-disable-line no-new-wrappers
 
         assert.isObject( {} ) // assert.typeOf( expression , 'object' )
         assert.isNotObject( [] )
@@ -162,13 +165,18 @@ describe( 'TDD' , function () {
         assert.typeOf( [] , 'array' )
         assert.typeOf( () => null , 'function' )
         assert.typeOf( /^/ , 'regexp' )
-        assert.typeOf( new Date() , 'date' )
+        assert.typeOf( new Date , 'date' )
+        assert.typeOf( new Set , 'set' )
+        assert.typeOf( new WeakSet , 'weakset' )
+        assert.typeOf( new Map , 'map' )
+        assert.typeOf( new WeakMap , 'weakmap' )
+        assert.typeOf( Symbol.iterator , 'symbol' )
     } )
 
 
     //
-    // assert.instanceOf( object , letructor , [message] )
-    // assert.notInstanceOf( object , letructor , [message] )
+    // assert.instanceOf( object , constructor , [message] )
+    // assert.notInstanceOf( object , constructor , [message] )
     //
 
     it( 'instanceOf' , function () {
@@ -196,11 +204,9 @@ describe( 'TDD' , function () {
         assert.include( 'foobar' , 'foo' )                              // [1] String
         assert.include( [ { foo : 'bar' } , 'baz' ] , { foo : 'bar' } ) // [2] Array(支持 deepEqual)
         assert.notInclude( [ 1 ] , '1' )                                // strict equal
-        assert.notInclude( [ [ 1 ] , 2 ] , 1 )                          // top-level only
 
         assert.oneOf( 3 , [ 1 , 3 , 5 ] )
         assert.throws( () => { assert.oneOf( '1' , [ 1 ] ) } )        // strict equal
-        assert.throws( () => { assert.oneOf( 1 , [ [ 1 ] , 2 ] ) } )  // top-level only
         assert.throws( () => { assert.oneOf( { foo : 1 } , [ { foo : 1 } ] ) } ) // 不支持 deepEqual
 
     } )
@@ -259,8 +265,8 @@ describe( 'TDD' , function () {
 
 
     //
-    // assert.throws( func , [letructor|string|regex] , [string|regex] , [message] )
-    // assert.doesNotThrow( func , [letructor|string|regex] , [string|regex] , [message] )
+    // assert.throws( func , [constructor|string|regex] , [string|regex] , [message] )
+    // assert.doesNotThrow( func , [constructor|string|regex] , [string|regex] , [message] )
     //
 
     it( 'throws' , function () {
@@ -273,19 +279,19 @@ describe( 'TDD' , function () {
         func = () => { throw new Error() }
         assert.throws( func )
 
-        // [2] assert.throws( func , letructor , [message] )
+        // [2] assert.throws( func , constructor , [message] )
         func = () => { throw new Exception() }
         assert.throws( func , Exception )
 
         // [3] assert.throws( func , string|regex , [message] )
-        func = () => { throw 'description' }
-        assert.throws( func , 'description' )
-        assert.throws( func , /^description$/ )
+        func = () => { throw 'fred' }
+        assert.throws( func , 'fred' )
+        assert.throws( func , /^fred$/ )
 
-        // [4] assert.throws( func , letructor , string|regex , [message] )
-        func = () => { throw new Exception( 'description' ) }
-        assert.throws( func , Exception , 'description' )
-        assert.throws( func , Exception , /^description$/ )
+        // [4] assert.throws( func , constructor , string|regex , [message] )
+        func = () => { throw new Exception( 'fred' ) }
+        assert.throws( func , Exception , 'fred' )
+        assert.throws( func , Exception , /^fred$/ )
 
     } )
 
@@ -325,7 +331,7 @@ describe( 'TDD' , function () {
     //
 
     it( 'sameMembers , sameDeepMembers , includeMembers , includeDeepMembers' , function () {
-        assert.sameMembers( [ 1 , 3 , 2 ] , [ 2 , 1 , 3 ] )
+        assert.sameMembers( [ 1 , 3 , 2 ] , [ 2 , 1 , 3 , 3 ] )
         assert.sameDeepMembers( [ 1 , { foo : 'bar' } ] , [ { foo : 'bar' } , 1 ] )
         assert.includeMembers( [ 1 , 3 , 2 ] , [ 3 , 2 ] )
         assert.includeDeepMembers( [ 1 , { foo : 'bar' } , 2 ] , [ { foo : 'bar' } , 2 ] )
@@ -367,7 +373,7 @@ describe( 'TDD' , function () {
 
     it( 'ifError' , function () {
         assert.ifError( false )
-        assert.throws( () => { assert.ifError( true ) } )
+        assert.throws( () => assert.ifError( true ) )
     } )
 
 

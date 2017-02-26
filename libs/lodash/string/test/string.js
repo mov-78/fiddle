@@ -51,12 +51,20 @@ describe( 'lodash/string' , function () {
     // toUpper( string )
     // toLower( string )
     // capitalize( string )
+    // upperFirst( string )
+    // lowerFirst( string )
     //
 
-    it( 'toUpper , toLower , capitalize' , function () {
-        _.toUpper( 'fOo' ).should.equal( 'FOO' )
-        _.toLower( 'fOo' ).should.equal( 'foo' )
-        _.capitalize( 'fOo' ).should.equal( 'Foo' )
+    it( 'toUpper , toLower , upperFirst , lowerFirst , capitalize' , function () {
+
+        _.toUpper( 'fred' ).should.equal( 'FRED' )
+        _.toLower( 'FRED' ).should.equal( 'fred' )
+
+        _.upperFirst( 'fred' ).should.equal( 'Fred' )
+        _.lowerFirst( 'FRED' ).should.equal( 'fRED' )
+
+        _.capitalize( 'fRED' ).should.equal( 'Fred' )
+
     } )
 
 
@@ -69,8 +77,11 @@ describe( 'lodash/string' , function () {
 
     // replace( string , pattern , replacement )
     it( 'replace' , function () {
-        _.replace( 'foobar' , 'o' , '' ).should.equal( 'fobar' )
-        _.replace( 'foobar' , /o/g , '' ).should.equal( 'fbar' )
+
+        _.replace( 'quux' , 'u' , '' ).should.equal( 'qux' )
+        _.replace( 'quux' , /u/ , '' ).should.equal( 'qux' )
+        _.replace( 'quux' , /u/g , '' ).should.equal( 'qx' )
+
     } )
 
 
@@ -81,8 +92,8 @@ describe( 'lodash/string' , function () {
 
 
     //
-    // split( string , separator )
-    // words( string , pattern )
+    // split( string , separator , [limit] )
+    // words( string , [pattern] )
     //
 
     it( 'split , words' , function () {
@@ -90,6 +101,10 @@ describe( 'lodash/string' , function () {
         _.split( 'foo,bar' , ',' )
             .should.be.an( 'array' )
             .that.is.deep.equal( [ 'foo' , 'bar' ] )
+
+        _.split( 'fred' , '' , 2 )
+            .should.be.an( 'array' )
+            .that.is.deep.equal( [ 'f' , 'r' ] )
 
         _.words( 'foo,bar' , /\w+/g )
             .should.be.an( 'array' )
@@ -142,11 +157,12 @@ describe( 'lodash/string' , function () {
     //
     // truncate( string , [options] )
     //    - options.length=30
-    //    - options.omission='…'
+    //    - options.omission='...'
     //
 
     it( 'truncate' , function () {
-        _.truncate( 'foobar' , { length : 5 } ).should.equal( 'fo...' )
+        _.truncate( 'fred' , { length : 3 } ).should.equal( '...' )
+        _.truncate( 'fred' , { length : 3 , omission : '' } ).should.equal( 'fre' )
     } )
 
 
