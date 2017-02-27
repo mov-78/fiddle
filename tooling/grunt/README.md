@@ -37,9 +37,10 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
 
 配置文件路径映射：
 
-- COMPACT FORMAT (n:1)
+- COMPACT FORMAT
 
 ```js
+// n:1
 {
     target : {
         src : 'path/to/src' ,
@@ -47,11 +48,25 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
         // ...其他选项
     }
 }
+
+// n:n
+{
+    target : {
+        expand : true , // 开启一对一映射模式
+        cwd : 'path/to/src' ,
+        src : '**/*.js' , // 相对于 `cwd` 解析
+        dest : 'path/to/dest' ,
+        ext : '.min.js' ,
+        extDot : 'last'
+        // ...其他选项
+    }
+}
 ```
 
-- FILES OBJECT FORMAT (n:1)
+- FILES OBJECT FORMAT
 
 ```js
+// n:1
 {
     target : {
         files : {
@@ -62,9 +77,10 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
 }
 ```
 
-- FILES ARRAY FORMAT (n:1)
+- FILES ARRAY FORMAT
 
 ```js
+// n:1
 {
     target : {
         files : [
@@ -77,11 +93,8 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
         ]
     }
 }
-```
 
-- FILES ARRAY FORMAT (n:n)
-
-```js
+// n:n
 {
     target : {
         files : [
