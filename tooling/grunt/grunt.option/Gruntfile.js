@@ -15,8 +15,9 @@ module.exports = function ( grunt ) {
         console.log( grunt.option( 'no-baz' ) )
 
         console.log( grunt.option( 'qux' ) )
-        grunt.option( 'qux' , true )
+        grunt.option( 'qux' , false )
         console.log( grunt.option( 'qux' ) )
+        console.log( grunt.option( 'no-qux' ) )
 
 
         //
