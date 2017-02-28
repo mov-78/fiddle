@@ -1,4 +1,4 @@
-该 fiddle 用于演示任务实例的属性及方法
+该 fiddle 用于演示任务实例的属性及方法 [#](http://gruntjs.com/api/inside-tasks)
 
 ```sh
 $ npm install
@@ -19,14 +19,12 @@ $ npm test
 - [this.async()](http://gruntjs.com/api/inside-tasks#this.async)
 - [this.requires( taskList )](http://gruntjs.com/api/inside-tasks#this.requires)
 - [this.requiresConfig( ...path )](http://gruntjs.com/api/inside-tasks#this.requiresconfig)
-- [this.name](http://gruntjs.com/api/inside-tasks#this.name)
-- [this.nameArgs](http://gruntjs.com/api/inside-tasks#this.nameargs)
-- [this.args](http://gruntjs.com/api/inside-tasks#this.args)
-- [this.flags](http://gruntjs.com/api/inside-tasks#this.flags)
+- [this.options( [defaults] )](http://gruntjs.com/api/inside-tasks#this.options)
+- [this.name](http://gruntjs.com/api/inside-tasks#this.name) , [this.nameArgs](http://gruntjs.com/api/inside-tasks#this.nameargs) , [this.args](http://gruntjs.com/api/inside-tasks#this.args) , [this.flags](http://gruntjs.com/api/inside-tasks#this.flags)
 
 > 相关方法：
 > - `grunt.task.exists( taskName )`
-> - `grunt.task.requires( taskList )`
+> - `grunt.task.requires( ...taskName )`
 > - `grunt.config.requires( ...path )`
 
 ---

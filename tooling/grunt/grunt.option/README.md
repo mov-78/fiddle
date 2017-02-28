@@ -8,7 +8,7 @@ $ npm test
 ---
 
 > - `grunt.option` 用于获取命令行参数
-> - `grunt.task.current.option` 用于获取任务级/目标级 option
+> - `grunt.task.current.options` 用于获取任务级/目标级 option
 
 - [grunt.option( key , [value] )](http://gruntjs.com/api/grunt.option#grunt.option)
 - [grunt.option.init( [defaults] )](http://gruntjs.com/api/grunt.option#grunt.option.init)

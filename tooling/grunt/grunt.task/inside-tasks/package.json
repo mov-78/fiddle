@@ -1,7 +1,7 @@
 {
   "name": "fiddle-grunt-inside-tasks",
   "scripts": {
-    "test": "mkdir src && touch src/{a,b,c}.js && grunt task0 task1:m:n task2 && rm -rf src"
+    "test": "mkdir js && touch js/{a,b,c}.js && grunt t0 t1:m:n t2 && rm -rf js"
   },
   "dependencies": {
     "eslint": "~3.2.2",
