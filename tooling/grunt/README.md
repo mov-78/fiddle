@@ -8,12 +8,12 @@
 module.exports = function ( grunt ) {
 
     grunt.initConfig( {
-        task : { // 任务参数配置
-            options : { // 任务级选项
+        task : { // config
+            options : { // 任务级 option
             } ,
             target : {
                 options : {
-                    // 目标级选项（覆盖任务级选项）
+                    // 目标级 option（覆盖任务级 option）
                 }
             }
         }
@@ -35,7 +35,7 @@ $ grunt task:target:arg1:arg2... # 执行 task 内指定 target 并传参
 
 ---
 
-配置文件路径映射：
+文件路径映射格式：
 
 - COMPACT FORMAT
 
