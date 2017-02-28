@@ -7,7 +7,7 @@ $ npm test
 
 ---
 
-> Function-Task 与 Multi-Task 的区别在于（Multi = Multi-Target）：
+> Function-Task 与 Multi-Task（Multi → Multi-Target） 的区别在于：
 > - Multi-Task 可以为每个 target 设置独立的 option，Function-Task 只存在任务级 option
 > - Multi-Task `taskFunction` 内部可以访问 `this.files`，`this.filesSrc` 等额外属性
 
