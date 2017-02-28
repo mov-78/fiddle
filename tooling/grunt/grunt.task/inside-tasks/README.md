@@ -17,7 +17,7 @@ $ npm test
 通用属性及方法：
 
 - [this.async()](http://gruntjs.com/api/inside-tasks#this.async)
-- [this.requires( taskList )](http://gruntjs.com/api/inside-tasks#this.requires)
+- [this.requires( ...taskName )](http://gruntjs.com/api/inside-tasks#this.requires)
 - [this.requiresConfig( ...path )](http://gruntjs.com/api/inside-tasks#this.requiresconfig)
 - [this.options( [defaults] )](http://gruntjs.com/api/inside-tasks#this.options)
 - [this.name](http://gruntjs.com/api/inside-tasks#this.name) , [this.nameArgs](http://gruntjs.com/api/inside-tasks#this.nameargs) , [this.args](http://gruntjs.com/api/inside-tasks#this.args) , [this.flags](http://gruntjs.com/api/inside-tasks#this.flags)
