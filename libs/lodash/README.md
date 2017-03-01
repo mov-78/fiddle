@@ -12,12 +12,14 @@ $ npm install -g lodash-cli
 ```
 
 ```sh
-$ lodash core [plus=fn[,fn...]] [minus=fn[,fn...]]
-$ lodash strict [plus=fn[,fn...]] [minus=fn[,fn...]]
-$ lodash modularize [plus=fn[,fn...]] [minus=fn[,fn...]]
+$ lodash core [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,fmt...]]
+$ lodash strict [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,fmt...]]
+$ lodash modularize [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,fmt...]]
 
-$ lodash category [plus=fn[,fn...]] [minus=fn[,fn...]]
-$ lodash include [plus=fn[,fn...]] [minus=fn[,fn...]]
+$ lodash category=cat[,cat...] [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,fmt...]]
+$ lodash include=fn[,fn...] [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,fmt...]]
+
+# exports=amd,es(modularize-only),global,node,npm(modularize-only),none,umd
 ```
 
 ```sh
