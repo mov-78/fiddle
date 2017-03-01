@@ -219,3 +219,49 @@ describe( 'Mocking a Date object' , function () {
 
 } )
 ```
+
+---
+
+```js
+jasmine.getEnv().addReporter( reporter:Object )
+```
+
+```js
+module.exports = {
+
+    jasmineStarted( meta ) {
+        // meta.totalSpecsDefined:Number
+    } ,
+
+    suiteStarted( meta ) {
+        // meta.description:String
+        // meta.fullName:String
+    } ,
+
+    specStarted( meta ) {
+        // meta.description:String
+        // meta.fullName:String
+        // meta.pendingReason:String
+    } ,
+
+    specDone( meta ) {
+        // meta.description:String
+        // meta.fullName:String
+        // meta.pendingReason:String
+        // meta.status:String - passed|failed|pending
+        // meta.passedExpectations:Array<{matcherName,message,stack,passed}>
+        // meta.failedExpectations:Array<{matcherName,message,stack,expected,actual}>
+    } ,
+
+    suiteDone( meta ) {
+        // meta.description:String
+        // meta.fullName:String
+        // meta.status:String - finished|pending
+        // meta.failedExpectations:Array<{matcherName,message,stack,expected,actual}>
+    } ,
+
+    jasmineDone() {
+    }
+
+}
+```
