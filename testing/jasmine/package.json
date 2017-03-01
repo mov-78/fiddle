@@ -6,6 +6,6 @@
   "dependencies": {
     "eslint": "~3.2.2",
     "eslint-config-pwn": "~5.0.4",
-    "jasmine": "~2.4.1"
+    "jasmine": "~2.5.3"
   }
 }

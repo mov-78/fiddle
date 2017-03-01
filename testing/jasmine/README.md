@@ -223,6 +223,7 @@ describe( 'Mocking a Date object' , function () {
 ---
 
 ```js
+jasmine.getEnv().clearReporters()
 jasmine.getEnv().addReporter( reporter:Object )
 ```
 
@@ -249,7 +250,7 @@ module.exports = {
         // meta.fullName:String
         // meta.pendingReason:String
         // meta.status:String - passed|failed|pending
-        // meta.passedExpectations:Array<{matcherName,message,stack,passed}>
+        // meta.passedExpectations:Array<{matcherName,message,stack}>
         // meta.failedExpectations:Array<{matcherName,message,stack,expected,actual}>
     } ,
 
