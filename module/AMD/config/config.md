@@ -1,4 +1,4 @@
-[config](http://requirejs.org/docs/api.html#config-moduleconfig) 用于设置模块级配置：
+[config](http://requirejs.org/docs/api.html#config-moduleconfig) 用于定义模块级配置：
 
 ```js
 require.config( {

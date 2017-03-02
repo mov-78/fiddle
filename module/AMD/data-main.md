@@ -6,8 +6,9 @@
 
 等同于：
 
-```js
-require( [ 'main' ] )
+```html
+<script src="path/to/require.js"></script>
+<script>require( [ 'main' ] )</script>
 ```
 
 ---

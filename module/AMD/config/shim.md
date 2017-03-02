@@ -12,7 +12,6 @@ require.config( {
                 // - this 为全局对象
                 // - 若 init 方法返回任意真值，则该返回值将覆盖 exports 配置项
             }
-
         } ,
 
         // 简化写法（在开启 enforceDefine 配置项时会抛出异常）
