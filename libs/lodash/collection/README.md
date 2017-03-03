@@ -72,3 +72,8 @@ $ npm test
 ---
 
 - [includes( collection , value , [fromIndex=0] )](https://lodash.com/docs#includes)
+
+---
+
+- [sample( collection )](https://lodash.com/docs#sample)
+- [shuffle( collection )](https://lodash.com/docs#shuffle)
