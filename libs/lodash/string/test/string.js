@@ -167,6 +167,17 @@ describe( 'lodash/string' , function () {
 
 
     //
+    // escape( [string=''] )
+    // unescape( [string=''] )
+    //
+
+    it( 'escape , unescape' , function () {
+        _.escape( `&<>"'` ).should.equal( '&amp;&lt;&gt;&quot;&#39;' )
+        _.unescape( '&amp;&lt;&gt;&quot;&#39;' ).should.equal( `&<>"'` )
+    } )
+
+
+    //
     // upperCase( string )
     // lowerCase( string )
     // camelCase( string )

@@ -69,6 +69,11 @@ options.omission='...'
 
 ---
 
+- [escape( [string=''] )](https://lodash.com/docs#escape)
+- [unescape( [string=''] )](https://lodash.com/docs#unescape)
+
+---
+
 - [upperCase( string )](https://lodash.com/docs#upperCase)
 - [lowerCase( string )](https://lodash.com/docs#lowerCase)
 - [camelCase( string )](https://lodash.com/docs#camelCase)
