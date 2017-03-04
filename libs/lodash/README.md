@@ -23,6 +23,5 @@ $ lodash include=fn[,fn...] [plus=fn[,fn...]] [minus=fn[,fn...]] [exports=fmt[,f
 ```
 
 ```sh
-$ lodash template=<GLOB>
-$ lodash settings=<SETTING> # _.templateSettings
+$ lodash template=<GLOB> [settings=<SETTING>]
 ```
