@@ -18,9 +18,9 @@ $ npm install
 $ npm install <folder>
 $ npm install <tarball_file>
 $ npm install <tarball_url>
-$ npm install [@<scope>/]<name>
-$ npm install [@<scope>/]<name>@<tag>
-$ npm install [@<scope>/]<name>@<version>
+$ npm install [@<scope>/]<pkg>
+$ npm install [@<scope>/]<pkg>@<tag>
+$ npm install [@<scope>/]<pkg>@<version>
 ```
 
 - `-S|--save`
@@ -38,9 +38,9 @@ $ npm install [@<scope>/]<name>@<version>
 > 别名：i
 
 ```sh
-$ npm uninstall [@<scope>/]<name>
-$ npm uninstall [@<scope>/]<name>@<tag>
-$ npm uninstall [@<scope>/]<name>@<version>
+$ npm uninstall [@<scope>/]<pkg>
+$ npm uninstall [@<scope>/]<pkg>@<tag>
+$ npm uninstall [@<scope>/]<pkg>@<version>
 ```
 
 - `-S|--save`
@@ -74,7 +74,7 @@ $ npm ls
 - [npm-update](https://docs.npmjs.com/cli/update)
 
 ```sh
-$ npm outdated [[@<scope>/]<name>[@<tag>|<version>]...]
+$ npm outdated [[@<scope>/]<pkg>[@<tag>|<version>]...]
 ```
 
 - `--depth=<depth>`
@@ -83,7 +83,7 @@ $ npm outdated [[@<scope>/]<name>[@<tag>|<version>]...]
 - `--long`
 
 ```sh
-$ npm update [[@<scope>/]<name>[@<tag>|<version>]...]
+$ npm update [[@<scope>/]<pkg>[@<tag>|<version>]...]
 ```
 
 - `-g|--global`
@@ -112,7 +112,7 @@ $ npm restart [-- <args>]
 [npm-view](https://docs.npmjs.com/cli/view)
 
 ```sh
-$ npm view [@<scope>/]<name>[@<tag>|<version>] <field>[.<field>...]
+$ npm view [@<scope>/]<pkg>[@<tag>|<version>] <field>[.<field>...]
 ```
 
 ---
@@ -122,9 +122,9 @@ $ npm view [@<scope>/]<name>[@<tag>|<version>] <field>[.<field>...]
 - [npm-bugs](https://docs.npmjs.com/cli/bugs)
 
 ```sh
-$ npm repo [[@<scope>/]<name>[@<tag>|<version>]]
-$ npm docs [[@<scope>/]<name>[@<tag>|<version>]]
-$ npm bugs [[@<scope>/]<name>[@<tag>|<version>]]
+$ npm repo [[@<scope>/]<pkg>[@<tag>|<version>]]
+$ npm docs [[@<scope>/]<pkg>[@<tag>|<version>]]
+$ npm bugs [[@<scope>/]<pkg>[@<tag>|<version>]]
 ```
 
 ---
@@ -136,6 +136,93 @@ $ npm bugs [[@<scope>/]<name>[@<tag>|<version>]]
 $ npm prune
 $ npm dedupe
 ```
+
+---
+
+- [npm-login](https://docs.npmjs.com/cli/adduser)
+- [npm-logout](https://docs.npmjs.com/cli/logout)
+
+```sh
+$ npm login
+$ npm logout
+```
+
+- `--registry=<registry>`
+- `--scope=@<scope>`
+
+---
+
+- [npm-publish](https://docs.npmjs.com/cli/publish)
+- [npm-unpublish](https://docs.npmjs.com/cli/unpublish)
+- [npm-deprecate](https://docs.npmjs.com/cli/deprecate)
+
+```sh
+$ npm publish [<tarball>|<folder>]
+```
+
+- `--tag=<tag>`
+- `--access={public|restricted}`
+- `--registry=<registry>`
+
+```sh
+$ npm unpublish [@<scope>/]<pkg>[@<version>]
+```
+
+```sh
+$ npm deprecate [@<scope>/]<pkg>[@<version>] <message>
+```
+
+---
+
+- [npm-dist-tag](https://docs.npmjs.com/cli/dist-tag)
+- [npm-version](https://docs.npmjs.com/cli/version)
+
+```sh
+$ npm dist-tag add <pkg>@<version> [<tag>]
+$ npm dist-tag rm <pkg> <tag>
+$ npm dist-tag ls [<pkg>]
+```
+
+```sh
+$ npm version <version> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git
+```
+
+- `--git-tag-version`
+- `-m|--message`
+
+---
+
+[npm-pack](https://docs.npmjs.com/cli/pack)
+
+```sh
+$ npm pack [[@<scope>/]<pkg>[@<tag>|<version>]...]
+```
+
+---
+
+[npm-link](https://docs.npmjs.com/cli/link)
+
+```sh
+$ npm link
+$ npm link [@<scope>/]<pkg>[@<tag>|<version>]
+```
+
+---
+
+- [npm-help](https://docs.npmjs.com/cli/help)
+- [npm-help-search](https://docs.npmjs.com/cli/help-search)
+
+```sh
+$ npm help <term> [<term>...]
+```
+
+- `--viewer={man|browser}`
+
+```sh
+$ npm help-search <text>
+```
+
+- `--long`
 
 ---
 
