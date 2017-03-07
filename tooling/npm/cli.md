@@ -192,10 +192,10 @@ $ npm version <version> | major | minor | patch | premajor | preminor | prepatch
 
 ---
 
-[npm-pack](https://docs.npmjs.com/cli/pack)
+[npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)
 
 ```sh
-$ npm pack [[@<scope>/]<pkg>[@<tag>|<version>]...]
+$ npm shrinkwrap
 ```
 
 ---
@@ -206,6 +206,42 @@ $ npm pack [[@<scope>/]<pkg>[@<tag>|<version>]...]
 $ npm link
 $ npm link [@<scope>/]<pkg>[@<tag>|<version>]
 ```
+
+---
+
+[npm-pack](https://docs.npmjs.com/cli/pack)
+
+```sh
+$ npm pack [[@<scope>/]<pkg>[@<tag>|<version>]...]
+```
+
+---
+
+[npm-config](https://docs.npmjs.com/cli/config)
+
+```sh
+$ npm config list
+$ npm [config] get <key>
+$ npm [config] set <key> [<value>]
+$ npm config delete <key>
+$ npm config edit
+```
+
+- `-g|--global`
+
+---
+
+- [npm-prefix](https://docs.npmjs.com/cli/prefix)
+- [npm-bin](https://docs.npmjs.com/cli/bin)
+- [npm-root](https://docs.npmjs.com/cli/root)
+
+```sh
+$ npm prefix
+$ npm bin
+$ npm root
+```
+
+- `-g|--global`
 
 ---
 
