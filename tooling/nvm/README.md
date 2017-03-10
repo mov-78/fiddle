@@ -29,4 +29,7 @@ $ nvm alias <NAME> <VERSION> # 设置别名
 $ nvm unalias <NAME> # 移除别名
 
 $ nvm which [<VERSION>] # 显示指定版本的安装路径；支持 .nvmrc
+
+$ nvm run lts/boron --version
+$ nvm exec lts/boron node --version
 ```
