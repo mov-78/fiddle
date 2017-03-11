@@ -27,13 +27,12 @@ $ r.js -o [profile.js] [[key=value]...]
 
 > 构建模式包含「单文件构建模式」及「项目构建模式」：
 
-![流程图](https://cdn.rawgit.com/pwnn/img/355fc57e12da3b24e037406cd5bd908b779b994a/fiddle/module/AMD/rjs-workflow.svg)
+<p align="center"><img src="https://cdn.rawgit.com/pwnn/img/355fc57e12da3b24e037406cd5bd908b779b994a/fiddle/module/AMD/rjs-workflow.svg?v=1" alt="流程图"></p>
 
 ---
 
-相对路径解析原则：
+<p align="center"><img src="https://cdn.rawgit.com/pwnn/img/61d112d4a028119fc3490990b41183694f40c8bf/fiddle/module/AMD/rjs-relative-path.svg?v=1" alt="相对路径解析原则"></p>
 
-![相对路径解析原则](https://cdn.rawgit.com/pwnn/img/61d112d4a028119fc3490990b41183694f40c8bf/fiddle/module/AMD/rjs-relative-path.svg)
 
 ---
 
