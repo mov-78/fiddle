@@ -252,6 +252,7 @@ $ npm root
 $ npm help <term> [<term>...]
 ```
 
+- `--usage`
 - `--viewer={man|browser}`
 
 ```sh
