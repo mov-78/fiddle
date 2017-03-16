@@ -101,7 +101,7 @@ $ npm update [[@<scope>/]<pkg>[@<tag>|<version>]...]
 
 ```sh
 $ npm test [-- <args>]
-$ npm run[-script] [<command>] [-- <args>]
+$ npm run[-script] [<stage>] [-- <args>]
 $ npm start [-- <args>]
 $ npm stop [-- <args>]
 $ npm restart [-- <args>]
