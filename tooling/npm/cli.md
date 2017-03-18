@@ -228,13 +228,13 @@ $ npm config edit
 
 ---
 
-- [npm-prefix](https://docs.npmjs.com/cli/prefix)
 - [npm-bin](https://docs.npmjs.com/cli/bin)
+- [npm-prefix](https://docs.npmjs.com/cli/prefix)
 - [npm-root](https://docs.npmjs.com/cli/root)
 
 ```sh
-$ npm prefix
 $ npm bin
+$ npm prefix
 $ npm root
 ```
 
