@@ -18,9 +18,9 @@ $ npm install
 $ npm install <folder>
 $ npm install <tarball_file>
 $ npm install <tarball_url>
-$ npm install [@<scope>/]<pkg>
-$ npm install [@<scope>/]<pkg>@<tag>
-$ npm install [@<scope>/]<pkg>@<version>
+$ npm install [@<scope>/]<name>
+$ npm install [@<scope>/]<name>@<tag>
+$ npm install [@<scope>/]<name>@<version>
 ```
 
 - `-S|--save`
@@ -38,9 +38,9 @@ $ npm install [@<scope>/]<pkg>@<version>
 > 别名：i
 
 ```sh
-$ npm uninstall [@<scope>/]<pkg>
-$ npm uninstall [@<scope>/]<pkg>@<tag>
-$ npm uninstall [@<scope>/]<pkg>@<version>
+$ npm uninstall [@<scope>/]<name>
+$ npm uninstall [@<scope>/]<name>@<tag>
+$ npm uninstall [@<scope>/]<name>@<version>
 ```
 
 - `-S|--save`
@@ -74,7 +74,7 @@ $ npm ls
 - [npm-update](https://docs.npmjs.com/cli/update)
 
 ```sh
-$ npm outdated [[@<scope>/]<pkg>[@<tag>|<version>]...]
+$ npm outdated [[@<scope>/]<name>[@<tag>|<version>]...]
 ```
 
 - `--depth=<depth>`
@@ -83,7 +83,7 @@ $ npm outdated [[@<scope>/]<pkg>[@<tag>|<version>]...]
 - `--long`
 
 ```sh
-$ npm update [[@<scope>/]<pkg>[@<tag>|<version>]...]
+$ npm update [[@<scope>/]<name>[@<tag>|<version>]...]
 ```
 
 - `-g|--global`
@@ -112,7 +112,7 @@ $ npm restart [-- <args>]
 [npm-view](https://docs.npmjs.com/cli/view)
 
 ```sh
-$ npm view [@<scope>/]<pkg>[@<tag>|<version>] <field>[.<field>...]
+$ npm view [@<scope>/]<name>[@<tag>|<version>] <field>[.<field>...]
 ```
 
 ---
@@ -122,9 +122,9 @@ $ npm view [@<scope>/]<pkg>[@<tag>|<version>] <field>[.<field>...]
 - [npm-bugs](https://docs.npmjs.com/cli/bugs)
 
 ```sh
-$ npm repo [[@<scope>/]<pkg>[@<tag>|<version>]]
-$ npm docs [[@<scope>/]<pkg>[@<tag>|<version>]]
-$ npm bugs [[@<scope>/]<pkg>[@<tag>|<version>]]
+$ npm repo [[@<scope>/]<name>[@<tag>|<version>]]
+$ npm docs [[@<scope>/]<name>[@<tag>|<version>]]
+$ npm bugs [[@<scope>/]<name>[@<tag>|<version>]]
 ```
 
 ---
@@ -165,11 +165,11 @@ $ npm publish [<tarball>|<folder>]
 - `--registry=<registry>`
 
 ```sh
-$ npm unpublish [@<scope>/]<pkg>[@<version>]
+$ npm unpublish [@<scope>/]<name>[@<version>]
 ```
 
 ```sh
-$ npm deprecate [@<scope>/]<pkg>[@<version>] <message>
+$ npm deprecate [@<scope>/]<name>[@<version>] <message>
 ```
 
 ---
@@ -178,9 +178,9 @@ $ npm deprecate [@<scope>/]<pkg>[@<version>] <message>
 - [npm-version](https://docs.npmjs.com/cli/version)
 
 ```sh
-$ npm dist-tag add <pkg>@<version> [<tag>]
-$ npm dist-tag rm <pkg> <tag>
-$ npm dist-tag ls [<pkg>]
+$ npm dist-tag add <name>@<version> [<tag>]
+$ npm dist-tag rm <name> <tag>
+$ npm dist-tag ls [<name>]
 ```
 
 ```sh
@@ -204,7 +204,7 @@ $ npm shrinkwrap
 
 ```sh
 $ npm link
-$ npm link [@<scope>/]<pkg>[@<tag>|<version>]
+$ npm link [@<scope>/]<name>[@<tag>|<version>]
 ```
 
 ---
@@ -212,7 +212,7 @@ $ npm link [@<scope>/]<pkg>[@<tag>|<version>]
 [npm-pack](https://docs.npmjs.com/cli/pack)
 
 ```sh
-$ npm pack [[@<scope>/]<pkg>[@<tag>|<version>]...]
+$ npm pack [[@<scope>/]<name>[@<tag>|<version>]...]
 ```
 
 ---
