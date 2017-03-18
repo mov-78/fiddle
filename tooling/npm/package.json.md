@@ -33,7 +33,7 @@ $ npm help package.json
 ```json
 { "dependencies" : { "[@<scope>/]<name>" : "<version>" } }
 { "dependencies" : { "[@<scope>/]<name>" : "<protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>[#<commit-ish>]" } }
-{ "dependencies" : { "[@<scope>/]<name>" : "[github]:<username>/<repo>[#<commit-ish>]" } }
+{ "dependencies" : { "[@<scope>/]<name>" : "github:<username>/<repo>[#<commit-ish>]" } }
 { "dependencies" : { "[@<scope>/]<name>" : "<tarball>" } }
 { "dependencies" : { "[@<scope>/]<name>" : "file:<path>" } }
 ```

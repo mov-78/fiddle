@@ -54,7 +54,7 @@ $ npm help 7 npm-config
 
 ---
 
-- [access=restricted](https://docs.npmjs.com/misc/config#access)
+- [access](https://docs.npmjs.com/misc/config#access)
 
 ---
 
