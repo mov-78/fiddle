@@ -16,11 +16,10 @@ $ npm init
 ```sh
 $ npm install
 $ npm install <folder>
-$ npm install <tarball_file>
-$ npm install <tarball_url>
-$ npm install [@<scope>/]<name>
-$ npm install [@<scope>/]<name>@<tag>
-$ npm install [@<scope>/]<name>@<version>
+$ npm install <tarball>
+$ npm install [@<scope>/]<name>[@<tag|version>]
+$ npm install <protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>[#<commit-ish>]
+$ npm install github:<username>/<repo>[#<commit-ish>]
 ```
 
 - `-S|--save`
@@ -38,9 +37,7 @@ $ npm install [@<scope>/]<name>@<version>
 > 别名：i
 
 ```sh
-$ npm uninstall [@<scope>/]<name>
-$ npm uninstall [@<scope>/]<name>@<tag>
-$ npm uninstall [@<scope>/]<name>@<version>
+$ npm uninstall [@<scope>/]<name>[@<tag|version>]
 ```
 
 - `-S|--save`
@@ -74,7 +71,7 @@ $ npm ls
 - [npm-update](https://docs.npmjs.com/cli/update)
 
 ```sh
-$ npm outdated [[@<scope>/]<name>[@<tag>|<version>]...]
+$ npm outdated [[@<scope>/]<name>[@<tag|version>]...]
 ```
 
 - `--depth=<depth>`
@@ -83,7 +80,7 @@ $ npm outdated [[@<scope>/]<name>[@<tag>|<version>]...]
 - `--long`
 
 ```sh
-$ npm update [[@<scope>/]<name>[@<tag>|<version>]...]
+$ npm update [[@<scope>/]<name>[@<tag|version>]...]
 ```
 
 - `-g|--global`
@@ -112,7 +109,7 @@ $ npm restart [-- <args>]
 [npm-view](https://docs.npmjs.com/cli/view)
 
 ```sh
-$ npm view [@<scope>/]<name>[@<tag>|<version>] <field>[.<field>...]
+$ npm view [@<scope>/]<name>[@<tag|version>] <field>[.<field>...]
 ```
 
 ---
@@ -122,9 +119,9 @@ $ npm view [@<scope>/]<name>[@<tag>|<version>] <field>[.<field>...]
 - [npm-bugs](https://docs.npmjs.com/cli/bugs)
 
 ```sh
-$ npm repo [[@<scope>/]<name>[@<tag>|<version>]]
-$ npm docs [[@<scope>/]<name>[@<tag>|<version>]]
-$ npm bugs [[@<scope>/]<name>[@<tag>|<version>]]
+$ npm repo [[@<scope>/]<name>[@<tag|version>]]
+$ npm docs [[@<scope>/]<name>[@<tag|version>]]
+$ npm bugs [[@<scope>/]<name>[@<tag|version>]]
 ```
 
 ---
@@ -203,8 +200,8 @@ $ npm shrinkwrap
 [npm-link](https://docs.npmjs.com/cli/link)
 
 ```sh
-$ npm link
-$ npm link [@<scope>/]<name>[@<tag>|<version>]
+$ npm link # step-1
+$ npm link [@<scope>/]<name>[@<tag|version>] # step-2
 ```
 
 ---
@@ -212,7 +209,7 @@ $ npm link [@<scope>/]<name>[@<tag>|<version>]
 [npm-pack](https://docs.npmjs.com/cli/pack)
 
 ```sh
-$ npm pack [[@<scope>/]<name>[@<tag>|<version>]...]
+$ npm pack [[@<scope>/]<name>[@<tag|version>]...]
 ```
 
 ---
