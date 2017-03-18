@@ -11,10 +11,18 @@ $ npm [config] get prefix [-g|--global] # 获取当前 prefix 配置
 
 __modules__
 
+```sh
+$ npm root [-g|--global]
+```
+
 - `$(npm prefix)/node_modules`
 - `$(npm prefix -g)/lib/node_modules`
 
 __executables__
+
+```sh
+$ npm bin [-g|--global]
+```
 
 - `$(npm prefix)/node_modules/.bin`
 - `$(npm prefix -g)/bin`
