@@ -40,6 +40,10 @@ $ npm help package.json
 
 ---
 
+- [main](https://docs.npmjs.com/files/package.json#main)
+
+---
+
 - [scripts](https://docs.npmjs.com/files/package.json#scripts)
 
 > [scripts](./scripts.md)
@@ -87,6 +91,15 @@ $ npm help package.json
 
 ```json
 { "publishConfig" : { "access" : "public" } }
+```
+
+---
+
+- [bin](https://docs.npmjs.com/files/package.json#bin)
+
+```json
+{ "bin" : { "name" : "path/to/executable" } }
+{ "bin" : "path/to/executable" }
 ```
 
 ---
