@@ -5,6 +5,15 @@ $ npm help 7 npm-config
 
 ---
 
+1. CLI `--key[=value]`
+2. ENV `export npm_config_<key>=value`
+3. npmrc
+    1. $(npm prefix)/.npmrc
+    2. $HOME/.npmrc
+    3. $(npm prefix -g)/etc/npmrc
+
+---
+
 - [save=false](https://docs.npmjs.com/misc/config#save)
 - [save-dev=false](https://docs.npmjs.com/misc/config#save-dev)
 - [save-optional=false](https://docs.npmjs.com/misc/config#save-optional)
