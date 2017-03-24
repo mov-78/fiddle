@@ -1,3 +1,6 @@
+<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/eslint_configuration_cascade-0.svg" alt="eslint configuration cascade"></p>
+
+> .eslintrc.js → .eslintrc.y[a]ml → .eslintrc.json → .eslintrc → eslintConfig
 
 ---
 
@@ -72,3 +75,30 @@ plugins:
 > 全局 ESLint 只能使用全局 ESLint 插件；本地 ESLint 可以同时使用全局及本地 ESLint 插件
 
 ---
+
+```yml
+extends: standard
+plugins:
+    - react
+```
+
+```yml
+extends:
+    - eslint:all
+    - eslint:recommended
+    - standard # eslint-config-standard
+    - plugin:react/recommended # eslint-plugin-react
+    - path/to/config
+plugins:
+    - react
+```
+
+---
+
+```js
+/* eslint-enable [rule[, rule...]] */
+/* eslint-disable [rule[, rule...]] */
+
+// eslint-disable-line [rule[, rule...]]
+// eslint-disable-next-line [rule[, rule...]]
+```
