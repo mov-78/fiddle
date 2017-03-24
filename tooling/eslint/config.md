@@ -78,8 +78,6 @@ plugins:
 
 ```yml
 extends: standard
-plugins:
-    - react
 ```
 
 ```yml
