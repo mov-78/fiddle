@@ -102,8 +102,6 @@ $ npm help package.json
 { "bin" : "path/to/executable" }
 ```
 
----
-
 - [preferGlobal](https://docs.npmjs.com/files/package.json#preferglobal)
 
 ```json
