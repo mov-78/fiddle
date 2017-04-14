@@ -3,9 +3,12 @@ $ npm help folders
 ```
 
 ```sh
-$ npm prefix [-g|--global] # 获取当前 prefix
-$ npm [config] get prefix [-g|--global] # 获取当前 prefix 配置
+$ npm prefix [-g|--global] # 获取实际 package 目录或（-g|--global）实际 prefix 配置
+$ npm [config] get prefix [-g|--global] # 获取用户/全局 prefix 配置
 ```
+
+> - [npm-prefix](https://docs.npmjs.com/cli/prefix)
+> - [config/prefix](https://docs.npmjs.com/misc/config#prefix)
 
 ---
 

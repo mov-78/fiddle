@@ -110,6 +110,7 @@ $ npm restart [-- <args>]
 
 ```sh
 $ npm view [@<scope>/]<name>[@<tag|version>] <field>[.<field>...]
+$ npm view [@<scope>/]<name>[@<tag|version>] versions # 列出所有版本
 ```
 
 ---
@@ -225,6 +226,8 @@ $ npm config edit
 ```
 
 - `-g|--global`
+
+> `npm-config` 只操作用户/全局配置，不影响项目配置
 
 ---
 
