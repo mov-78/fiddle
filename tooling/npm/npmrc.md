@@ -14,30 +14,30 @@ $ npm help 7 npm-config
 
 ---
 
-- [save=false](https://docs.npmjs.com/misc/config#save)
-- [save-dev=false](https://docs.npmjs.com/misc/config#save-dev)
-- [save-optional=false](https://docs.npmjs.com/misc/config#save-optional)
+- [save=false](https://docs.npmjs.com/misc/config#save) ✪
+- [save-dev=false](https://docs.npmjs.com/misc/config#save-dev) ✪
+- [save-optional=false](https://docs.npmjs.com/misc/config#save-optional) ✪
 - [save-exact=false](https://docs.npmjs.com/misc/config#save-exact)
 - [save-prefix=^](https://docs.npmjs.com/misc/config#save-prefix)
 
 ---
 
-- [dev=false](https://docs.npmjs.com/misc/config#dev)
-- [production=false](https://docs.npmjs.com/misc/config#production)
-- [optional=true](https://docs.npmjs.com/misc/config#optional)
-- [only](https://docs.npmjs.com/misc/config#only)
+- [dev=false](https://docs.npmjs.com/misc/config#dev) ✪
+- [production=false](https://docs.npmjs.com/misc/config#production) ✪
+- [optional=true](https://docs.npmjs.com/misc/config#optional) ✪
+- [only](https://docs.npmjs.com/misc/config#only) ✪
 
 ---
 
-- [depth=Infinity](https://docs.npmjs.com/misc/config#depth)
+- [depth=Infinity](https://docs.npmjs.com/misc/config#depth) ✪
 
 ---
 
-- [global=false](https://docs.npmjs.com/misc/config#global)
+- [global=false](https://docs.npmjs.com/misc/config#global) ✪
 
 ---
 
-- [tag=latest](https://docs.npmjs.com/misc/config#tag)
+- [tag=latest](https://docs.npmjs.com/misc/config#tag) ✪
 
 ---
 
@@ -54,12 +54,12 @@ $ npm help 7 npm-config
 
 ---
 
-- [scope](https://docs.npmjs.com/misc/config#scope)
+- [scope](https://docs.npmjs.com/misc/config#scope) ✪
 - [registry=https://registry.npmjs.org/](https://docs.npmjs.com/misc/config#registry)
 
 ---
 
-- [force=false](https://docs.npmjs.com/misc/config#force)
+- [force=false](https://docs.npmjs.com/misc/config#force) ✪
 
 ---
 
@@ -67,13 +67,13 @@ $ npm help 7 npm-config
 
 ---
 
-- [shrinkwrap=true](https://docs.npmjs.com/misc/config#shrinkwrap)
+- [shrinkwrap=true](https://docs.npmjs.com/misc/config#shrinkwrap) ✪
 
 ---
 
-- [long=false](https://docs.npmjs.com/misc/config#long)
-- [json=false](https://docs.npmjs.com/misc/config#json)
-- [parseable=false](https://docs.npmjs.com/misc/config#parseable)
+- [long=false](https://docs.npmjs.com/misc/config#long) ✪
+- [json=false](https://docs.npmjs.com/misc/config#json) ✪
+- [parseable=false](https://docs.npmjs.com/misc/config#parseable) ✪
 
 ---
 
@@ -95,5 +95,9 @@ $ npm help 7 npm-config
 
 ---
 
-- [userconfig=$HOME/.npmrc](https://docs.npmjs.com/misc/config#userconfig)
-- [globalconfig=$(npm prefix -g)/etc/npmrc](https://docs.npmjs.com/misc/config#globalconfig)
+- [userconfig=$HOME/.npmrc](https://docs.npmjs.com/misc/config#userconfig) ✪
+- [globalconfig=$(npm prefix -g)/etc/npmrc](https://docs.npmjs.com/misc/config#globalconfig) ✪
+
+---
+
+> 带 ✪ 标识的为命令行常用参数
