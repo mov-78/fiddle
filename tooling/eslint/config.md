@@ -49,7 +49,7 @@ globals:
 ```js
 /* eslint no-magic-numbers: 0 */
 /* eslint no-octal: error */
-/* eslint quotes: [warn, single] */
+/* eslint quotes: [ warn , single ] */
 /* eslint mocha/no-pending-tests: error */
 ```
 
