@@ -94,6 +94,10 @@ plugins:
 ---
 
 ```js
+/* exported identifier */
+```
+
+```js
 /* eslint-enable [rule[, rule...]] */
 /* eslint-disable [rule[, rule...]] */
 
