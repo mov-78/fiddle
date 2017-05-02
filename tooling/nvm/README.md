@@ -12,7 +12,7 @@ $ nvm --help # 显示帮助信息
 $ nvm --version # 显示版本信息
 
 $ nvm install [-s] [<VERSION>] # 下载、编译（-s）、安装指定版本；支持 .nvmrc
-$ nvm install --reinstall-packages-from=<VERSION> [-s] [<VERSION>] # 下载、编译（-s）、安装指定版本，同时迁移指定版本中的全局包；支持 .nvmrc
+$ nvm install [<VERSION>] [-s] --reinstall-packages-from=<VERSION> # 下载、编译（-s）、安装指定版本，同时迁移指定版本中的全局包；支持 .nvmrc
 $ nvm uninstall <VERSION> # 卸载指定版本
 
 $ nvm use [--silent] [<VERSION>] # 激活指定版本；支持 .nvmrc
