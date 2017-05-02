@@ -81,3 +81,7 @@ module.exports = {
     }
 }
 ```
+
+---
+
+- [configuration/entry-context](https://webpack.js.org/configuration/entry-context/)

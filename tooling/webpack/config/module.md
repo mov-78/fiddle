@@ -32,3 +32,7 @@ UseEntry:
 
 - string
 - { loader: string, options?: string|object }
+
+---
+
+- [configuration/module](https://webpack.js.org/configuration/module/)
