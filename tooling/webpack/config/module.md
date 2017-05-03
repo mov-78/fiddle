@@ -26,7 +26,10 @@ Condition:
 - regex
 - function: (string) => boolean
 - Condition[]
-- { test?: Condition, include?: Condition, exclude?: Condition, and?: Condition[], or?: Condition:[], not?: Condition[] }
+- { and: Condition[] }
+- { or: Condition[] }
+- { not: Condition[] }
+- { test?: Condition, include?: Condition, exclude?: Condition }
 
 UseEntry:
 
