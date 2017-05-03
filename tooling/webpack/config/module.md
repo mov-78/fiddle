@@ -10,7 +10,7 @@ module.exports = {
 
 __module.rules__
 
-<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/webpack-Rule.svg?0" alt="webpack-Rule"></p>
+<p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/webpack-Rule.svg?1" alt="webpack-Rule"></p>
 
 ```js
 module.exports = {
