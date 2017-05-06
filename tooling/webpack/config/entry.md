@@ -1,5 +1,7 @@
 __context__
 
+指定入口模块（及加载器）所在根目录
+
 ```js
 module.exports = {
     context: path.resolve(__dirname, 'app')
@@ -13,42 +15,18 @@ module.exports = {
 
 __entry__
 
+指定入口模块
+
 ```js
 module.exports = {
-    entry: './index'
-}
-
-module.exports = {
-    entry: ['./index', './about']
-}
-
-module.exports = {
-    entry: {
-        index: './index',
-        about: './about'
-    }
+    entry: Entry
 }
 ```
 
 ```js
 module.exports = {
     entry() {
-        return './index'
-    }
-}
-
-module.exports = {
-    entry() {
-        return ['./index', './about']
-    }
-}
-
-module.exports = {
-    entry() {
-        return {
-            index: './index',
-            about: './about'
-        }
+        return Entry
     }
 }
 ```
@@ -57,30 +35,17 @@ module.exports = {
 module.exports = {
     entry() {
         return new Promise(function (resolve, reject) {
-            resolve('./index')
-        })
-    }
-}
-
-module.exports = {
-    entry() {
-        return new Promise(function (resolve, reject) {
-            resolve(['./index', './about'])
-        })
-    }
-}
-
-module.exports = {
-    entry() {
-        return new Promise(function (resolve, reject) {
-            resolve({
-                index: './index',
-                about: './about'
-            })
+            resolve(Entry)
         })
     }
 }
 ```
+
+Entry:
+
+- string
+- string[]
+- { chunkName: string|string[] }
 
 ---
 

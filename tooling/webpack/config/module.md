@@ -1,5 +1,7 @@
 __module.noParse__
 
+忽略对特定文件的的静态分析
+
 ```js
 module.exports = {
     module: {
@@ -9,6 +11,8 @@ module.exports = {
 ```
 
 __module.rules__
+
+指定加载器规则
 
 <p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/webpack-Rule.svg?1" alt="webpack-Rule"></p>
 

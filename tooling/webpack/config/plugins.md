@@ -1,5 +1,7 @@
 __plugins__
 
+配置插件
+
 ```js
 module.exports = {
     plugins: [

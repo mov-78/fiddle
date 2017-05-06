@@ -1,3 +1,7 @@
+__watch__
+
+watch 模式相关配置
+
 ```js
 module.exports = {
     watch: true,
