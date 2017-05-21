@@ -1,6 +1,6 @@
 __context__
 
-指定入口模块（及加载器）所在根目录
+指定入口模块（及 loader）所在根目录
 
 ```js
 module.exports = {
@@ -8,8 +8,8 @@ module.exports = {
 }
 ```
 
-- 必须为绝对路径
-- 默认值为 `process.cwd()`
+> - 必须为绝对路径
+> - 默认值为 `process.cwd()`
 
 ---
 

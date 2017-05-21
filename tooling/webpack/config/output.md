@@ -29,7 +29,7 @@ module.exports = {
 
 __output.pathinfo__
 
-控制是否在 bundle/chunk 中（以注释形式）包含原始模块路径信息
+控制是否在 bundle 中（以注释形式）包含原始模块路径信息
 
 ```js
 module.exports = {
@@ -67,10 +67,10 @@ module.exports = {
 
 | 模板 | 描述 |
 | - | - |
-| [hash] | 构建哈希 |
-| [chunkhash] | chunk 内容哈希 |
-| [name] | 入口模块名（或 chunk ID） |
-| [id] | chunk ID |
+| `[hash]` | 构建哈希 |
+| `[chunkhash]` | chunk 内容哈希 |
+| `[name]` | 入口模块名（或 chunk ID） |
+| `[id]` | chunk ID |
 
 > - [TemplatedPathPlugin](https://github.com/webpack/webpack/blob/master/lib/TemplatedPathPlugin.js)
 > - `webpack.optimize.CommonsChunkPlugin` 切割的 chunk 应用的是 `output.filename` 选项
@@ -102,17 +102,16 @@ module.exports = {
 }
 ```
 
-支持的格式：
-
-- var（默认值）
-- assign
-- this
-- window
-- global
-- commonjs[2]
-- amd
-- umd
-- jsonp
+> 支持的格式：
+> - `var`
+> - `assign`
+> - `this`
+> - `window`
+> - `global`
+> - `commonjs|commonjs2`
+> - `amd`
+> - `umd`
+> - `jsonp`
 
 ---
 
