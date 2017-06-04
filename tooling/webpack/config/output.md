@@ -75,6 +75,18 @@ module.exports = {
 > - [TemplatedPathPlugin](https://github.com/webpack/webpack/blob/master/lib/TemplatedPathPlugin.js)
 > - `webpack.optimize.CommonsChunkPlugin` 切割的 chunk 应用的是 `output.filename` 选项
 
+__output.sourceMapFilename__
+
+指定 SourceMap 文件名
+
+```js
+module.exports = {
+    output: {
+        sourceMapFilename: '[file].map'
+    }
+}
+```
+
 ---
 
 __output.library__
