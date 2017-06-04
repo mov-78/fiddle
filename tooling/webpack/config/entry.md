@@ -22,7 +22,7 @@ entry: Entry
 ```
 
 ```js
-type Entry = string | string[] | { [chunkName: string]: string | string[] } | () => Entry
+type Entry = string | string[] | {[chunkName: string]: string | string[]} | () => Entry
 ```
 
 ---

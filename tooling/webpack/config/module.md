@@ -51,7 +51,7 @@ type Condition = string | RegExp | ((string) => boolean) | Condition[] | {|
 ```js
 type UseEntry = string | {
     loader: string,
-    options?: string | { [string]: any }
+    options?: string | {[string]: any}
 }
 ```
 
