@@ -3,11 +3,11 @@ __[this.callback](https://webpack.js.org/api/loaders/#this-callback)__
 向 [loader-runner](https://github.com/webpack/loader-runner) 输出转换结果
 
 ```js
-this.callback(err: Error|null, content: string|Buffer, sourceMap?: SourceMap)
+this.callback(err: Error | null, content: string | Buffer, sourceMap?: SourceMap)
 ```
 
 > - 可异步调用（`assert(this.callback === this.async())`）
-> - 对于同步调用且返回值只有一个（`content: string|Buffer`）的情况下，可以直接 `return` 该值而无需调用 `this.callback`
+> - 对于同步调用且返回值只有一个（`content: string | Buffer`）的情况下，可以直接 `return` 该值而无需调用 `this.callback`
 > - 调用 `this.callback` 后，必须返回 `undefined` 来避免歧义
 > - `sourceMap` 实参必须可以被 [mozilla/source-map](https://github.com/mozilla/source-map) 模块解析
 
@@ -117,7 +117,7 @@ __[this.emitFile](https://webpack.js.org/api/loaders/#this-emitfile)__
 生成静态资源
 
 ```js
-this.emitFile(filename: string, content: string|Buffer, sourceMap?: SourceMap)
+this.emitFile(filename: string, content: string | Buffer, sourceMap?: SourceMap)
 ```
 
 ---
@@ -170,7 +170,7 @@ __[this.resolve](https://webpack.js.org/api/loaders/#this-resolve)__
 以解析 `require` 表达式的方式异步解析一个模块请求
 
 ```js
-this.resolve(context: string, request: string, callback: (err: Error|null, result: string) => void)
+this.resolve(context: string, request: string, callback: (err: Error | null, result: string) => void)
 ```
 
 ---
@@ -180,7 +180,7 @@ __[this.loadModule](https://webpack.js.org/api/loaders/#this-loadmodule)__
 解析给定的模块请求，在应用所有 loader 后，返回对应的模块信息
 
 ```js
-this.loadModule(request: string, callback: (err: Error|null, source: string, sourceMap: SourceMap, module: Module) => void)
+this.loadModule(request: string, callback: (err: Error | null, source: string, sourceMap: SourceMap, module: Module) => void)
 ```
 
 ---

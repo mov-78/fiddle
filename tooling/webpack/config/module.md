@@ -3,11 +3,7 @@ __module.noParse__
 忽略对特定文件的的静态分析
 
 ```js
-module.exports = {
-    module: {
-        noParse: RegExp | RegExp[]
-    }
-}
+module.noParse: RegExp | RegExp[]
 ```
 
 __module.rules__
@@ -17,28 +13,47 @@ __module.rules__
 <p align="center"><img src="http://ocv7sq6bh.bkt.clouddn.com/webpack-Rule.svg" alt="webpack-Rule"></p>
 
 ```js
-module.exports = {
-    module: {
-        rules: Rule[]
-    }
+module.rules: Rule[]
+```
+
+```js
+type Rule = {
+
+    issuer?: Condition,
+
+    resource?: Condition,
+    resourceQuery?: Condition,
+
+    enforce?: void | 'pre' | 'post',
+    use?: UseEntry | UseEntry[],
+
+    rules?: Rule[],
+    oneOf?: Rule[]
+
 }
 ```
 
-Condition:
+```js
+type Condition = string | RegExp | ((string) => boolean) | Condition[] | {|
 
-- string
-- regex
-- function: (string) => boolean
-- Condition[]
-- { and: Condition[] }
-- { or: Condition[] }
-- { not: Condition[] }
-- { test?: Condition, include?: Condition, exclude?: Condition }
+    test?: Condition,
 
-UseEntry:
+    include?: Condition,
+    exclude?: Condition,
 
-- string
-- { loader: string, options?: string|object }
+    and?: Condition[],
+    or?: Condition[],
+    not?: Condition[]
+
+|}
+```
+
+```js
+type UseEntry = string | {
+    loader: string,
+    options?: string | { [string]: any }
+}
+```
 
 ---
 

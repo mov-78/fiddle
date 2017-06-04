@@ -18,34 +18,12 @@ __entry__
 指定入口模块
 
 ```js
-module.exports = {
-    entry: Entry
-}
+entry: Entry
 ```
 
 ```js
-module.exports = {
-    entry() {
-        return Entry
-    }
-}
+type Entry = string | string[] | { [chunkName: string]: string | string[] } | () => Entry
 ```
-
-```js
-module.exports = {
-    entry() {
-        return new Promise(function (resolve, reject) {
-            resolve(Entry)
-        })
-    }
-}
-```
-
-Entry:
-
-- string
-- string[]
-- { chunkName: string|string[] }
 
 ---
 
