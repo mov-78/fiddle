@@ -5,6 +5,12 @@
 ---
 
 ```yml
+parser: babel-eslint
+```
+
+---
+
+```yml
 parserOptions:
     ecmaVersion: 5 # {5|6(2015)|7(2016)|8(2017)}
     sourceType: script # {script|module}
@@ -82,7 +88,6 @@ extends: standard
 
 ```yml
 extends:
-    - eslint:all
     - eslint:recommended
     - standard # eslint-config-standard
     - plugin:react/recommended # eslint-plugin-react
@@ -93,9 +98,28 @@ plugins:
 
 ---
 
+```yml
+overrides:
+    - files: # 相对于当前配置文件解析
+        - bin/*.js
+        - lib/*.js
+      excludedFiles: *.test.js
+      rules:
+        quotes: off
+```
+
+> - 只能在配置文件中设置 `overrides`（不支持 CLI 及 pragma）
+> - 可以设置除了 `extends`、`overrides`、`root` 之外的所有配置项
+
+---
+
 ```js
 /* exported identifier */
 ```
+
+> [no-unused-vars#exported](https://eslint.org/docs/rules/no-unused-vars#exported)
+
+---
 
 ```js
 /* eslint-enable [rule[, rule...]] */
