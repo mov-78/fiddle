@@ -110,4 +110,3 @@ JSXChildExpression:
 
 - [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html)
 - [Draft: JSX Specification](https://facebook.github.io/jsx/)
-- [ECMAScript 6th Edition (ECMA-262)](https://www.ecma-international.org/ecma-262/8.0/index.html)
