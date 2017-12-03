@@ -1,0 +1,5 @@
+- [ReactDOM.render(element, container, [callback])](https://reactjs.org/docs/react-dom.html#render)
+- [ReactDOM.hydrate(element, container, [callback])](https://reactjs.org/docs/react-dom.html#hydrate)
+- [ReactDOM.unmountComponentAtNode(container)](https://reactjs.org/docs/react-dom.html#unmountcomponentatnode)
+- [ReactDOM.findDOMNode(component)](https://reactjs.org/docs/react-dom.html#finddomnode)
+- [ReactDOM.createPortal(child, container)](https://reactjs.org/docs/react-dom.html#createportal)
