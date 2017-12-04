@@ -14,6 +14,10 @@
 
 ---
 
+- [componentDidCatch(error, info)](https://reactjs.org/docs/react-component.html#componentdidcatch)
+
+---
+
 - [setState(updater, [callback])](https://reactjs.org/docs/react-component.html#setstate)
 - [setState(stateChange, [callback])](https://reactjs.org/docs/react-component.html#setstate)
 - [forceUpdate(callback)](https://reactjs.org/docs/react-component.html#forceupdate)
