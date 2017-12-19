@@ -104,7 +104,6 @@ JSXTextCharacter:
 JSXChildExpression:
 
 - AssignmentExpression
-- `...` AssignmentExpression
 
 ---
 
