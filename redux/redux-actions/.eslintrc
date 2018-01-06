@@ -1,0 +1,7 @@
+env:
+    mocha: true
+    node: true
+extends:
+    - pwn/base
+    - pwn/ES6
+    - pwn/style

@@ -1,0 +1,5 @@
+- [createAction(type, payloadCreator=identity, [metaCreator])](https://redux-actions.js.org/docs/api/createAction.html#createaction)
+- [createActions(actionMap, ...identityActions)](https://redux-actions.js.org/docs/api/createAction.html#createactions)
+- [handleAction(type, reducer, defaultState)](https://redux-actions.js.org/docs/api/handleAction.html#handleaction)
+- [handleActions(reducerMap, defaultState)](https://redux-actions.js.org/docs/api/handleAction.html#handleactions)
+- [combineActions(...actionTypes)](https://redux-actions.js.org/docs/api/combineActions.html#combineactions)
