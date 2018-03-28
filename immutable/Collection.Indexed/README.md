@@ -52,14 +52,10 @@ context?: any
 splice(index: number, removeNum: number, ...values: Array<T>): this
 ```
 
-> `splice` 不支持批量更新
-
 ```ts
 interpose(separator: T): this
 interleave(...collections: Array<Collection<any, T>>): this
 ```
-
-> `interleave` 不支持批量更新
 
 ```ts
 zip<U>(other: Collection<any, U>): Collection.Indexed<[T, U]>

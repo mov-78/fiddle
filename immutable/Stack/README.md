@@ -35,13 +35,13 @@ peek(): T | undefined // Stack#first()
 
 ---
 
-- [unshift](https://facebook.github.io/immutable-js/docs/#/Stack/unshift) ✪
-- [unshiftAll](https://facebook.github.io/immutable-js/docs/#/Stack/unshiftAll) ✪
-- [shift](https://facebook.github.io/immutable-js/docs/#/Stack/shift) ✪
-- [push](https://facebook.github.io/immutable-js/docs/#/Stack/push) ✪
-- [pushAll](https://facebook.github.io/immutable-js/docs/#/Stack/pushAll) ✪
-- [pop](https://facebook.github.io/immutable-js/docs/#/Stack/pop) ✪
-- [clear](https://facebook.github.io/immutable-js/docs/#/Stack/clear) ✪
+- [unshift](https://facebook.github.io/immutable-js/docs/#/Stack/unshift)
+- [unshiftAll](https://facebook.github.io/immutable-js/docs/#/Stack/unshiftAll)
+- [shift](https://facebook.github.io/immutable-js/docs/#/Stack/shift)
+- [push](https://facebook.github.io/immutable-js/docs/#/Stack/push)
+- [pushAll](https://facebook.github.io/immutable-js/docs/#/Stack/pushAll)
+- [pop](https://facebook.github.io/immutable-js/docs/#/Stack/pop)
+- [clear](https://facebook.github.io/immutable-js/docs/#/Stack/clear)
 
 ```ts
 unshift(...values: Array<T>): Stack<T>

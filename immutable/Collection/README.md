@@ -24,8 +24,9 @@ get<NSV>(key: K, notSetValue: NSV): V | NSV
 ```ts
 has(key: K): boolean
 includes(value: V): boolean
-contains(value: V): boolean
 ```
+
+> `includes` 别名：`contains`
 
 ```ts
 first(): V | undefined
@@ -248,6 +249,8 @@ concat(...valuesOrCollections: Array<any>): Collection<any, any>
 flatten(depth?: number): Collection<any, any>
 flatten(shallow?: boolean): Collection<any, any>
 ```
+
+> `flatten` 仅处理 `Immutable.Collection`，不处理原生 `Object` 及 `Array`
 
 ```ts
 flatMap<M>(

@@ -27,15 +27,15 @@ List.of<T>(...values: Array<T>): List<T>
 
 ---
 
-- [set](https://facebook.github.io/immutable-js/docs/#/List/set) ✪
+- [set](https://facebook.github.io/immutable-js/docs/#/List/set)
 - [insert](https://facebook.github.io/immutable-js/docs/#/List/insert)
 - [delete](https://facebook.github.io/immutable-js/docs/#/List/delete)
-- [clear](https://facebook.github.io/immutable-js/docs/#/List/clear) ✪
-- [push](https://facebook.github.io/immutable-js/docs/#/List/push) ✪
-- [pop](https://facebook.github.io/immutable-js/docs/#/List/pop) ✪
-- [unshift](https://facebook.github.io/immutable-js/docs/#/List/unshift) ✪
-- [shift](https://facebook.github.io/immutable-js/docs/#/List/shift) ✪
-- [update](https://facebook.github.io/immutable-js/docs/#/List/update) ✪
+- [clear](https://facebook.github.io/immutable-js/docs/#/List/clear)
+- [push](https://facebook.github.io/immutable-js/docs/#/List/push)
+- [pop](https://facebook.github.io/immutable-js/docs/#/List/pop)
+- [unshift](https://facebook.github.io/immutable-js/docs/#/List/unshift)
+- [shift](https://facebook.github.io/immutable-js/docs/#/List/shift)
+- [update](https://facebook.github.io/immutable-js/docs/#/List/update)
 - [setSize](https://facebook.github.io/immutable-js/docs/#/List/setSize)
 
 ```ts
@@ -72,7 +72,7 @@ setSize(size: number): List<T>
 
 ---
 
-- [setIn](https://facebook.github.io/immutable-js/docs/#/List/setIn) ✪
+- [setIn](https://facebook.github.io/immutable-js/docs/#/List/setIn)
 - [deleteIn](https://facebook.github.io/immutable-js/docs/#/List/deleteIn)
 - [updateIn](https://facebook.github.io/immutable-js/docs/#/List/updateIn)
 - [mergeIn](https://facebook.github.io/immutable-js/docs/#/List/mergeIn)
@@ -105,7 +105,7 @@ mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 
 ---
 
-- [concat](https://facebook.github.io/immutable-js/docs/#/List/concat) ✪
+- [concat](https://facebook.github.io/immutable-js/docs/#/List/concat)
 - [map](https://facebook.github.io/immutable-js/docs/#/List/map)
 - [flatMap](https://facebook.github.io/immutable-js/docs/#/List/flatMap)
 - [filter](https://facebook.github.io/immutable-js/docs/#/List/filter)
