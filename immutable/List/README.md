@@ -124,7 +124,9 @@ map<M>(
 mapper: (value: T, key: number, iter: this) => M,
 context?: any
 ): List<M>
+```
 
+```ts
 flatMap<M>(
 mapper: (value: T, key: number, iter: this) => Iterable<M>,
 context?: any

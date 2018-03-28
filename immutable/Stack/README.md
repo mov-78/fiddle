@@ -78,7 +78,9 @@ map<M>(
 mapper: (value: T, key: number, iter: this) => M,
 context?: any
 ): Stack<M>
+```
 
+```ts
 flatMap<M>(
 mapper: (value: T, key: number, iter: this) => Iterable<M>,
 context?: any
