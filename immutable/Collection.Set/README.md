@@ -1,0 +1,53 @@
+```ts
+class Collection.Set<T> extends Collection<T, T>
+```
+
+```ts
+Collection.Set<T>(collection: Iterable<T>): Collection.Set<T>
+```
+
+---
+
+- [concat](https://facebook.github.io/immutable-js/docs/#/Collection.Set/concat)
+- [map](https://facebook.github.io/immutable-js/docs/#/Collection.Set/map)
+- [flatMap](https://facebook.github.io/immutable-js/docs/#/Collection.Set/flatMap)
+- [filter](https://facebook.github.io/immutable-js/docs/#/Collection.Set/filter)
+- [@@iterator](https://facebook.github.io/immutable-js/docs/#/Collection.Set/%5BSymbol.iterator%5D)
+
+```ts
+concat<U>(...collections: Array<Iterable<U>>): Collection.Set<T | U>
+```
+
+```ts
+map<M>(
+mapper: (value: T, key: T, iter: this) => M,
+context?: any
+): Collection.Set<M>
+```
+
+```ts
+flatMap<M>(
+mapper: (value: T, key: T, iter: this) => Iterable<M>,
+context?: any
+): Collection.Set<M>
+```
+
+```ts
+filter(predicate: (value: T, key: T, iter: this) => boolean, context?: any): this
+```
+
+```ts
+[Symbol.iterator](): IterableIterator<T>
+```
+
+---
+
+- [toJS](https://facebook.github.io/immutable-js/docs/#/Collection.Set/toJS)
+- [toJSON](https://facebook.github.io/immutable-js/docs/#/Collection.Set/toJSON)
+- [toArray](https://facebook.github.io/immutable-js/docs/#/Collection.Set/toArray)
+
+```ts
+toJS(): Array<any>
+toJSON(): Array<T>
+toArray(): Array<T>
+```
