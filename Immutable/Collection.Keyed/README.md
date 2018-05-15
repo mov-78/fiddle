@@ -9,56 +9,59 @@ Collection.Keyed<V>(obj: {[key: string]: V}): Collection.Keyed<string, V>
 
 ---
 
-- [flip](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/flip)
-- [concat](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/concat)
-- [map](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/map)
-- [mapKeys](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/mapKeys)
-- [mapEntries](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/mapEntries)
-- [flatMap](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/flatMap)
-- [filter](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/filter)
-- [@@iterator](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/%5BSymbol.iterator%5D)
+- [flip](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/flip) ☆
 
 ```ts
 flip(): Collection.Keyed<V, K>
 ```
 
-```ts
-concat<KC, VC>(
-...collections: Array<Iterable<[KC, VC]>>
-): Collection.Keyed<K | KC, V | VC>
+- [concat](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/concat)
 
-concat<C>(
-...collections: Array<{[key: string]: C}>
-): Collection.Keyed<K | string, V | C>
+```ts
+concat<KC, VC>(...collections: Array<Iterable<[KC, VC]>>): Collection.Keyed<K | KC, V | VC>
+concat<C>(...collections: Array<{[key: string]: C}>): Collection.Keyed<K | string, V | C>
 ```
+
+- [map](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/map)
+- [mapKeys](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/mapKeys) ☆
+- [mapEntries](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/mapEntries) ☆
 
 ```ts
 map<M>(
-mapper: (value: V, key: K, iter: this) => M,
-context?: any
+    mapper: (value: V, key: K, iter: this) => M,
+    context?: any
 ): Collection.Keyed<K, M>
 
 mapKeys<M>(
-mapper: (key: K, value: V, iter: this) => M,
-context?: any
+    mapper: (key: K, value: V, iter: this) => M,
+    context?: any
 ): Collection.Keyed<M, V>
 
 mapEntries<KM, VM>(
-mapper: (entry: [K, V], index: number, iter: this) => [KM, VM],
-context?: any
+    mapper: (entry: [K, V], index: number, iter: this) => [KM, VM],
+    context?: any
 ): Collection.Keyed<KM, VM>
 ```
+
+- [flatMap](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/flatMap)
 
 ```ts
 flatMap<KM, VM>(
-mapper: (value: V, key: K, iter: this) => Iterable<[KM, VM]>,
-context?: any
+    mapper: (value: V, key: K, iter: this) => Iterable<[KM, VM]>,
+    context?: any
 ): Collection.Keyed<KM, VM>
 ```
 
+- [filter](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/filter)
+
 ```ts
-filter(predicate: (value: V, key: K, iter: this) => boolean, context?: any): this
+filter(
+    predicate: (value: V, key: K, iter: this) => boolean,
+    context?: any
+): this
 ```
+
+- [@@iterator](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/%5BSymbol.iterator%5D)
 
 ```ts
 [Symbol.iterator](): IterableIterator<[K, V]>
