@@ -24,7 +24,7 @@ Stack.of<T>(...values: Array<T>): Stack<T>
 
 ---
 
-- [size](https://facebook.github.io/immutable-js/docs/#/Stack/size)
+- [size](https://facebook.github.io/immutable-js/docs/#/Stack/size) ☆
 
 ---
 

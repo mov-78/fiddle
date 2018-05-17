@@ -27,13 +27,8 @@ OrderedMap.isOrderedMap(maybeOrderedMap: any): boolean
 - [merge](https://facebook.github.io/immutable-js/docs/#/OrderedMap/merge)
 
 ```ts
-merge<KC, VC>(
-...collections: Array<Iterable<[KC, VC]>>
-): OrderedMap<K | KC, V | VC>
-
-merge<C>(
-...collections: Array<{[key: string]: C}>
-): OrderedMap<K | string, V | C>
+merge<KC, VC>(...collections: Array<Iterable<[KC, VC]>>): OrderedMap<K | KC, V | VC>
+merge<C>(...collections: Array<{[key: string]: C}>): OrderedMap<K | string, V | C>
 ```
 
 ---
@@ -41,40 +36,43 @@ merge<C>(
 - [map](https://facebook.github.io/immutable-js/docs/#/OrderedMap/map)
 - [mapKeys](https://facebook.github.io/immutable-js/docs/#/OrderedMap/mapKeys)
 - [mapEntries](https://facebook.github.io/immutable-js/docs/#/OrderedMap/mapEntries)
-- [flatMap](https://facebook.github.io/immutable-js/docs/#/OrderedMap/flatMap)
-- [filter](https://facebook.github.io/immutable-js/docs/#/OrderedMap/filter)
-- [flip](https://facebook.github.io/immutable-js/docs/#/OrderedMap/flip)
 
 ```ts
 map<M>(
-mapper: (value: V, key: K, iter: this) => M,
-context?: any
+    mapper: (value: V, key: K, iter: this) => M,
+    context?: any
 ): OrderedMap<K, M>
 
 mapKeys<M>(
-mapper: (key: K, value: V, iter: this) => M,
-context?: any
+    mapper: (key: K, value: V, iter: this) => M,
+    context?: any
 ): OrderedMap<M, V>
 
 mapEntries<KM, VM>(
-mapper: (entry: [K, V], index: number, iter: this) => [KM, VM],
-context?: any
+    mapper: (entry: [K, V], index: number, iter: this) => [KM, VM],
+    context?: any
 ): OrderedMap<KM, VM>
 ```
+
+- [flatMap](https://facebook.github.io/immutable-js/docs/#/OrderedMap/flatMap)
 
 ```ts
 flatMap<KM, VM>(
-mapper: (value: V, key: K, iter: this) => Iterable<[KM, VM]>,
-context?: any
+    mapper: (value: V, key: K, iter: this) => Iterable<[KM, VM]>,
+    context?: any
 ): OrderedMap<KM, VM>
 ```
 
+- [filter](https://facebook.github.io/immutable-js/docs/#/OrderedMap/filter)
+
 ```ts
 filter(
-predicate: (value: V, key: K, iter: this) => boolean,
-context?: any
+    predicate: (value: V, key: K, iter: this) => boolean,
+    context?: any
 ): this
 ```
+
+- [flip](https://facebook.github.io/immutable-js/docs/#/OrderedMap/flip)
 
 ```ts
 flip(): OrderedMap<V, K>
