@@ -21,13 +21,14 @@ Seq.Set.of<T>(...values: Array<T>): Seq.Set<T>
 - [toJS](https://facebook.github.io/immutable-js/docs/#/Seq.Set/toJS)
 - [toJSON](https://facebook.github.io/immutable-js/docs/#/Seq.Set/toJSON)
 - [toArray](https://facebook.github.io/immutable-js/docs/#/Seq.Set/toArray)
-- [toSeq](https://facebook.github.io/immutable-js/docs/#/Seq.Set/toSeq)
 
 ```ts
 toJS(): Array<any>
 toJSON(): Array<T>
 toArray(): Array<T>
 ```
+
+- [toSeq](https://facebook.github.io/immutable-js/docs/#/Seq.Set/toSeq)
 
 ```ts
 toSeq(): this
@@ -44,31 +45,33 @@ concat<U>(...collections: Array<Iterable<U>>): Seq.Set<T | U>
 ---
 
 - [map](https://facebook.github.io/immutable-js/docs/#/Seq.Set/map)
-- [flatMap](https://facebook.github.io/immutable-js/docs/#/Seq.Set/flatMap)
-- [filter](https://facebook.github.io/immutable-js/docs/#/Seq.Set/filter)
 
 ```ts
 map<M>(
-mapper: (value: T, key: T, iter: this) => M,
-context?: any
+    mapper: (value: T, key: T, iter: this) => M,
+    context?: any
 ): Seq.Set<M>
 ```
+
+- [flatMap](https://facebook.github.io/immutable-js/docs/#/Seq.Set/flatMap)
 
 ```ts
 flatMap<M>(
-mapper: (value: T, key: T, iter: this) => Iterable<M>,
-context?: any
+    mapper: (value: T, key: T, iter: this) => Iterable<M>,
+    context?: any
 ): Seq.Set<M>
 ```
 
+- [filter](https://facebook.github.io/immutable-js/docs/#/Seq.Set/filter)
+
 ```ts
 filter<F>(
-predicate: (value: T, key: T, iter: this) => boolean,
-context?: any
+    predicate: (value: T, key: T, iter: this) => boolean,
+    context?: any
 ): Seq.Set<F>
 
 filter(
-predicate: (value: T, key: T, iter: this) => any,
-context?: any
+    predicate: (value: T, key: T, iter: this) => any,
+    context?: any
 ): this
 ```
