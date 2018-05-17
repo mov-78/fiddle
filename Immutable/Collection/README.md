@@ -145,8 +145,13 @@ map<M>(
 - [filterNot](https://facebook.github.io/immutable-js/docs/#/Collection/filterNot)
 
 ```ts
-filter(
+filter<F>(
     predicate: (value: V, key: K, iter: this) => boolean,
+    context?: any
+): Collection<K, F>
+
+filter(
+    predicate: (value: V, key: K, iter: this) => any,
     context?: any
 ): this
 

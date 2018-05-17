@@ -67,8 +67,13 @@ flatMap<M>(
 - [filter](https://facebook.github.io/immutable-js/docs/#/OrderedSet/filter)
 
 ```ts
-filter(
+filter<F>(
     predicate: (value: T, key: T, iter: this) => boolean,
+    context?: any
+): OrderedSet<F>
+
+filter(
+    predicate: (value: T, key: T, iter: this) => any,
     context?: any
 ): this
 ```

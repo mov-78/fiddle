@@ -91,8 +91,13 @@ flatMap<M>(
 - [filter](https://facebook.github.io/immutable-js/docs/#/Stack/filter)
 
 ```ts
-filter(
+filter<F>(
     predicate: (value: T, index: number, iter: this) => boolean,
+    context?: any
+): Stack<F>
+
+filter(
+    predicate: (value: T, index: number, iter: this) => any,
     context?: any
 ): this
 ```

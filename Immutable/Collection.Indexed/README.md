@@ -107,8 +107,13 @@ flatMap<M>(
 - [filter](https://facebook.github.io/immutable-js/docs/#/Collection.Indexed/filter)
 
 ```ts
-filter(
+filter<F>(
     predicate: (value: T, index: number, iter: this) => boolean,
+    context?: any
+): Collection.Indexed<F>
+
+filter(
+    predicate: (value: T, index: number, iter: this) => any,
     context?: any
 ): this
 ```

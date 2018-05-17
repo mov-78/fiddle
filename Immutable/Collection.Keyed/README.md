@@ -55,8 +55,13 @@ flatMap<KM, VM>(
 - [filter](https://facebook.github.io/immutable-js/docs/#/Collection.Keyed/filter)
 
 ```ts
-filter(
+filter<F>(
     predicate: (value: V, key: K, iter: this) => boolean,
+    context?: any
+): Collection.Keyed<K, F>
+
+filter(
+    predicate: (value: V, key: K, iter: this) => any,
     context?: any
 ): this
 ```
