@@ -174,3 +174,19 @@ zipWith<Z>(
     ...collections: Array<Collection<any, any>>
 ): List<Z>
 ```
+
+---
+
+- [withMutations](https://facebook.github.io/immutable-js/docs/#/List/withMutations) ☆
+- [asMutable](https://facebook.github.io/immutable-js/docs/#/List/asMutable) ☆
+- [asImmutable](https://facebook.github.io/immutable-js/docs/#/List/asImmutable) ☆
+- [wasAltered](https://facebook.github.io/immutable-js/docs/#/List/wasAltered) ☆
+
+```ts
+withMutations(mutator: (mutable: this) => any): this
+
+asMutable(): this
+asImmutable(): this
+
+wasAltered(): boolean
+```

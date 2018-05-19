@@ -105,3 +105,19 @@ filter(
     context?: any
 ): this
 ```
+
+---
+
+- [withMutations](https://facebook.github.io/immutable-js/docs/#/Set/withMutations) ☆
+- [asMutable](https://facebook.github.io/immutable-js/docs/#/Set/asMutable) ☆
+- [asImmutable](https://facebook.github.io/immutable-js/docs/#/Set/asImmutable) ☆
+- [wasAltered](https://facebook.github.io/immutable-js/docs/#/Set/wasAltered) ☆
+
+```ts
+withMutations(mutator: (mutable: this) => any): this
+
+asMutable(): this
+asImmutable(): this
+
+wasAltered(): boolean
+```

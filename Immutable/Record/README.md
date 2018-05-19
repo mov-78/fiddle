@@ -148,3 +148,19 @@ toSeq(): Seq.Keyed<keyof TProps, TProps[keyof TProps]>
 ```ts
 [Symbol.iterator](): IterableIterator<[keyof TProps, TProps[keyof TProps]]>
 ```
+
+---
+
+- [withMutations](https://facebook.github.io/immutable-js/docs/#/Record/withMutations) ☆
+- [asMutable](https://facebook.github.io/immutable-js/docs/#/Record/asMutable) ☆
+- [asImmutable](https://facebook.github.io/immutable-js/docs/#/Record/asImmutable) ☆
+- [wasAltered](https://facebook.github.io/immutable-js/docs/#/Record/wasAltered) ☆
+
+```ts
+withMutations(mutator: (mutable: this) => any): this
+
+asMutable(): this
+asImmutable(): this
+
+wasAltered(): boolean
+```

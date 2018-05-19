@@ -165,3 +165,19 @@ filter(
 ```ts
 flip(): Map<V, K>
 ```
+
+---
+
+- [withMutations](https://facebook.github.io/immutable-js/docs/#/Map/withMutations) ☆
+- [asMutable](https://facebook.github.io/immutable-js/docs/#/Map/asMutable) ☆
+- [asImmutable](https://facebook.github.io/immutable-js/docs/#/Map/asImmutable) ☆
+- [wasAltered](https://facebook.github.io/immutable-js/docs/#/Map/wasAltered) ☆
+
+```ts
+withMutations(mutator: (mutable: this) => any): this
+
+asMutable(): this
+asImmutable(): this
+
+wasAltered(): boolean
+```
