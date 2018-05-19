@@ -11,6 +11,8 @@ fromJS(
 ): any
 ```
 
+> [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+
 ---
 
 - [is](https://facebook.github.io/immutable-js/docs/#/is)

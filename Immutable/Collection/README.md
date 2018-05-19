@@ -10,6 +10,20 @@ Collection<V>(obj: {[key: string]: V}): Collection.Keyed<string, V>
 
 ---
 
+- [equals](https://facebook.github.io/immutable-js/docs/#/Collection/equals)
+
+```ts
+equals(other: any): boolean
+```
+
+- [hashCode](https://facebook.github.io/immutable-js/docs/#/Collection/hashCode)
+
+```ts
+hashCode(): number
+```
+
+---
+
 - [get](https://facebook.github.io/immutable-js/docs/#/Collection/get)
 
 ```ts
