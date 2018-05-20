@@ -151,10 +151,10 @@ toSeq(): Seq.Keyed<keyof TProps, TProps[keyof TProps]>
 
 ---
 
-- [withMutations](https://facebook.github.io/immutable-js/docs/#/Record/withMutations) ☆
-- [asMutable](https://facebook.github.io/immutable-js/docs/#/Record/asMutable) ☆
-- [asImmutable](https://facebook.github.io/immutable-js/docs/#/Record/asImmutable) ☆
-- [wasAltered](https://facebook.github.io/immutable-js/docs/#/Record/wasAltered) ☆
+- [withMutations](https://facebook.github.io/immutable-js/docs/#/Record/withMutations)
+- [asMutable](https://facebook.github.io/immutable-js/docs/#/Record/asMutable)
+- [asImmutable](https://facebook.github.io/immutable-js/docs/#/Record/asImmutable)
+- [wasAltered](https://facebook.github.io/immutable-js/docs/#/Record/wasAltered)
 
 ```ts
 withMutations(mutator: (mutable: this) => any): this
