@@ -116,7 +116,7 @@ ie 10
 }
 ```
 
-> 「环境」配置来源：`BROWSERSLIST_ENV` 或 `NODE_ENV` 环境变量；默认 `production`
+> 「环境」配置来源：`BROWSERSLIST_ENV` 或 `NODE_ENV` 环境变量；默认 `production`
 
 配置来源：
 
