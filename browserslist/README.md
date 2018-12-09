@@ -136,7 +136,7 @@ ie 10
 cover 99.5% in my stats
 ```
 
-> `my stats` 是关键字，不是「自定义使用数据」的文件名。「自定义使用数据」的文件名默认为 `browserslist-stats.json`。可通过环境变量 `BROWSERSLIST_STATS` 来指定「自定义使用数据」文件的引用路径
+> `my stats` 是关键字，不是「自定义使用数据」的文件名。「自定义使用数据」的文件名默认为 `browserslist-stats.json`。可通过环境变量 `BROWSERSLIST_STATS` 来指定「自定义使用数据」的引用路径
 
 自定义使用数据格式：
 
