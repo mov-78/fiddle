@@ -93,6 +93,8 @@ prettier [options] [file/glob ...]
 
 --file-info <path>
 
+--support-info
+
 --range-start <int>
 --range-end <int>
 
@@ -105,7 +107,7 @@ prettier [options] [file/glob ...]
 
 ```js
 prettier.format(source [, options])
-prettier.check(source [, options])
+prettier.check(source [, options]) // --list-different
 
 prettier.resolveConfig(filePath [, options])
 prettier.resolveConfig.sync(filePath [, options])
@@ -115,5 +117,6 @@ prettier.clearConfigCache()
 
 prettier.getFileInfo(filePath [, options])
 prettier.getFileInfo.sync(filePath [, options])
+
 prettier.getSupportInfo([version])
 ```

@@ -136,7 +136,7 @@ ie 10
 cover 99.5% in my stats
 ```
 
-> `my stats` 是关键字，不是「自定义使用数据」的文件名。「自定义使用数据」的文件名默认为 `browserslist-stats.json`。可通过 `--stats` 命令行参数或环境变量 `BROWSERSLIST_STATS` 来指定「自定义使用数据」的引用路径
+> `my stats` 是关键字，不是「自定义使用数据」的文件名。「自定义使用数据」的文件名默认为 `browserslist-stats.json`。可通过 `--stats` 命令行参数或环境变量 `BROWSERSLIST_STATS` 来指定「自定义使用数据」的引用路径。
 
 自定义使用数据格式：
 
@@ -159,12 +159,12 @@ cover 99.5% in my stats
 ```sh
 $ browserslist "QUERIES"
 $ browserslist --json "QUERIES"
-$ browserslist --config="path/to/browserlist/file"
+$ browserslist --config="path/to/browserslist/file"
 $ browserslist --coverage "QUERIES"
 $ browserslist --coverage=US "QUERIES"
 $ browserslist --coverage=US,RU,world "QUERIES"
 $ browserslist --env="environment name defined in config"
-$ browserslist --stats="path/to/browserlist/stats/file"
+$ browserslist --stats="path/to/browserslist/stats/file"
 ```
 
 ---
