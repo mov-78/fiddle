@@ -1,4 +1,4 @@
-<p align="center"><img src="https://cdn.rawgit.com/pwnn/img/85512e8bc1c76c83167856d89b596fc70914e5d2/fiddle/module/AMD/resolve.svg?v=1" alt="解析流程"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/pwnn/img@85512e8bc1c76c83167856d89b596fc70914e5d2/fiddle/module/AMD/resolve.svg?v=1" alt="解析流程"></p>
 
 ## 普通路径
 
